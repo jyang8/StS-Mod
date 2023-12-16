@@ -1,0 +1,28 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  "${modID}:EmergencyRedBull": {
+    "NAME": "Emergency Red Bull",
+    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile."
+  },
+  "${modID}:JagerBomb": {
+    "NAME": "Jager Bomb",
+    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Exhaust."
+  },
+  "${modID}:SourdoughBread": {
+    "NAME": "Sourdough Bread",
+    "DESCRIPTION": "Add !M! *Slices *of *Bread into your hand."
+  },
+  "${modID}:SliceOfBread": {
+    "NAME": "Slice of Bread",
+    "DESCRIPTION": "Retain. NL Gain !B! Block. NL Exhaust."
+  }
+}
