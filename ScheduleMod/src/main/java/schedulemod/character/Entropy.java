@@ -37,8 +37,10 @@ import schedulemod.orbs.ScheduleOrb;
 import schedulemod.relics.Markoalas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static schedulemod.BasicMod.characterPath;
+import static schedulemod.BasicMod.logger;
 
 public class Entropy extends CustomPlayer {
     // Stats
@@ -85,8 +87,6 @@ public class Entropy extends CustomPlayer {
         @SpireEnum(name = "SCHEDULE_GLOW")
         public static AbstractCard.CardTags SCHEDULE_GLOW;
     }
-
-    private boolean currentlyEvoking = false;
 
     private AbstractCard currentlyEvokingCard;
     private UseCardAction currentlyEvokingAction;
@@ -192,9 +192,12 @@ public class Entropy extends CustomPlayer {
 
     @Override
     public void channelOrb(AbstractOrb orbToSet) {
+        if (!(orbToSet instanceof ScheduleOrb)) {
+            return;
+        }
         ScheduleOrb schedule = (ScheduleOrb) orbToSet;
         int index = schedule.slot;
-        if (index == 0) {
+        if (index < this.maxOrbs) {
             schedule.cX = (this.orbs.get(index)).cX;
             schedule.cY = (this.orbs.get(index)).cY;
             this.orbs.set(index, schedule);
@@ -205,9 +208,7 @@ public class Entropy extends CustomPlayer {
             AbstractDungeon.actionManager.orbsChanneledThisCombat.add(schedule);
             AbstractDungeon.actionManager.orbsChanneledThisTurn.add(schedule);
         } else {
-            AbstractDungeon.actionManager.addToTop(new ChannelScheduleAction(schedule));
-            AbstractDungeon.actionManager.addToTop(new EvokeOrbAction(1));
-            AbstractDungeon.actionManager.addToTop(new AnimateOrbAction(1));
+            logger.info("Tried scheduling at slot greater than max:" + schedule.slot + "(max " + this.maxOrbs + ")");
         }
     }
 
@@ -315,13 +316,31 @@ public class Entropy extends CustomPlayer {
         return new Entropy();
     }
 
+    @Override
+    public void evokeOrb() {
+        if (!this.orbs.isEmpty()) {
+            ((AbstractOrb) this.orbs.get(0)).onEvoke();
+            AbstractOrb orbSlot = new EmptyOrbSlot();
+
+            int i;
+            for (i = 1; i < this.orbs.size(); ++i) {
+                Collections.swap(this.orbs, i, i - 1);
+            }
+
+            this.orbs.set(this.orbs.size() - 1, orbSlot);
+
+            for (i = 0; i < this.orbs.size(); ++i) {
+                ((AbstractOrb) this.orbs.get(i)).setSlot(i, this.maxOrbs);
+            }
+        }
+
+    }
+
     public void onUseCard(AbstractCard card, UseCardAction action) {
-        if (!this.currentlyEvoking) {
-            this.currentlyEvoking = true;
+        if (!card.purgeOnUse) {
             this.currentlyEvokingCard = card;
             this.currentlyEvokingAction = action;
             this.evokeOrb();
-            this.currentlyEvoking = false;
         }
     }
 

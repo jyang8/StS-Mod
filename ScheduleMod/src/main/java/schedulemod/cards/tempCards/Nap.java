@@ -33,7 +33,6 @@ public class Nap extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        logger.info("Played nap:" + p + "," + m);
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }
 

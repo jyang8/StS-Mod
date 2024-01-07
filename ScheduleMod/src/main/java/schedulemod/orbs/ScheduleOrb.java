@@ -5,6 +5,7 @@ import static schedulemod.BasicMod.makeID;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -18,6 +19,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import schedulemod.BasicMod;
+import schedulemod.actions.ScheduleEvokeAction;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
@@ -54,9 +56,7 @@ public class ScheduleOrb extends AbstractOrb {
         this.channelAnimTimer = 0.5F;
 
         // TODO
-        this.basePassiveAmount = this.passiveAmount = this.slot;
-        this.baseEvokeAmount = this.basePassiveAmount;
-        this.evokeAmount = this.passiveAmount;
+        updateAmount();
 
         card.targetAngle = 0.0F;
         this.eventCard.tags.add(Entropy.Enums.SCHEDULE_GLOW);
@@ -66,34 +66,31 @@ public class ScheduleOrb extends AbstractOrb {
             ((InScheduleCard) this.eventCard).whenEnteredSchedule(this);
     }
 
+    public void updateAmount() {
+        this.basePassiveAmount = this.passiveAmount = this.slot + 1;
+        this.baseEvokeAmount = this.basePassiveAmount;
+        this.evokeAmount = this.passiveAmount;
+    }
+
     public void applyFocus() {
     }
 
     @Override
     public void updateDescription() {
         applyFocus();
-        if (this.slot > 1) {
+        if (this.slot > 0) {
             this.description = this.eventCard.name + DESC[1] + (this.slot + 1) + DESC[2];
         } else {
             this.description = this.eventCard.name + DESC[0];
         }
     }
 
-    public void playCopy(AbstractCard triggeringCard, AbstractCreature triggeringCardTarget) {
-        if (!this.eventCard.purgeOnUse) {
-            logger.info("Evoking card:" + triggeringCard + "," + triggeringCardTarget);
-            AbstractMonster m = null;
-            if (triggeringCardTarget != null)
-                m = (AbstractMonster) triggeringCardTarget;
-            AbstractCard tmp = this.eventCard.makeSameInstanceOf();
-            AbstractDungeon.player.limbo.addToBottom(tmp);
-            if (m != null)
-                tmp.calculateCardDamage(m);
-            tmp.purgeOnUse = true;
-            AbstractDungeon.actionManager.addCardQueueItem(
-                    new CardQueueItem(tmp, m, this.eventCard.energyOnUse, true, true),
-                    true);
-        }
+    @Override
+    public void setSlot(int slotNum, int maxOrbs) {
+        this.slot = slotNum;
+        updateAmount();
+        super.setSlot(slotNum, maxOrbs);
+        updateDescription();
     }
 
     public void onEvoke() {
@@ -101,18 +98,11 @@ public class ScheduleOrb extends AbstractOrb {
             return;
         }
         Entropy entropy = (Entropy) AbstractDungeon.player;
-        if (this.slot > 1) {
-            this.slot--;
-            this.evokeAmount--;
-            this.passiveAmount--;
-            updateAnimation();
-            updateDescription();
-        } else {
-            this.triggeringCard = entropy.getCurrentlyEvokingCard();
-            this.triggeringCardTarget = entropy.getCurrentlyEvokingAction().target;
-            playCopy(triggeringCard, triggeringCardTarget);
-            this.eventCard.superFlash(Color.GOLDENROD);
-        }
+        this.triggeringCard = entropy.getCurrentlyEvokingCard();
+        this.triggeringCardTarget = entropy.getCurrentlyEvokingAction().target;
+        AbstractDungeon.actionManager
+                .addToBottom(new ScheduleEvokeAction(this, triggeringCard, triggeringCardTarget));
+        this.eventCard.superFlash(Color.GOLDENROD);
     }
 
     public void triggerEvokeAnimation() {

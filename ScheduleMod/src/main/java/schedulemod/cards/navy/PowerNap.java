@@ -33,9 +33,11 @@ public class PowerNap extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: replace with schedule 3 nap
         addToBot(new GainBlockAction(p, this.block));
-        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), 0));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
+        if (upgraded) {
+            addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), UPGRADE_SCHEDULE_SLOT));
+        }
     }
 
     @Override

@@ -16,18 +16,18 @@ public class ScheduleEventCard extends AbstractGameAction {
     private final CardGroup source;
     private boolean skipWait;
 
-    public ScheduleEventCard(AbstractCard card, int slot) {
-        this(card, slot, (CardGroup)null);
+    public ScheduleEventCard(AbstractCard card, int scheduleSlot) {
+        this(card, scheduleSlot, (CardGroup) null);
     }
 
-    public ScheduleEventCard(AbstractCard card, int slot, CardGroup source, boolean skipWait) {
-        this(card, slot, source);
+    public ScheduleEventCard(AbstractCard card, int scheduleSlot, CardGroup source, boolean skipWait) {
+        this(card, scheduleSlot, source);
         this.skipWait = skipWait;
     }
 
-    public ScheduleEventCard(AbstractCard card, int slot, CardGroup source) {
+    public ScheduleEventCard(AbstractCard card, int scheduleSlot, CardGroup source) {
         this.card = card;
-        this.slot = slot;
+        this.slot = scheduleSlot - 1;
         this.source = source;
         this.skipWait = false;
         this.actionType = ActionType.CARD_MANIPULATION;
