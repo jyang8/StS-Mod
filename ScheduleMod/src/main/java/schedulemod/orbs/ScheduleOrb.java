@@ -93,6 +93,12 @@ public class ScheduleOrb extends AbstractOrb {
         updateDescription();
     }
 
+    // TODO:
+    // Add interface OrbModifier
+    // Add patch to AbstractCard.applyPowers to look at current orb and see if there
+    // are any modifiers on the current orb
+    // Consider card playing animation
+
     public void onEvoke() {
         if (!(AbstractDungeon.player instanceof Entropy)) {
             return;
@@ -102,7 +108,6 @@ public class ScheduleOrb extends AbstractOrb {
         this.triggeringCardTarget = entropy.getCurrentlyEvokingAction().target;
         AbstractDungeon.actionManager
                 .addToBottom(new ScheduleEvokeAction(this, triggeringCard, triggeringCardTarget));
-        this.eventCard.superFlash(Color.GOLDENROD);
     }
 
     public void triggerEvokeAnimation() {
