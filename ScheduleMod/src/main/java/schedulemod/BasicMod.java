@@ -13,12 +13,17 @@ import com.evacipated.cardcrawl.modthespire.Patcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
+import schedulemod.orbs.ScheduleOrb;
+import schedulemod.relics.BaseRelic;
 import schedulemod.util.GeneralUtils;
 import schedulemod.util.KeywordInfo;
 import schedulemod.util.TextureLoader;
@@ -30,12 +35,19 @@ import java.util.*;
 public class BasicMod implements
         EditCardsSubscriber,
         EditCharactersSubscriber,
+        EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         PostInitializeSubscriber {
     public static ModInfo info;
     public static String modID; //Edit your pom.xml to change this
     static { loadModInfo(); }
+
+    public static final Float scheduleCardRenderScale = Float.valueOf(0.2F);
+    public static boolean scheduleDelay = false;
+
+
+
     public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
     private static final String resourcesFolder = "schedulemod";
 
@@ -48,10 +60,10 @@ public class BasicMod implements
     private static final String ENERGY_ORB = characterPath("cardback/energy_orb.png");
     private static final String ENERGY_ORB_P = characterPath("cardback/energy_orb_p.png");
     private static final String SMALL_ORB = characterPath("cardback/small_orb.png");
-    private static final Color cardColor = new Color(128f/255f, 128f/255f, 128f/255f, 1f);
+    private static final Color cardColor = new Color(0.0F, 0.0F, 0.5F, 1.0F);
 
-    private static final String CHAR_SELECT_BUTTON = characterPath("select/button.png");
-    private static final String CHAR_SELECT_PORTRAIT = characterPath("select/portrait.png");
+    private static final String CHAR_SELECT_BUTTON = characterPath("select/Schedule_button.png");
+    private static final String CHAR_SELECT_PORTRAIT = characterPath("select/Schedule_portrait.png");
 
     //This is used to prefix the IDs of various objects like cards and relics,
     //to avoid conflicts between different mods using the same name for things.
@@ -219,5 +231,32 @@ public class BasicMod implements
                 .packageFilter(BaseCard.class) //In the same package as this class
                 .setDefaultSeen(true) //And marks them as seen in the compendium
                 .cards(); //Adds the cards
+    }
+
+    @Override
+    public void receiveEditRelics() { //somewhere in the class
+        new AutoAdd(modID) //Loads files from this mod
+                .packageFilter(BaseRelic.class) //In the same package as this class
+                .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
+                    if (relic.pool != null)
+                        BaseMod.addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
+                    else
+                        BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
+
+                    //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
+                    //If you want all your relics to be visible by default, just remove this if statement.
+                    if (info.seen)
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                });
+    }
+
+    /*----------Schedule Mechanics----------*/
+
+    public static boolean isScheduleOrbInPlay() {
+        for (AbstractOrb o : AbstractDungeon.player.orbs) {
+            if (o instanceof ScheduleOrb)
+                return true;
+        }
+        return false;
     }
 }

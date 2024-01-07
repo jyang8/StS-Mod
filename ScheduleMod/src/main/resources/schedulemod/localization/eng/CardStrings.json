@@ -9,9 +9,30 @@
       "Blizzard is a good example for this."
     ]
   },
+  "${modID}:Strike_Navy": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:Defend_Navy": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "${modID}:Bakaham": {
+    "NAME": "Bakaham",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy does not intend to Attack, draw a card."
+  },
+  "${modID}:PowerNap": {
+    "NAME": "Power Nap",
+    "DESCRIPTION": "Gain !B! Block. NL *Schedule 3: *Nap."
+  },
+  "${modID}:Nap": {
+    "NAME": "Nap",
+    "DESCRIPTION": "Apply !M! *Fatigue."
+  },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile."
+    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile.",
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
@@ -19,10 +40,175 @@
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
-    "DESCRIPTION": "Add !M! *Slices *of *Bread into your hand."
+    "DESCRIPTION": "Gain 1 *Satiety. NL Gain !B! Block. NL Add !M! *Bread into your hand."
   },
-  "${modID}:SliceOfBread": {
-    "NAME": "Slice of Bread",
-    "DESCRIPTION": "Retain. NL Gain !B! Block. NL Exhaust."
+  "${modID}:Bread": {
+    "NAME": "Bread",
+    "DESCRIPTION": "Retain. NL Gain 1 *Satiety. NL Apply !M! *Fatigue. NL Exhaust."
+  },
+  "${modID}:PremiumToaster": {
+    "NAME": "Premium Toaster",
+    "DESCRIPTION": "*Bread applies !M! additional *Fatigue."
+  },
+  "${modID}:Gluttony": {
+    "NAME": "Gluttony",
+    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage. NL If Fatal, raise your Max Satiety by !M!. NL Exhaust."
+  },
+  "${modID}:AgedProsciutto": {
+    "NAME": "Aged Prosciutto",
+    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage to a random enemy. NL Apply !M! Weak to ALL enemies."
+  },
+  "${modID}:Hunger": {
+    "NAME": "Hunger",
+    "DESCRIPTION": "Lose !M! *Satiety. NL Draw 2 cards."
+  },
+  "${modID}:SixAMGym": {
+    "NAME": "6AM Gym",
+    "DESCRIPTION": "Gain 2 Strength. NL Additionally, gain Strength equal to the current Satiety. NL Deal !D! damage."
+  },
+  "${modID}:MissingSnackBag": {
+    "NAME": "Missing Snack Bag",
+    "DESCRIPTION": "Exhaust all non-Food cards in your hand. NL Deal !D! damage."
+  },
+  "${modID}:HokkaidoUniBuffet": {
+    "NAME": "Hokkaido Uni Buffet",
+    "DESCRIPTION": "This turn, *Satiety will not trigger. NL Draw 1 card for each event in *Schedule. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL This turn, *Satiety will not trigger. NL Draw 1 card for each event in *Schedule. Exhaust."
+  },
+  "${modID}:SleepDebt": {
+    "NAME": "Sleep Debt",
+    "DESCRIPTION": "Enemies take damage equal to their *Fatigue at the end of your turn.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Enemies take damage equal to their *Fatigue at the end of your turn."
+  },
+  "${modID}:GroupProject": {
+    "NAME": "\"Group\" Project",
+    "DESCRIPTION": "Can only be played if an enemy is asleep. NL Deal !D! damage to all enemies.",
+    "EXTENDED_DESCRIPTION": [
+      "No enemies are asleep."
+    ]
+  },
+  "${modID}:Baguette": {
+    "NAME": "Baguette",
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Bread to your hand."
+  },
+  "${modID}:ExquisitelyStuffed": {
+    "NAME": "Exquisitely Stuffed",
+    "DESCRIPTION": "Deal !D! damage for each *Satiety you have."
+  },
+  "${modID}:ShrimpChips": {
+    "NAME": "Shrimp Chips",
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Gain 1 *Satiety."
+  },
+  "${modID}:SupportRotation": {
+    "NAME": "Support Rotation",
+    "DESCRIPTION": "Deal !D! damage 3 times. NL Apply !M! *Fatigue."
+  },
+  "${modID}:CodeReview": {
+    "NAME": "Code Review",
+    "DESCRIPTION": "Place a card from your hand on top of your draw pile. NL Apply !M! *Fatigue."
+  },
+  "${modID}:EnemyIsWeak": {
+    "NAME": "Enemy Is Weak",
+    "DESCRIPTION": "Apply !M! Weak. NL Draw 1 card."
+  },
+  "${modID}:Leftovers": {
+    "NAME": "Leftovers",
+    "DESCRIPTION": "Discard all *Food cards in your hand. NL Draw !M! cards for each card discarded."
+  },
+  "${modID}:SubwayNap": {
+    "NAME": "Subway Nap",
+    "DESCRIPTION": "Apply !M! *Fatigue. NL Draw 1 more card next turn."
+  },
+  "${modID}:UtilityScience": {
+    "NAME": "Utility Science",
+    "DESCRIPTION": "At the start of your turn, lose [E] to gain !M! *Wrinkler. NL Ethereal.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, lose [E] to gain !M! *Wrinkler. NL Add a *Utility *Science+ to your hand. NL Ethereal."
+  },
+  "${modID}:Croissant": {
+    "NAME": "L'Appartement 4F",
+    "DESCRIPTION": "Add a *Bread into your hand. NL Whenever you play a *Bread this turn, draw !M! cards."
+  },
+  "${modID}:ThinkingWithPortals": {
+    "NAME": "Thinking With Portals",
+    "DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand."
+  },
+  "${modID}:Understand": {
+    "NAME": "Understand.",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0-cost card, the targeted enemy loses !M! strength this turn. NL Exhaust."
+  },
+  "${modID}:Leipaa": {
+    "NAME": "Leipää",
+    "DESCRIPTION": "Deal damage equal to !M! times the number of *Bread played this combat.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Deals !D! damage.)",
+      ""
+    ]
+  },
+  "${modID}:SpiritIsland": {
+    "NAME": "Spirit Island",
+    "DESCRIPTION": "Deal !D! damage. NL If you've played a *Skill and *Power this turn, deal !M! damage to ALL enemies."
+  },
+  "${modID}:RonTheRockJobs": {
+    "NAME": "Ron the Rock Jobs",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! *Wrinkler."
+  },
+  "${modID}:SuppressiveFire": {
+    "NAME": "Suppressive Fire",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL End your turn."
+  },
+  "${modID}:AutomationScience": {
+    "NAME": "Automation Science",
+    "DESCRIPTION": "Whenever you deal !M! or more damage in a single hit, gain 1 Strength.",
+    "UPGRADE_DESCRIPTION": "Whenever you deal !M! or more damage in a single hit, gain 1 Strength per !M! damage."
+  },
+  "${modID}:Connoisseur": {
+    "NAME": "Connoisseur",
+    "DESCRIPTION": "Gain 3 Strength. NL Gain 3 Dexterity. NL Lose !M! max *Satiety."
+  },
+  "${modID}:Walkable": {
+    "NAME": "Walkable",
+    "DESCRIPTION": "Deal !D! damage. NL Schedule 4: *Walk *Home."
+  },
+  "${modID}:WalkHome": {
+    "NAME": "Walk Home",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "${modID}:PatricksParablock": {
+    "NAME": "Patrick's Parablock",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! *Wrinkler."
+  },
+  "${modID}:Cardigarkus": {
+    "NAME": "Cardigarkus",
+    "DESCRIPTION": "Gain !B! Block. NL Lose !M! Dexterity."
+  },
+  "${modID}:ThreeChairMethod": {
+    "NAME": "Three-Chair Method",
+    "DESCRIPTION": "Apply !M! *Fatigue for each debuff the enemy has."
+  },
+  "${modID}:Inception": {
+    "NAME": "Inception",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is asleep, apply !M! Vulnerable and !M! Weak."
+  },
+  "${modID}:FoodComa": {
+    "NAME": "Food Coma",
+    "DESCRIPTION": "Apply !M! *Fatigue. NL If you have *Satiety, gain [E] and draw a card."
+  },
+  "${modID}:Cheesecake": {
+    "NAME": "Cheesecake",
+    "DESCRIPTION": "Gain 1 *Satiety. NL If this ends your turn, gain 2 Strength."
+  },
+  "${modID}:SweetDreams": {
+    "NAME": "Sweet Dreams",
+    "DESCRIPTION": "Whenever an enemy falls asleep, draw !M! cards."
+  },
+  "${modID}:LittleSpoon": {
+    "NAME": "Little Spoon",
+    "DESCRIPTION": "Gain !B! Block. Apply !M! *Drowsy."
+  },
+  "${modID}:SnoozeAlarm": {
+    "NAME": "Snooze Alarm",
+    "DESCRIPTION": "Excess *Fatigue is not consumed.",
+    "UPGRADE_DESCRIPTION": "Excess *Fatigue is not consumed. NL Whenever an enemy falls asleep, apply !M! *Drowsy."
   }
 }

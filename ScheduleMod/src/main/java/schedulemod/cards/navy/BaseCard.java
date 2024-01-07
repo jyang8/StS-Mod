@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
 import schedulemod.BasicMod;
+import schedulemod.orbs.ScheduleOrb;
 import schedulemod.util.CardStats;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -51,6 +52,9 @@ public abstract class BaseCard extends CustomCard {
     protected boolean upgInnate = false;
     protected boolean baseRetain = false;
     protected boolean upgRetain = false;
+
+    public ScheduleOrb belongedOrb = null;
+    public int orbSlot = -1;
 
     final protected Map<String, LocalVarInfo> cardVariables = new HashMap<>();
 

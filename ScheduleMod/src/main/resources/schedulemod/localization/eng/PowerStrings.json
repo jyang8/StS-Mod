@@ -8,8 +8,115 @@
   "${modID}:PremiumToaster": {
     "NAME": "Premium Toaster",
     "DESCRIPTIONS": [
-      "#ySlices #yof #yBread gain #b",
-      " additional #yBlock."
+      "#yBread applies #b",
+      " additional #yFatigue."
+    ]
+  },
+  "${modID}:Satiety": {
+    "NAME": "Satiety",
+    "DESCRIPTIONS": [
+      "Whenever you gain #b",
+      " #ySatiety in one turn, ends your turn."
+    ]
+  },
+  "${modID}:Hunger": {
+    "NAME": "Satiety Down",
+    "DESCRIPTIONS": [
+      "Lose #b",
+      " #ySatiety."
+    ]
+  },
+  "${modID}:HokkaidoUniBuffet": {
+    "NAME": "Hokkaido Uni Buffet",
+    "DESCRIPTIONS": [
+      "This turn, #ySatiety will not trigger."
+    ]
+  },
+  "${modID}:Fatigue": {
+    "NAME": "Fatigue",
+    "DESCRIPTIONS": [
+      "Applies #ySleep when #yFatigue is at least the enemy's total attack."
+    ]
+  },
+  "${modID}:Sleep": {
+    "NAME": "Sleep",
+    "DESCRIPTIONS": [
+      "This turn, the enemy will skip its turn."
+    ]
+  },
+  "${modID}:SleepDebt": {
+    "NAME": "Sleep Debt",
+    "DESCRIPTIONS": [
+      "Enemies take damage equal to their #yFatigue at the end of your turn."
+    ]
+  },
+  "${modID}:Wrinkler": {
+    "NAME": "Wrinkler",
+    "DESCRIPTIONS": [
+      "Negate #b",
+      " ScheduleMod:debuff.",
+      " ScheduleMod:debuffs."
+    ]
+  },
+  "${modID}:UtilityScience": {
+    "NAME": "Utility Science",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain #b",
+      " #yWrinkler."
+    ]
+  },
+  "${modID}:LoseEnergy": {
+    "NAME": "Lose Energy",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose ",
+      ""
+    ]
+  },
+  "${modID}:Croissant": {
+    "NAME": "L'Appartement 4F",
+    "DESCRIPTIONS": [
+      "Whenever you play a #yBread this turn, draw #b",
+      " cards."
+    ]
+  },
+  "${modID}:Understand": {
+    "NAME": "Understand.",
+    "DESCRIPTIONS": [
+      "Whenever you play a 0-cost card, loses #b",
+      " #yStrength this turn."
+    ]
+  },
+  "${modID}:AutomationScience": {
+    "NAME": "Automation Science",
+    "DESCRIPTIONS": [
+      "Whenever you deal #b",
+      " or more damage in a single hit, gain #b1 #yStrength",
+      " per #b",
+      " damage."
+    ]
+  },
+  "${modID}:SweetDreams": {
+    "NAME": "Sweet Dreams",
+    "DESCRIPTIONS": [
+      "Whenever an enemy falls asleep, draw #b",
+      " cards."
+    ]
+  },
+  "${modID}:Drowsy": {
+    "NAME": "Drowsy",
+    "DESCRIPTIONS": [
+      "Apply #b",
+      "% more #yFatigue for #b",
+      " turn.",
+      " turns."
+    ]
+  },
+  "${modID}:SnoozeAlarm": {
+    "NAME": "Snooze Alarm",
+    "DESCRIPTIONS": [
+      "Excess *Fatigue is not consumed. ",
+      "Whenever an enemy falls asleep, apply #b",
+      " #yDrowsy."
     ]
   }
 }

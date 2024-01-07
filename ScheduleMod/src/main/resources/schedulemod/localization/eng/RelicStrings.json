@@ -5,5 +5,75 @@
     "DESCRIPTIONS": [
       "Gain [E] at the start of your turn. [E] is an energy icon."
     ]
+  },
+  "${modID}:SoothrRes": {
+    "NAME": "Soothr Res",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "At the start of each battle, Schedule 3 Lunch."
+    ]
+  },
+  "${modID}:FrancieRes": {
+    "NAME": "Francie Res",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "At the start of each battle, Schedule 5 Confession. Replaces Soothr Res"
+    ]
+  },
+  "${modID}:AllformCouch": {
+    "NAME": "Allform Couch",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Whenever you apply Fatigue, apply #b%d additional Fatigue."
+    ]
+  },
+  "${modID}:Markoalas": {
+    "NAME": "Markoalas",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Start each combat with #b%d #yWrinkler."
+    ]
+  },
+  "${modID}:SplitKeyboard": {
+    "NAME": "Split Keyboard",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Whenever you play 7 cards in a turn, gain 1 Punctual."
+    ]
+  },
+  "${modID}:KaraokeKables": {
+    "NAME": "Karaoke Kables",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Your first attack each turn deals #b%d additional damage."
+    ]
+  },
+  "${modID}:CatTheoryTextbook": {
+    "NAME": "Cat Theory Textbook",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "#yWrinkler prevents ALL debuffs."
+    ]
+  },
+  "${modID}:HungryCamera": {
+    "NAME": "HungryCamera",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Whenever Satiety ends your turn, gain 2 max Satiety for the next turn."
+    ]
+  },
+  "${modID}:Blahaj": {
+    "NAME": "Blahaj",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Whenever an enemy falls asleep, gain [E]."
+    ]
+  },
+  "${modID}:SteamDeck": {
+    "NAME": "Steam Deck",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Whenever your schedule is empty, Schedule 7 Steam Club."
+    ]
   }
 }

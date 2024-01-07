@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.cards.navy.BaseCard;
+import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
 public class JagerBomb extends BaseCard {
@@ -18,13 +19,15 @@ public class JagerBomb extends BaseCard {
             CardTarget.ENEMY,
             0
     );
-    private static final int ATTACK_DMG = 16;
+    private static final int ATTACK_DAMAGE = 16;
+    private static final int UPGRADE_ATTACK_DAMAGE = 10;
     private static final boolean EXHAUST = true;
     private static final boolean RETAIN = true;
 
     public JagerBomb() {
         super(ID, info);
-        setDamage(ATTACK_DMG);
+        tags.add(Entropy.Enums.FOOD);
+        setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
         setExhaust(EXHAUST);
         setSelfRetain(RETAIN);
     }

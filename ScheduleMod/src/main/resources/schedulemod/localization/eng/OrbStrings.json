@@ -8,5 +8,19 @@
       " NL #yEvoke: Deal #b",
       " damage to all enemies."
     ]
+  },
+  "${modID}:EmptyScheduleSlot": {
+    "NAME": "Schedule Slot",
+    "DESCRIPTION": [
+      "Events can be placed into this slot through #ySchedule."
+    ]
+  },
+  "${modID}:ScheduleOrb": {
+    "NAME": "Schedule",
+    "DESCRIPTION": [
+      " will trigger on your next card played",
+      " will trigger in #b",
+      " card plays."
+    ]
   }
 }

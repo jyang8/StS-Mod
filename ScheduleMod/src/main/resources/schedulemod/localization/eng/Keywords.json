@@ -19,5 +19,55 @@
       "multiword_keywords"
     ],
     "DESCRIPTION": "Make sure the first element in NAMES has no underscores. The rest should use _ in the place of spaces. In card text, you'll use the underscore versions."
+  },
+  {
+    "PROPER_NAME": "Satiety",
+    "NAMES": [
+      "Satiety"
+    ],
+    "DESCRIPTION": "Player's turn ends when max Satiety is reached."
+  },
+  {
+    "PROPER_NAME": "Max Satiety",
+    "NAMES": [
+      "max Satiety",
+      "max_Satiety"
+    ],
+    "DESCRIPTION": "Player's turn ends when max Satiety is reached."
+  },
+  {
+    "PROPER_NAME": "Fatigue",
+    "NAMES": [
+      "Fatigue"
+    ],
+    "DESCRIPTION": "Applies #ySleep when #yFatigue is at least the enemy's total attack."
+  },
+  {
+    "PROPER_NAME": "Wrinkler",
+    "NAMES": [
+      "Wrinkler"
+    ],
+    "DESCRIPTION": "Negates the next ScheduleMod:debuff."
+  },
+  {
+    "PROPER_NAME": "Punctual",
+    "NAMES": [
+      "Punctual"
+    ],
+    "DESCRIPTION": ""
+  },
+  {
+    "PROPER_NAME": "Accelerate",
+    "NAMES": [
+      "Accelerate"
+    ],
+    "DESCRIPTION": ""
+  },
+  {
+    "PROPER_NAME": "Drowsy",
+    "NAMES": [
+      "Drowsy"
+    ],
+    "DESCRIPTION": "Drowsy creatures receive 50% more Fatigue."
   }
 ]
