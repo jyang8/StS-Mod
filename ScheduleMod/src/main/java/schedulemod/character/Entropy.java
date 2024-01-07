@@ -10,6 +10,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -40,7 +41,7 @@ import java.util.ArrayList;
 import static schedulemod.BasicMod.characterPath;
 
 public class Entropy extends CustomPlayer {
-    //Stats
+    // Stats
     public static final int ENERGY_PER_TURN = 3;
     public static final int MAX_HP = 70;
     public static final int STARTING_GOLD = 99;
@@ -49,26 +50,31 @@ public class Entropy extends CustomPlayer {
     public static int MAX_SATIETY = 3;
     private int satietyGainedThisCombat = 0;
 
-    //Strings
-    private static final String ID = BasicMod.makeID("Entropy"); //This should match whatever you have in the CharacterStrings.json file
+    // Strings
+    private static final String ID = BasicMod.makeID("Entropy"); // This should match whatever you have in the
+                                                                 // CharacterStrings.json file
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
 
-    //Image file paths
-    private static final String SHOULDER_1 = characterPath("shoulder.png"); //Shoulder 1 and 2 are used at rest sites.
+    // Image file paths
+    private static final String SHOULDER_1 = characterPath("shoulder.png"); // Shoulder 1 and 2 are used at rest sites.
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
-    private static final String CORPSE = characterPath("corpse.png"); //Corpse is when you die.
+    private static final String CORPSE = characterPath("corpse.png"); // Corpse is when you die.
     private static final String ENERGY_ORB = characterPath("cardback/navy_energy_orb_p.png");
 
     public static class Enums {
-        //These are used to identify your character, as well as your character's card color.
-        //Library color is basically the same as card color, but you need both because that's how the game was made.
+        // These are used to identify your character, as well as your character's card
+        // color.
+        // Library color is basically the same as card color, but you need both because
+        // that's how the game was made.
         @SpireEnum
         public static AbstractPlayer.PlayerClass ENTROPY;
-        @SpireEnum(name = "CHARACTER_NAVY_COLOR") // These two MUST match. Change it to something unique for your character.
+        @SpireEnum(name = "CHARACTER_NAVY_COLOR") // These two MUST match. Change it to something unique for your
+                                                  // character.
         public static AbstractCard.CardColor CARD_COLOR;
-        @SpireEnum(name = "CHARACTER_NAVY_COLOR") @SuppressWarnings("unused")
+        @SpireEnum(name = "CHARACTER_NAVY_COLOR")
+        @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
         @SpireEnum(name = "FOOD")
         public static AbstractCard.CardTags FOOD;
@@ -80,20 +86,26 @@ public class Entropy extends CustomPlayer {
         public static AbstractCard.CardTags SCHEDULE_GLOW;
     }
 
+    private boolean currentlyEvoking = false;
+
+    private AbstractCard currentlyEvokingCard;
+    private UseCardAction currentlyEvokingAction;
+
     public Entropy() {
         super(NAMES[0], Enums.ENTROPY,
-                new CustomEnergyOrb(null, null, null), //Energy Orb
-                new SpriterAnimation(characterPath("animation/default.scml"))); //Animation
+                new CustomEnergyOrb(null, null, null), // Energy Orb
+                new SpriterAnimation(characterPath("animation/default.scml"))); // Animation
 
         initializeClass(characterPath("Entropy_smol.png"),
                 SHOULDER_2,
                 SHOULDER_1,
                 CORPSE,
                 getLoadout(),
-                20.0F, -20.0F, 200.0F, 250.0F, //Character hitbox. x y position, then width and height.
+                20.0F, -20.0F, 200.0F, 250.0F, // Character hitbox. x y position, then width and height.
                 new EnergyManager(ENERGY_PER_TURN));
 
-        //Location for text bubbles. You can adjust it as necessary later. For most characters, these values are fine.
+        // Location for text bubbles. You can adjust it as necessary later. For most
+        // characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 220.0F * Settings.scale);
     }
@@ -101,13 +113,13 @@ public class Entropy extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
-        //List of IDs of cards for your starting deck.
-        //If you want multiple of the same card, you have to add it multiple times.
+        // List of IDs of cards for your starting deck.
+        // If you want multiple of the same card, you have to add it multiple times.
         retVal.add(Strike_Navy.ID);
         retVal.add(Strike_Navy.ID);
         retVal.add(Defend_Navy.ID);
         retVal.add(Bakaham.ID);
-//        retVal.add(PowerNap.ID);
+        // retVal.add(PowerNap.ID);
         retVal.add(CodeReview.ID);
 
         return retVal;
@@ -116,7 +128,7 @@ public class Entropy extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        //IDs of starting relics. You can have multiple, but one is recommended.
+        // IDs of starting relics. You can have multiple, but one is recommended.
         retVal.add(Markoalas.ID);
 
         return retVal;
@@ -124,8 +136,8 @@ public class Entropy extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        //This card is used for the Gremlin card matching game.
-        //It should be a non-strike non-defend starter card, but it doesn't have to be.
+        // This card is used for the Gremlin card matching game.
+        // It should be a non-strike non-defend starter card, but it doesn't have to be.
         return new Strike_Red();
     }
 
@@ -133,12 +145,12 @@ public class Entropy extends CustomPlayer {
 
     @Override
     public int getAscensionMaxHPLoss() {
-        return 4; //Max hp reduction at ascension 14+
+        return 4; // Max hp reduction at ascension 14+
     }
 
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        //These attack effects will be used when you attack the heart.
+        // These attack effects will be used when you attack the heart.
         return new AbstractGameAction.AttackEffect[] {
                 AbstractGameAction.AttackEffect.SLASH_VERTICAL,
                 AbstractGameAction.AttackEffect.SLASH_HEAVY,
@@ -149,6 +161,7 @@ public class Entropy extends CustomPlayer {
     public int getSatietyGainedThisCombat() {
         return this.satietyGainedThisCombat;
     }
+
     public void gainSatiety(int amount) {
         if (amount >= 0) {
             this.satietyGainedThisCombat += amount;
@@ -162,8 +175,7 @@ public class Entropy extends CustomPlayer {
             MAX_SATIETY += amount;
             AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
                     this.hb.cX - this.animX, this.hb.cY,
-                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR)
-            );
+                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
         }
     }
 
@@ -174,8 +186,7 @@ public class Entropy extends CustomPlayer {
             MAX_SATIETY -= amount;
             AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
                     this.hb.cX - this.animX, this.hb.cY,
-                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR)
-            );
+                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
         }
     }
 
@@ -212,9 +223,12 @@ public class Entropy extends CustomPlayer {
             p.onChannel(schedule);
     }
 
-    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); //Used for some vfx on moving cards (sometimes) (maybe)
-    private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); //Used for card trail vfx during gameplay.
-    private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); //Used for a screen tint effect when you attack the heart.
+    private final Color cardRenderColor = Color.LIGHT_GRAY.cpy(); // Used for some vfx on moving cards (sometimes)
+                                                                  // (maybe)
+    private final Color cardTrailColor = Color.LIGHT_GRAY.cpy(); // Used for card trail vfx during gameplay.
+    private final Color slashAttackColor = Color.LIGHT_GRAY.cpy(); // Used for a screen tint effect when you attack the
+                                                                   // heart.
+
     @Override
     public Color getCardRenderColor() {
         return cardRenderColor;
@@ -232,46 +246,57 @@ public class Entropy extends CustomPlayer {
 
     @Override
     public BitmapFont getEnergyNumFont() {
-        //Font used to display your current energy.
-        //energyNumFontRed, Blue, Green, and Purple are used by the basegame characters.
-        //It is possible to make your own, but not convenient.
+        // Font used to display your current energy.
+        // energyNumFontRed, Blue, Green, and Purple are used by the basegame
+        // characters.
+        // It is possible to make your own, but not convenient.
         return FontHelper.energyNumFontRed;
     }
 
     @Override
     public void doCharSelectScreenSelectEffect() {
-        //This occurs when you click the character's button in the character select screen.
-        //See SoundMaster for a full list of existing sound effects, or look at BaseMod's wiki for adding custom audio.
+        // This occurs when you click the character's button in the character select
+        // screen.
+        // See SoundMaster for a full list of existing sound effects, or look at
+        // BaseMod's wiki for adding custom audio.
         CardCrawlGame.sound.playA("ATTACK_DAGGER_2", MathUtils.random(-0.2F, 0.2F));
         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
+
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        //Similar to doCharSelectScreenSelectEffect, but used for the Custom mode screen. No shaking.
+        // Similar to doCharSelectScreenSelectEffect, but used for the Custom mode
+        // screen. No shaking.
         return "ATTACK_DAGGER_2";
     }
 
-    //Don't adjust these four directly, adjust the contents of the CharacterStrings.json file.
+    // Don't adjust these four directly, adjust the contents of the
+    // CharacterStrings.json file.
     @Override
     public String getLocalizedCharacterName() {
         return NAMES[0];
     }
+
     @Override
     public String getTitle(PlayerClass playerClass) {
         return NAMES[1];
     }
+
     @Override
     public String getSpireHeartText() {
         return TEXT[1];
     }
+
     @Override
     public String getVampireText() {
-        return TEXT[2]; //Generally, the only difference in this text is how the vampires refer to the player.
+        return TEXT[2]; // Generally, the only difference in this text is how the vampires refer to the
+                        // player.
     }
 
     /*- You shouldn't need to edit any of the following methods. -*/
 
-    //This is used to display the character's information on the character selection screen.
+    // This is used to display the character's information on the character
+    // selection screen.
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo(NAMES[0], TEXT[0],
@@ -286,7 +311,25 @@ public class Entropy extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() {
-        //Makes a new instance of your character class.
+        // Makes a new instance of your character class.
         return new Entropy();
+    }
+
+    public void onUseCard(AbstractCard card, UseCardAction action) {
+        if (!this.currentlyEvoking) {
+            this.currentlyEvoking = true;
+            this.currentlyEvokingCard = card;
+            this.currentlyEvokingAction = action;
+            this.evokeOrb();
+            this.currentlyEvoking = false;
+        }
+    }
+
+    public AbstractCard getCurrentlyEvokingCard() {
+        return currentlyEvokingCard;
+    }
+
+    public UseCardAction getCurrentlyEvokingAction() {
+        return currentlyEvokingAction;
     }
 }

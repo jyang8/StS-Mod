@@ -1,5 +1,7 @@
 package schedulemod.cards.tempCards;
 
+import static schedulemod.BasicMod.logger;
+
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,8 +18,7 @@ public class Nap extends BaseCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            0
-    );
+            0);
 
     private static final int FATIGUE = 5;
     private static final int UPGRADE_FATIGUE = 2;
@@ -25,18 +26,20 @@ public class Nap extends BaseCard {
     public Nap() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
-        this.freeToPlayOnce = true;
-        //TODO: fix later
+        // TODO: fix later
         setExhaust(true);
         setMagic(FATIGUE, UPGRADE_FATIGUE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        logger.info("Played nap:" + p + "," + m);
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Nap(); }
+    public AbstractCard makeCopy() {
+        return new Nap();
+    }
 
 }

@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.Nap;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
@@ -16,8 +18,7 @@ public class PowerNap extends BaseCard {
             CardType.SKILL,
             CardRarity.BASIC,
             CardTarget.SELF,
-            1
-    );
+            1);
 
     private static final int BLOCK = 3;
     private static final int SCHEDULE_SLOT = 3;
@@ -34,9 +35,11 @@ public class PowerNap extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         // TODO: replace with schedule 3 nap
         addToBot(new GainBlockAction(p, this.block));
-        addToBot(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy(), 1));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), 0));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new PowerNap(); }
+    public AbstractCard makeCopy() {
+        return new PowerNap();
+    }
 }
