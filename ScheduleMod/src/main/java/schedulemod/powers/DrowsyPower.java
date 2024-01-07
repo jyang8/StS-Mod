@@ -1,6 +1,8 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -9,7 +11,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static schedulemod.BasicMod.makeID;
 
-public class DrowsyPower extends BasePower implements CloneablePowerInterface {
+public class DrowsyPower extends BasePower implements CloneablePowerInterface, OnReceivePowerPower {
     public static final String POWER_ID = makeID("Drowsy");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
@@ -38,13 +40,14 @@ public class DrowsyPower extends BasePower implements CloneablePowerInterface {
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power instanceof FatiguePower && target instanceof AbstractMonster)
-            power.amount = (int) (power.amount * EFFECTIVENESS);
+    public AbstractPower makeCopy() {
+        return new DrowsyPower(owner, source, amount);
     }
 
     @Override
-    public AbstractPower makeCopy() {
-        return new DrowsyPower(owner, source, amount);
+    public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power instanceof FatiguePower && target instanceof AbstractMonster)
+            power.amount = (int) (power.amount * EFFECTIVENESS);
+        return true;
     }
 }
