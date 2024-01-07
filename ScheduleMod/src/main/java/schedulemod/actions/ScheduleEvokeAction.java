@@ -5,6 +5,7 @@ import static schedulemod.BasicMod.logger;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -29,8 +30,18 @@ public class ScheduleEvokeAction extends AbstractGameAction {
         if (!triggeringCard.purgeOnUse) {
             logger.info("Evoking card:" + triggeringCard + "," + triggeringCardTarget);
             AbstractMonster m = null;
-            if (triggeringCardTarget != null)
-                m = (AbstractMonster) triggeringCardTarget;
+            if (orb.eventCard.target == CardTarget.ENEMY) {
+                // Try using the trigger target
+                if (triggeringCardTarget != null
+                        && triggeringCardTarget instanceof AbstractMonster
+                        && !triggeringCardTarget.isDeadOrEscaped()) {
+                    m = (AbstractMonster) triggeringCardTarget;
+                } else {
+                    // If that doesn't work then use a random alive monster
+                    m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
+                            AbstractDungeon.cardRandomRng);
+                }
+            }
             AbstractCard tmp = orb.eventCard.makeStatEquivalentCopy();
             AbstractDungeon.player.limbo.addToBottom(tmp);
             if (m != null)
