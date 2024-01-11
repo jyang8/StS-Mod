@@ -92,11 +92,7 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
     public void onRemove() {
         if (this.owner instanceof AbstractMonster) {
             AbstractMonster m = (AbstractMonster)this.owner;
-            if (this.move != null) {
-                m.setMove(this.moveByte, this.moveIntent, this.move.baseDamage, this.move.multiplier, this.move.isMultiDamage);
-            } else {
-                m.setMove(this.moveByte, this.moveIntent);
-            }
+            m.rollMove();
             m.createIntent();
             m.applyPowers();
         }

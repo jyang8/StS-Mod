@@ -210,5 +210,21 @@
     "NAME": "Snooze Alarm",
     "DESCRIPTION": "Excess *Fatigue is not consumed.",
     "UPGRADE_DESCRIPTION": "Excess *Fatigue is not consumed. NL Whenever an enemy falls asleep, apply !M! *Drowsy."
+  },
+  "${modID}:HyperEntropy": {
+    "NAME": "HyperEntropy",
+    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL *Exhaust."
+  },
+  "${modID}:HyperfloorMonster": {
+    "NAME": "Elite",
+    "DESCRIPTION": "Open an Elite *Hyperfloor."
+  },
+  "${modID}:HyperfloorEvent": {
+    "NAME": "Event",
+    "DESCRIPTION": "Open an Event *Hyperfloor."
+  },
+  "${modID}:HyperfloorShop": {
+    "NAME": "Shop",
+    "DESCRIPTION": "Open a Shop *Hyperfloor."
   }
 }
