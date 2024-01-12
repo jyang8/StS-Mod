@@ -15,7 +15,7 @@ import static schedulemod.BasicMod.makeID;
 public class SatietyPower extends BasePower implements CloneablePowerInterface {
     public static final String POWER_ID = makeID("Satiety");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
-    private static final boolean TURN_BASED = true;
+    private static final boolean TURN_BASED = false;
 
     public SatietyPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
@@ -57,13 +57,6 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
                 AbstractDungeon.actionManager.callEndTurnEarlySequence();
             }
         }
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        flash();
-        addToBot(new ApplyPowerAction(this.owner, this.owner, new SatietyPower(this.owner, -this.amount), -this.amount));
-        addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     @Override

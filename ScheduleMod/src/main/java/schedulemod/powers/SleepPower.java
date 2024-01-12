@@ -102,7 +102,7 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
 
     @Override
     public boolean betterOnApplyPower(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (((AbstractPlayer)source).hasRelic(makeID("Blahaj")))
+        if (source instanceof AbstractPlayer && ((AbstractPlayer)source).hasRelic(makeID("Blahaj")))
             addToBot(new GainEnergyAction(1));
         return true;
     }

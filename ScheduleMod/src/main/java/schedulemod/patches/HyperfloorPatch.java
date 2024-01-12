@@ -116,6 +116,7 @@ public class HyperfloorPatch {
             default:
               break;
           }
+          AbstractRoomIsHyperfloorField.isHyperfloor.set(node.room, true);
           AbstractDungeon.nextRoom = node;
           return SpireReturn.Return();
         } else
@@ -160,6 +161,11 @@ public class HyperfloorPatch {
         }
         logger.info("PROCEED BUTTON LABEL: " + newLabel[0]);
       }
+    }
+
+    @SpirePatch(clz = AbstractRoom.class, method = SpirePatch.CLASS)
+    public static class AbstractRoomIsHyperfloorField {
+      public static SpireField<Boolean> isHyperfloor = new SpireField<>(() -> false);
     }
   }
 }

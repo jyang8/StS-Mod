@@ -62,14 +62,6 @@
     "NAME": "Hunger",
     "DESCRIPTION": "Lose !M! *Satiety. NL Draw 2 cards."
   },
-  "${modID}:SixAMGym": {
-    "NAME": "6AM Gym",
-    "DESCRIPTION": "Gain 2 Strength. NL Additionally, gain Strength equal to the current Satiety. NL Deal !D! damage."
-  },
-  "${modID}:MissingSnackBag": {
-    "NAME": "Missing Snack Bag",
-    "DESCRIPTION": "Exhaust all non-Food cards in your hand. NL Deal !D! damage."
-  },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
     "DESCRIPTION": "This turn, *Satiety will not trigger. NL Draw 1 card for each event in *Schedule. Exhaust.",

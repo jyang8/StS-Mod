@@ -10,12 +10,14 @@ import schedulemod.cards.navy.HyperfloorMonster;
 import schedulemod.cards.navy.HyperfloorShop;
 import schedulemod.character.Entropy;
 import schedulemod.patches.HyperfloorPatch;
+import schedulemod.patches.HyperfloorPatch.RewardItemClaimPatch.AbstractRoomIsHyperfloorField;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HyperEntropyAction extends AbstractGameAction {
-    private static final ArrayList<AbstractCard> hyperfloorCards = new ArrayList<AbstractCard>(Arrays.asList(new HyperfloorMonster(), new HyperfloorEvent(), new HyperfloorShop())); 
+    private static final ArrayList<AbstractCard> hyperfloorCards = new ArrayList<AbstractCard>(
+            Arrays.asList(new HyperfloorMonster(), new HyperfloorEvent(), new HyperfloorShop()));
     private static final float DURATION = 0.1F;
 
     public HyperEntropyAction(Entropy source) {
@@ -25,11 +27,13 @@ public class HyperEntropyAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == 0.1F) {
-            RewardItem rItem = new RewardItem();
-            rItem.type = HyperfloorPatch.HYPERFLOOR;
-            rItem.cards = hyperfloorCards;
-            rItem.text = "Open a Hyperfloor";
-            AbstractDungeon.currMapNode.room.rewards.add(0, rItem);
+            if (!AbstractRoomIsHyperfloorField.isHyperfloor.get(AbstractDungeon.currMapNode.room)) {
+                RewardItem rItem = new RewardItem();
+                rItem.type = HyperfloorPatch.HYPERFLOOR;
+                rItem.cards = hyperfloorCards;
+                rItem.text = "Open a Hyperfloor";
+                AbstractDungeon.currMapNode.room.rewards.add(0, rItem);
+            }
         }
         tickDuration();
     }

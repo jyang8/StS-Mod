@@ -54,14 +54,14 @@
     "NAMES": [
       "Punctual"
     ],
-    "DESCRIPTION": ""
+    "DESCRIPTION": "Increases the effectiveness of Scheduled Events."
   },
   {
     "PROPER_NAME": "Accelerate",
     "NAMES": [
       "Accelerate"
     ],
-    "DESCRIPTION": ""
+    "DESCRIPTION": "Advance the Schedule and trigger all Events on this card."
   },
   {
     "PROPER_NAME": "Drowsy",
@@ -69,5 +69,12 @@
       "Drowsy"
     ],
     "DESCRIPTION": "Drowsy creatures receive 50% more Fatigue."
+  },
+  {
+    "PROPER_NAME": "Schedule",
+    "NAMES": [
+      "Schedule"
+    ],
+    "DESCRIPTION": "Schedule the Event in the given slot. When a card is played, the Schedule is advanced and the Event in slot 1 triggers on that card."
   }
 ]
