@@ -1,25 +1,36 @@
 package schedulemod.patches;
 
+import java.util.ArrayList;
+
+import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
+import com.evacipated.cardcrawl.modthespire.lib.Matcher;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
+import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import javassist.CannotCompileException;
+import javassist.CtBehavior;
 import schedulemod.character.Entropy;
 
 public class PlayerOnUseCardPatch {
-    @SpirePatch(clz = UseCardAction.class, method = SpirePatch.CONSTRUCTOR, paramtypez = { AbstractCard.class,
-            AbstractCreature.class })
-    public static class PlayerOnUseCardPatchConstructor {
-        @SpirePostfixPatch
-        public static void Postfix(UseCardAction __instance, AbstractCard card, AbstractCreature target) {
-            if (!card.dontTriggerOnUseCard) {
-                if (AbstractDungeon.player instanceof Entropy) {
-                    Entropy entropy = (Entropy) AbstractDungeon.player;
-                    entropy.onUseCard(card, __instance);
-                }
+
+    @SpirePatch(clz = GameActionManager.class, method = "getNextAction")
+    public static class EntropyGameActionManagerPatch {
+        private static class Locator extends SpireInsertLocator {
+        public int[] Locate(CtBehavior ctMethodToPatch) throws CannotCompileException, PatchingException {
+          Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "cardsPlayedThisTurn");
+          return LineFinder.findInOrder(ctMethodToPatch, new ArrayList<Matcher>(), finalMatcher);
+        }
+      }
+        @SpireInsertPatch(locator = Locator.class)
+        public static void Insert(GameActionManager __instance) {
+            if (AbstractDungeon.player instanceof Entropy) {
+                Entropy entropy = (Entropy) AbstractDungeon.player;
+                entropy.onPlayCard(__instance.cardQueue.get(0).card, __instance.cardQueue.get(0).monster);
             }
         }
     }

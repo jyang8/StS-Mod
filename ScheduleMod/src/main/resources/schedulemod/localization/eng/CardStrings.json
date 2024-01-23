@@ -218,5 +218,13 @@
   "${modID}:HyperfloorShop": {
     "NAME": "Shop",
     "DESCRIPTION": "Open a Shop *Hyperfloor."
+  }, 
+  "${modID}:Karaoke": {
+    "NAME": "Karaoke",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL *Schedule 6: *Amp."
+  },
+  "${modID}:Amp": {
+    "NAME": "Amp",
+    "DESCRIPTION": "A triggering attack deals !M! additional damage."
   }
 }

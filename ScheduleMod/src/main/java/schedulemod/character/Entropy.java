@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -90,6 +92,7 @@ public class Entropy extends CustomPlayer {
 
     private AbstractCard currentlyEvokingCard;
     private UseCardAction currentlyEvokingAction;
+    private AbstractCreature currentlyEvokingMonster;
 
     public Entropy() {
         super(NAMES[0], Enums.ENTROPY,
@@ -336,10 +339,10 @@ public class Entropy extends CustomPlayer {
 
     }
 
-    public void onUseCard(AbstractCard card, UseCardAction action) {
+    public void onPlayCard(AbstractCard card, AbstractMonster monster) {
         if (!card.purgeOnUse) {
             this.currentlyEvokingCard = card;
-            this.currentlyEvokingAction = action;
+            this.currentlyEvokingMonster = monster;
             this.evokeOrb();
         }
     }
@@ -350,5 +353,9 @@ public class Entropy extends CustomPlayer {
 
     public UseCardAction getCurrentlyEvokingAction() {
         return currentlyEvokingAction;
+    }
+
+    public AbstractCreature getCurrentlyEvokingMonster() {
+        return currentlyEvokingMonster;
     }
 }

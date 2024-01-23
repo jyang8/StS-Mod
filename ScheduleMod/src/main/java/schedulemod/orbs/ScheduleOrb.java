@@ -5,8 +5,11 @@ import static schedulemod.BasicMod.makeID;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -20,6 +23,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import schedulemod.BasicMod;
 import schedulemod.actions.ScheduleEvokeAction;
+import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
@@ -31,7 +35,7 @@ public class ScheduleOrb extends AbstractOrb {
 
     private static final OrbStrings orbString;
     public static final String ORB_ID = makeID(ScheduleOrb.class.getSimpleName());
-    public AbstractCard eventCard;
+    public EventCard eventCard;
     private AbstractGameEffect scheduleStartEffect;
     public int slot;
     public AbstractCard triggeringCard;
@@ -46,7 +50,8 @@ public class ScheduleOrb extends AbstractOrb {
     }
 
     public ScheduleOrb(AbstractCard card, int slot, CardGroup source, boolean selfSchedule) {
-        this.eventCard = card.makeCopy();
+        assert card instanceof EventCard : "Can only schedule Event cards.";
+        this.eventCard = (EventCard)card.makeCopy();
         this.slot = slot;
         if (this.eventCard.hasTag(Entropy.Enums.EVENT))
             ((BaseCard) this.eventCard).belongedOrb = this;
@@ -105,9 +110,23 @@ public class ScheduleOrb extends AbstractOrb {
         }
         Entropy entropy = (Entropy) AbstractDungeon.player;
         this.triggeringCard = entropy.getCurrentlyEvokingCard();
-        this.triggeringCardTarget = entropy.getCurrentlyEvokingAction().target;
-        AbstractDungeon.actionManager
-                .addToBottom(new ScheduleEvokeAction(this, triggeringCard, triggeringCardTarget));
+        this.triggeringCardTarget = entropy.getCurrentlyEvokingMonster();
+
+        AbstractMonster m = null;
+            if (triggeringCard.target == CardTarget.ENEMY) {
+                // Try using the trigger target
+                if (triggeringCardTarget != null
+                        && triggeringCardTarget instanceof AbstractMonster
+                        && !triggeringCardTarget.isDeadOrEscaped()) {
+                    m = (AbstractMonster) triggeringCardTarget;
+                } 
+            } else {
+                // If that doesn't work then use a random alive monster
+                m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
+                        AbstractDungeon.cardRandomRng);
+            }
+        
+            this.eventCard.useEvent(entropy, m, triggeringCard);
     }
 
     public void triggerEvokeAnimation() {
