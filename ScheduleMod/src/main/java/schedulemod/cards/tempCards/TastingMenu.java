@@ -42,7 +42,7 @@ public class TastingMenu extends EventCard {
     }
 
     @Override
-    public void useEvent(AbstractPlayer p, AbstractMonster m, AbstractCard triggeringCard) {
+    public void useEvent(AbstractPlayer p, AbstractMonster m) {
         Entropy e = (Entropy) p;
         setMagic(e.getSatietyGainedThisCombat());
         for (int i = 0; i < this.magicNumber; i++) {

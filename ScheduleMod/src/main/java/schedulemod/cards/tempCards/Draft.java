@@ -30,7 +30,7 @@ public class Draft extends EventCard {
     }
 
     @Override
-    public void useEvent(AbstractPlayer p, AbstractMonster m, AbstractCard triggeringCard) {
+    public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DraftAction());
     }
 

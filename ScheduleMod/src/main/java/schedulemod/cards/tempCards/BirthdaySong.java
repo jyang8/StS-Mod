@@ -40,7 +40,7 @@ public class BirthdaySong extends EventCard {
     }
 
     @Override
-    public void useEvent(AbstractPlayer p, AbstractMonster m, AbstractCard triggeringCard) {
+    public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         addToBot(new BirthdayAction(this, this.magicNumber));
     }

@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.cards.EventCard;
-import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
@@ -33,6 +32,8 @@ public class WalkHome extends EventCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
     @Override
