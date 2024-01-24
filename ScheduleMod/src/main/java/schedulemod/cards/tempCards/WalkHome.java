@@ -22,12 +22,12 @@ public class WalkHome extends EventCard {
             0);
 
     private static final int ATTACK_DAMAGE = 7;
-    private static final int UPGRADE_ATTACK_DAMAGE = 3;
+    private static final int UPGRADE_ATTACK_DAMAGE = 2;
 
     public WalkHome() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
-        this.freeToPlayOnce = true;
+        setExhaust(true);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
     }
 

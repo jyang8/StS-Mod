@@ -1,7 +1,6 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
-
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;

@@ -23,7 +23,7 @@
   },
   "${modID}:PowerNap": {
     "NAME": "Power Nap",
-    "DESCRIPTION": "Gain !B! Block. NL *Schedule 3: *Nap."
+    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Nap."
   },
   "${modID}:Nap": {
     "NAME": "Nap",
@@ -32,7 +32,7 @@
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
     "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile."
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb+ into your draw pile."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
@@ -40,7 +40,7 @@
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
-    "DESCRIPTION": "Gain 1 *Satiety. NL Gain !B! Block. NL Add !M! *Bread into your hand."
+    "DESCRIPTION": "Gain 1 *Satiety. NL Add !M! *Bread into your hand."
   },
   "${modID}:Bread": {
     "NAME": "Bread",
@@ -81,7 +81,8 @@
   },
   "${modID}:Baguette": {
     "NAME": "Baguette",
-    "DESCRIPTION": "Deal !D! damage. NL Add a *Bread to your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Add a *Bread to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add 2 *Bread to your hand."
   },
   "${modID}:ExquisitelyStuffed": {
     "NAME": "Exquisitely Stuffed",
@@ -89,7 +90,8 @@
   },
   "${modID}:ShrimpChips": {
     "NAME": "Shrimp Chips",
-    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Deal !D! damage. NL Draw !M! card. NL Gain 1 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw !M! cards. NL Gain 1 *Satiety."
   },
   "${modID}:SupportRotation": {
     "NAME": "Support Rotation",
@@ -97,7 +99,8 @@
   },
   "${modID}:CodeReview": {
     "NAME": "Code Review",
-    "DESCRIPTION": "Place a card from your hand on top of your draw pile. NL Apply !M! *Fatigue."
+    "DESCRIPTION": "Place a card from your hand on top of your draw pile. NL Apply !M! *Fatigue.",
+    "UPGRADE_DESCRIPTION": "Place a card from your hand on top of your draw pile and upgrade it. NL Apply !M! *Fatigue."
   },
   "${modID}:EnemyIsWeak": {
     "NAME": "Enemy Is Weak",
@@ -160,7 +163,8 @@
   },
   "${modID}:Walkable": {
     "NAME": "Walkable",
-    "DESCRIPTION": "Deal !D! damage. NL Schedule 4: *Walk *Home."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: *Walk *Home.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: *Walk *Home+."
   },
   "${modID}:WalkHome": {
     "NAME": "Walk Home",
@@ -188,7 +192,7 @@
   },
   "${modID}:Cheesecake": {
     "NAME": "Cheesecake",
-    "DESCRIPTION": "Gain 1 *Satiety. NL If this ends your turn, gain 2 Strength."
+    "DESCRIPTION": "Gain 1 *Satiety. NL If this ends your turn, gain !M! Strength."
   },
   "${modID}:SweetDreams": {
     "NAME": "Sweet Dreams",
@@ -221,7 +225,8 @@
   }, 
   "${modID}:Karaoke": {
     "NAME": "Karaoke",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL *Schedule 6: *Amp."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL *Schedule !M!: *Amp.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies. NL *Schedule !M!: *Amp+."
   },
   "${modID}:Amp": {
     "NAME": "Amp",
@@ -230,5 +235,32 @@
   "${modID}:DailyReminders": {
     "NAME": "Daily Reminders",
     "DESCRIPTION": "Deal !D! damage. NL If this card triggers an event, NL *Schedule 7 a copy of it."
+  },
+  "${modID}:HappyBirthday": {
+    "NAME": "Happy Birthday",
+    "DESCRIPTION": "*Schedule !M!: *Birthday *Song. NL Add a *Birthday *Song to your discard pile.",
+    "UPGRADE_DESCRIPTION": "*Schedule !M!: *Birthday *Song+. NL Add a *Birthday *Song+ to your discard pile."
+  },
+  "${modID}:BirthdaySong": {
+    "NAME": "Birthday Song",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *Birthday *Song events by !M! this combat."
+  },
+  "${modID}:FridayNightMagic": {
+    "NAME": "Friday Night Magic",
+    "DESCRIPTION": "Draw !M! cards. NL *Schedule 5: *Draft.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL *Schedule 5, 6: *Draft."
+  },
+  "${modID}:Draft": {
+    "NAME": "Draft",
+    "DESCRIPTION": "Choose 1 of 3 random cards to add to your hand."
+  },
+  "${modID}:ChefsTable": {
+    "NAME": "Chef's Table",
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold. NL Gain 2 Satiety.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold. NL Gain 2 Satiety."
+  },
+  "${modID}:TastingMenu": {
+    "NAME": "Tasting Menu",
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat."
   }
 }

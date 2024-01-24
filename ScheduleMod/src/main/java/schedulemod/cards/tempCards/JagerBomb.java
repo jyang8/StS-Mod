@@ -20,7 +20,7 @@ public class JagerBomb extends BaseCard {
             0
     );
     private static final int ATTACK_DAMAGE = 16;
-    private static final int UPGRADE_ATTACK_DAMAGE = 10;
+    private static final int UPGRADE_ATTACK_DAMAGE = 4;
     private static final boolean EXHAUST = true;
     private static final boolean RETAIN = true;
 

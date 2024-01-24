@@ -20,7 +20,7 @@ public class Cheesecake extends BaseCard {
     );
 
     private static final int SATIETY = 1;
-    private static final int STRENGTH_GAIN = 1;
+    private static final int STRENGTH_GAIN = 2;
     private static final int UPGRADE_STRENGTH_GAIN = 1;
 
     public Cheesecake() {

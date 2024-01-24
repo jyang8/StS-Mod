@@ -23,16 +23,15 @@ public class AgedProsciutto extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 9;
-    private static final int UPGRADE_ATTACK_DAMAGE = 2;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
     private static final int WEAK = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int UPGRADE_WEAK = 1;
 
     public AgedProsciutto() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(WEAK);
-        setCostUpgrade(UPGRADE_COST);
+        setMagic(WEAK, UPGRADE_WEAK);
     }
 
     @Override

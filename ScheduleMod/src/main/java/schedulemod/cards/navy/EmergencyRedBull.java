@@ -21,21 +21,28 @@ public class EmergencyRedBull extends BaseCard {
     );
 
     private static final int ENERGY = 2;
-    private static final int UPGRADE_ENERGY = 1;
     private static final int HP_LOSS = 3;
 
     public EmergencyRedBull() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         this.cardsToPreview = new JagerBomb();
-        setMagic(ENERGY, UPGRADE_ENERGY);
+        setMagic(ENERGY);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, HP_LOSS));
         addToBot(new GainEnergyAction(this.magicNumber));
-        addToBot(new MakeTempCardInDrawPileAction(this.cardsToPreview, 1, true, true));
+        addToBot(new MakeTempCardInDrawPileAction(this.cardsToPreview.makeStatEquivalentCopy(), 1, true, true));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
+            this.cardsToPreview.upgrade();
+        }
+        super.upgrade();
     }
 
     @Override

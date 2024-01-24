@@ -24,13 +24,13 @@ public class ShrimpChips extends BaseCard {
 
     private static final int ATTACK_DAMAGE = 6;
     private static final int NUM_CARDS_DRAW = 1;
-    // TODO: UPGRADE
+    private static final int UPGRADE_NUM_CARDS_DRAW = 1;
 
     public ShrimpChips() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         setDamage(ATTACK_DAMAGE);
-        setMagic(NUM_CARDS_DRAW);
+        setMagic(NUM_CARDS_DRAW, UPGRADE_NUM_CARDS_DRAW);
     }
 
     @Override

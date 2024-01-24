@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.common.PutOnDeckAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import schedulemod.actions.PutOnDeckUpgradeAction;
 import schedulemod.character.Entropy;
 import schedulemod.powers.FatiguePower;
 import schedulemod.util.CardStats;
@@ -20,7 +21,7 @@ public class CodeReview extends BaseCard {
     );
 
     private static final int FATIGUE = 11;
-    private static final int UPGRADE_FATIGUE = 3;
+    private static final int UPGRADE_FATIGUE = 4;
 
     public CodeReview() {
         super(ID, info);
@@ -29,7 +30,10 @@ public class CodeReview extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new PutOnDeckAction(p, p, 1, false));
+        if (!upgraded)
+            addToBot(new PutOnDeckAction(p, p, 1, false));
+        else
+            addToBot(new PutOnDeckUpgradeAction(p, p, 1, false));
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }
 

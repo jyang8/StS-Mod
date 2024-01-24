@@ -21,22 +21,19 @@ public class SourdoughBread extends BaseCard {
             1
     );
 
-    private static final int BLOCK = 6;
-    private static final int UPGRADE_BLOCK = 3;
     private static final int NUM_GENERATED = 2;
+    private static final int UPGRADE_NUM_GENERATED = 1;
 
     public SourdoughBread() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         this.cardsToPreview = new Bread();
-        setBlock(BLOCK, UPGRADE_BLOCK);
-        setMagic(NUM_GENERATED);
+        setMagic(NUM_GENERATED, UPGRADE_NUM_GENERATED);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, this.block));
-        addToBot(new MakeTempCardInHandAction(new Bread(), this.magicNumber));
+        addToBot(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy(), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 

@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
 import schedulemod.BasicMod;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.BaseCard;
@@ -23,6 +22,7 @@ import schedulemod.character.Entropy;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
 import schedulemod.vfx.AddCardToScheduleEffect;
+
 
 public class ScheduleOrb extends AbstractOrb {
 
@@ -46,7 +46,7 @@ public class ScheduleOrb extends AbstractOrb {
 
     public ScheduleOrb(AbstractCard card, int slot, CardGroup source, boolean selfSchedule) {
         assert card instanceof EventCard : "Can only schedule Event cards.";
-        this.eventCard = (EventCard)card.makeCopy();
+        this.eventCard = (EventCard)card.makeStatEquivalentCopy();
         this.slot = slot;
         if (this.eventCard.hasTag(Entropy.Enums.EVENT))
             ((BaseCard) this.eventCard).belongedOrb = this;

@@ -22,19 +22,20 @@ public class Baguette extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 6;
-    private static final int UPGRADE_ATTACK_DAMAGE = 4;
 
     public Baguette() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
+        setDamage(ATTACK_DAMAGE);
         this.cardsToPreview = new Bread();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        addToBot(new MakeTempCardInHandAction(new Bread()));
+        addToBot(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy()));
+        if (upgraded)
+            addToBot(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy()));
     }
 
     @Override
