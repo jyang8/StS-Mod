@@ -3,17 +3,7 @@ package schedulemod.patches;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.lib.ByRef;
-import com.evacipated.cardcrawl.modthespire.lib.LineFinder;
-import com.evacipated.cardcrawl.modthespire.lib.Matcher;
-import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertLocator;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
@@ -22,23 +12,21 @@ import com.megacrit.cardcrawl.map.MapEdge;
 import com.megacrit.cardcrawl.map.MapRoomNode;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomType;
 import com.megacrit.cardcrawl.rooms.EventRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.rooms.ShopRoom;
-import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomType;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.screens.DungeonMapScreen;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
-
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import schedulemod.util.TextureLoader;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class HyperfloorPatch {
   private static final Logger logger = LogManager.getLogger(RewardItem.class.getName());

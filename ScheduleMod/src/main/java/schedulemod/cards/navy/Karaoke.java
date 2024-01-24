@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
-
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.Amp;
 import schedulemod.character.Entropy;
@@ -46,10 +45,15 @@ public class Karaoke extends BaseCard {
         addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn,
                 AbstractGameAction.AttackEffect.NONE));
         addToBot(new GainBlockAction(p, this.block));
-        if (upgraded) {
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
+    }
+
+    @Override
+    public void upgrade() {
+        if (!upgraded) {
             this.cardsToPreview.upgrade();
         }
-        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
+        super.upgrade();
     }
 
     @Override

@@ -1,17 +1,9 @@
 package schedulemod.orbs;
 
-import static schedulemod.BasicMod.logger;
-import static schedulemod.BasicMod.makeID;
-
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -20,14 +12,14 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-
 import schedulemod.BasicMod;
-import schedulemod.actions.ScheduleEvokeAction;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
 import schedulemod.vfx.AddCardToScheduleEffect;
+
+import static schedulemod.BasicMod.makeID;
 
 public class ScheduleOrb extends AbstractOrb {
 
@@ -51,7 +43,7 @@ public class ScheduleOrb extends AbstractOrb {
 
     public ScheduleOrb(AbstractCard card, int slot, CardGroup source, boolean selfSchedule) {
         assert card instanceof EventCard : "Can only schedule Event cards.";
-        this.eventCard = (EventCard)card.makeCopy();
+        this.eventCard = (EventCard)card.makeStatEquivalentCopy();
         this.slot = slot;
         if (this.eventCard.hasTag(Entropy.Enums.EVENT))
             ((BaseCard) this.eventCard).belongedOrb = this;

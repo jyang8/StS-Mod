@@ -2,10 +2,10 @@ package schedulemod.relics;
 
 import basemod.abstracts.CustomRelic;
 import basemod.helpers.RelicType;
-import schedulemod.util.GeneralUtils;
-import schedulemod.util.TextureLoader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import schedulemod.util.GeneralUtils;
+import schedulemod.util.TextureLoader;
 
 import static schedulemod.BasicMod.relicPath;
 

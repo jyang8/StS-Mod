@@ -9,13 +9,15 @@ import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import schedulemod.character.Entropy;
 
+import static schedulemod.BasicMod.makeID;
+
 @SpirePatch(clz = EmptyOrbSlot.class, method = "updateDescription")
 public class EmptyOrbSlotPatch {
     public static Texture NORMAL_ORB = ImageMaster.ORB_SLOT_1;
 
     public static final OrbStrings normalOrbString = CardCrawlGame.languagePack.getOrbString("Empty");
 
-    public static final OrbStrings scheduleOrbString = CardCrawlGame.languagePack.getOrbString("Schedule:EmptyScheduleSlot");
+    public static final OrbStrings scheduleOrbString = CardCrawlGame.languagePack.getOrbString(makeID("EmptyScheduleSlot"));
 
     public static void Postfix(EmptyOrbSlot EmptyOrbSlot_instance) {
         OrbStrings orbString;
