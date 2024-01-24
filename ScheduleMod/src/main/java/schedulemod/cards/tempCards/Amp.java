@@ -28,12 +28,10 @@ public class Amp extends EventCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        
-
     }
 
     @Override
-    public void useEvent(AbstractPlayer p, AbstractMonster m, AbstractCard triggeringCard) {
+    public void useEvent(AbstractPlayer p, AbstractMonster m) {
         if (triggeringCard.type != CardType.ATTACK) {
             return;
         }

@@ -33,7 +33,6 @@ public class Nap extends EventCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }
 
     @Override
@@ -42,7 +41,7 @@ public class Nap extends EventCard {
     }
 
     @Override
-    public void useEvent(AbstractPlayer p, AbstractMonster m, AbstractCard triggeringCard) {
+    public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }
 

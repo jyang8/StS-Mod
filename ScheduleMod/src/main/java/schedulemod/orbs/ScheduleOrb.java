@@ -1,17 +1,11 @@
 package schedulemod.orbs;
 
-import static schedulemod.BasicMod.logger;
 import static schedulemod.BasicMod.makeID;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.AbstractCard.CardTarget;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -22,11 +16,12 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 import schedulemod.BasicMod;
-import schedulemod.actions.ScheduleEvokeAction;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
+import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
+import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
 import schedulemod.vfx.AddCardToScheduleEffect;
 
 public class ScheduleOrb extends AbstractOrb {
@@ -108,9 +103,9 @@ public class ScheduleOrb extends AbstractOrb {
         if (!(AbstractDungeon.player instanceof Entropy)) {
             return;
         }
-        Entropy entropy = (Entropy) AbstractDungeon.player;
-        this.triggeringCard = entropy.getCurrentlyEvokingCard();
-        this.triggeringCardTarget = entropy.getCurrentlyEvokingMonster();
+        Entropy p = (Entropy) AbstractDungeon.player;
+        this.triggeringCard = p.getCurrentlyEvokingCard();
+        this.triggeringCardTarget = p.getCurrentlyEvokingMonster();
 
         AbstractMonster m = null;
             if (triggeringCard.target == CardTarget.ENEMY) {
@@ -125,8 +120,9 @@ public class ScheduleOrb extends AbstractOrb {
                 m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
                         AbstractDungeon.cardRandomRng);
             }
-        
-            this.eventCard.useEvent(entropy, m, triggeringCard);
+            EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
+            EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
+            this.eventCard.useEvent(p, m, triggeringCard);
     }
 
     public void triggerEvokeAnimation() {
