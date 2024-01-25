@@ -30,6 +30,7 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
             this.amount = 999;
         if (this.amount <= -999)
             this.amount = -999;
+        applySleep();
     }
 
     public void reducePower(int reduceAmount) {
@@ -49,6 +50,11 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
 
     @Override
     public void atStartOfTurn() {
+        applySleep();
+    }
+
+    @Override
+    public void onInitialApplication() {
         applySleep();
     }
 

@@ -5,10 +5,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.patches.FatigueDamageTypePatch;
 import schedulemod.util.CardStats;
 
-public class Amp extends EventCard {
-    public static final String ID = makeID(Amp.class.getSimpleName());
+public class Drunkus extends EventCard {
+    public static final String ID = makeID(Drunkus.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
             CardType.SKILL,
@@ -16,14 +17,11 @@ public class Amp extends EventCard {
             CardTarget.SELF,
             0);
 
-    private static final int AMP = 4;
-    private static final int UPGRADE_AMP = 2;
 
-    public Amp() {
+    public Drunkus() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
-        setMagic(AMP, UPGRADE_AMP);
     }
 
     @Override
@@ -35,13 +33,12 @@ public class Amp extends EventCard {
         if (triggeringCard.type != CardType.ATTACK) {
             return;
         }
-        triggeringCard.baseDamage += this.magicNumber;
-        triggeringCard.isDamageModified = true;
+        triggeringCard.damageTypeForTurn = FatigueDamageTypePatch.FATIGUE;
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new Amp();
+        return new Drunkus();
     }
 
 }

@@ -22,8 +22,6 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
     private byte moveByte;
-    private AbstractMonster.Intent moveIntent;
-    private EnemyMoveInfo move;
 
     public SleepPower(AbstractMonster owner, AbstractCreature source, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
@@ -39,14 +37,6 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-//        if (this.owner.getPower(makeID("Fatigue")).amount == ((AbstractMonster)this.owner).getIntentDmg()) {
-//            addToBot(new ApplyPowerAction(this.owner, this.source, new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
-//            addToBot(new RemoveSpecificPowerAction(this.owner, this.source, makeID("Fatigue")));
-//        } else if (this.owner.getPower(makeID("Fatigue")).amount > ((AbstractMonster)this.owner).getIntentDmg()) {
-//            addToBot(new ApplyPowerAction(this.owner, this.source, new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
-//        } else {
-//            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-//        }
     }
 
     @Override
@@ -71,11 +61,9 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
             public void update() {
                 if (SleepPower.this.owner instanceof AbstractMonster) {
                     SleepPower.this.moveByte = ((AbstractMonster)SleepPower.this.owner).nextMove;
-                    SleepPower.this.moveIntent = ((AbstractMonster)SleepPower.this.owner).intent;
                     try {
                         Field f = AbstractMonster.class.getDeclaredField("move");
                         f.setAccessible(true);
-                        SleepPower.this.move = (EnemyMoveInfo)f.get(SleepPower.this.owner);
                         EnemyMoveInfo sleepMove = new EnemyMoveInfo(SleepPower.this.moveByte, AbstractMonster.Intent.SLEEP, -1, 0, false);
                         f.set(SleepPower.this.owner, sleepMove);
                         ((AbstractMonster)SleepPower.this.owner).createIntent();

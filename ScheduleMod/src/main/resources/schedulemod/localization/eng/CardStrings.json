@@ -230,7 +230,7 @@
   },
   "${modID}:Amp": {
     "NAME": "Amp",
-    "DESCRIPTION": "A triggering attack deals !M! additional damage."
+    "DESCRIPTION": "If triggered by an attack, it deals !M! additional damage."
   },
   "${modID}:DailyReminders": {
     "NAME": "Daily Reminders",
@@ -262,5 +262,13 @@
   "${modID}:TastingMenu": {
     "NAME": "Tasting Menu",
     "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat."
+  },
+  "${modID}:GinAndTonic": {
+    "NAME": "Gin and Tonic",
+    "DESCRIPTION": "Gain !B! Block. *Schedule !M!: *Drunkus. Gain 1 *Satiety."
+  },
+  "${modID}:Drunkus": {
+    "NAME": "Drunkus",
+    "DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue."
   }
 }
