@@ -270,5 +270,14 @@
   "${modID}:Drunkus": {
     "NAME": "Drunkus",
     "DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue."
+  },
+  "${modID}:DND": {
+    "NAME": "D&D",
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3: *Dreadful Strikes.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3, 4: *Dreadful Strikes."
+  },
+  "${modID}:DreadfulStrikes": {
+    "NAME": "Dreadful Strikes",
+    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage and NL this bonus increases by 2 for ALL *Dreadful Strikes."
   }
 }

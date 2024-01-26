@@ -32,7 +32,6 @@ public class Karaoke extends BaseCard {
         super(ID, info);
         setDamage(DAMAGE);
         setMagic(SCHEDULE_SLOT);
-        this.baseDamage = 1;
         this.isMultiDamage = true;
         this.cardsToPreview = new Amp();
     }
@@ -44,7 +43,6 @@ public class Karaoke extends BaseCard {
                 0.1F));
         addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn,
                 AbstractGameAction.AttackEffect.NONE));
-        addToBot(new GainBlockAction(p, this.block));
         addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
     }
 
