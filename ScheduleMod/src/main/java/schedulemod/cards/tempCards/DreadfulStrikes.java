@@ -8,9 +8,11 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import basemod.helpers.CardModifierManager;
 import schedulemod.actions.DreadfulStrikesAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.modifiers.AmpModifier;
 import schedulemod.patches.EventsPlayedPatch;
 import schedulemod.util.CardStats;
 
@@ -49,8 +51,7 @@ public class DreadfulStrikes extends EventCard {
         if (triggeringCard.type != CardType.ATTACK) {
             return;
         }
-        triggeringCard.baseDamage += this.magicNumber;
-        triggeringCard.isDamageModified = true;
+        CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
         addToBot((AbstractGameAction) new DreadfulStrikesAction(AMP_INCREASE));
 
     }

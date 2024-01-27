@@ -1,5 +1,6 @@
 package schedulemod.cards.navy;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -30,6 +31,7 @@ public class FridayNightMagic extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
         if (upgraded)
             addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), ADDITIONAL_SCHEDULE_SLOT));

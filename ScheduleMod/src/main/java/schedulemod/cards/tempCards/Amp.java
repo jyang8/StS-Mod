@@ -3,8 +3,11 @@ package schedulemod.cards.tempCards;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.modifiers.AmpModifier;
 import schedulemod.util.CardStats;
 
 public class Amp extends EventCard {
@@ -35,8 +38,7 @@ public class Amp extends EventCard {
         if (triggeringCard.type != CardType.ATTACK) {
             return;
         }
-        triggeringCard.baseDamage += this.magicNumber;
-        triggeringCard.isDamageModified = true;
+        CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
     }
 
     @Override

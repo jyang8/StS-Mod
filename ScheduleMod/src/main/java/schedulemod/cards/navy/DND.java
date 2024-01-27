@@ -1,5 +1,6 @@
 package schedulemod.cards.navy;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -32,7 +33,7 @@ public class DND extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffect.SLASH_HORIZONTAL, true));
         for (int i = 1; i <= this.magicNumber; i++) {
             addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), i));
         }
