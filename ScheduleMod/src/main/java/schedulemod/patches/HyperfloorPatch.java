@@ -79,7 +79,7 @@ public class HyperfloorPatch {
 
       @SpirePrefixPatch
       public static SpireReturn<Void> Prefix(CardRewardScreen obj, AbstractCard card) {
-        if (obj.rItem.type == HyperfloorPatch.HYPERFLOOR) {
+        if (obj.rItem != null && obj.rItem.type == HyperfloorPatch.HYPERFLOOR) {
 
           MapRoomNode currNode = AbstractDungeon.currMapNode;
 
