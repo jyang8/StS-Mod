@@ -19,7 +19,7 @@ public class KaraokeKables extends BaseRelic {
         super(ID, NAME, Entropy.Enums.CARD_COLOR, RARITY, SOUND);
     }
 
-    private static final int ADDITIONAL_DAMAGE = 4;
+    private static final int ADDITIONAL_DAMAGE = 2;
 
     @Override
     public String getUpdatedDescription() {

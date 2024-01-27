@@ -20,8 +20,8 @@ public class Connoisseur extends BaseCard {
             2
     );
 
-    private static final int STRENGTH_GAIN = 3;
-    private static final int DEXTERITY_GAIN = 3;
+    private static final int STRENGTH_GAIN = 2;
+    private static final int DEXTERITY_GAIN = 2;
     private static final int MAX_SATIETY_LOSS = 2;
     private static final int UPGRADE_MAX_SATIETY_LOSS = -1;
 

@@ -36,7 +36,7 @@ public class ShrimpChips extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        addToBot(new DrawCardAction(NUM_CARDS_DRAW));
+        addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 

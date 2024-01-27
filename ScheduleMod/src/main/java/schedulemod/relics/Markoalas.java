@@ -29,13 +29,9 @@ public class Markoalas extends BaseRelic {
 
     @Override
     public void atBattleStart() {
+        flash();
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new RelicAboveCreatureAction(p, this));
         addToBot(new ApplyPowerAction(p, p, new WrinklerPower(p, WRINKLER)));
-        this.grayscale = true;
-    }
-
-    public void justEnteredRoom(AbstractRoom room) {
-        this.grayscale = false;
     }
 }

@@ -8,72 +8,79 @@
   },
   "${modID}:SoothrRes": {
     "NAME": "Soothr Res",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Ready the review app.",
     "DESCRIPTIONS": [
-      "At the start of each battle, Schedule 3 Lunch."
+      "At the start of each battle, Schedule 3: Lunch."
     ]
   },
   "${modID}:FrancieRes": {
     "NAME": "Francie Res",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Best way to start the night.",
     "DESCRIPTIONS": [
-      "At the start of each battle, Schedule 5 Confession. Replaces Soothr Res"
+      "At the start of each battle, Schedule 5: Confession. Replaces Soothr Res"
     ]
   },
   "${modID}:AllformCouch": {
     "NAME": "Allform Couch",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Hey there, you're an Allform...",
     "DESCRIPTIONS": [
       "Whenever you apply Fatigue, apply #b%d additional Fatigue."
     ]
   },
   "${modID}:Markoalas": {
     "NAME": "Markoalas",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Subject koala exhibits behavior unusual for his smooth brain species...",
     "DESCRIPTIONS": [
       "Start each combat with #b%d #yWrinkler."
     ]
   },
   "${modID}:SplitKeyboard": {
     "NAME": "Split Keyboard",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Ergonomic!",
     "DESCRIPTIONS": [
       "Whenever you play 7 cards in a turn, gain 1 Punctual."
     ]
   },
   "${modID}:KaraokeKables": {
     "NAME": "Karaoke Kables",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "We have karaoke at home.",
     "DESCRIPTIONS": [
       "Your first attack each turn deals #b%d additional damage."
     ]
   },
   "${modID}:CatTheoryTextbook": {
     "NAME": "Cat Theory Textbook",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Because functional programming wasn't esoteric enough.",
     "DESCRIPTIONS": [
       "#yWrinkler prevents ALL debuffs."
     ]
   },
   "${modID}:HungryCamera": {
     "NAME": "HungryCamera",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Camera eats first.",
     "DESCRIPTIONS": [
       "Whenever Satiety ends your turn, gain 2 max Satiety for the next turn."
     ]
   },
   "${modID}:Blahaj": {
     "NAME": "Blahaj",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "An adorable ally.",
     "DESCRIPTIONS": [
       "Whenever an enemy falls asleep, gain [E]."
     ]
   },
   "${modID}:SteamDeck": {
     "NAME": "Steam Deck",
-    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "FLAVOR": "Do not disturb, homework in progress.",
     "DESCRIPTIONS": [
-      "Whenever your schedule is empty, Schedule 7 Steam Club."
+      "At the start of your 3rd turn, Schedule 7: Steam Club."
+    ]
+  },
+  "${modID}:KitchenBlowtorch": {
+    "NAME": "Kitchen Blowtorch",
+    "FLAVOR": "Lighting a candle is occasion enough.",
+    "DESCRIPTIONS": [
+      "Whenever you gain Satiety, gain 1 Strength this turn."
     ]
   }
 }

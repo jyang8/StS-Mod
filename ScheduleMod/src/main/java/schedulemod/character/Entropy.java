@@ -29,11 +29,11 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 import schedulemod.BasicMod;
 import schedulemod.cards.navy.Bakaham;
-import schedulemod.cards.navy.CodeReview;
 import schedulemod.cards.navy.Defend_Navy;
+import schedulemod.cards.navy.PowerNap;
 import schedulemod.cards.navy.Strike_Navy;
 import schedulemod.orbs.ScheduleOrb;
-import schedulemod.relics.Markoalas;
+import schedulemod.relics.SoothrRes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -117,10 +117,14 @@ public class Entropy extends CustomPlayer {
         // If you want multiple of the same card, you have to add it multiple times.
         retVal.add(Strike_Navy.ID);
         retVal.add(Strike_Navy.ID);
+        retVal.add(Strike_Navy.ID);
+        retVal.add(Strike_Navy.ID);
+        retVal.add(Defend_Navy.ID);
+        retVal.add(Defend_Navy.ID);
+        retVal.add(Defend_Navy.ID);
         retVal.add(Defend_Navy.ID);
         retVal.add(Bakaham.ID);
-        // retVal.add(PowerNap.ID);
-        retVal.add(CodeReview.ID);
+        retVal.add(PowerNap.ID);
 
         return retVal;
     }
@@ -129,7 +133,7 @@ public class Entropy extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
         // IDs of starting relics. You can have multiple, but one is recommended.
-        retVal.add(Markoalas.ID);
+        retVal.add(SoothrRes.ID);
 
         return retVal;
     }
