@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
-import schedulemod.powers.HokkaidoUniBuffetPower;
+import schedulemod.powers.FortyEightHourDayPower;
 import schedulemod.util.CardStats;
 
 public class FortyEightHourDay extends BaseCard {
@@ -27,7 +27,6 @@ public class FortyEightHourDay extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: Draw 1 card for each card in Schedule.
         addToBot(new ApplyPowerAction(p, p, new FortyEightHourDayPower(p, 0)));
     }
 

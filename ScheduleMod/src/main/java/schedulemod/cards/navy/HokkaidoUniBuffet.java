@@ -1,10 +1,14 @@
 package schedulemod.cards.navy;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+
 import schedulemod.character.Entropy;
+import schedulemod.orbs.ScheduleOrb;
 import schedulemod.powers.HokkaidoUniBuffetPower;
 import schedulemod.util.CardStats;
 
@@ -28,7 +32,15 @@ public class HokkaidoUniBuffet extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // TODO: Draw 1 card for each card in Schedule.
+        int eventCount = 0;
+        if (p instanceof Entropy) {
+            for (AbstractOrb orb : p.orbs) {
+                if (orb instanceof ScheduleOrb) {
+                    eventCount++;
+                }
+            }
+        }
+        addToBot(new DrawCardAction(eventCount));
         addToBot(new ApplyPowerAction(p, p, new HokkaidoUniBuffetPower(p, 0)));
     }
 

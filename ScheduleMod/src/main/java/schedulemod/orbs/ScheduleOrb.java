@@ -123,10 +123,14 @@ public class ScheduleOrb extends AbstractOrb {
         EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
         EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
         this.eventCard.useEvent(p, m, triggeringCard);
-        
+
         if (p.hasPower(FortyEightHourDayPower.POWER_ID)) {
             EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
             EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
+            if (m.isDeadOrEscaped()) {
+                m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
+                AbstractDungeon.cardRandomRng);
+            }
             this.eventCard.useEvent(p, m, triggeringCard);
         }
     }

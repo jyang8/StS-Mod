@@ -26,6 +26,12 @@
       " #ySatiety."
     ]
   },
+  "${modID}:FortyEightHourDay": {
+    "NAME": "48 Hour Day",
+    "DESCRIPTIONS": [
+      "This turn, triggered #yEvents are doubled."
+    ]
+  },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
     "DESCRIPTIONS": [
