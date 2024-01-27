@@ -279,5 +279,14 @@
   "${modID}:DreadfulStrikes": {
     "NAME": "Dreadful Strikes",
     "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage and NL this bonus increases by 2 for ALL *Dreadful Strikes."
+  },
+  "${modID}:Lunch": {
+    "NAME": "Lunch",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! *Drowsy. NL Gain 1 *Satiety."
+  },
+  "${modID}:FortyEightHourDay": {
+    "NAME": "48 Hour Day",
+    "DESCRIPTION": "Double events triggered this turn. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Double events triggered this turn."
   }
 }

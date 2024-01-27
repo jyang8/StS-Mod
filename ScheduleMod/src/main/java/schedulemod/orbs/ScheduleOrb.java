@@ -21,8 +21,8 @@ import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
+import schedulemod.powers.FortyEightHourDayPower;
 import schedulemod.vfx.AddCardToScheduleEffect;
-
 
 public class ScheduleOrb extends AbstractOrb {
 
@@ -46,7 +46,7 @@ public class ScheduleOrb extends AbstractOrb {
 
     public ScheduleOrb(AbstractCard card, int slot, CardGroup source, boolean selfSchedule) {
         assert card instanceof EventCard : "Can only schedule Event cards.";
-        this.eventCard = (EventCard)card.makeStatEquivalentCopy();
+        this.eventCard = (EventCard) card.makeStatEquivalentCopy();
         this.slot = slot;
         if (this.eventCard.hasTag(Entropy.Enums.EVENT))
             ((BaseCard) this.eventCard).belongedOrb = this;
@@ -108,21 +108,27 @@ public class ScheduleOrb extends AbstractOrb {
         this.triggeringCardTarget = p.getCurrentlyEvokingMonster();
 
         AbstractMonster m = null;
-            if (triggeringCard.target == CardTarget.ENEMY) {
-                // Try using the trigger target
-                if (triggeringCardTarget != null
-                        && triggeringCardTarget instanceof AbstractMonster
-                        && !triggeringCardTarget.isDeadOrEscaped()) {
-                    m = (AbstractMonster) triggeringCardTarget;
-                } 
-            } else {
-                // If that doesn't work then use a random alive monster
-                m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
-                        AbstractDungeon.cardRandomRng);
+        if (triggeringCard.target == CardTarget.ENEMY) {
+            // Try using the trigger target
+            if (triggeringCardTarget != null
+                    && triggeringCardTarget instanceof AbstractMonster
+                    && !triggeringCardTarget.isDeadOrEscaped()) {
+                m = (AbstractMonster) triggeringCardTarget;
             }
+        } else {
+            // If that doesn't work then use a random alive monster
+            m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
+                    AbstractDungeon.cardRandomRng);
+        }
+        EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
+        EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
+        this.eventCard.useEvent(p, m, triggeringCard);
+        
+        if (p.hasPower(FortyEightHourDayPower.POWER_ID)) {
             EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
             EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
             this.eventCard.useEvent(p, m, triggeringCard);
+        }
     }
 
     public void triggerEvokeAnimation() {
