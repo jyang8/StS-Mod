@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import schedulemod.BasicMod;
 import schedulemod.cards.EventCard;
@@ -21,6 +22,7 @@ import schedulemod.cards.navy.InScheduleCard;
 import schedulemod.character.Entropy;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
+import schedulemod.powers.EventPowerInterface;
 import schedulemod.powers.FortyEightHourDayPower;
 import schedulemod.vfx.AddCardToScheduleEffect;
 
@@ -122,6 +124,11 @@ public class ScheduleOrb extends AbstractOrb {
         }
         EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
         EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
+        for (AbstractPower power : p.powers) {
+            if (power instanceof EventPowerInterface) {
+                ((EventPowerInterface)power).modifyEvent(eventCard, triggeringCard);
+            }
+        }
         this.eventCard.useEvent(p, m, triggeringCard);
 
         if (p.hasPower(FortyEightHourDayPower.POWER_ID)) {

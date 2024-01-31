@@ -124,5 +124,13 @@
       "Whenever an enemy falls asleep, apply #b",
       " #yDrowsy."
     ]
+  },
+  "${modID}:Punctual": {
+    "NAME": "Punctual",
+    "DESCRIPTIONS": [
+      "Increases",
+      "Decreases",
+      " effectiveness of Events by #b."
+    ]
   }
 }

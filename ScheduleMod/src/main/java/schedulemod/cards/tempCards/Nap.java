@@ -24,6 +24,7 @@ public class Nap extends EventCard {
     public Nap() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
+        tags.add(Entropy.Enums.FATIGUE_EVENT);
         // TODO: fix later
         setExhaust(true);
         setMagic(FATIGUE, UPGRADE_FATIGUE);

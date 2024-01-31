@@ -288,5 +288,9 @@
     "NAME": "48 Hour Day",
     "DESCRIPTION": "Double events triggered this turn. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Double events triggered this turn."
+  },
+  "${modID}:SubwayScramble": {
+    "NAME": "Subway Scramble",
+    "DESCRIPTION": "Gain !M! *Punctual."
   }
 }

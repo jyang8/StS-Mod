@@ -34,7 +34,7 @@ public class DreadfulStrikesAction extends AbstractGameAction {
                 EventCard eventCard = ((ScheduleOrb)orb).eventCard;
                 if(eventCard instanceof DreadfulStrikes) {
                     eventCard.magicNumber += amount;
-                    eventCard.applyPowers();
+                    eventCard.isMagicNumberModified = eventCard.magicNumber != eventCard.baseMagicNumber;
                     eventCard.initializeDescription();
                 }
             }

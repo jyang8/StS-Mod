@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import schedulemod.actions.SleepAction;
 
@@ -64,9 +65,17 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
     }
 
     private void applySleep() {
-        if (this.owner != null && !this.owner.hasPower(makeID("Sleep")) &&
-                ((AbstractMonster)this.owner).getIntentDmg() >= 0
-                && amount >= ((AbstractMonster)this.owner).getIntentDmg()) {
+        if (!(this.owner instanceof AbstractMonster))
+            return;
+        AbstractMonster m = (AbstractMonster)this.owner;
+        boolean isAttack = m.intent == Intent.ATTACK ||
+                        m.intent == Intent.ATTACK_BUFF ||
+                        m.intent == Intent.ATTACK_DEBUFF ||
+                        m.intent == Intent.ATTACK_DEFEND;
+        if (!m.hasPower(makeID("Sleep")) &&
+                m.getIntentDmg() >= 0
+                && amount >= m.getIntentDmg()
+                && isAttack) {
             addToBot(new ApplyPowerAction(this.owner, this.source, new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
             addToBot(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             addToBot(new SleepAction((AbstractMonster) this.owner, this.source));
