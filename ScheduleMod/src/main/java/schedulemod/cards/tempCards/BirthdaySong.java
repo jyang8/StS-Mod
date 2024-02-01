@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.BirthdayAction;
@@ -31,6 +32,7 @@ public class BirthdaySong extends EventCard {
         setExhaust(true);
         setDamage(DAMAGE);
         setMagic(DAMAGE_INCREASE, UPGRADE_DAMAGE_INCREASE);
+        this.damageType = DamageType.THORNS;
     }
 
     @Override

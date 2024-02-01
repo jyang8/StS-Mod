@@ -292,5 +292,13 @@
   "${modID}:SubwayScramble": {
     "NAME": "Subway Scramble",
     "DESCRIPTION": "Gain !M! *Punctual."
+  },
+  "${modID}:Overcommit": {
+    "NAME": "Overcommit",
+    "DESCRIPTION": "Gain !M! *Punctual. *Schedule 7: *Oversleep"
+  },
+  "${modID}:Oversleep": {
+    "NAME": "Oversleep",
+    "DESCRIPTION": "Lose !M! *Punctual."
   }
 }
