@@ -133,5 +133,12 @@
       " effectiveness of Events by #b",
       "."
     ]
+  },
+  "${modID}:DateForm": {
+    "NAME": "Date Form",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain #b",
+      " #yPunctual for each event in your Schedule."
+    ]
   }
 }

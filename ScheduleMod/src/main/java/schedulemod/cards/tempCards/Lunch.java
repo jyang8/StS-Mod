@@ -41,7 +41,7 @@ public class Lunch extends EventCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(m, p, new DrowsyPower(m, p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new DrowsyPower(m, p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 
@@ -49,7 +49,7 @@ public class Lunch extends EventCard {
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(m, p, new DrowsyPower(m, p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new DrowsyPower(m, p, this.magicNumber), this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 

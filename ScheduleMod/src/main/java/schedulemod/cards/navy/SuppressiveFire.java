@@ -20,14 +20,16 @@ public class SuppressiveFire extends BaseCard {
             2
     );
 
-    private static final int ATTACK_DAMAGE = 2;
-    private static final int UPGRADE_ATTACK_DAMAGE = 1;
+    private static final int ATTACK_DAMAGE = 1;
     private static final int TIMES_ATTACK = 6;
+    private static final boolean ETHEREAL = true;
+    private static final boolean UPGRADE_ETHEREAL = false;
 
     public SuppressiveFire() {
         super(ID, info);
-        setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
+        setDamage(ATTACK_DAMAGE);
         setMagic(TIMES_ATTACK);
+        setEthereal(ETHEREAL, UPGRADE_ETHEREAL);
     }
 
     @Override

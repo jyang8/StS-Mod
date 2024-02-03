@@ -13,6 +13,8 @@ import schedulemod.actions.SleepAction;
 
 import static schedulemod.BasicMod.makeID;
 
+import java.lang.reflect.Field;
+
 public class FatiguePower extends BasePower implements CloneablePowerInterface {
     public static final String POWER_ID = makeID("Fatigue");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
@@ -67,16 +69,25 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
     private void applySleep() {
         if (!(this.owner instanceof AbstractMonster))
             return;
-        AbstractMonster m = (AbstractMonster)this.owner;
+        AbstractMonster m = (AbstractMonster) this.owner;
         boolean isAttack = m.intent == Intent.ATTACK ||
-                        m.intent == Intent.ATTACK_BUFF ||
-                        m.intent == Intent.ATTACK_DEBUFF ||
-                        m.intent == Intent.ATTACK_DEFEND;
-        if (!m.hasPower(makeID("Sleep")) &&
-                m.getIntentDmg() >= 0
-                && amount >= m.getIntentDmg()
+                m.intent == Intent.ATTACK_BUFF ||
+                m.intent == Intent.ATTACK_DEBUFF ||
+                m.intent == Intent.ATTACK_DEFEND;
+        int dmg = m.getIntentDmg();
+        try {
+            Field f = AbstractMonster.class.getDeclaredField("intentMultiAmt");
+            f.setAccessible(true);
+            dmg *= (int) f.get(m);
+        } catch (NoSuchFieldException | IllegalAccessException var3) {
+            var3.printStackTrace();
+        }
+
+        if (m.getIntentDmg() >= 0
+                && amount >= dmg
                 && isAttack) {
-            addToBot(new ApplyPowerAction(this.owner, this.source, new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
+            addToBot(new ApplyPowerAction(this.owner, this.source,
+                    new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
             addToBot(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             addToBot(new SleepAction((AbstractMonster) this.owner, this.source));
         }

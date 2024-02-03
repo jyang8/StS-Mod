@@ -23,7 +23,8 @@
   },
   "${modID}:PowerNap": {
     "NAME": "Power Nap",
-    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Nap."
+    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Nap.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL *Schedule !M!, 5: *Nap."
   },
   "${modID}:Nap": {
     "NAME": "Nap",
@@ -40,7 +41,7 @@
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
-    "DESCRIPTION": "Gain 1 *Satiety. NL Add !M! *Bread into your hand."
+    "DESCRIPTION": "Gain !B! Block. NL Add !M! *Bread into your hand. NL Gain 1 *Satiety."
   },
   "${modID}:Bread": {
     "NAME": "Bread",
@@ -64,8 +65,8 @@
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
-    "DESCRIPTION": "This turn, *Satiety will not trigger. NL Draw 1 card for each event in *Schedule. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL This turn, *Satiety will not trigger. NL Draw 1 card for each event in *Schedule. Exhaust."
+    "DESCRIPTION": "This turn, *Satiety will not trigger. NL Draw 1 card for each Event in *Schedule. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Innate. NL This turn, *Satiety will not trigger. NL Draw 1 card for each Event in *Schedule. Exhaust."
   },
   "${modID}:SleepDebt": {
     "NAME": "Sleep Debt",
@@ -150,7 +151,8 @@
   },
   "${modID}:SuppressiveFire": {
     "NAME": "Suppressive Fire",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL End your turn."
+    "DESCRIPTION": "Deal !D! damage !M! times. NL End your turn. NL *Ethereal.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL End your turn."
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
@@ -273,12 +275,12 @@
   },
   "${modID}:DND": {
     "NAME": "D&D",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3: *Dreadful Strikes.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3, 4: *Dreadful Strikes."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3: *Dreadful *Strikes.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3, 4: *Dreadful *Strikes."
   },
   "${modID}:DreadfulStrikes": {
     "NAME": "Dreadful Strikes",
-    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage and NL this bonus increases by 2 for ALL *Dreadful Strikes."
+    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage and NL this bonus increases by 2 for ALL *Dreadful *Strikes."
   },
   "${modID}:Lunch": {
     "NAME": "Lunch",
@@ -300,5 +302,10 @@
   "${modID}:Oversleep": {
     "NAME": "Oversleep",
     "DESCRIPTION": "Lose !M! *Punctual."
+  },
+  "${modID}:DateForm": {
+    "NAME": "Date Form",
+    "DESCRIPTION": "At the start of your turn, gain !M! *Punctual for each Event in *Schedule. NL *Ethereal.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, gain !M! *Punctual for each Event in *Schedule."
   }
 }

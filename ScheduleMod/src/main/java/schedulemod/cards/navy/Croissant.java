@@ -21,12 +21,12 @@ public class Croissant extends BaseCard {
     );
 
     private static final int NUM_CARDS_DRAW = 2;
-    // TODO: UPGRADE
+    private static final int UPGRADE_CARDS_DRAW = 1;
 
     public Croissant() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setMagic(NUM_CARDS_DRAW);
+        setMagic(NUM_CARDS_DRAW, UPGRADE_CARDS_DRAW);
         this.cardsToPreview = new Bread();
     }
 
