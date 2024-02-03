@@ -18,8 +18,7 @@ public class Leipaa extends BaseCard {
             CardType.ATTACK,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            1
-    );
+            1);
 
     private static final int TIMES_ATTACK = 3;
     private static final int UPGRADE_TIMES_ATTACK = 1;
@@ -39,7 +38,8 @@ public class Leipaa extends BaseCard {
         }
         setDamage(this.magicNumber * breadCount);
         calculateCardDamage(m);
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
     }
 
     @Override
@@ -49,12 +49,10 @@ public class Leipaa extends BaseCard {
             if (c instanceof Bread)
                 breadCount++;
         }
-        if (breadCount > 0) {
-            setDamage(this.magicNumber * breadCount);
-            super.applyPowers();
-            this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[0];
-            initializeDescription();
-        }
+        setDamage(this.magicNumber * breadCount);
+        super.applyPowers();
+        this.rawDescription = cardStrings.DESCRIPTION + cardStrings.EXTENDED_DESCRIPTION[0];
+        initializeDescription();
     }
 
     @Override
@@ -71,5 +69,7 @@ public class Leipaa extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Leipaa(); }
+    public AbstractCard makeCopy() {
+        return new Leipaa();
+    }
 }

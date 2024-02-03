@@ -6,38 +6,35 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
+import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
 import schedulemod.powers.FatiguePower;
 import schedulemod.util.CardStats;
 
-public class ThreeChairMethod extends BaseCard {
-    public static final String ID = makeID(ThreeChairMethod.class.getSimpleName());
+public class OneMoreRun extends BaseCard {
+    public static final String ID = makeID(OneMoreRun.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.ENEMY,
-            -1);
+            1);
 
-    private static final int FATIGUE = 4;
+    private static final int FATIGUE = 5;
+    private static final int UPGRADE_FATIGUE = 2;
 
-    public ThreeChairMethod() {
+    public OneMoreRun() {
         super(ID, info);
-        setMagic(FATIGUE);
+        setMagic(FATIGUE, UPGRADE_FATIGUE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int tmp = this.energyOnUse;
-        if (this.upgraded)
-            tmp++;
-
-        for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
-            addToBot(new ApplyPowerAction(mo, p, new FatiguePower(mo, p, this.magicNumber * tmp)));
-        }
+        int eventsTriggered = EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).size();
+        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber * eventsTriggered)));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new ThreeChairMethod();
+        return new OneMoreRun();
     }
 }

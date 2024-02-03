@@ -18,9 +18,9 @@ public class DND extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            1);
+            2);
 
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 10;
     private static final int SCHEDULE_SLOTS = 3;
     private static final int UPGRADE_SCHEDULE_SLOTS = 1;
 

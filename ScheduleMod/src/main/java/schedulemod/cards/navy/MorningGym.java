@@ -4,12 +4,12 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.ScheduleEventCard;
-import schedulemod.cards.tempCards.Arcade;
+import schedulemod.cards.tempCards.Gym;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
-public class MondayArcade extends BaseCard {
-    public static final String ID = makeID(MondayArcade.class.getSimpleName());
+public class MorningGym extends BaseCard {
+    public static final String ID = makeID(MorningGym.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
@@ -19,10 +19,10 @@ public class MondayArcade extends BaseCard {
 
     private static final int SCHEDULE_SLOT = 1;
 
-    public MondayArcade() {
+    public MorningGym() {
         super(ID, info);
         setMagic(SCHEDULE_SLOT);
-        this.cardsToPreview = new Arcade();
+        this.cardsToPreview = new Gym();
     }
 
     @Override
@@ -40,6 +40,6 @@ public class MondayArcade extends BaseCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new MondayArcade();
+        return new MorningGym();
     }
 }

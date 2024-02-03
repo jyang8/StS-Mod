@@ -22,7 +22,7 @@ public class BirthdaySong extends EventCard {
             0
     );
 
-    private static final int DAMAGE = 15;
+    private static final int DAMAGE = 10;
     private static final int DAMAGE_INCREASE = 5;
     private static final int UPGRADE_DAMAGE_INCREASE = 2;
 

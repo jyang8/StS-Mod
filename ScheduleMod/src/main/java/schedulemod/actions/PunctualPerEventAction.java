@@ -20,16 +20,14 @@ public class PunctualPerEventAction extends AbstractGameAction {
     }
 
     public void update() {
-        if (this.duration == 0.1F) {
-            int tmp = 0;
-            AbstractPlayer p = AbstractDungeon.player;
-            for (AbstractOrb o : p.orbs) {
-                if (o instanceof ScheduleOrb)
-                    tmp++;
-            }
-            tmp *= amount;
-            addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, tmp), tmp));
+        int tmp = 0;
+        AbstractPlayer p = AbstractDungeon.player;
+        for (AbstractOrb o : p.orbs) {
+            if (o instanceof ScheduleOrb)
+                tmp++;
         }
+        tmp *= amount;
+        addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, tmp), tmp));
         this.isDone = true;
     }
 }

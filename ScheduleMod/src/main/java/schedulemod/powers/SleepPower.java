@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 
 import static schedulemod.BasicMod.makeID;
 
-public class SleepPower extends BasePower implements CloneablePowerInterface, OnReceivePowerPower, BetterOnApplyPowerPower {
+public class SleepPower extends BasePower implements CloneablePowerInterface, BetterOnApplyPowerPower {
     public static final String POWER_ID = makeID("Sleep");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
@@ -39,22 +39,6 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, On
     @Override
     public void atEndOfTurn(boolean isPlayer) {
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-    }
-
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof FatiguePower) {
-            return this.source.hasPower(makeID("SnoozeAlarm"));
-        }
-        return true;
-    }
-
-    @Override
-    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power instanceof FatiguePower && !this.source.hasPower(makeID("SnoozeAlarm"))) {
-            return 0;
-        }
-        return stackAmount;
     }
 
     @Override

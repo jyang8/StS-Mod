@@ -19,7 +19,7 @@ public class EnemyIsWeak extends BaseCard {
             1
     );
 
-    private static final int WEAK = 2;
+    private static final int WEAK = 4;
     private static final int NUM_CARDS_DRAW = 1;
     private static final int UPGRADE_COST = 0;
 

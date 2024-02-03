@@ -19,8 +19,8 @@ public class GroupProject extends BaseCard {
             0
     );
 
-    private static final int ATTACK_DAMAGE = 10;
-    private static final int UPGRADE_ATTACK_DAMAGE = 4;
+    private static final int ATTACK_DAMAGE = 8;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
 
     public GroupProject() {
         super(ID, info);
@@ -32,17 +32,29 @@ public class GroupProject extends BaseCard {
         addToBot(new DamageAllEnemiesAction(p, this.damage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
+    @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         boolean canUse = super.canUse(p, m);
         if (!canUse)
             return false;
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (mo.hasPower(makeID("Sleep")))
+            if (!m.isDeadOrEscaped() && mo.hasPower(makeID("Sleep")))
                 return true;
         }
         this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
         return false;
     }
+
+    @Override
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+          if (!m.isDeadOrEscaped() && m.hasPower("Sleep")) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+            break;
+          } 
+        } 
+      }
 
     @Override
     public AbstractCard makeCopy() { return new GroupProject(); }

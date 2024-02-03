@@ -74,6 +74,8 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
                 m.intent == Intent.ATTACK_BUFF ||
                 m.intent == Intent.ATTACK_DEBUFF ||
                 m.intent == Intent.ATTACK_DEFEND;
+        if (!isAttack)
+            return;
         int dmg = m.getIntentDmg();
         try {
             Field f = AbstractMonster.class.getDeclaredField("intentMultiAmt");
@@ -88,7 +90,8 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
                 && isAttack) {
             addToBot(new ApplyPowerAction(this.owner, this.source,
                     new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
-            addToBot(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
+            if (!this.owner.hasPower(SnoozeAlarmPower.POWER_ID))
+                addToBot(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             addToBot(new SleepAction((AbstractMonster) this.owner, this.source));
         }
     }
