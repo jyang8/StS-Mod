@@ -26,6 +26,7 @@ public class DreadfulStrikes extends EventCard {
             0);
 
     private static final int AMP = 2;
+    private static final int UPGRADE_AMP = 2;
     private static final int AMP_INCREASE = 2;
 
     public DreadfulStrikes() {
@@ -39,7 +40,7 @@ public class DreadfulStrikes extends EventCard {
                 count++;
             }
         }
-        setMagic(AMP + (count * AMP_INCREASE));
+        setMagic(AMP + (count * AMP_INCREASE), UPGRADE_AMP + (count * AMP_INCREASE));
     }
 
     @Override

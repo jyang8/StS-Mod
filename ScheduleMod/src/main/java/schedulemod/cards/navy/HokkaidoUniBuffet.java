@@ -5,10 +5,9 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.NoDrawPower;
 
 import schedulemod.character.Entropy;
-import schedulemod.orbs.ScheduleOrb;
 import schedulemod.powers.HokkaidoUniBuffetPower;
 import schedulemod.util.CardStats;
 
@@ -19,29 +18,22 @@ public class HokkaidoUniBuffet extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
-            0
+            1
     );
-    private static final boolean INNATE = false;
-    private static final boolean UPGRADE_INNATE = true;
+    private static final int NUM_CARDS_DRAW = 2;
+    private static final int UPGRADE_NUM_CARDS_DRAW = 3;
 
     public HokkaidoUniBuffet() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setInnate(INNATE, UPGRADE_INNATE);
+        setMagic(NUM_CARDS_DRAW, UPGRADE_NUM_CARDS_DRAW);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int eventCount = 0;
-        if (p instanceof Entropy) {
-            for (AbstractOrb orb : p.orbs) {
-                if (orb instanceof ScheduleOrb) {
-                    eventCount++;
-                }
-            }
-        }
-        addToBot(new DrawCardAction(eventCount));
+        addToBot(new DrawCardAction(this.magicNumber));
         addToBot(new ApplyPowerAction(p, p, new HokkaidoUniBuffetPower(p, 0)));
+        addToBot(new ApplyPowerAction(p, p, new NoDrawPower(p)));
     }
 
     @Override

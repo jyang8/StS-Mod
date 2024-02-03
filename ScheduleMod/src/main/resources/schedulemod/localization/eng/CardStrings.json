@@ -65,8 +65,7 @@
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
-    "DESCRIPTION": "This turn, *Satiety will not trigger. NL Draw 1 card for each Event in *Schedule. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL This turn, *Satiety will not trigger. NL Draw 1 card for each Event in *Schedule. Exhaust."
+    "DESCRIPTION": "Draw !M! cards. NL This turn, *Satiety will not trigger and you cannot draw additional cards."
   },
   "${modID}:SleepDebt": {
     "NAME": "Sleep Debt",
@@ -272,7 +271,8 @@
   },
   "${modID}:Drunkus": {
     "NAME": "Drunkus",
-    "DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue."
+    "DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue.",
+    "UPGRADE_DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue and increase it by !M!."
   },
   "${modID}:DND": {
     "NAME": "D&D",
@@ -330,5 +330,9 @@
     "NAME": "Morning Gym",
     "DESCRIPTION": "*Schedule 1: *Gym.",
     "UPGRADE_DESCRIPTION": "*Schedule 1: *Gym+."
+  },
+  "${modID}:QualityTime": {
+    "NAME": "Quality Time",
+    "DESCRIPTION": "Deal !D! damage. Upgrade all Events in *Schedule."
   }
 }

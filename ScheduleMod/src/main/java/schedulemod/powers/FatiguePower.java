@@ -67,7 +67,7 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
     }
 
     private void applySleep() {
-        if (!(this.owner instanceof AbstractMonster))
+        if (!(this.owner instanceof AbstractMonster) || this.owner.hasPower(SleepPower.POWER_ID))
             return;
         AbstractMonster m = (AbstractMonster) this.owner;
         boolean isAttack = m.intent == Intent.ATTACK ||
