@@ -52,6 +52,13 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
     }
 
     @Override
+    public void onApplyPower(AbstractPower p, AbstractCreature target, AbstractCreature source) {
+        if (!(p instanceof FatiguePower)) {
+            applySleep();
+        }
+    }
+
+    @Override
     public void atStartOfTurn() {
         applySleep();
     }
@@ -80,7 +87,8 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
         try {
             Field f = AbstractMonster.class.getDeclaredField("intentMultiAmt");
             f.setAccessible(true);
-            dmg *= (int) f.get(m);
+            if ((int) f.get(m) > 0)
+                dmg *= (int) f.get(m);
         } catch (NoSuchFieldException | IllegalAccessException var3) {
             var3.printStackTrace();
         }
@@ -88,11 +96,14 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface {
         if (m.getIntentDmg() >= 0
                 && amount >= dmg
                 && isAttack) {
-            addToBot(new ApplyPowerAction(this.owner, this.source,
-                    new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
-            if (!this.owner.hasPower(SnoozeAlarmPower.POWER_ID))
-                addToBot(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
-            addToBot(new SleepAction((AbstractMonster) this.owner, this.source));
+            addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
+            if (!this.owner.hasPower(SnoozeAlarmPower.POWER_ID)) {
+                addToTop(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
+            } else {
+                addToTop(new ApplyPowerAction(this.owner, this.source,
+                        new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
+            }           
+            addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
         }
     }
 

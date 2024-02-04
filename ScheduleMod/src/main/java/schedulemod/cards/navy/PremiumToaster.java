@@ -19,7 +19,7 @@ public class PremiumToaster extends BaseCard {
             1
     );
 
-    private static final int FATIGUE_BUFF = 2;
+    private static final int FATIGUE_BUFF = 4;
     private static final int UPGRADE_FATIGUE_BUFF = 2;
 
     public PremiumToaster() {

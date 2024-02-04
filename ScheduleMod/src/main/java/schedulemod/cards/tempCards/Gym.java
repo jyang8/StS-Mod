@@ -23,7 +23,7 @@ public class Gym extends EventCard {
     );
 
     private final static int DEXTERITY = 2;
-    private final static int UPGRADE_DEXTERITY = 3;
+    private final static int UPGRADE_DEXTERITY = 1;
 
     public Gym() {
         super(ID, info);

@@ -18,7 +18,7 @@ public class SweetDreams extends BaseCard {
             1
     );
 
-    private static final int NUM_CARDS_DRAW = 3;
+    private static final int NUM_CARDS_DRAW = 2;
     private static final int UPGRADE_NUM_CARDS_DRAW = 1;
 
     public SweetDreams() {
