@@ -4,9 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rewards.RewardItem;
-import schedulemod.cards.navy.HyperfloorEvent;
-import schedulemod.cards.navy.HyperfloorMonster;
-import schedulemod.cards.navy.HyperfloorShop;
+
+import schedulemod.cards.tempCards.HyperfloorEvent;
+import schedulemod.cards.tempCards.HyperfloorMonster;
+import schedulemod.cards.tempCards.HyperfloorShop;
 import schedulemod.character.Entropy;
 import schedulemod.patches.HyperfloorPatch;
 import schedulemod.patches.HyperfloorPatch.RewardItemClaimPatch.AbstractRoomIsHyperfloorField;

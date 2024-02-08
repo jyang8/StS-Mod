@@ -142,9 +142,31 @@
     ]
   },
   "${modID}:StackCup": {
-    "NAME": "StackCup",
+    "NAME": "Stack Cup",
     "DESCRIPTIONS": [
       "At the start of your turn, #ySchedule 1 #yDrink! if you have taken no damage."
+    ]
+  },
+  "${modID}:Jersey": {
+    "NAME": "Jersey",
+    "DESCRIPTIONS": [
+      "Whenever you play a card, apply #b",
+      " #yFatigue to ALL enemies."
+    ]
+  },
+  "${modID}:CalendarTetris": {
+    "NAME": "Calendar Tetris",
+    "DESCRIPTIONS": [
+      "Whenever you schedule an effect, draw #b",
+      " card",
+      " cards."
+    ]
+  },
+  "${modID}:DeepSleep": {
+    "NAME": "Deep Sleep",
+    "DESCRIPTIONS": [
+      "Whenever your turn ends early, gain #b",
+      " Wrinkler."
     ]
   }
 }

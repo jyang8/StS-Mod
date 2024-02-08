@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
-import schedulemod.powers.SnoozeAlarmPower;
+import schedulemod.powers.DeepSleepPower;
 import schedulemod.util.CardStats;
 
-public class SnoozeAlarm extends BaseCard {
-    public static final String ID = makeID(SnoozeAlarm.class.getSimpleName());
+public class DeepSleep extends BaseCard {
+    public static final String ID = makeID(DeepSleep.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.POWER,
@@ -18,18 +18,20 @@ public class SnoozeAlarm extends BaseCard {
             1
     );
 
-    private static final int DROWSY = 1;
+    private static final int WRINKLER = 1;
+    private static final int UPGRADE_COST = 0;
 
-    public SnoozeAlarm() {
+    public DeepSleep() {
         super(ID, info);
-        setMagic(DROWSY);
+        setMagic(WRINKLER);
+        setCostUpgrade(UPGRADE_COST);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SnoozeAlarmPower(p, p, this.upgraded)));
+        addToBot(new ApplyPowerAction(p, p, new DeepSleepPower(p, p)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new SnoozeAlarm(); }
+    public AbstractCard makeCopy() { return new DeepSleep(); }
 }

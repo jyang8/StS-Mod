@@ -372,5 +372,30 @@
   "${modID}:MFUltimate": {
     "NAME": "MF Ultimate",
     "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL If you take damage, *Exhaust this from the *Schedule."
+  },
+  "${modID}:BurnOut": {
+    "NAME": "BurnOut",
+    "DESCRIPTION": "Lose !M! [E]."
+  },
+  "${modID}:GameJam": {
+    "NAME": "Game Jam",
+    "DESCRIPTION": "Deal !D! damage. NL Gain [E]. NL *Schedule !M!: *Burn *Out."
+  },
+  "${modID}:PATHTrain": {
+    "NAME": "PATH Train",
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 5: *Jersey."
+  },
+  "${modID}:Jersey": {
+    "NAME": "Jersey",
+    "DESCRIPTION": "Whenever you play a card this turn, apply !M! *Fatigue to ALL enemies."
+  },
+  "${modID}:CalendarTetris": {
+    "NAME": "Calendar Tetris",
+    "DESCRIPTION": "Whenever you *Schedule an Event, draw a card.",
+    "UPGRADE_DESCRIPTION": "Whenever you *Schedule an Event, draw a card. NL *Innate."
+  },
+  "${modID}:DeepSleep": {
+    "NAME": "Deep Sleep",
+    "DESCRIPTION": "Whenever an effect ends your turn, gain !M! *Wrinkler."
   }
 }

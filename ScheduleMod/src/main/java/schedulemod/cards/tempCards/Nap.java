@@ -16,7 +16,7 @@ public class Nap extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            0);
+            1);
 
     private static final int FATIGUE = 5;
     private static final int UPGRADE_FATIGUE = 2;

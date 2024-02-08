@@ -16,8 +16,8 @@ public class SnoozeAlarmPower extends BasePower implements CloneablePowerInterfa
     private static final boolean TURN_BASED = true;
     private boolean upgraded;
 
-    public SnoozeAlarmPower(AbstractCreature owner, AbstractCreature source, int amount, boolean upgraded) {
-        super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
+    public SnoozeAlarmPower(AbstractCreature owner, AbstractCreature source, boolean upgraded) {
+        super(POWER_ID, TYPE, TURN_BASED, owner, source, -1);
         this.upgraded = upgraded;
         updateDescription();
     }
@@ -25,12 +25,6 @@ public class SnoozeAlarmPower extends BasePower implements CloneablePowerInterfa
     public void stackPower(int stackAmount) {
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if (this.amount == 0)
-            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-        if (this.amount >= 999)
-            this.amount = 999;
-        if (this.amount <= -999)
-            this.amount = -999;
     }
 
     public void updateDescription() {
@@ -42,12 +36,12 @@ public class SnoozeAlarmPower extends BasePower implements CloneablePowerInterfa
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (this.upgraded && power instanceof SleepPower && target instanceof AbstractMonster) {
-            addToBot(new ApplyPowerAction(target, source, new DrowsyPower(target, source, this.amount)));
+            addToBot(new ApplyPowerAction(target, source, new DrowsyPower(target, source, 1)));
         }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new SnoozeAlarmPower(owner, source, amount, upgraded);
+        return new SnoozeAlarmPower(owner, source, upgraded);
     }
 }

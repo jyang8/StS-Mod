@@ -5,11 +5,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
-import schedulemod.powers.SnoozeAlarmPower;
+import schedulemod.powers.CalendarTetrisPower;
 import schedulemod.util.CardStats;
 
-public class SnoozeAlarm extends BaseCard {
-    public static final String ID = makeID(SnoozeAlarm.class.getSimpleName());
+public class CalendarTetris extends BaseCard {
+    public static final String ID = makeID(CalendarTetris.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.POWER,
@@ -18,18 +18,21 @@ public class SnoozeAlarm extends BaseCard {
             1
     );
 
-    private static final int DROWSY = 1;
+    private static final int NUM_CARDS_DRAW = 1;
+    private static final boolean INNATE = false;
+    private static final boolean UPGRADE_INNATE = true;
 
-    public SnoozeAlarm() {
+    public CalendarTetris() {
         super(ID, info);
-        setMagic(DROWSY);
+        setMagic(NUM_CARDS_DRAW);
+        setInnate(INNATE, UPGRADE_INNATE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SnoozeAlarmPower(p, p, this.upgraded)));
+        addToBot(new ApplyPowerAction(p, p, new CalendarTetrisPower(p, this.magicNumber)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new SnoozeAlarm(); }
+    public AbstractCard makeCopy() { return new CalendarTetris(); }
 }

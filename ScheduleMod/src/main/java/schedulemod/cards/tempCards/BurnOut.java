@@ -1,51 +1,44 @@
 package schedulemod.cards.tempCards;
 
+import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
-import schedulemod.modifiers.AmpModifier;
-import schedulemod.patches.FatigueDamageTypePatch;
 import schedulemod.util.CardStats;
 
-public class Drunkus extends EventCard {
-    public static final String ID = makeID(Drunkus.class.getSimpleName());
+public class BurnOut extends EventCard {
+    public static final String ID = makeID(BurnOut.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            1);
+            0);
 
-    private static final int UPGRADE_AMP = 2;
+    private final static int ENERGY_LOSS = 2;
+    private final static int UPGRADE_ENERGY_LOSS = -1;
 
-    public Drunkus() {
+    public BurnOut() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
-        setMagic(UPGRADE_AMP);
+        setMagic(ENERGY_LOSS, UPGRADE_ENERGY_LOSS);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new LoseEnergyAction(this.magicNumber));
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
-        if (triggeringCard.type != CardType.ATTACK) {
-            return;
-        }
-        triggeringCard.damageTypeForTurn = FatigueDamageTypePatch.FATIGUE;
-        if (upgraded)
-            CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
+        addToBot(new LoseEnergyAction(this.magicNumber));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new Drunkus();
+        return new BurnOut();
     }
-
 }

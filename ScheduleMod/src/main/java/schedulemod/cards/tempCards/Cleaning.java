@@ -27,7 +27,7 @@ public class Cleaning extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            0);
+            2);
 
     private static final int FATIGUE = 10;
     private static final int UPGRADE_FATIGUE = 13;
