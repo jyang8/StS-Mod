@@ -254,7 +254,8 @@
   },
   "${modID}:Draft": {
     "NAME": "Draft",
-    "DESCRIPTION": "Choose 1 of 3 random cards to add to your hand."
+    "DESCRIPTION": "Choose 1 of 3 random cards to add to your hand.",
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random cards to add to your hand. NL Scry !M!."
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
@@ -334,5 +335,42 @@
   "${modID}:QualityTime": {
     "NAME": "Quality Time",
     "DESCRIPTION": "Deal !D! damage. Upgrade all Events in *Schedule."
+  },
+  "${modID}:Confession": {
+    "NAME": "Confession",
+    "DESCRIPTION": "The triggering card is played twice.",
+    "UPGRADE_DESCRIPTION": "The triggering card is played three times."
+  },
+  "${modID}:Kaboom": {
+    "NAME": "Kaboom",
+    "DESCRIPTION": "Deal !D! damage. *Exhaust the schedule. *Schedule 1: Cleaning.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. *Exhaust the schedule. *Schedule 1: Cleaning+."
+  },
+  "${modID}:Cleaning": {
+    "NAME": "Cleaning",
+    "DESCRIPTION": "Apply !M! *Fatigue to all enemies for each Event *Exhausted.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (",
+      " times.)",
+      " time.)"
+    ]
+  },
+  "${modID}:Drink": {
+    "NAME": "Drink!",
+    "DESCRIPTION": "If triggered by an attack, it deals !M! additional damage."
+  },
+  "${modID}:StackCup": {
+    "NAME": "Stack Cup",
+    "DESCRIPTION": "Deal !D! damage. NL If no damage is taken before your next turn, *Schedule 1: Drink!.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! *Weak. NL If no damage is taken before your next turn, *Schedule 1: Drink!."
+  },
+  "${modID}:WinterLoLChamp": {
+    "NAME": "Winter LoL Champ",
+    "DESCRIPTION": "*Schedule 7: *MF *Ultimate.",
+    "UPGRADE_DESCRIPTION": "*Schedule 7: *MF *Ultimate+."
+  },
+  "${modID}:MFUltimate": {
+    "NAME": "MF Ultimate",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL If you take damage, *Exhaust this from the *Schedule."
   }
 }

@@ -10,21 +10,21 @@
     "NAME": "Soothr Res",
     "FLAVOR": "Ready the review app.",
     "DESCRIPTIONS": [
-      "At the start of each battle, Schedule 3: Lunch."
+      "At the start of each battle, #ySchedule 3: Lunch."
     ]
   },
   "${modID}:FrancieRes": {
     "NAME": "Francie Res",
     "FLAVOR": "Best way to start the night.",
     "DESCRIPTIONS": [
-      "At the start of each battle, Schedule 5: Confession. Replaces Soothr Res"
+      "At the start of each battle, #ySchedule 5: Confession. Replaces Soothr Res."
     ]
   },
   "${modID}:AllformCouch": {
     "NAME": "Allform Couch",
     "FLAVOR": "Hey there, you're an Allform...",
     "DESCRIPTIONS": [
-      "Whenever you apply Fatigue, apply #b%d additional Fatigue."
+      "Whenever you apply #yFatigue, apply #b%d additional Fatigue."
     ]
   },
   "${modID}:Markoalas": {
@@ -38,7 +38,7 @@
     "NAME": "Split Keyboard",
     "FLAVOR": "Ergonomic!",
     "DESCRIPTIONS": [
-      "Whenever you play 7 cards in a turn, gain 1 Punctual."
+      "Whenever you play 7 cards in a turn, gain 1 #yPunctual."
     ]
   },
   "${modID}:KaraokeKables": {
@@ -59,7 +59,7 @@
     "NAME": "HungryCamera",
     "FLAVOR": "Camera eats first.",
     "DESCRIPTIONS": [
-      "Whenever Satiety ends your turn, gain 2 max Satiety for the next turn."
+      "Whenever #ySatiety ends your turn, gain 2 max #ySatiety for the next turn."
     ]
   },
   "${modID}:Blahaj": {
@@ -73,14 +73,14 @@
     "NAME": "Steam Deck",
     "FLAVOR": "Do not disturb, homework in progress.",
     "DESCRIPTIONS": [
-      "At the start of your 3rd turn, Schedule 7: Steam Club."
+      "At the start of your 3rd turn, #ySchedule 7: Steam Club."
     ]
   },
   "${modID}:KitchenBlowtorch": {
     "NAME": "Kitchen Blowtorch",
     "FLAVOR": "Lighting a candle is occasion enough.",
     "DESCRIPTIONS": [
-      "Whenever you gain Satiety, gain 1 Strength this turn."
+      "Whenever you gain #ySatiety, gain 1 #yStrength this turn."
     ]
   }
 }

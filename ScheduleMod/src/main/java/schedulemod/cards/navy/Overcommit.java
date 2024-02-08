@@ -22,8 +22,8 @@ public class Overcommit extends BaseCard {
     );
 
     private static final int PUNCTUAL = 5;
-    private static final int UPGRADE_PUNCTUAL = 2;
-    private static final int SCHEDULE_SLOT = 7;
+    private static final int UPGRADE_PUNCTUAL = 1;
+    private static final int SCHEDULE_SLOT = 5;
 
     public Overcommit() {
         super(ID, info);

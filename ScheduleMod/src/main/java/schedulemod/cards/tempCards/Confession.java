@@ -1,48 +1,45 @@
 package schedulemod.cards.tempCards;
 
-import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import schedulemod.actions.DraftAction;
+
+import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.modifiers.CopyModifier;
 import schedulemod.util.CardStats;
 
-public class Draft extends EventCard {
-    public static final String ID = makeID(Draft.class.getSimpleName());
+public class Confession extends EventCard {
+    public static final String ID = makeID(Confession.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
             CardType.SKILL,
             CardRarity.SPECIAL,
-            CardTarget.NONE,
-            0
-    );
-    private static final int UPGRADE_SCRY = 2;
+            CardTarget.SELF,
+            0);
 
-    public Draft() {
+
+    public Confession() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
-        setMagic(0, UPGRADE_SCRY);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DraftAction());
-        if (upgraded) {
-            addToBot(new ScryAction(this.magicNumber));
-        }
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DraftAction());
-        if (upgraded) {
-            addToBot(new ScryAction(this.magicNumber));
-        }
+        CardModifierManager.addModifier(triggeringCard, new CopyModifier());
+        if (upgraded)
+            CardModifierManager.addModifier(triggeringCard, new CopyModifier());
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Draft(); }
+    public AbstractCard makeCopy() {
+        return new Confession();
+    }
+
 }

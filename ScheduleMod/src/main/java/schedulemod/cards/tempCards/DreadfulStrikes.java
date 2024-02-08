@@ -40,7 +40,7 @@ public class DreadfulStrikes extends EventCard {
                 count++;
             }
         }
-        setMagic(AMP + (count * AMP_INCREASE), UPGRADE_AMP + (count * AMP_INCREASE));
+        setMagic(AMP + (count * AMP_INCREASE), UPGRADE_AMP);
     }
 
     @Override

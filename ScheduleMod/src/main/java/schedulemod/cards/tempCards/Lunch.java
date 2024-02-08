@@ -27,13 +27,14 @@ public class Lunch extends EventCard {
     private static final int ATTACK_DAMAGE = 8;
     private static final int UPGRADE_ATTACK_DAMAGE = 2;
     private static final int DROWSY = 1;
+    private static final int UPGRADE_DROWSY = 1;
 
     public Lunch() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(DROWSY);
+        setMagic(DROWSY, UPGRADE_DROWSY);
         this.damageType = DamageType.THORNS;
     }
 

@@ -18,9 +18,12 @@ public class QualityTimeAction extends AbstractGameAction {
         AbstractPlayer p = AbstractDungeon.player;
         for (AbstractOrb o : p.orbs) {
             if (o instanceof ScheduleOrb) {
-                EventCard c = ((ScheduleOrb)o).eventCard;
-                if (!c.upgraded)
+                EventCard c = ((ScheduleOrb) o).eventCard;
+                if (!c.upgraded) {
+                    c.superFlash();
                     c.upgrade();
+                    c.applyPowers();
+                }
             }
         }
         this.isDone = true;

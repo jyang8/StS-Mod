@@ -48,10 +48,10 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
     }
 
     public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        flashWithoutSound();
         if (!(owner.hasPower(makeID("HokkaidoUniBuffet")))) {
             if (this.amount == Entropy.MAX_SATIETY) {
                 this.amount = 0;
+                flashWithoutSound();
                 playApplyPowerSfx();
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
                 AbstractDungeon.actionManager.callEndTurnEarlySequence();

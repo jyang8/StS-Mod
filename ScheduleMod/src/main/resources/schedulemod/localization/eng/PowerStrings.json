@@ -140,5 +140,11 @@
       "At the start of your turn, gain #b",
       " #yPunctual for each event in your Schedule."
     ]
+  },
+  "${modID}:StackCup": {
+    "NAME": "StackCup",
+    "DESCRIPTIONS": [
+      "At the start of your turn, #ySchedule 1 #yDrink! if you have taken no damage."
+    ]
   }
 }
