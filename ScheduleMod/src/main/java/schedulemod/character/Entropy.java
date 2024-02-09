@@ -48,8 +48,9 @@ public class Entropy extends CustomPlayer {
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 7;
-    public static int MAX_SATIETY = 3;
+    public static final int BASE_MAX_SATIETY = 3;
     private int satietyGainedThisCombat = 0;
+    public int maxSatiety = BASE_MAX_SATIETY;
 
     // Strings
     private static final String ID = BasicMod.makeID("Entropy"); // This should match whatever you have in the
@@ -174,25 +175,13 @@ public class Entropy extends CustomPlayer {
         }
     }
 
-    public void increaseMaxSatiety(int amount, boolean showEffect) {
+    public void setMaxSatiety(int amount, boolean showEffect) {
         if (!Settings.isEndless) {
-            if (amount < 0)
-                BasicMod.logger.info("Why are we decreasing Satiety with increaseMaxSatiety()?");
-            MAX_SATIETY += amount;
+            int change = (BASE_MAX_SATIETY + amount) - maxSatiety;
+            maxSatiety = BASE_MAX_SATIETY + amount;
             AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
                     this.hb.cX - this.animX, this.hb.cY,
-                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
-        }
-    }
-
-    public void decreaseMaxSatiety(int amount, boolean showEffect) {
-        if (!Settings.isEndless) {
-            if (amount > 0)
-                BasicMod.logger.info("Why are we increasing Satiety with decreaseMaxSatiety()?");
-            MAX_SATIETY -= amount;
-            AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
-                    this.hb.cX - this.animX, this.hb.cY,
-                    TEXT[3] + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
+                    TEXT[3] + Integer.toString(change), Settings.GREEN_TEXT_COLOR));
         }
     }
 

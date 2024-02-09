@@ -1,6 +1,10 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -15,8 +19,20 @@ public class LoseMaxSatietyPower extends BasePower implements CloneablePowerInte
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
     }
 
-    // TODO: (Entropy)owner.decreaseMaxSatiety(amount, false)
+    public void updateDescription() {
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+    }
 
     @Override
-    public AbstractPower makeCopy() { return new LoseMaxSatietyPower(owner, amount); }
+    public void atEndOfTurn(boolean isPlayer) {
+        flash();
+        addToBot((AbstractGameAction) new ApplyPowerAction(this.owner, this.owner,
+                new MaxSatietyPower(this.owner, -this.amount), -this.amount));
+        addToBot((AbstractGameAction) new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+    }
+
+    @Override
+    public AbstractPower makeCopy() {
+        return new LoseMaxSatietyPower(owner, amount);
+    }
 }

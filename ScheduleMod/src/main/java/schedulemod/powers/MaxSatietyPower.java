@@ -2,8 +2,6 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,14 +10,13 @@ import schedulemod.character.Entropy;
 
 import static schedulemod.BasicMod.makeID;
 
-public class SatietyPower extends BasePower implements CloneablePowerInterface {
-    public static final String POWER_ID = makeID("Satiety");
+public class MaxSatietyPower extends BasePower implements CloneablePowerInterface {
+    public static final String POWER_ID = makeID("MaxSatiety");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = false;
 
-    public SatietyPower(AbstractCreature owner, int amount) {
+    public MaxSatietyPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
-        ((Entropy) owner).gainSatiety(amount);
     }
 
     public void stackPower(int stackAmount) {
@@ -31,6 +28,9 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
             this.amount = 999;
         if (this.amount <= -999)
             this.amount = -999;
+        if (AbstractDungeon.player instanceof Entropy) {
+            ((Entropy) AbstractDungeon.player).setMaxSatiety(this.amount, true);
+        }
     }
 
     public void reducePower(int reduceAmount) {
@@ -42,28 +42,21 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
             this.amount = 999;
         if (this.amount <= -999)
             this.amount = -999;
+        if (AbstractDungeon.player instanceof Entropy) {
+            ((Entropy) AbstractDungeon.player).setMaxSatiety(this.amount, true);
+        }
     }
 
     public void updateDescription() {
         AbstractPlayer p = AbstractDungeon.player;
-        this.description = DESCRIPTIONS[0] + (p instanceof Entropy ? ((Entropy)p).maxSatiety : 1) + DESCRIPTIONS[1];
-    }
-
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        AbstractPlayer p = AbstractDungeon.player;
-        if (!(owner.hasPower(makeID("HokkaidoUniBuffet")))) {
-            if (this.amount == (p instanceof Entropy ? ((Entropy)p).maxSatiety : 1)) {
-                this.amount = 0;
-                flashWithoutSound();
-                playApplyPowerSfx();
-                addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-                AbstractDungeon.actionManager.callEndTurnEarlySequence();
-            }
+        int max = p instanceof Entropy ? ((Entropy)p).maxSatiety : 1;
+        if (max > 0) {
+            this.description = DESCRIPTIONS[0] + max + DESCRIPTIONS[1];
         }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new SatietyPower(owner, amount);
+        return new MaxSatietyPower(owner, amount);
     }
 }

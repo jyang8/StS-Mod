@@ -4,46 +4,40 @@ import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static schedulemod.BasicMod.makeID;
 
 public class AutomationSciencePower extends BasePower implements CloneablePowerInterface {
     public static final String POWER_ID = makeID("AutomationScience");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
-    private static final boolean TURN_BASED = true;
-    private int damageReq;
-    private boolean upgraded;
+    private static final boolean TURN_BASED = false;
+    private static final int REQUIRED_DAMAGE = 20;
 
-    public AutomationSciencePower(AbstractCreature owner, int amount, int damageReq, boolean upgraded) {
+    public AutomationSciencePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
-        this.damageReq = damageReq;
-        this.upgraded = upgraded;
         updateDescription();
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        this.fontScale = 8.0F;
+        this.amount += stackAmount;
+    }
+
+    @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (damageAmount >= this.damageReq) {
-            if (this.upgraded) {
-                addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, damageAmount/this.damageReq)));
-            } else {
-                addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, 1)));
-            }
+        if (damageAmount >= REQUIRED_DAMAGE) {
+                addToBot(new ApplyPowerAction(this.owner, this.owner, new PunctualPower(this.owner, this.owner, 1)));
         }
     }
 
     public void updateDescription() {
-        if (!this.upgraded) {
-            this.description = DESCRIPTIONS[0] + this.damageReq + DESCRIPTIONS[1] + DESCRIPTIONS[2] + LocalizedStrings.PERIOD;
-        } else {
-            this.description = DESCRIPTIONS[0] + this.damageReq + DESCRIPTIONS[1] + DESCRIPTIONS[2] + this.damageReq + DESCRIPTIONS[3];        }
+            this.description = DESCRIPTIONS[0] + REQUIRED_DAMAGE + DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new AutomationSciencePower(this.owner, this.amount, this.damageReq, this.upgraded);
+        return new AutomationSciencePower(this.owner, this.amount);
     }
 }

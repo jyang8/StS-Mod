@@ -96,9 +96,8 @@
     "NAME": "Automation Science",
     "DESCRIPTIONS": [
       "Whenever you deal #b",
-      " or more damage in a single hit, gain #b1 #yStrength",
-      " per #b",
-      " damage."
+      " or more damage in a single hit, gain #b",
+      " #yPunctual."
     ]
   },
   "${modID}:SweetDreams": {
@@ -167,6 +166,27 @@
     "DESCRIPTIONS": [
       "Whenever your turn ends early, gain #b",
       " Wrinkler."
+    ]
+  },
+  "${modID}:MaxSatiety": {
+    "NAME": "Deep Sleep",
+    "DESCRIPTIONS": [
+      "Your max #ySatiety is #b",
+      "."
+    ]
+  },
+  "${modID}:LoseMaxSatiety": {
+    "NAME": "Lose Max Satiety",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b",
+      " max #ySatiety."
+    ]
+  },
+  "${modID}:RocketFactory": {
+    "NAME": "Rocket Factory",
+    "DESCRIPTIONS": [
+      "#ySchedule a #yRocket #yLaunch after #b",
+      " more debuffs are prevented by #yWrinkler."
     ]
   }
 }

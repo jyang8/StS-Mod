@@ -3,14 +3,13 @@ package schedulemod.cards.navy;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
-import schedulemod.powers.AutomationSciencePower;
+import schedulemod.powers.SweetDreamsPower;
 import schedulemod.util.CardStats;
 
-public class AutomationScience extends BaseCard {
-    public static final String ID = makeID(AutomationScience.class.getSimpleName());
+public class LogisticScience extends BaseCard {
+    public static final String ID = makeID(LogisticScience.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.POWER,
@@ -19,19 +18,19 @@ public class AutomationScience extends BaseCard {
             1
     );
 
-    private static final int PUNCTUAL = 1;
-    private static final int UPGRADE_PUNCTUAL = 1;
+    private static final int TEMP_STATS = 1;
+    private static final int UPGRADE_TEMP_STATS = 1;
 
-    public AutomationScience() {
+    public LogisticScience() {
         super(ID, info);
-        setMagic(PUNCTUAL, UPGRADE_PUNCTUAL);
+        setMagic(TEMP_STATS, UPGRADE_TEMP_STATS);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new AutomationSciencePower((AbstractCreature)p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new LogisticSciencePower(p, this.magicNumber)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new AutomationScience(); }
+    public AbstractCard makeCopy() { return new LogisticScience(); }
 }

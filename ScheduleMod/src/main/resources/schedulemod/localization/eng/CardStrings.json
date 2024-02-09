@@ -155,8 +155,7 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal !M! or more damage in a single hit, gain 1 Strength.",
-    "UPGRADE_DESCRIPTION": "Whenever you deal !M! or more damage in a single hit, gain 1 Strength per !M! damage."
+    "DESCRIPTION": "Whenever you deal 20 or more damage in a single hit, gain !M! Punctual."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
