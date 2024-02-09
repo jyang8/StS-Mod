@@ -29,7 +29,7 @@ public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
             CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.ALL_ENEMY,
-            0);
+            2);
 
     private static final int ATTACK_DAMAGE = 7;
     private static final int ATTACK_COUNT = 3;

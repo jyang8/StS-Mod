@@ -22,7 +22,7 @@ public class Lunch extends EventCard {
             CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            0);
+            1);
 
     private static final int ATTACK_DAMAGE = 8;
     private static final int UPGRADE_ATTACK_DAMAGE = 2;

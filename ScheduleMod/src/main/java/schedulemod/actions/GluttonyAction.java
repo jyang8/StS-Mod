@@ -1,12 +1,14 @@
 package schedulemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import schedulemod.character.Entropy;
+import schedulemod.powers.MaxSatietyPower;
 
 public class GluttonyAction extends AbstractGameAction {
     private int increaseSatietyAmount;
@@ -30,7 +32,7 @@ public class GluttonyAction extends AbstractGameAction {
             this.target.damage(this.info);
             if ((((AbstractMonster)this.target).isDying || this.target.currentHealth <= 0) &&
                     !this.target.halfDead && !this.target.hasPower("Minion")) {
-                source.increaseMaxSatiety(this.increaseSatietyAmount, false);
+                addToBot(new ApplyPowerAction(target, source, new MaxSatietyPower(source, increaseSatietyAmount), increaseSatietyAmount));
             }
             if ((AbstractDungeon.getCurrRoom()).monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();

@@ -16,13 +16,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HyperEntropyAction extends AbstractGameAction {
-    private static final ArrayList<AbstractCard> hyperfloorCards = new ArrayList<AbstractCard>(
-            Arrays.asList(new HyperfloorMonster(), new HyperfloorEvent(), new HyperfloorShop()));
+    private ArrayList<AbstractCard> hyperfloorCards;
     private static final float DURATION = 0.1F;
 
     public HyperEntropyAction(Entropy source) {
         this.actionType = ActionType.SPECIAL;
         this.duration = DURATION;
+        this.hyperfloorCards = new ArrayList<AbstractCard>(
+                Arrays.asList(new HyperfloorMonster(), new HyperfloorEvent(), new HyperfloorShop()));
     }
 
     public void update() {

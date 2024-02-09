@@ -60,14 +60,14 @@
     "NAME": "Wrinkler",
     "DESCRIPTIONS": [
       "Negate #b",
-      " ScheduleMod:debuff.",
-      " ScheduleMod:debuffs."
+      " self debuff.",
+      " self debuffs."
     ]
   },
   "${modID}:UtilityScience": {
     "NAME": "Utility Science",
     "DESCRIPTIONS": [
-      "At the start of your turn, gain #b",
+      "Whenever you create a card, gain #b",
       " #yWrinkler."
     ]
   },
@@ -185,8 +185,22 @@
   "${modID}:RocketFactory": {
     "NAME": "Rocket Factory",
     "DESCRIPTIONS": [
-      "#ySchedule a #yRocket #yLaunch after #b",
+      "#ySchedule a #yLaunch after #b",
       " more debuffs are prevented by #yWrinkler."
+    ]
+  },
+  "${modID}:LogisticScience": {
+    "NAME": "Logistic Science",
+    "DESCRIPTIONS": [
+      "Whenever you gain #yPunctual, gain #b",
+      " #yStrength, #yDexterity, and max #ySatiety this turn."
+    ]
+  },
+  "${modID}:SpaceScience": {
+    "NAME": "Space Science",
+    "DESCRIPTIONS": [
+      "Whenever you gain #yWrinkler, gain #b",
+      " more #yWrinkler."
     ]
   }
 }

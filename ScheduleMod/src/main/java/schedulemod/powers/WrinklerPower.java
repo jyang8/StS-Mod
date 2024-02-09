@@ -29,6 +29,11 @@ public class WrinklerPower extends BasePower implements CloneablePowerInterface,
 
     @Override
     public void onSpecificTrigger() {
+        for (AbstractPower power : this.owner.powers) {
+            if (power instanceof RocketFactoryPower) {
+                power.onSpecificTrigger();
+            }
+        }
         if (this.amount <= 0) {
             addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         } else {
@@ -48,20 +53,6 @@ public class WrinklerPower extends BasePower implements CloneablePowerInterface,
             return false;
         }
         return true;
-    }
-
-    @Override
-    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power.owner == source && power.type == PowerType.DEBUFF) {
-            onSpecificTrigger();
-            return 0;
-        }
-        AbstractPlayer p = (AbstractPlayer) this.owner;
-        if (p.hasRelic(makeID("CatTheoryTextbook")) && power.type == PowerType.DEBUFF) {
-            onSpecificTrigger();
-            return 0;
-        }
-        return stackAmount;
     }
 
     @Override

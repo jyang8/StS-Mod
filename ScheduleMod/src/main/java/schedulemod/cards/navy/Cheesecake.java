@@ -31,7 +31,7 @@ public class Cheesecake extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (!p.hasPower(makeID("HokkaidoUniBuffet"))
-                && (p.getPower(makeID("Satiety")).amount + SATIETY >= ((Entropy)p).MAX_SATIETY))
+                && (p.getPower(makeID("Satiety")).amount + SATIETY >= ((Entropy)p).maxSatiety))
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber)));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
     }

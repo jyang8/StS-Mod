@@ -112,7 +112,6 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
                 addToTop(new ApplyPowerAction(this.owner, this.source,
                         new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
             }           
-            addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
         }
     }
 

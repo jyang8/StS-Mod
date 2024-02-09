@@ -19,12 +19,11 @@ public class DeepSleep extends BaseCard {
     );
 
     private static final int WRINKLER = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int UPGRADE_WRINKLER = 1;
 
     public DeepSleep() {
         super(ID, info);
-        setMagic(WRINKLER);
-        setCostUpgrade(UPGRADE_COST);
+        setMagic(WRINKLER, UPGRADE_WRINKLER);
     }
 
     @Override

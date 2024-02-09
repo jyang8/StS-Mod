@@ -116,8 +116,8 @@
   },
   "${modID}:UtilityScience": {
     "NAME": "Utility Science",
-    "DESCRIPTION": "At the start of your turn, lose [E] to gain !M! *Wrinkler. NL Ethereal.",
-    "UPGRADE_DESCRIPTION": "At the start of your turn, lose [E] to gain !M! *Wrinkler. NL Add a *Utility *Science+ to your hand. NL Ethereal."
+    "DESCRIPTION": "Whenever you create a card, gain !M! *Wrinkler.",
+    "UPGRADE_DESCRIPTION": "Whenever you create a card, gain !M! *Wrinkler. NL *Innate."
   },
   "${modID}:Croissant": {
     "NAME": "L'Appartement 4F",
@@ -155,7 +155,7 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal 20 or more damage in a single hit, gain !M! Punctual."
+    "DESCRIPTION": "Whenever you deal 20 or more damage in a single hit, gain !M! *Punctual."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
@@ -396,5 +396,22 @@
   "${modID}:DeepSleep": {
     "NAME": "Deep Sleep",
     "DESCRIPTION": "Whenever an effect ends your turn, gain !M! *Wrinkler."
+  },
+  "${modID}:LogisticScience": {
+    "NAME": "Logistic Science",
+    "DESCRIPTION": "Whenever you gain *Punctual, gain !M! *Strength, *Dexterity, and max *Satiety this turn."
+  },
+  "${modID}:SpaceScience": {
+    "NAME": "Space Science",
+    "DESCRIPTION": "Whenever you gain *Wrinkler, gain !M! additional *Wrinkler."
+  },
+  "${modID}:RocketFactory": {
+    "NAME": "Rocket Factory",
+    "DESCRIPTION": "After every !M! debuffs prevented by *Wrinkler, NL *Schedule 1: *Launch.",
+    "UPGRADE_DESCRIPTION": "After every !M! debuffs prevented by *Wrinkler, NL *Schedule 1: *Launch. NL *Innate."
+  },
+  "${modID}:Launch": {
+    "NAME": "Launch",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Shuffle 1 *Burn into your draw pile."
   }
 }
