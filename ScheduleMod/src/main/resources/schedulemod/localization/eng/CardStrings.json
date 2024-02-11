@@ -440,6 +440,10 @@
   },
   "${modID}:PowerWordSleep": {
     "NAME": "Power Word: Sleep",
-    "DESCRIPTION": "Apply *Sleep."
+    "DESCRIPTION": "Apply *Sleep. NL *Exhaust."
+  },
+  "${modID}:RainCheck": {
+    "NAME": "Rain Check",
+    "DESCRIPTION": "Gain !B! Block. NL Push back the *Schedule as far as possible."
   }
 }
