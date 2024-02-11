@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import schedulemod.character.Entropy;
-import schedulemod.powers.LoseMaxSatietyPower;
+import schedulemod.powers.MaxSatietyPower;
 import schedulemod.util.CardStats;
 
 public class Connoisseur extends BaseCard {
@@ -34,7 +34,7 @@ public class Connoisseur extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, STRENGTH_GAIN)));
         addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, DEXTERITY_GAIN)));
-        addToBot(new ApplyPowerAction(p, p, new LoseMaxSatietyPower(p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, -this.magicNumber)));
     }
 
     @Override

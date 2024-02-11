@@ -12,7 +12,7 @@ import static schedulemod.BasicMod.makeID;
 public class UtilitySciencePower extends BasePower implements CloneablePowerInterface, OnCardCreatedPower {
     public static final String POWER_ID = makeID("UtilityScience");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
-    private static final boolean TURN_BASED = true;
+    private static final boolean TURN_BASED = false;
 
     public UtilitySciencePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);

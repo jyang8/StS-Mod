@@ -2,7 +2,7 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import schedulemod.actions.ScheduleEventCard;
-import schedulemod.cards.tempCards.RocketLaunch;
+import schedulemod.cards.tempCards.Launch;
 
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -27,7 +27,7 @@ public class RocketFactoryPower extends BasePower implements CloneablePowerInter
         this.remainingTriggers--;
         if (this.remainingTriggers <= 0) {
             this.remainingTriggers = WRINKLER_TRIGGERS_REQUIRED;
-            addToBot(new ScheduleEventCard(new RocketLaunch(), SCHEDULE_SLOT));
+            addToBot(new ScheduleEventCard(new Launch(), SCHEDULE_SLOT));
         }
     }
 

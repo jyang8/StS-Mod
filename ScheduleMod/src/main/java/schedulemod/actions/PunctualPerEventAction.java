@@ -27,7 +27,9 @@ public class PunctualPerEventAction extends AbstractGameAction {
                 tmp++;
         }
         tmp *= amount;
-        addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, tmp), tmp));
+        if (tmp != 0) {
+            addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, tmp), tmp));
+        }
         this.isDone = true;
     }
 }

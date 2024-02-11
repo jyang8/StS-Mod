@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import schedulemod.character.Entropy;
+import schedulemod.relics.HungryCamera;
 
 import static schedulemod.BasicMod.makeID;
 
@@ -46,20 +47,29 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
 
     public void updateDescription() {
         AbstractPlayer p = AbstractDungeon.player;
-        this.description = DESCRIPTIONS[0] + (p instanceof Entropy ? ((Entropy)p).maxSatiety : 1) + DESCRIPTIONS[1];
+        int bellySize = p.hasPower(MaxSatietyPower.POWER_ID) ? p.getPower(MaxSatietyPower.POWER_ID).amount : 0;
+        this.description = DESCRIPTIONS[0] + ((p instanceof Entropy ? ((Entropy) p).maxSatiety : 1) + bellySize) + DESCRIPTIONS[1];
     }
 
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+    public void checkSatiety() {
         AbstractPlayer p = AbstractDungeon.player;
+        int bellySize = p.hasPower(MaxSatietyPower.POWER_ID) ? p.getPower(MaxSatietyPower.POWER_ID).amount : 0;
         if (!(owner.hasPower(makeID("HokkaidoUniBuffet")))) {
-            if (this.amount == (p instanceof Entropy ? ((Entropy)p).maxSatiety : 1)) {
+            if (this.amount >= (p instanceof Entropy ? ((Entropy) p).maxSatiety : 1) + bellySize) {
                 this.amount = 0;
                 flashWithoutSound();
                 playApplyPowerSfx();
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+                if (p.hasRelic(HungryCamera.ID)) {
+                    ((HungryCamera)p.getRelic(HungryCamera.ID)).triggered = true;
+                }
                 AbstractDungeon.actionManager.callEndTurnEarlySequence();
             }
         }
+    }
+
+    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
+        checkSatiety();
     }
 
     @Override

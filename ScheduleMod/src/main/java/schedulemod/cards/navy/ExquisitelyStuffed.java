@@ -18,7 +18,7 @@ public class ExquisitelyStuffed extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 9;
+    private static final int ATTACK_DAMAGE = 7;
     private static final int UPGRADE_ATTACK_DAMAGE = 3;
 
     public ExquisitelyStuffed() {

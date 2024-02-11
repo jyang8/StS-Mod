@@ -35,7 +35,8 @@ public class Lunch extends EventCard {
         setExhaust(true);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
         setMagic(DROWSY, UPGRADE_DROWSY);
-        this.damageType = DamageType.THORNS;
+        this.damageType= DamageType.THORNS;
+        this.damageTypeForTurn = DamageType.THORNS;
     }
 
     @Override

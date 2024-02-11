@@ -17,7 +17,7 @@ public class Confession extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            0);
+            1);
 
 
     public Confession() {

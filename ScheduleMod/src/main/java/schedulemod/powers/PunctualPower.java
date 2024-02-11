@@ -21,6 +21,12 @@ public class PunctualPower extends BasePower implements CloneablePowerInterface,
         this.canGoNegative = CAN_GO_NEGATIVE;
     }
 
+    public void onInitialApplication() {
+        if (amount == 0) {
+            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        }
+    }
+
     public void stackPower(int stackAmount) {
         this.fontScale = 8.0F;
         this.amount += stackAmount;

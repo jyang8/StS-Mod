@@ -17,7 +17,7 @@ public class Drink extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            0);
+            2);
 
     private static final int AMP = 8;
     private static final int UPGRADE_AMP = 10;

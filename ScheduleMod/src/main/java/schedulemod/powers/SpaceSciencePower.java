@@ -10,7 +10,7 @@ import static schedulemod.BasicMod.makeID;
 public class SpaceSciencePower extends BasePower implements CloneablePowerInterface, BetterOnApplyPowerPower {
     public static final String POWER_ID = makeID("SpaceScience");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
-    private static final boolean TURN_BASED = true;
+    private static final boolean TURN_BASED = false;
 
     public SpaceSciencePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);

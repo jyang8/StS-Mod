@@ -6,6 +6,8 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.JagerBomb;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
@@ -22,6 +24,7 @@ public class EmergencyRedBull extends BaseCard {
 
     private static final int ENERGY = 2;
     private static final int HP_LOSS = 3;
+    private static final int SCHEDULE_SLOT = 4;
 
     public EmergencyRedBull() {
         super(ID, info);
@@ -34,7 +37,7 @@ public class EmergencyRedBull extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, HP_LOSS));
         addToBot(new GainEnergyAction(this.magicNumber));
-        addToBot(new MakeTempCardInDrawPileAction(this.cardsToPreview.makeStatEquivalentCopy(), 1, true, true));
+        addToBot(new ScheduleEventCard(cardsToPreview, SCHEDULE_SLOT));
     }
 
     @Override
@@ -46,7 +49,7 @@ public class EmergencyRedBull extends BaseCard {
     }
 
     @Override
-    public AbstractCard makeCopy() { //Optional
+    public AbstractCard makeCopy() {
         return new EmergencyRedBull();
     }
 }

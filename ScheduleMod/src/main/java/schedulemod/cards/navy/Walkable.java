@@ -24,6 +24,7 @@ public class Walkable extends BaseCard {
     private static final int ATTACK_DAMAGE = 7;
     private static final int UPGRADE_ATTACK_DAMAGE = 2;
     private static final int SCHEDULE_SLOT = 4;
+    private static final int UPGRADE_SCHEDULE_SLOT = 5;
 
     public Walkable() {
         super(ID, info);
@@ -36,14 +37,9 @@ public class Walkable extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
-    }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            this.cardsToPreview.upgrade();
+        if (upgraded) {
+            addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), UPGRADE_SCHEDULE_SLOT));
         }
-        super.upgrade();
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
 import schedulemod.powers.FatiguePower;
+import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class FoodComa extends BaseCard {
@@ -20,9 +21,10 @@ public class FoodComa extends BaseCard {
             1
     );
 
-    private static final int FATIGUE = 4;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int FATIGUE = 6;
+    private static final int UPGRADE_FATIGUE = 3;
     private static final int ENERGY_GAIN = 1;
+    private static final int SATIETY_THRESHOLD = 2;
 
     public FoodComa() {
         super(ID, info);
@@ -32,7 +34,7 @@ public class FoodComa extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
-        if (p.hasPower(makeID("Satiety"))) {
+        if (p.hasPower(SatietyPower.POWER_ID) && p.getPower(SatietyPower.POWER_ID).amount >= SATIETY_THRESHOLD) {
             addToBot(new GainEnergyAction(ENERGY_GAIN));
             addToBot(new DrawCardAction(1));
         }

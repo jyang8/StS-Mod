@@ -50,6 +50,7 @@ public class Entropy extends CustomPlayer {
     public static final int ORB_SLOTS = 7;
     public static final int BASE_MAX_SATIETY = 3;
     private int satietyGainedThisCombat = 0;
+
     public int maxSatiety = BASE_MAX_SATIETY;
 
     // Strings
@@ -175,14 +176,12 @@ public class Entropy extends CustomPlayer {
         }
     }
 
-    public void setMaxSatiety(int amount, boolean showEffect) {
-        if (!Settings.isEndless) {
-            int change = (BASE_MAX_SATIETY + amount) - maxSatiety;
-            maxSatiety = BASE_MAX_SATIETY + amount;
-            AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
-                    this.hb.cX - this.animX, this.hb.cY,
-                    TEXT[3] + Integer.toString(change), Settings.GREEN_TEXT_COLOR));
-        }
+    public void increaseMaxSatiety(int amount, boolean showEffect) {
+        maxSatiety = BASE_MAX_SATIETY + amount;
+        AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
+                this.hb.cX - this.animX, this.hb.cY,
+                TEXT[3] + ("+") + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
+
     }
 
     @Override

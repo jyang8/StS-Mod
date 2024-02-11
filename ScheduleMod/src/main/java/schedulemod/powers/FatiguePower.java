@@ -6,8 +6,6 @@ import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
@@ -75,6 +73,8 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
     @Override
     public void onInitialApplication() {
         applySleep();
+        if (this.amount == 0)
+            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     @Override
@@ -106,7 +106,7 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
                 && amount >= dmg
                 && isAttack) {
             addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
-            if (!this.owner.hasPower(SnoozeAlarmPower.POWER_ID)) {
+            if (!this.source.hasPower(SnoozeAlarmPower.POWER_ID)) {
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             } else {
                 addToTop(new ApplyPowerAction(this.owner, this.source,

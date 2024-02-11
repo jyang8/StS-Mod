@@ -42,12 +42,12 @@ public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
         setDamage(ATTACK_DAMAGE);
         setMagic(ATTACK_COUNT, UPGRADE_ATTACK_COUNT);
         this.damageType = DamageType.THORNS;
+        this.damageTypeForTurn = DamageType.THORNS;
         BaseMod.subscribe(this);
     }
 
     @Override
     public int receiveOnPlayerDamaged(int amount, DamageInfo info) {
-
         if (amount > AbstractDungeon.player.currentBlock) {
             for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
                 AbstractOrb o = AbstractDungeon.player.orbs.get(i);

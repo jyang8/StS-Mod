@@ -32,12 +32,12 @@
   },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb into your draw pile.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL Shuffle a *Jager *Bomb+ into your draw pile."
+    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL *Schedule 4: NL *Jager *Bomb.",
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL *Schedule 4: NL *Jager *Bomb+."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
-    "DESCRIPTION": "Retain. NL Deal !D! damage. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Gain 1 *Satiety."
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
@@ -159,7 +159,7 @@
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
-    "DESCRIPTION": "Gain 3 Strength. NL Gain 3 Dexterity. NL Lose !M! max *Satiety."
+    "DESCRIPTION": "Gain 2 Strength. NL Gain 2 Dexterity. NL Lose !M! max *Satiety."
   },
   "${modID}:Walkable": {
     "NAME": "Walkable",
@@ -178,7 +178,7 @@
     "NAME": "Cardigarkus",
     "DESCRIPTION": "Gain !B! Block. NL Lose !M! Dexterity."
   },
-  "${modID}:ThreeChairMethod": {
+  "${modID}:XChairMethod": {
     "NAME": "X-Chair Method",
     "DESCRIPTION": "Apply !M! *Fatigue to all enemies X times.",
     "UPGRADE_DESCRIPTION": "Apply !M! *Fatigue to all enemies X+1 times."
@@ -189,7 +189,7 @@
   },
   "${modID}:FoodComa": {
     "NAME": "Food Coma",
-    "DESCRIPTION": "Apply !M! *Fatigue. NL If you have *Satiety, gain [E] and draw a card."
+    "DESCRIPTION": "Apply !M! *Fatigue. NL If you have 2 or more *Satiety, gain [E] and draw a card."
   },
   "${modID}:Cheesecake": {
     "NAME": "Cheesecake",
@@ -239,12 +239,12 @@
   },
   "${modID}:HappyBirthday": {
     "NAME": "Happy Birthday",
-    "DESCRIPTION": "*Schedule !M!: *Birthday *Song. NL Add a *Birthday *Song to your discard pile.",
-    "UPGRADE_DESCRIPTION": "*Schedule !M!: *Birthday *Song+. NL Add a *Birthday *Song+ to your discard pile."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: NL *The *Song. NL Add a *Happy *Birthday to your discard pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: NL *The *Song+. NL Add a *Happy *Birthday to your discard pile."
   },
-  "${modID}:BirthdaySong": {
-    "NAME": "Birthday Song",
-    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *Birthday *Song events by !M! this combat."
+  "${modID}:TheSong": {
+    "NAME": "The Song",
+    "DESCRIPTION": "Deal !D! damage. NL Increase the damage of ALL *The *Song events by !M! this combat."
   },
   "${modID}:FridayNightMagic": {
     "NAME": "Friday Night Magic",
@@ -267,7 +267,7 @@
   },
   "${modID}:GinAndTonic": {
     "NAME": "Gin and Tonic",
-    "DESCRIPTION": "Gain !B! Block. *Schedule !M!: *Drunkus. Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Drunkus. NL Gain 1 *Satiety."
   },
   "${modID}:Drunkus": {
     "NAME": "Drunkus",
@@ -399,7 +399,7 @@
   },
   "${modID}:LogisticScience": {
     "NAME": "Logistic Science",
-    "DESCRIPTION": "Whenever you gain *Punctual, gain !M! *Strength, *Dexterity, and max *Satiety this turn."
+    "DESCRIPTION": "Whenever you gain *Punctual, gain !M! *Strength, *Dexterity, and *Belly *Size this turn."
   },
   "${modID}:SpaceScience": {
     "NAME": "Space Science",
@@ -413,5 +413,33 @@
   "${modID}:Launch": {
     "NAME": "Launch",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Shuffle 1 *Burn into your draw pile."
+  },
+  "${modID}:Bomb": {
+    "NAME": "Bomb",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Draw a card."
+  },
+  "${modID}:Bombe": {
+    "NAME": "Bombe",
+    "DESCRIPTION": "At the start of your turn, if exactly 1 out of *Schedule slots 2 and 4 is empty, *Schedule 3: *Bomb.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, if exactly 1 out of *Schedule slots 2 and 4 is empty, *Schedule 3: *Bomb+."
+  },
+  "${modID}:TableAtMission": {
+    "NAME": "Table At Mission",
+    "DESCRIPTION": "*Schedule 5: NL *Absurd *Nap.",
+    "UPGRADE_DESCRIPTION": "*Schedule 5: NL *Absurd *Nap+."
+  },
+  "${modID}:AbsurdNap": {
+    "NAME": "Absurd Nap",
+    "DESCRIPTION": "Double the *Fatigue of ALL enemies.",
+    "UPGRADE_DESCRIPTION": "Triple the *Fatigue of ALL enemies."
+  },
+  "${modID}:SteamClub": {
+    "NAME": "Steam Club",
+    "DESCRIPTION": "Gain !M! Block for each event triggered since the last *Steam *Club."
+  },
+  "${modID}:PowerWordSleep": {
+    "NAME": "Power Word: Sleep",
+    "DESCRIPTION": "Apply *Sleep."
   }
 }

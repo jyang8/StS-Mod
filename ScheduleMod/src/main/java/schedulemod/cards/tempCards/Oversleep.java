@@ -16,7 +16,7 @@ public class Oversleep extends EventCard {
             CardType.POWER,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            0
+            1
     );
 
     private final static int PUNCTUAL= -8;

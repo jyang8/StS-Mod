@@ -17,7 +17,7 @@ public class Amp extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            0);
+            1);
 
     private static final int AMP = 4;
     private static final int UPGRADE_AMP = 2;

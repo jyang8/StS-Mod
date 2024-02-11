@@ -7,6 +7,9 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
+import schedulemod.BasicMod;
+import schedulemod.powers.SatietyPower;
+
 import static schedulemod.BasicMod.makeID;
 
 public class ExquisitelyStuffedAction extends AbstractGameAction {
@@ -23,9 +26,14 @@ public class ExquisitelyStuffedAction extends AbstractGameAction {
     }
 
     public void update() {
-        int count = AbstractDungeon.player.getPower(makeID("Satiety")).amount;
-        for (int i = 0; i < count; i++) {
-            addToTop(new DamageAction(this.target, this.info, AttackEffect.SLASH_HEAVY));
+        if (this.duration == Settings.ACTION_DUR_FAST) {
+            int count = AbstractDungeon.player.getPower(SatietyPower.POWER_ID).amount;
+            BasicMod.logger.info("EXQUISITE: " + count);
+            for (int i = 0; i < count; i++) {
+                addToTop(new DamageAction(this.target, this.info, AttackEffect.SLASH_HEAVY));
+            }
+            tickDuration();
+            this.isDone = true;
         }
     }
 }

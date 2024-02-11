@@ -16,7 +16,7 @@ public class Draft extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.NONE,
-            0
+            1
     );
     private static final int UPGRADE_SCRY = 2;
 

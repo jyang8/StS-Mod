@@ -19,9 +19,9 @@ public class WalkHome extends EventCard {
             CardType.ATTACK,
             CardRarity.SPECIAL,
             CardTarget.ENEMY,
-            0);
+            1);
 
-    private static final int ATTACK_DAMAGE = 7;
+    private static final int ATTACK_DAMAGE = 5;
     private static final int UPGRADE_ATTACK_DAMAGE = 2;
 
     public WalkHome() {
@@ -30,18 +30,19 @@ public class WalkHome extends EventCard {
         setExhaust(true);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
         this.damageType = DamageType.THORNS;
+        this.damageTypeForTurn = DamageType.THORNS;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractGameAction.AttackEffect.SLASH_VERTICAL));
     }
 
     @Override

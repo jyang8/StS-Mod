@@ -9,18 +9,18 @@ import schedulemod.character.Entropy;
 import schedulemod.powers.FatiguePower;
 import schedulemod.util.CardStats;
 
-public class ThreeChairMethod extends BaseCard {
-    public static final String ID = makeID(ThreeChairMethod.class.getSimpleName());
+public class XChairMethod extends BaseCard {
+    public static final String ID = makeID(XChairMethod.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTarget.ENEMY,
+            CardTarget.ALL_ENEMY,
             -1);
 
     private static final int FATIGUE = 4;
 
-    public ThreeChairMethod() {
+    public XChairMethod() {
         super(ID, info);
         setMagic(FATIGUE);
     }
@@ -38,6 +38,6 @@ public class ThreeChairMethod extends BaseCard {
 
     @Override
     public AbstractCard makeCopy() {
-        return new ThreeChairMethod();
+        return new XChairMethod();
     }
 }

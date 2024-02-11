@@ -21,7 +21,7 @@ public class CodeReview extends BaseCard {
     );
 
     private static final int FATIGUE = 11;
-    private static final int UPGRADE_FATIGUE = 4;
+    private static final int UPGRADE_FATIGUE = 2;
 
     public CodeReview() {
         super(ID, info);

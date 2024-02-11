@@ -32,6 +32,9 @@ public class GluttonyAction extends AbstractGameAction {
             this.target.damage(this.info);
             if ((((AbstractMonster)this.target).isDying || this.target.currentHealth <= 0) &&
                     !this.target.halfDead && !this.target.hasPower("Minion")) {
+                if (AbstractDungeon.player instanceof Entropy) {
+                    ((Entropy)AbstractDungeon.player).increaseMaxSatiety(increaseSatietyAmount, true);
+                }
                 addToBot(new ApplyPowerAction(target, source, new MaxSatietyPower(source, increaseSatietyAmount), increaseSatietyAmount));
             }
             if ((AbstractDungeon.getCurrRoom()).monsters.areMonstersBasicallyDead()) {

@@ -23,7 +23,7 @@ public class DreadfulStrikes extends EventCard {
             CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
-            0);
+            1);
 
     private static final int AMP = 2;
     private static final int UPGRADE_AMP = 2;

@@ -1,6 +1,7 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -56,8 +57,18 @@ public class DrowsyPower extends BasePower implements CloneablePowerInterface, O
 
     @Override
     public boolean onReceivePower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (power instanceof FatiguePower && target instanceof AbstractMonster)
+        if (power instanceof FatiguePower && target instanceof AbstractMonster) {
             power.amount = (int) (power.amount * EFFECTIVENESS);
+        }
         return true;
+    }
+
+    @Override
+    public int onReceivePowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source,
+            int stackAmount) {
+        if (power instanceof FatiguePower && target instanceof AbstractMonster) {
+            return (int) (stackAmount * EFFECTIVENESS);
+        } else
+            return stackAmount;
     }
 }

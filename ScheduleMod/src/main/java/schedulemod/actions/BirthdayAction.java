@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import schedulemod.cards.tempCards.BirthdaySong;
+import schedulemod.cards.tempCards.TheSong;
 import schedulemod.orbs.ScheduleOrb;
 
 public class BirthdayAction extends AbstractGameAction {
@@ -19,25 +19,25 @@ public class BirthdayAction extends AbstractGameAction {
         this.card.baseDamage += this.amount;
         this.card.applyPowers();
         for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
-            if (c instanceof BirthdaySong) {
+            if (c instanceof TheSong) {
                 c.baseDamage += this.amount;
                 c.applyPowers();
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
-            if (c instanceof BirthdaySong) {
+            if (c instanceof TheSong) {
                 c.baseDamage += this.amount;
                 c.applyPowers();
             }
         }
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c instanceof BirthdaySong) {
+            if (c instanceof TheSong) {
                 c.baseDamage += this.amount;
                 c.applyPowers();
             }
         }
         for (AbstractOrb o : AbstractDungeon.player.orbs) {
-            if (o instanceof ScheduleOrb && ((ScheduleOrb) o).eventCard instanceof BirthdaySong) {
+            if (o instanceof ScheduleOrb && ((ScheduleOrb) o).eventCard instanceof TheSong) {
                 ((ScheduleOrb) o).eventCard.baseDamage += this.amount;
                 ((ScheduleOrb) o).eventCard.applyPowers();
             }

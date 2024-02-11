@@ -1,10 +1,11 @@
-package schedulemod.cards.navy;
-
+package schedulemod.cards.choiceCards;
 
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.cards.navy.BaseCard;
 import schedulemod.util.CardStats;
 
 public class HyperfloorEvent extends BaseCard {

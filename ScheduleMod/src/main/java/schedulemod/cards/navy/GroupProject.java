@@ -19,7 +19,7 @@ public class GroupProject extends BaseCard {
             0
     );
 
-    private static final int ATTACK_DAMAGE = 8;
+    private static final int ATTACK_DAMAGE = 10;
     private static final int UPGRADE_ATTACK_DAMAGE = 3;
 
     public GroupProject() {
@@ -38,7 +38,7 @@ public class GroupProject extends BaseCard {
         if (!canUse)
             return false;
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (!m.isDeadOrEscaped() && mo.hasPower(makeID("Sleep")))
+            if (!mo.isDeadOrEscaped() && mo.hasPower(makeID("Sleep")))
                 return true;
         }
         this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];

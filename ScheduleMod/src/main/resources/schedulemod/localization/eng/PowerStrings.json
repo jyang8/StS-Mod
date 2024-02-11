@@ -119,7 +119,7 @@
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
     "DESCRIPTIONS": [
-      "Excess *Fatigue is not consumed. ",
+      "Excess #yFatigue is not consumed. ",
       "Whenever an enemy falls asleep, apply #b",
       " #yDrowsy."
     ]
@@ -169,17 +169,18 @@
     ]
   },
   "${modID}:MaxSatiety": {
-    "NAME": "Deep Sleep",
+    "NAME": "Belly Size",
     "DESCRIPTIONS": [
-      "Your max #ySatiety is #b",
+      "Your max #ySatiety is increased to #b",
+      "Your max #ySatiety is decreased to #b",
       "."
     ]
   },
   "${modID}:LoseMaxSatiety": {
-    "NAME": "Lose Max Satiety",
+    "NAME": "Lose Belly Size",
     "DESCRIPTIONS": [
       "At the end of your turn, lose #b",
-      " max #ySatiety."
+      " #yBelly #ySize."
     ]
   },
   "${modID}:RocketFactory": {
@@ -193,7 +194,7 @@
     "NAME": "Logistic Science",
     "DESCRIPTIONS": [
       "Whenever you gain #yPunctual, gain #b",
-      " #yStrength, #yDexterity, and max #ySatiety this turn."
+      " #yStrength, #yDexterity, and #Belly #Size this turn."
     ]
   },
   "${modID}:SpaceScience": {
@@ -201,6 +202,19 @@
     "DESCRIPTIONS": [
       "Whenever you gain #yWrinkler, gain #b",
       " more #yWrinkler."
+    ]
+  },
+  "${modID}:Bombe": {
+    "NAME": "Bombe",
+    "DESCRIPTIONS": [
+      "At the start of your turn, if exactly 1 out of #ySchedule slots 2 and 4 is empty, #ySchedule 3: #yBomb."
+    ]
+  },
+  "${modID}:Amp": {
+    "NAME": "Amp",
+    "DESCRIPTIONS": [
+      "Your next Attack deal #b",
+      " additional damage."
     ]
   }
 }

@@ -3,8 +3,8 @@ package schedulemod.relics;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 import schedulemod.character.Entropy;
+import schedulemod.powers.AmpPower;
 
 import static schedulemod.BasicMod.makeID;
 
@@ -29,7 +29,7 @@ public class KaraokeKables extends BaseRelic {
     @Override
     public void atTurnStart() {
         flash();
-        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new VigorPower(AbstractDungeon.player, ADDITIONAL_DAMAGE), ADDITIONAL_DAMAGE));
+        addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new AmpPower(AbstractDungeon.player, AbstractDungeon.player, ADDITIONAL_DAMAGE), ADDITIONAL_DAMAGE));
         addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
 }
