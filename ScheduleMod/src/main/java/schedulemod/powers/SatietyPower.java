@@ -32,6 +32,7 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
             this.amount = 999;
         if (this.amount <= -999)
             this.amount = -999;
+        checkSatiety();
     }
 
     public void reducePower(int reduceAmount) {

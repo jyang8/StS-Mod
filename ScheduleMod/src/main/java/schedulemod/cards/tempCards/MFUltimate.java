@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.DaggerSprayEffect;
 
@@ -20,9 +21,10 @@ import schedulemod.actions.RemoveFromScheduleAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
 import schedulemod.orbs.ScheduleOrb;
+import schedulemod.powers.EventPowerInterface;
 import schedulemod.util.CardStats;
 
-public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
+public class MFUltimate extends EventCard {
     public static final String ID = makeID(MFUltimate.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
@@ -43,20 +45,6 @@ public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
         setMagic(ATTACK_COUNT, UPGRADE_ATTACK_COUNT);
         this.damageType = DamageType.THORNS;
         this.damageTypeForTurn = DamageType.THORNS;
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public int receiveOnPlayerDamaged(int amount, DamageInfo info) {
-        if (amount > AbstractDungeon.player.currentBlock) {
-            for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
-                AbstractOrb o = AbstractDungeon.player.orbs.get(i);
-                if (o instanceof ScheduleOrb && ((ScheduleOrb) o).eventCard instanceof MFUltimate) {
-                    addToBot(new RemoveFromScheduleAction(i));
-                }
-            }
-        }
-        return amount;
     }
 
     @Override
@@ -70,7 +58,6 @@ public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
             }
             addToBot((AbstractGameAction) new WaitAction(0.1F));
         }
-        BaseMod.unsubscribe(this);
     }
 
     @Override
@@ -84,8 +71,8 @@ public class MFUltimate extends EventCard implements OnPlayerDamagedSubscriber {
             }
             addToBot((AbstractGameAction) new WaitAction(0.1F));
         }
-        BaseMod.unsubscribe(this);
-    }
+    } 
+
 
     @Override
     public AbstractCard makeCopy() {

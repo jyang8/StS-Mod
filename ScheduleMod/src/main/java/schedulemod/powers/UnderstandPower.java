@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static schedulemod.BasicMod.makeID;
@@ -28,14 +29,13 @@ public class UnderstandPower extends BasePower implements CloneablePowerInterfac
         if (card.cost == 0) {
             if (!this.owner.hasPower("Artifact"))
                 strengthLoss += this.amount;
-            addToBot(new ApplyPowerAction(this.owner, this.source, new StrengthPower(this.owner, -this.amount), -this.amount, true, AbstractGameAction.AttackEffect.NONE));
+            addToBot(new ApplyPowerAction(this.owner, this.source, new StrengthPower(this.owner, -this.amount), -this.amount));
+            addToBot(new ApplyPowerAction(this.owner, this.source, new GainStrengthPower(this.owner, strengthLoss), strengthLoss));
         }
     }
 
     @Override
     public void atEndOfTurn(boolean isPlayer) {
-        addToBot(new ApplyPowerAction(this.owner, this.source, new GainStrengthPower(this.owner, strengthLoss), strengthLoss, true, AbstractGameAction.AttackEffect.NONE));
-        addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     @Override

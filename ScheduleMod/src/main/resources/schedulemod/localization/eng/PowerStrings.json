@@ -216,5 +216,21 @@
       "Your next Attack deal #b",
       " additional damage."
     ]
+  },
+  "${modID}:Coffee": {
+    "NAME": "Coffee",
+    "DESCRIPTIONS": [
+      "Your next card triggers #b",
+      " additional events."
+    ]
+  },
+  "${modID}:Metabolize": {
+    "NAME": "Metabolize",
+    "DESCRIPTIONS": [
+      "Whenever your hand is empty, draw #b",
+      " card and gain #b",
+      " cards and gain #b",
+      " #ySatiety."
+    ]
   }
 }

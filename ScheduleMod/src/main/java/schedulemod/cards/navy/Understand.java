@@ -34,7 +34,7 @@ public class Understand extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SMASH));
-        addToBot(new ApplyPowerAction(m, p, new UnderstandPower(p, p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(m, p, new UnderstandPower(m, p, this.magicNumber)));
     }
 
     @Override

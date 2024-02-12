@@ -14,8 +14,8 @@ public class DeepSleepPower extends BasePower implements CloneablePowerInterface
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = true;
 
-    public DeepSleepPower(AbstractCreature owner, AbstractCreature source) {
-        super(POWER_ID, TYPE, TURN_BASED, owner, source, 1);
+    public DeepSleepPower(AbstractCreature owner, AbstractCreature source, int amount) {
+        super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
         updateDescription();
     }
 
@@ -35,6 +35,6 @@ public class DeepSleepPower extends BasePower implements CloneablePowerInterface
 
     @Override
     public AbstractPower makeCopy() {
-        return new DeepSleepPower(owner, source);
+        return new DeepSleepPower(owner, source, amount);
     }
 }

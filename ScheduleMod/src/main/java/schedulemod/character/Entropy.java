@@ -33,6 +33,7 @@ import schedulemod.cards.navy.Defend_Navy;
 import schedulemod.cards.navy.PowerNap;
 import schedulemod.cards.navy.Strike_Navy;
 import schedulemod.orbs.ScheduleOrb;
+import schedulemod.powers.CoffeePower;
 import schedulemod.relics.SoothrRes;
 
 import java.util.ArrayList;
@@ -334,6 +335,11 @@ public class Entropy extends CustomPlayer {
         if (!card.purgeOnUse) {
             this.currentlyEvokingCard = card;
             this.currentlyEvokingMonster = monster;
+            if (this.hasPower(CoffeePower.POWER_ID)) {
+                for (int i = 0; i < this.getPower(CoffeePower.POWER_ID).amount; i++) {
+                    this.evokeOrb();
+                }
+            }
             this.evokeOrb();
         }
     }

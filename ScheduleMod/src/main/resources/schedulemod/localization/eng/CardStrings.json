@@ -61,7 +61,8 @@
   },
   "${modID}:Hunger": {
     "NAME": "Hunger",
-    "DESCRIPTION": "Lose !M! *Satiety. NL Draw 2 cards."
+    "DESCRIPTION": "Lose !M! *Satiety. NL Draw 3 cards.",
+    "UPGRADE_DESCRIPTION": "Lose !M! *Satiety. NL Draw 4 cards."
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
@@ -445,5 +446,22 @@
   "${modID}:RainCheck": {
     "NAME": "Rain Check",
     "DESCRIPTION": "Gain !B! Block. NL Push back the *Schedule as far as possible."
+  },
+  "${modID}:SundayForma": {
+    "NAME": "Sunday Forma",
+    "DESCRIPTION": "*Schedule 7: *Pasta",
+    "UPGRADE_DESCRIPTION": "*Schedule 7: *Pasta+."
+  },
+  "${modID}:EmergencyCoffee": {
+    "NAME": "Emergency Coffee",
+    "DESCRIPTION": "Gain !B! Block. NL Your next card triggers !M! additional events. NL Gain 1 Satiety."
+  },
+  "${modID}:Pasta": {
+    "NAME": "Pasta",
+    "DESCRIPTION": "Gain !B! Block. NL Increase Block by !M! each time an enemy falls asleep. NL Gain 1 Satiety."
+  },
+  "${modID}:Metabolize": {
+    "NAME": "Metabolize",
+    "DESCRIPTION": "Whenever your hand is empty, NL Draw !M! card and gain 1 *Satiety."
   }
 }

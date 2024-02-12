@@ -43,6 +43,7 @@ public class RainCheckAction extends AbstractGameAction {
             for (int i = schedOrbs.size() - 1; i >= 0; i--) {
                 p.orbs.set(slot, schedOrbs.get(i));
                 schedOrbs.get(i).setSlot(slot, p.orbs.size());
+                slot--;
             }
             while (slot >= 0) {
                 AbstractOrb empty = new EmptyOrbSlot();

@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
 import basemod.interfaces.OnPlayerTurnStartPostDrawSubscriber;
 
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BeforeRenderIntentPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -16,19 +17,17 @@ import static schedulemod.BasicMod.makeID;
 
 import java.lang.reflect.Field;
 
-public class FatiguePower extends BasePower implements CloneablePowerInterface, OnPlayerTurnStartPostDrawSubscriber {
+public class FatiguePower extends BasePower implements CloneablePowerInterface, BeforeRenderIntentPower  {
     public static final String POWER_ID = makeID("Fatigue");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
 
     public FatiguePower(AbstractCreature owner, AbstractCreature source, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
-        BaseMod.subscribe(this);
     }
 
     @Override
     public void onRemove() {
-        BaseMod.unsubscribe(this);
     }
 
     public void stackPower(int stackAmount) {
@@ -78,8 +77,11 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
     }
 
     @Override
-    public void receiveOnPlayerTurnStartPostDraw() {
-        applySleep();
+    public  boolean beforeRenderIntent(AbstractMonster monster) {
+        if (monster.intent != Intent.SLEEP) {
+            applySleep();
+        }
+        return true;
     }
 
     private void applySleep() {
