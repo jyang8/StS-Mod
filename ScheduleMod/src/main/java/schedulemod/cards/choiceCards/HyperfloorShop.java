@@ -1,4 +1,4 @@
-package schedulemod.cards.tempCards;
+package schedulemod.cards.choiceCards;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
