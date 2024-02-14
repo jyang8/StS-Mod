@@ -24,8 +24,11 @@ public class UnderstandPower extends BasePower implements CloneablePowerInterfac
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.cost == 0) {
-            if (!this.owner.hasPower("Artifact"))
-                strengthLoss += this.amount;
+            if (!this.owner.hasPower("Artifact")) {
+                strengthLoss = this.amount;
+            } else {
+                strengthLoss = 0;
+            }
             addToBot(new ApplyPowerAction(this.owner, this.source, new StrengthPower(this.owner, -this.amount), -this.amount));
             addToBot(new ApplyPowerAction(this.owner, this.source, new GainStrengthPower(this.owner, strengthLoss), strengthLoss));
         }

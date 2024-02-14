@@ -4,7 +4,8 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import schedulemod.actions.CheesecakeAction;
 import schedulemod.character.Entropy;
 import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
@@ -30,10 +31,8 @@ public class Cheesecake extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (!p.hasPower(makeID("HokkaidoUniBuffet"))
-                && (p.getPower(makeID("Satiety")).amount + SATIETY >= ((Entropy)p).maxSatiety))
-            addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber)));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
+        addToBot(new CheesecakeAction(p, magicNumber));
     }
 
     @Override

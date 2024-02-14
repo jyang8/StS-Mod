@@ -39,6 +39,9 @@ public class PATHTrain extends BaseCard {
 
     @Override
     public void upgrade() {
+        if (!upgraded) {
+            this.cardsToPreview.upgrade();
+        }
         super.upgrade();
     }
 
