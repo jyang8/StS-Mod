@@ -19,6 +19,7 @@ public class DreadfulStrikesAction extends AbstractGameAction {
     private AbstractCard card;
 
     public DreadfulStrikesAction(AbstractCard card, int amount) {
+        this.card = card;
         this.amount = amount;
         this.duration = Settings.ACTION_DUR_FAST;
     }
