@@ -32,6 +32,7 @@ public class DreadfulStrikes extends EventCard {
     public DreadfulStrikes() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
+        tags.add(Entropy.Enums.AMP_EVENT);
         setExhaust(true);
         ArrayList<EventCard> events = EventsPlayedPatch.EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager);
         int count = 0;
@@ -53,7 +54,7 @@ public class DreadfulStrikes extends EventCard {
             return;
         }
         CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
-        addToBot((AbstractGameAction) new DreadfulStrikesAction(AMP_INCREASE));
+        addToBot((AbstractGameAction) new DreadfulStrikesAction(this, AMP_INCREASE));
 
     }
 

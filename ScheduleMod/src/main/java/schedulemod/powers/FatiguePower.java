@@ -8,26 +8,26 @@ import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BeforeRenderIntentP
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+
+import schedulemod.BasicMod;
 import schedulemod.actions.SleepAction;
 
 import static schedulemod.BasicMod.makeID;
 
 import java.lang.reflect.Field;
 
-public class FatiguePower extends BasePower implements CloneablePowerInterface, BeforeRenderIntentPower  {
+public class FatiguePower extends BasePower implements CloneablePowerInterface, BeforeRenderIntentPower {
     public static final String POWER_ID = makeID("Fatigue");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
+    private boolean canCheckIntent = true;
 
     public FatiguePower(AbstractCreature owner, AbstractCreature source, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
-    }
-
-    @Override
-    public void onRemove() {
     }
 
     public void stackPower(int stackAmount) {
@@ -58,27 +58,25 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
     }
 
     @Override
-    public void onApplyPower(AbstractPower p, AbstractCreature target, AbstractCreature source) {
-        if (!(p instanceof FatiguePower)) {
-            applySleep();
-        }
-    }
-
-    @Override
     public void atStartOfTurn() {
         applySleep();
     }
 
     @Override
-    public void onInitialApplication() {
-        applySleep();
-        if (this.amount == 0)
-            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+    public void atEndOfRound() {
+        canCheckIntent = true;
     }
 
     @Override
-    public  boolean beforeRenderIntent(AbstractMonster monster) {
-        if (monster.intent != Intent.SLEEP) {
+    public void onInitialApplication() {
+        if (this.amount == 0)
+            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        applySleep();
+    }
+
+    @Override
+    public boolean beforeRenderIntent(AbstractMonster monster) {
+        if (monster.intent != Intent.SLEEP && AbstractDungeon.actionManager.isEmpty()) {
             applySleep();
         }
         return true;
@@ -107,13 +105,14 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
         if (m.getIntentDmg() >= 0
                 && amount >= dmg
                 && isAttack) {
+            canCheckIntent = false;
             addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
             if (!this.source.hasPower(SnoozeAlarmPower.POWER_ID)) {
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             } else {
                 addToTop(new ApplyPowerAction(this.owner, this.source,
-                        new FatiguePower(this.owner, this.source, -this.amount), -this.amount));
-            }           
+                        new FatiguePower(this.owner, this.source, -dmg), -dmg));
+            }
         }
     }
 

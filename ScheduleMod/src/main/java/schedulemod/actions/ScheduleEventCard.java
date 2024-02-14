@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import schedulemod.cards.EventCard;
@@ -16,9 +17,9 @@ import schedulemod.orbs.ScheduleOrb;
 
 public class ScheduleEventCard extends AbstractGameAction {
     private final AbstractCard card;
-    private final int slot;
     private final CardGroup source;
     private boolean skipWait;
+    private int slot;
 
     public ScheduleEventCard(AbstractCard card, int scheduleSlot) {
         this(card, scheduleSlot, (CardGroup) null);
@@ -45,6 +46,7 @@ public class ScheduleEventCard extends AbstractGameAction {
                 ((OnEventScheduledPower)pow).onEventScheduled((EventCard)card, slot);
             }
         }
+
         if (!AbstractDungeon.player.hasEmptyOrb())
             for (AbstractOrb o : AbstractDungeon.player.orbs) {
                 if (!(o instanceof ScheduleOrb)) {

@@ -32,6 +32,7 @@ public class PastaAction extends AbstractGameAction {
                         card.initializeDescription();
                     }
                 }
+                
             }
             if (shouldRemove) {
                 addToBot(new RemoveSpecificPowerAction(p, p, PastaInvisPower.POWER_ID));

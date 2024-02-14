@@ -1,6 +1,8 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import schedulemod.actions.CheckSatietyAction;
+
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -22,6 +24,7 @@ public class HokkaidoUniBuffetPower extends BasePower implements CloneablePowerI
     public void atEndOfTurn(boolean isPlayer) {
         flash();
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        addToBot(new CheckSatietyAction(true));
     }
 
     @Override

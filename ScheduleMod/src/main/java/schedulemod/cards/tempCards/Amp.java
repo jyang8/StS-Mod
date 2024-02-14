@@ -25,6 +25,7 @@ public class Amp extends EventCard {
     public Amp() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
+        tags.add(Entropy.Enums.AMP_EVENT);
         setExhaust(true);
         setMagic(AMP, UPGRADE_AMP);
     }

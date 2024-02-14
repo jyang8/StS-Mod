@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import schedulemod.interfaces.OnRefreshHandPower;
-import schedulemod.interfaces.OnTurnEndedEarlyPower;
 
 public class OnRefreshHandPatch {
 

@@ -35,7 +35,7 @@ public class Kaboom extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new KaboomAction((Cleaning)this.cardsToPreview));
+        addToBot(new KaboomAction((Cleaning)this.cardsToPreview.makeCopy()));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SMASH));
     }
 

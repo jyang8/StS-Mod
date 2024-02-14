@@ -88,6 +88,8 @@ public class Entropy extends CustomPlayer {
         public static AbstractCard.CardTags EVENT;
         @SpireEnum(name = "FATIGUE_EVENT")
         public static AbstractCard.CardTags FATIGUE_EVENT;
+        @SpireEnum(name = "AMP_EVENT")
+        public static AbstractCard.CardTags AMP_EVENT;
         @SpireEnum(name = "SCHEDULE_GLOW")
         public static AbstractCard.CardTags SCHEDULE_GLOW;
     }

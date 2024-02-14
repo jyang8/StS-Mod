@@ -15,7 +15,7 @@ public class Markoalas extends BaseRelic {
     private static final RelicTier RARITY = RelicTier.UNCOMMON;
     private static final LandingSound SOUND = LandingSound.SOLID;
 
-    private static final int WRINKLER = 1;
+    private static final int WRINKLER = 3;
 
     public Markoalas() {
         super(ID, NAME, Entropy.Enums.CARD_COLOR, RARITY, SOUND);

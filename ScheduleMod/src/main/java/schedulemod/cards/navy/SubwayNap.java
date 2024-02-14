@@ -19,8 +19,8 @@ public class SubwayNap extends BaseCard {
             0
     );
 
-    private static final int FATIGUE = 4;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int FATIGUE = 5;
+    private static final int UPGRADE_FATIGUE = 3;
     private static final int NUM_CARDS_DRAW = 1;
 
     public SubwayNap() {

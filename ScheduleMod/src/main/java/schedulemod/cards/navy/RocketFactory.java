@@ -17,7 +17,7 @@ public class RocketFactory extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            2
+            1
     );
 
     private static final int DEBUFFS_REQUIRED = 3;

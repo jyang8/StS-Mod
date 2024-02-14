@@ -41,11 +41,11 @@
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
-    "DESCRIPTION": "Gain !B! Block. NL Add !M! *Bread into your hand. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Add !M! *Bread into your hand."
   },
   "${modID}:Bread": {
     "NAME": "Bread",
-    "DESCRIPTION": "Retain. NL Gain 1 *Satiety. NL Apply !M! *Fatigue. NL Exhaust."
+    "DESCRIPTION": "*Retain. NL Gain 1 *Satiety. NL Apply !M! *Fatigue. NL *Exhaust."
   },
   "${modID}:PremiumToaster": {
     "NAME": "Premium Toaster",
@@ -53,7 +53,7 @@
   },
   "${modID}:Gluttony": {
     "NAME": "Gluttony",
-    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage. NL If Fatal, raise your Max Satiety by !M!. NL Exhaust."
+    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage. NL If Fatal, raise your max *Satiety by !M!. NL *Exhaust."
   },
   "${modID}:AgedProsciutto": {
     "NAME": "Aged Prosciutto",
@@ -122,16 +122,17 @@
   },
   "${modID}:Croissant": {
     "NAME": "L'Appartement 4F",
-    "DESCRIPTION": "Add a *Bread into your hand. NL Whenever you play a *Bread this turn, draw !M! cards."
+    "DESCRIPTION": "Whenever you play a *Bread this turn, NL gain !M! *Belly *Size. NL *Exhaust.",
+    "UPGRADE_DESCRIPTION": "*Retain. NL Whenever you play a *Bread this turn, NL gain !M! *Belly *Size. NL *Exhaust."
   },
   "${modID}:ThinkingWithPortals": {
     "NAME": "Thinking With Portals",
-    "DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand. NL Exhaust.",
+    "DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand. NL *Exhaust.",
     "UPGRADE_DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand."
   },
   "${modID}:Understand": {
     "NAME": "Understand.",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0-cost card, this enemy loses !M! strength that turn. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0-cost card, this enemy loses !M! strength that turn. NL *Exhaust."
   },
   "${modID}:Leipaa": {
     "NAME": "Leipää",
@@ -156,7 +157,7 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal 20 or more damage in a single hit, gain !M! *Punctual."
+    "DESCRIPTION": "Whenever you deal 15 or more damage in a single hit, gain !M! *Punctual."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
@@ -259,8 +260,8 @@
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold. NL Gain 2 Satiety.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold. NL Gain 2 Satiety."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold. NL Gain 2 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold. NL Gain 2 *Satiety."
   },
   "${modID}:TastingMenu": {
     "NAME": "Tasting Menu",
@@ -290,7 +291,7 @@
   },
   "${modID}:FortyEightHourDay": {
     "NAME": "48 Hour Day",
-    "DESCRIPTION": "Double events triggered this turn. NL Exhaust.",
+    "DESCRIPTION": "Double events triggered this turn. NL *Exhaust.",
     "UPGRADE_DESCRIPTION": "Double events triggered this turn."
   },
   "${modID}:SubwayScramble": {
@@ -454,14 +455,48 @@
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "Emergency Coffee",
-    "DESCRIPTION": "Gain !B! Block. NL Your next card triggers !M! additional events. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Your next card triggers !M! additional events. NL Gain 1 *Satiety."
   },
   "${modID}:Pasta": {
     "NAME": "Pasta",
-    "DESCRIPTION": "Gain !B! Block. NL Increase Block by !M! each time an enemy falls asleep. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Increase Block by !M! each time an enemy falls asleep. NL Gain 1 *Satiety."
   },
   "${modID}:Metabolize": {
     "NAME": "Metabolize",
     "DESCRIPTION": "Whenever your hand is empty, NL Draw !M! card and gain 1 *Satiety."
+  },
+  "${modID}:ThirteenWater": {
+    "NAME": "13 Water",
+    "DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot *X times.",
+    "UPGRADE_DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot *X+1 times."
+  },
+  "${modID}:FirstCourse": {
+    "NAME": "First Course",
+    "DESCRIPTION": "Gain !M! *Wrinkler. NL Gain 1 Satiety."
+  },
+  "${modID}:SecondCourse": {
+    "NAME": "Second Course",
+    "DESCRIPTION": "Gain !B! Block. NL Gain 1 Satiety."
+  },
+  "${modID}:ThirdCourse": {
+    "NAME": "Third Course",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Gain 1 Satiety."
+  },
+  "${modID}:FourthCourse": {
+    "NAME": "Fourth Course",
+    "DESCRIPTION": "Apply !M! *Drowsy. NL Gain 1 Satiety."
+  },
+  "${modID}:FifthCourse": {
+    "NAME": "Fifth Course",
+    "DESCRIPTION": "Gain !M! *Dexterity. NL Gain 1 Satiety."
+  },
+  "${modID}:SixthCourse": {
+    "NAME": "Sixth Course",
+    "DESCRIPTION": "Gain !M! *Strength. NL Gain 1 Satiety."
+  },
+  "${modID}:SeventhCourse": {
+    "NAME": "Seventh Course",
+    "DESCRIPTION": "Gain [E] [E] [E]. NL Gain 1 Satiety.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]. NL Gain 1 Satiety."
   }
 }

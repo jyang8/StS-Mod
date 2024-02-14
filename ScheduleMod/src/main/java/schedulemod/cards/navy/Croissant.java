@@ -1,7 +1,6 @@
 package schedulemod.cards.navy;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -20,19 +19,22 @@ public class Croissant extends BaseCard {
             1
     );
 
-    private static final int NUM_CARDS_DRAW = 2;
-    private static final int UPGRADE_CARDS_DRAW = 1;
+    private static final int BELLY_SIZE = 1;
+    private static final boolean EXHAUST = true;
+    private static final boolean RETAIN = false;
+    private static final boolean UPGRADE_RETAIN = true;
 
     public Croissant() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setMagic(NUM_CARDS_DRAW, UPGRADE_CARDS_DRAW);
+        setMagic(BELLY_SIZE);
+        setSelfRetain(RETAIN, UPGRADE_RETAIN);
+        setExhaust(EXHAUST);
         this.cardsToPreview = new Bread();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new MakeTempCardInHandAction(new Bread()));
         addToBot(new ApplyPowerAction(p, p, new CroissantPower(p, this.magicNumber)));
     }
 

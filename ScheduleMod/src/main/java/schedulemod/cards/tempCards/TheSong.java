@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.BasicMod;
 import schedulemod.actions.BirthdayAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
@@ -37,11 +39,10 @@ public class TheSong extends EventCard {
                 .get(AbstractDungeon.actionManager);
         int increase = 0;
         for (int i = 0; i < events.size(); i++) {
-            if (events.get(i) instanceof DreadfulStrikes) {
+            if (events.get(i) instanceof TheSong) {
+                increase += DAMAGE_INCREASE;
                 if (events.get(i).upgraded) {
                     increase += UPGRADE_DAMAGE_INCREASE;
-                } else {
-                    increase += DAMAGE_INCREASE;
                 }
             }
         }

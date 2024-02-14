@@ -37,7 +37,6 @@ public class SourdoughBread extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, this.block));
         addToBot(new MakeTempCardInHandAction(this.cardsToPreview.makeStatEquivalentCopy(), this.magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 
     @Override

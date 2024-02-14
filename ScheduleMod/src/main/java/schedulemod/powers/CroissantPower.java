@@ -1,7 +1,8 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -27,7 +28,7 @@ public class CroissantPower extends BasePower implements CloneablePowerInterface
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.hasTag(Entropy.Enums.BREAD)) {
             flash();
-            addToBot(new DrawCardAction(this.owner, this.amount));
+            addToTop(new ApplyPowerAction(owner, owner, new MaxSatietyPower(owner, amount), amount));
         }
     }
 

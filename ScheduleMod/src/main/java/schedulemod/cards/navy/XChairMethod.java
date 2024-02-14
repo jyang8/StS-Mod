@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
 import schedulemod.character.Entropy;
 import schedulemod.powers.FatiguePower;
 import schedulemod.util.CardStats;
@@ -18,7 +20,7 @@ public class XChairMethod extends BaseCard {
             CardTarget.ALL_ENEMY,
             -1);
 
-    private static final int FATIGUE = 4;
+    private static final int FATIGUE = 7;
 
     public XChairMethod() {
         super(ID, info);
@@ -30,10 +32,11 @@ public class XChairMethod extends BaseCard {
         int tmp = this.energyOnUse;
         if (this.upgraded)
             tmp++;
-
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
             addToBot(new ApplyPowerAction(mo, p, new FatiguePower(mo, p, this.magicNumber * tmp)));
         }
+        if (!this.freeToPlayOnce)
+            p.energy.use(EnergyPanel.totalCount);
     }
 
     @Override

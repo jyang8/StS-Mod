@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import schedulemod.actions.CheckSatietyAction;
 import schedulemod.character.Entropy;
 
 import static schedulemod.BasicMod.makeID;
@@ -23,12 +24,7 @@ public class MaxSatietyPower extends BasePower implements CloneablePowerInterfac
     }
 
     private void checkSatiety() {
-        if (AbstractDungeon.player instanceof Entropy) {
-            Entropy p = (Entropy) AbstractDungeon.player;
-            if (p.hasPower(SatietyPower.POWER_ID) && p.maxSatiety <= p.getPower(SatietyPower.POWER_ID).amount) {
-                ((SatietyPower) p.getPower(SatietyPower.POWER_ID)).checkSatiety();
-            }
-        }
+        addToBot(new CheckSatietyAction());
     }
 
     public void onInitialApplication() {

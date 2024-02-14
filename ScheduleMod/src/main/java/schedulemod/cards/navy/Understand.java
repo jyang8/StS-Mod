@@ -18,17 +18,19 @@ public class Understand extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            2
+            1
     );
 
-    private static final int ATTACK_DAMAGE = 11;
+    private static final int ATTACK_DAMAGE = 7;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
     private static final int STRENGTH_LOSS = 1;
     private static final int UPGRADE_STRENGTH_LOSS = 1;
 
     public Understand() {
         super(ID, info);
-        setDamage(ATTACK_DAMAGE);
+        setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
         setMagic(STRENGTH_LOSS, UPGRADE_STRENGTH_LOSS);
+        setExhaust(true);
     }
 
     @Override

@@ -1,15 +1,12 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import static schedulemod.BasicMod.makeID;
@@ -32,10 +29,6 @@ public class UnderstandPower extends BasePower implements CloneablePowerInterfac
             addToBot(new ApplyPowerAction(this.owner, this.source, new StrengthPower(this.owner, -this.amount), -this.amount));
             addToBot(new ApplyPowerAction(this.owner, this.source, new GainStrengthPower(this.owner, strengthLoss), strengthLoss));
         }
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
     }
 
     @Override
