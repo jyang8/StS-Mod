@@ -12,7 +12,7 @@ public class AutomationSciencePower extends BasePower implements CloneablePowerI
     public static final String POWER_ID = makeID("AutomationScience");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = false;
-    private static final int REQUIRED_DAMAGE = 15;
+    private static final int REQUIRED_DAMAGE = 18;
 
     public AutomationSciencePower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);

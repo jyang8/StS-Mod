@@ -220,7 +220,8 @@
   "${modID}:Coffee": {
     "NAME": "Coffee",
     "DESCRIPTIONS": [
-      "Your next card triggers #b",
+      "This turn, your cards triggers #b",
+      " additional event.",
       " additional events."
     ]
   },

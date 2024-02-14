@@ -22,7 +22,6 @@ public class EmergencyRedBull extends BaseCard {
             0
     );
 
-    private static final int ENERGY = 2;
     private static final int HP_LOSS = 3;
     private static final int SCHEDULE_SLOT = 4;
 
@@ -30,13 +29,11 @@ public class EmergencyRedBull extends BaseCard {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         this.cardsToPreview = new JagerBomb();
-        setMagic(ENERGY);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new LoseHPAction(p, p, HP_LOSS));
-        addToBot(new GainEnergyAction(this.magicNumber));
         addToBot(new ScheduleEventCard(cardsToPreview, SCHEDULE_SLOT));
     }
 

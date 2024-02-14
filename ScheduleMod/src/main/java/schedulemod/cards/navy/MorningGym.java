@@ -18,10 +18,13 @@ public class MorningGym extends BaseCard {
             0);
 
     private static final int SCHEDULE_SLOT = 1;
+    private static final boolean EXHAUST = true;
+    private static final boolean UPGRADE_EXHAUST = false;
 
     public MorningGym() {
         super(ID, info);
         setMagic(SCHEDULE_SLOT);
+        setExhaust(EXHAUST, UPGRADE_EXHAUST);
         this.cardsToPreview = new Gym();
     }
 
@@ -32,9 +35,6 @@ public class MorningGym extends BaseCard {
 
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            this.cardsToPreview.upgrade();
-        }
         super.upgrade();
     }
 

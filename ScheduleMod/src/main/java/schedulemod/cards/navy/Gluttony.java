@@ -22,15 +22,14 @@ public class Gluttony extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 14;
-    private static final int UPGRADE_ATTACK_DAMAGE = 2;
+    private static final int UPGRADE_ATTACK_DAMAGE = 4;
     private static final int SATIETY_INCREASE = 1;
-    private static final int UPGRADE_SATIETY_INCREASE = 1;
     private static final boolean EXHAUST = true;
 
     public Gluttony() {
         super(ID, info);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(SATIETY_INCREASE, UPGRADE_SATIETY_INCREASE);
+        setMagic(SATIETY_INCREASE);
         setExhaust(EXHAUST);
     }
 

@@ -22,8 +22,9 @@ public class SupportRotation extends BaseCard {
 
     private static final int ATTACK_DAMAGE = 1;
     private static final int TIMES_ATTACKING = 3;
-    private static final int FATIGUE = 3;
-    private static final int UPGRADE_FATIGUE = 3;
+    private static final int UPGRADE_TIMES_ATTACKING = 1;
+    private static final int FATIGUE = 6;
+    private static final int UPGRADE_FATIGUE = 2;
 
     public SupportRotation() {
         super(ID, info);
@@ -33,7 +34,7 @@ public class SupportRotation extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < TIMES_ATTACKING; i++)
+        for (int i = 0; i < TIMES_ATTACKING + (upgraded ? UPGRADE_TIMES_ATTACKING : 0); i++)
             addToBot(new SupportRotationAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
         addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
     }

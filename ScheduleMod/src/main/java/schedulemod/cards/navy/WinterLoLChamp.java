@@ -1,13 +1,11 @@
 package schedulemod.cards.navy;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.MFUltimate;
 import schedulemod.character.Entropy;
-import schedulemod.powers.MFUltimateInvisPower;
 import schedulemod.util.CardStats;
 
 public class WinterLoLChamp extends BaseCard {
@@ -30,7 +28,6 @@ public class WinterLoLChamp extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
-        addToBot(new ApplyPowerAction(p, p, new MFUltimateInvisPower(p)));
     }
 
     @Override

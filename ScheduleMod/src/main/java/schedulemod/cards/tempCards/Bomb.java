@@ -22,7 +22,7 @@ public class Bomb extends EventCard {
             CardTarget.ENEMY,
             2);
 
-    private static final int ATTACK_DAMAGE = 20;
+    private static final int ATTACK_DAMAGE = 18;
     private static final int CARDS_TO_DRAW = 1;
 
     public Bomb() {

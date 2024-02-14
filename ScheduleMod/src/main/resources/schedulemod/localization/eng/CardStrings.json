@@ -32,12 +32,12 @@
   },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL *Schedule 4: NL *Jager *Bomb.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL Gain [E] [E]. NL *Schedule 4: NL *Jager *Bomb+."
+    "DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb.",
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb+."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
-    "DESCRIPTION": "Deal !D! damage. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Deal !D! damage. NL Gain [E]. NL Gain 1 *Satiety."
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
@@ -96,7 +96,8 @@
   },
   "${modID}:SupportRotation": {
     "NAME": "Support Rotation",
-    "DESCRIPTION": "Deal !D! damage 3 times. NL Apply !M! *Fatigue."
+    "DESCRIPTION": "Deal !D! damage 3 times. NL Apply !M! *Fatigue.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage 4 times. NL Apply !M! *Fatigue."
   },
   "${modID}:CodeReview": {
     "NAME": "Code Review",
@@ -105,7 +106,7 @@
   },
   "${modID}:EnemyIsWeak": {
     "NAME": "Enemy Is Weak",
-    "DESCRIPTION": "Apply !M! Weak. NL Draw 1 card."
+    "DESCRIPTION": "Apply !M! Weak. NL *Exhaust."
   },
   "${modID}:Leftovers": {
     "NAME": "Leftovers",
@@ -157,7 +158,7 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal 15 or more damage in a single hit, gain !M! *Punctual."
+    "DESCRIPTION": "Whenever you deal 18 or more damage in a single hit, gain !M! *Punctual."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
@@ -278,8 +279,8 @@
   },
   "${modID}:DND": {
     "NAME": "D&D",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3: *Dreadful *Strikes.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 1, 2, 3, 4: *Dreadful *Strikes."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 7: *Dreadful *Strikes.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 7: *Dreadful *Strikes+."
   },
   "${modID}:DreadfulStrikes": {
     "NAME": "Dreadful Strikes",
@@ -325,13 +326,13 @@
   },
   "${modID}:MondayArcade": {
     "NAME": "Monday Arcade",
-    "DESCRIPTION": "*Schedule 1: *Arcade.",
-    "UPGRADE_DESCRIPTION": "*Schedule 1: *Arcade+."
+    "DESCRIPTION": "*Schedule 1: *Arcade. NL *Exhaust.",
+    "UPGRADE_DESCRIPTION": "*Schedule 1: *Arcade."
   },
   "${modID}:MorningGym": {
     "NAME": "Morning Gym",
-    "DESCRIPTION": "*Schedule 1: *Gym.",
-    "UPGRADE_DESCRIPTION": "*Schedule 1: *Gym+."
+    "DESCRIPTION": "*Schedule 1: *Gym. NL *Exhaust.",
+    "UPGRADE_DESCRIPTION": "*Schedule 1: *Gym."
   },
   "${modID}:QualityTime": {
     "NAME": "Quality Time",
@@ -455,7 +456,8 @@
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "Emergency Coffee",
-    "DESCRIPTION": "Gain !B! Block. NL Your next card triggers !M! additional events. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turn. NL Gain 1 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional events this turn. NL Gain 1 *Satiety."
   },
   "${modID}:Pasta": {
     "NAME": "Pasta",
@@ -467,8 +469,8 @@
   },
   "${modID}:ThirteenWater": {
     "NAME": "13 Water",
-    "DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot *X times.",
-    "UPGRADE_DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot *X+1 times."
+    "DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot X times.",
+    "UPGRADE_DESCRIPTION": "*Schedule a corresponding *Omakase *Course on the first available slot X+1 times."
   },
   "${modID}:FirstCourse": {
     "NAME": "First Course",

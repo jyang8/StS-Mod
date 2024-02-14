@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import schedulemod.BasicMod;
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.tempCards.Bomb;
@@ -51,7 +50,6 @@ public class BombePower extends BasePower implements CloneablePowerInterface {
                     }
                 }
             }
-            BasicMod.logger.info("BOMBE: " + tmp);
             if (tmp == 1) {
                 addToBot(new ScheduleEventCard(eventToSchedule, SCHEDULE_SLOT));
             }

@@ -202,6 +202,7 @@ public class Entropy extends CustomPlayer {
             schedule.playChannelSFX();
             for (AbstractPower p : this.powers)
                 p.onChannel(schedule);
+            schedule.eventCard.onSchedule();
             AbstractDungeon.actionManager.orbsChanneledThisCombat.add(schedule);
             AbstractDungeon.actionManager.orbsChanneledThisTurn.add(schedule);
         } else {

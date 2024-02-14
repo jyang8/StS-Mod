@@ -2,6 +2,7 @@ package schedulemod.cards.tempCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,18 +11,12 @@ import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.DaggerSprayEffect;
 
-import basemod.BaseMod;
-import basemod.interfaces.OnPlayerDamagedSubscriber;
-import schedulemod.actions.RemoveFromScheduleAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
-import schedulemod.orbs.ScheduleOrb;
-import schedulemod.powers.EventPowerInterface;
+import schedulemod.powers.MFUltimateInvisPower;
 import schedulemod.util.CardStats;
 
 public class MFUltimate extends EventCard {
@@ -45,6 +40,12 @@ public class MFUltimate extends EventCard {
         setMagic(ATTACK_COUNT, UPGRADE_ATTACK_COUNT);
         this.damageType = DamageType.THORNS;
         this.damageTypeForTurn = DamageType.THORNS;
+    }
+
+    @Override
+    public void onSchedule() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new ApplyPowerAction(p, p, new MFUltimateInvisPower(p)));
     }
 
     @Override

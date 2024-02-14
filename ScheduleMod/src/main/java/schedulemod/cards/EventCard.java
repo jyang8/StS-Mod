@@ -37,6 +37,10 @@ public abstract class EventCard extends BaseCard {
         useEvent(p, m);
     }
 
+    public void onSchedule() {
+        
+    }
+
     @Override
     public void calculateCardDamage(AbstractMonster m) {
         super.calculateCardDamage(m);

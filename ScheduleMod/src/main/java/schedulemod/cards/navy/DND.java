@@ -20,23 +20,30 @@ public class DND extends BaseCard {
             CardTarget.ENEMY,
             2);
 
-    private static final int DAMAGE = 10;
-    private static final int SCHEDULE_SLOTS = 3;
-    private static final int UPGRADE_SCHEDULE_SLOTS = 1;
+    private static final int DAMAGE = 9;
+    private static final int UPGRADE_DAMAGE = 3;
+    private static final int SCHEDULE_SLOT = 7;
 
     public DND() {
         super(ID, info);
-        setDamage(DAMAGE);
-        setMagic(SCHEDULE_SLOTS, UPGRADE_SCHEDULE_SLOTS);
+        setDamage(DAMAGE, UPGRADE_DAMAGE);
+        setMagic(SCHEDULE_SLOT);
         this.cardsToPreview = new DreadfulStrikes();
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AttackEffect.SLASH_HORIZONTAL, true));
-        for (int i = 1; i <= this.magicNumber; i++) {
-            addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), i));
+    public void upgrade() {
+        if (!upgraded) {
+            this.cardsToPreview.upgrade();
         }
+        super.upgrade();
+    }
+
+    @Override
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                AttackEffect.SLASH_HORIZONTAL, true));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), magicNumber));
     }
 
     @Override

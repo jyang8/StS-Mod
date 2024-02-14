@@ -3,8 +3,6 @@ package schedulemod.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -25,14 +23,15 @@ public class CoffeePower extends BasePower implements CloneablePowerInterface {
         this.amount += stackAmount;
     }
 
+
     @Override
-    public void onUseCard(AbstractCard card, UseCardAction action) {
+    public void atEndOfTurn(boolean isPlayer) {
             flash();
             addToBot((AbstractGameAction) new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + this.amount + (this.amount == 1 ? DESCRIPTIONS[2] : DESCRIPTIONS[1]);
     }
 
     @Override

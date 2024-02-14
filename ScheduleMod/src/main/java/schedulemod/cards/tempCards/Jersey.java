@@ -19,7 +19,7 @@ public class Jersey extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int STACK_COUNT = 3;
+    private static final int STACK_COUNT = 2;
     private static final int UPGRADE_STACK_COUNT = 1;
 
     public Jersey() {

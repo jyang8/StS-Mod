@@ -20,7 +20,7 @@ public class ChefsTable extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            2
+            3
     );
 
     private static final int DAMAGE = 6;

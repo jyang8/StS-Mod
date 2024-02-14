@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.Pasta;
 import schedulemod.character.Entropy;
-import schedulemod.powers.PastaInvisPower;
+import schedulemod.powers.FatiguePower;
 import schedulemod.util.CardStats;
 
 public class SundayForma extends BaseCard {
@@ -17,28 +17,32 @@ public class SundayForma extends BaseCard {
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
             CardRarity.UNCOMMON,
-            CardTarget.SELF,
+            CardTarget.ENEMY,
             1
     );
 
     private static final int SCHEDULE_SLOT = 7;
-    private static final int UPGRADE_COST = 0;
+    private static final int FATIGUE = 8;
+    private static final int UPGRADE_FATIGUE = 2;
 
     public SundayForma() {
         super(ID, info);
-        this.setCostUpgrade(UPGRADE_COST);
+        setMagic(FATIGUE, UPGRADE_FATIGUE);
         this.cardsToPreview = new Pasta();
     }
 
     @Override
     public void upgrade() {
         super.upgrade();
+        if (!this.upgraded) {
+            this.cardsToPreview.upgrade();
+        }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber), this.magicNumber));
         addToBot(new ScheduleEventCard(this.cardsToPreview, SCHEDULE_SLOT));
-        addToBot(new ApplyPowerAction(p, p, new PastaInvisPower(p, p)));
     }
 
     @Override

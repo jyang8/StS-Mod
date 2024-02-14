@@ -1,7 +1,6 @@
 package schedulemod.cards.navy;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -16,24 +15,23 @@ public class EnemyIsWeak extends BaseCard {
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.ENEMY,
-            1
+            0
     );
 
     private static final int WEAK = 4;
-    private static final int NUM_CARDS_DRAW = 1;
-    private static final int UPGRADE_COST = 0;
+    private static final int UPGRADE_WEAK = 95;
+    private static final boolean EXHAUST = true;
 
 
     public EnemyIsWeak() {
         super(ID, info);
-        setMagic(WEAK);
-        setCostUpgrade(UPGRADE_COST);
+        setMagic(WEAK, UPGRADE_WEAK);
+        setExhaust(EXHAUST);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(m, p, new WeakPower(m, this.magicNumber, false)));
-        addToBot(new DrawCardAction(NUM_CARDS_DRAW));
     }
 
     @Override

@@ -1,19 +1,16 @@
 package schedulemod.cards.tempCards;
 
-import java.util.ArrayList;
-
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.helpers.CardModifierManager;
-import schedulemod.actions.DreadfulStrikesAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
 import schedulemod.modifiers.AmpModifier;
-import schedulemod.patches.EventsPlayedPatch;
+import schedulemod.powers.DreadfulStrikesInvisPower;
 import schedulemod.util.CardStats;
 
 public class DreadfulStrikes extends EventCard {
@@ -25,23 +22,20 @@ public class DreadfulStrikes extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int AMP = 2;
-    private static final int UPGRADE_AMP = 2;
-    private static final int AMP_INCREASE = 2;
+    private static final int AMP = 4;
 
     public DreadfulStrikes() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         tags.add(Entropy.Enums.AMP_EVENT);
         setExhaust(true);
-        ArrayList<EventCard> events = EventsPlayedPatch.EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager);
-        int count = 0;
-        for (int i = 0; i < events.size(); i++) {
-            if (events.get(i) instanceof DreadfulStrikes) {
-                count++;
-            }
-        }
-        setMagic(AMP + (count * AMP_INCREASE), UPGRADE_AMP);
+        setMagic(AMP);
+    }
+    
+    @Override
+    public void onSchedule() {
+        AbstractPlayer p = AbstractDungeon.player;
+        addToBot(new ApplyPowerAction(p, p, new DreadfulStrikesInvisPower(p)));
     }
 
     @Override
@@ -54,8 +48,6 @@ public class DreadfulStrikes extends EventCard {
             return;
         }
         CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
-        addToBot((AbstractGameAction) new DreadfulStrikesAction(this, AMP_INCREASE));
-
     }
 
     @Override
