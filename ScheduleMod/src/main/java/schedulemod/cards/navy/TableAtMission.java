@@ -36,7 +36,7 @@ public class TableAtMission extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ScheduleEventCard(this.cardsToPreview, SCHEDULE_SLOT));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
     }
 
     @Override

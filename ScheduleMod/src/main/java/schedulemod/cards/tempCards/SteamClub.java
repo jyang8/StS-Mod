@@ -18,7 +18,7 @@ public class SteamClub extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int BLOCK_MULTIPLIER = 3;
+    private static final int BLOCK_MULTIPLIER = 2;
     private static final int UPGRADE_BLOCK_MULTIPLIER = 1;
 
     public SteamClub() {

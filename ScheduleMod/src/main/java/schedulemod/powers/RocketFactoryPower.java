@@ -29,6 +29,7 @@ public class RocketFactoryPower extends BasePower implements CloneablePowerInter
             this.remainingTriggers = WRINKLER_TRIGGERS_REQUIRED;
             addToBot(new ScheduleEventCard(new Launch(), SCHEDULE_SLOT));
         }
+        updateDescription();
     }
 
     public void updateDescription() {

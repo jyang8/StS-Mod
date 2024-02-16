@@ -22,13 +22,14 @@ public class RonTheRockJobs extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 9;
-    private static final int UPGRADE_ATTACK_DAMAGE = 4;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
     private static final int WRINKLER = 1;
+    private static final int UPGRADE_WRINKLER = 1;
 
     public RonTheRockJobs() {
         super(ID, info);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(WRINKLER);
+        setMagic(WRINKLER, UPGRADE_WRINKLER);
     }
 
     @Override

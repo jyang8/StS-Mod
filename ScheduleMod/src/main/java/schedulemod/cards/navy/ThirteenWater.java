@@ -59,6 +59,7 @@ public class ThirteenWater extends BaseCard {
                 addToBot(new ScheduleEventCard(courseCards.get(slot), slot + 1));
             }
         }
+        nextMaybeOpenSlot = 0;
     }
 
     private int getNextScheduleSlot() {

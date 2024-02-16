@@ -16,7 +16,7 @@ public class GinAndTonic extends BaseCard {
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.BASIC,
+            CardRarity.COMMON,
             CardTarget.SELF,
             1);
 

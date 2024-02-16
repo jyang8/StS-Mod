@@ -29,7 +29,6 @@ public class SleepAction extends AbstractGameAction {
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.target, this.source,
                     new SleepPower((AbstractMonster) this.target, (AbstractCreature) this.source, this.amount),
                     this.amount, true));
-            this.tickDuration();
             this.isDone = true;
         }
     }

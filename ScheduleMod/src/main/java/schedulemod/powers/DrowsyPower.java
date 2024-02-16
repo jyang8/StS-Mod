@@ -24,6 +24,7 @@ public class DrowsyPower extends BasePower implements CloneablePowerInterface, O
 
     public DrowsyPower(AbstractCreature owner, AbstractCreature source, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
+        priority = 3;
 
         if (AbstractDungeon.actionManager.turnHasEnded && (source instanceof AbstractMonster))
             this.justApplied = true;

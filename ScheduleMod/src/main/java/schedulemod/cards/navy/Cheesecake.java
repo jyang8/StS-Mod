@@ -31,8 +31,8 @@ public class Cheesecake extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
         addToBot(new CheesecakeAction(p, magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
     }
 
     @Override

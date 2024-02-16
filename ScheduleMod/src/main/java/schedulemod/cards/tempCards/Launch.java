@@ -34,6 +34,7 @@ public class Launch extends EventCard {
         setExhaust(true);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
         this.damageType = DamageType.THORNS;
+        this.damageTypeForTurn = damageType;
     }
 
     @Override

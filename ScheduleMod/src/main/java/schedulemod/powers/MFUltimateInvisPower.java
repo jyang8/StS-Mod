@@ -46,7 +46,6 @@ public class MFUltimateInvisPower extends BasePower
                 }
             }
         }
-        addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, POWER_ID));
         return damageAmount;
     }
 

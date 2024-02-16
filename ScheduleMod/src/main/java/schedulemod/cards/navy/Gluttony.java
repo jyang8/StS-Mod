@@ -2,12 +2,14 @@ package schedulemod.cards.navy;
 
 
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.GluttonyAction;
 import schedulemod.character.Entropy;
+import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class Gluttony extends BaseCard {
@@ -36,6 +38,7 @@ public class Gluttony extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GluttonyAction((Entropy)p, m, new DamageInfo(p, this.damage, this.damageTypeForTurn), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1), 1));
     }
 
     @Override

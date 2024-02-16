@@ -53,7 +53,7 @@
   },
   "${modID}:Gluttony": {
     "NAME": "Gluttony",
-    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage. NL If Fatal, raise your max *Satiety by !M!. NL *Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL If Fatal, raise your max *Satiety by !M!. NL Gain 1 *Satiety. NL *Exhaust."
   },
   "${modID}:AgedProsciutto": {
     "NAME": "Aged Prosciutto",
@@ -133,7 +133,7 @@
   },
   "${modID}:Understand": {
     "NAME": "Understand.",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0-cost card, this enemy loses !M! strength that turn. NL *Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0 cost card, this enemy takes !M! damage. NL *Exhaust."
   },
   "${modID}:Leipaa": {
     "NAME": "Leipää",
@@ -145,7 +145,7 @@
   },
   "${modID}:SpiritIsland": {
     "NAME": "Spirit Island",
-    "DESCRIPTION": "Deal !D! damage. NL If you've played a *Skill and *Power this turn, deal !M! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If you've played a *Skill and *Power this turn, repeat this damage !M! times."
   },
   "${modID}:RonTheRockJobs": {
     "NAME": "Ron the Rock Jobs",
@@ -274,8 +274,8 @@
   },
   "${modID}:Drunkus": {
     "NAME": "Drunkus",
-    "DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue.",
-    "UPGRADE_DESCRIPTION": "If triggered by an attack, convert its damage to *Fatigue and increase it by !M!."
+    "DESCRIPTION": "If triggered by an attack, double its damage and convert it to *Fatigue.",
+    "UPGRADE_DESCRIPTION": "If triggered by an attack, triple its damage and convert it to *Fatigue."
   },
   "${modID}:DND": {
     "NAME": "D&D",
@@ -284,7 +284,8 @@
   },
   "${modID}:DreadfulStrikes": {
     "NAME": "Dreadful Strikes",
-    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage and NL this bonus increases by 2 for ALL *Dreadful *Strikes."
+    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 4 at the end of your turn.",
+    "UPGRADE_DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 6 at the end of your turn."
   },
   "${modID}:Lunch": {
     "NAME": "Lunch",
@@ -451,11 +452,11 @@
   },
   "${modID}:SundayForma": {
     "NAME": "Sunday Forma",
-    "DESCRIPTION": "*Schedule 7: *Pasta",
-    "UPGRADE_DESCRIPTION": "*Schedule 7: *Pasta+."
+    "DESCRIPTION": "*Schedule 7: *Pasta. NL Apply !M! *Fatigue. ",
+    "UPGRADE_DESCRIPTION": "*Schedule 7: *Pasta+. NL Apply !M! *Fatigue. "
   },
   "${modID}:EmergencyCoffee": {
-    "NAME": "Emergency Coffee",
+    "NAME": "La Cabra",
     "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turn. NL Gain 1 *Satiety.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional events this turn. NL Gain 1 *Satiety."
   },
@@ -474,31 +475,31 @@
   },
   "${modID}:FirstCourse": {
     "NAME": "First Course",
-    "DESCRIPTION": "Gain !M! *Wrinkler. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !M! *Wrinkler. NL Gain 1 *Satiety."
   },
   "${modID}:SecondCourse": {
     "NAME": "Second Course",
-    "DESCRIPTION": "Gain !B! Block. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Gain 1 *Satiety."
   },
   "${modID}:ThirdCourse": {
     "NAME": "Third Course",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL Gain 1 Satiety."
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Gain 1 *Satiety."
   },
   "${modID}:FourthCourse": {
     "NAME": "Fourth Course",
-    "DESCRIPTION": "Apply !M! *Drowsy. NL Gain 1 Satiety."
+    "DESCRIPTION": "Apply !M! *Drowsy. NL Gain 1 *Satiety."
   },
   "${modID}:FifthCourse": {
     "NAME": "Fifth Course",
-    "DESCRIPTION": "Gain !M! *Dexterity. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !M! *Dexterity. NL Gain 1 *Satiety."
   },
   "${modID}:SixthCourse": {
     "NAME": "Sixth Course",
-    "DESCRIPTION": "Gain !M! *Strength. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain !M! *Strength. NL Gain 1 *Satiety."
   },
   "${modID}:SeventhCourse": {
     "NAME": "Seventh Course",
-    "DESCRIPTION": "Gain [E] [E] [E]. NL Gain 1 Satiety.",
-    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]. NL Gain 1 Satiety."
+    "DESCRIPTION": "Gain [E] [E] [E]. NL Gain 1 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]. NL Gain 1 *Satiety."
   }
 }

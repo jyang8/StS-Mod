@@ -2,6 +2,7 @@ package schedulemod.character;
 
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
+import basemod.abstracts.CustomSavable;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -42,7 +43,7 @@ import java.util.Collections;
 import static schedulemod.BasicMod.characterPath;
 import static schedulemod.BasicMod.logger;
 
-public class Entropy extends CustomPlayer {
+public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
     // Stats
     public static final int ENERGY_PER_TURN = 3;
     public static final int MAX_HP = 70;
@@ -180,7 +181,7 @@ public class Entropy extends CustomPlayer {
     }
 
     public void increaseMaxSatiety(int amount, boolean showEffect) {
-        maxSatiety = BASE_MAX_SATIETY + amount;
+        maxSatiety = maxSatiety + amount;
         AbstractDungeon.effectsQueue.add(new TextAboveCreatureEffect(
                 this.hb.cX - this.animX, this.hb.cY,
                 TEXT[3] + ("+") + Integer.toString(amount), Settings.GREEN_TEXT_COLOR));
@@ -357,5 +358,17 @@ public class Entropy extends CustomPlayer {
 
     public AbstractCreature getCurrentlyEvokingMonster() {
         return currentlyEvokingMonster;
+    }
+
+    @Override
+    public Integer onSave() {
+        return maxSatiety;
+    }
+
+    @Override
+    public void onLoad(Integer maxSatiety) {
+        if (maxSatiety != null) {
+            this.maxSatiety = maxSatiety;
+        }
     }
 }

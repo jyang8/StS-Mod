@@ -24,7 +24,6 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
     public static final String POWER_ID = makeID("Fatigue");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
-    private boolean canCheckIntent = true;
 
     public FatiguePower(AbstractCreature owner, AbstractCreature source, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, amount);
@@ -55,16 +54,6 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
 
     public void updateDescription() {
         this.description = DESCRIPTIONS[0];
-    }
-
-    @Override
-    public void atStartOfTurn() {
-        applySleep();
-    }
-
-    @Override
-    public void atEndOfRound() {
-        canCheckIntent = true;
     }
 
     @Override
@@ -105,7 +94,6 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
         if (m.getIntentDmg() >= 0
                 && amount >= dmg
                 && isAttack) {
-            canCheckIntent = false;
             addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
             if (!this.source.hasPower(SnoozeAlarmPower.POWER_ID)) {
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));

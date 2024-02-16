@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
-import schedulemod.modifiers.AmpModifier;
+import schedulemod.modifiers.MultiplyDamageModifier;
 import schedulemod.patches.FatigueDamageTypePatch;
 import schedulemod.util.CardStats;
 
@@ -20,13 +20,14 @@ public class Drunkus extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int UPGRADE_AMP = 2;
+    private static final int MULTIPLY = 2;
+    private static final int UPGRADE_MULTIPLY = 1;
 
     public Drunkus() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
-        setMagic(UPGRADE_AMP);
+        setMagic(MULTIPLY, UPGRADE_MULTIPLY);
     }
 
     @Override
@@ -39,8 +40,7 @@ public class Drunkus extends EventCard {
             return;
         }
         triggeringCard.damageTypeForTurn = FatigueDamageTypePatch.FATIGUE;
-        if (upgraded)
-            CardModifierManager.addModifier(triggeringCard, new AmpModifier(this.magicNumber));
+        CardModifierManager.addModifier(triggeringCard, new MultiplyDamageModifier(this.magicNumber));
     }
 
     @Override

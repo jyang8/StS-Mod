@@ -22,7 +22,7 @@ public class SundayForma extends BaseCard {
     );
 
     private static final int SCHEDULE_SLOT = 7;
-    private static final int FATIGUE = 8;
+    private static final int FATIGUE = 5;
     private static final int UPGRADE_FATIGUE = 2;
 
     public SundayForma() {
@@ -41,8 +41,8 @@ public class SundayForma extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber), this.magicNumber));
         addToBot(new ScheduleEventCard(this.cardsToPreview, SCHEDULE_SLOT));
+        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber), this.magicNumber));
     }
 
     @Override
