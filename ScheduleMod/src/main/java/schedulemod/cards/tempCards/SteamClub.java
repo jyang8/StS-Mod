@@ -26,7 +26,7 @@ public class SteamClub extends EventCard {
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
         setMagic(BLOCK_MULTIPLIER, UPGRADE_BLOCK_MULTIPLIER);
-    }
+    } 
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {

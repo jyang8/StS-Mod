@@ -38,13 +38,13 @@ public class Bomb extends EventCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractGameAction.AttackEffect.FIRE));
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.LIGHTNING));
+                AbstractGameAction.AttackEffect.FIRE));
         if (upgraded) {
             addToBot(new DrawCardAction(this.magicNumber));
         }

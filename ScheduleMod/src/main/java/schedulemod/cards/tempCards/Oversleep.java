@@ -28,7 +28,7 @@ public class Oversleep extends EventCard {
         setExhaust(true);
         setMagic(PUNCTUAL, UPGRADE_PUNCTUAL);
     }
-
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, this.magicNumber), this.magicNumber));

@@ -302,11 +302,12 @@
   },
   "${modID}:Overcommit": {
     "NAME": "Overcommit",
-    "DESCRIPTION": "Gain !M! *Punctual. *Schedule 7: *Oversleep"
+    "DESCRIPTION": "Gain !M! *Punctual. *Schedule 4: *Oversleep"
   },
   "${modID}:Oversleep": {
     "NAME": "Oversleep",
-    "DESCRIPTION": "Lose !M! *Punctual."
+    "DESCRIPTION": "Lose 8 *Punctual.",
+    "UPGRADE_DESCRIPTION": "Lose 6 *Punctual."
   },
   "${modID}:DateForm": {
     "NAME": "Date Form",
