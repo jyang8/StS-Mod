@@ -29,15 +29,15 @@ public class Blahaj extends BaseRelic implements OnApplyPowerRelic {
 
     @Override
     public boolean onApplyPower(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (abstractPower instanceof SleepPower && target instanceof AbstractMonster)
+        if (abstractPower instanceof SleepPower && target instanceof AbstractMonster) {
+            flash();
             addToBot(new GainEnergyAction(1));
+        }
         return true;
     }
 
     @Override
     public int onApplyPowerStacks(AbstractPower power, AbstractCreature target, AbstractCreature source, int stackAmount) {
-        if (power instanceof SleepPower && target instanceof AbstractMonster)
-            addToBot(new GainEnergyAction(1));
         return stackAmount;
     }
 }

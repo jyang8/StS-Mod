@@ -38,7 +38,6 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
             this.amount = 999;
         if (this.amount <= -999)
             this.amount = -999;
-        applySleep();
     }
 
     public void reducePower(int reduceAmount) {
@@ -54,24 +53,27 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
 
     public void updateDescription() {
         this.description = DESCRIPTIONS[0];
+        if (this.amount < 0) {
+            this.type = PowerType.BUFF;
+        }
     }
 
     @Override
     public void onInitialApplication() {
         if (this.amount == 0)
             addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-        applySleep();
     }
 
     @Override
     public boolean beforeRenderIntent(AbstractMonster monster) {
         if (monster.intent != Intent.SLEEP && AbstractDungeon.actionManager.isEmpty()) {
-            applySleep();
+            checkApplySleep();
         }
         return true;
     }
 
-    private void applySleep() {
+    private void checkApplySleep() {
+        BasicMod.logger.info("CHECKING SLEEP");
         if (!(this.owner instanceof AbstractMonster) || this.owner.hasPower(SleepPower.POWER_ID))
             return;
         AbstractMonster m = (AbstractMonster) this.owner;
@@ -94,10 +96,12 @@ public class FatiguePower extends BasePower implements CloneablePowerInterface, 
         if (m.getIntentDmg() >= 0
                 && amount >= dmg
                 && isAttack) {
+            BasicMod.logger.info("GENERATING SLEEP ACTION!");
             addToTop(new SleepAction((AbstractMonster) this.owner, this.source));
             if (!this.source.hasPower(SnoozeAlarmPower.POWER_ID)) {
                 addToTop(new RemoveSpecificPowerAction(this.owner, this.source, POWER_ID));
             } else {
+                BasicMod.logger.info("REMOVING " + dmg + " STACKS OF FATIGUE");
                 addToTop(new ApplyPowerAction(this.owner, this.source,
                         new FatiguePower(this.owner, this.source, -dmg), -dmg));
             }

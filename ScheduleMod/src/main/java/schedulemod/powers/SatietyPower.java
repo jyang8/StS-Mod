@@ -51,6 +51,10 @@ public class SatietyPower extends BasePower implements CloneablePowerInterface {
         AbstractPlayer p = AbstractDungeon.player;
         int bellySize = p.hasPower(MaxSatietyPower.POWER_ID) ? p.getPower(MaxSatietyPower.POWER_ID).amount : 0;
         this.description = DESCRIPTIONS[0] + ((p instanceof Entropy ? ((Entropy) p).maxSatiety : 1) + bellySize) + DESCRIPTIONS[1];
+        
+        if (this.amount < 0) {
+            this.type = PowerType.BUFF;
+        }
     }
 
     public void checkSatiety() {

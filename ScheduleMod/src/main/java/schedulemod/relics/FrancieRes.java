@@ -31,7 +31,7 @@ public class FrancieRes extends BaseRelic {
 
     @Override
     public boolean canSpawn() {
-        return AbstractDungeon.player.hasRelic("SoothrRes");
+        return AbstractDungeon.player.hasRelic(SoothrRes.ID);
     }
 
     @Override

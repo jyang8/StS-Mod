@@ -2,11 +2,8 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.BetterOnApplyPowerPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -17,7 +14,7 @@ import java.lang.reflect.Field;
 
 import static schedulemod.BasicMod.makeID;
 
-public class SleepPower extends BasePower implements CloneablePowerInterface, BetterOnApplyPowerPower {
+public class SleepPower extends BasePower implements CloneablePowerInterface {
     public static final String POWER_ID = makeID("Sleep");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
@@ -70,11 +67,4 @@ public class SleepPower extends BasePower implements CloneablePowerInterface, Be
     }
 
     public AbstractPower makeCopy() { return new SleepPower((AbstractMonster)owner, source, amount); }
-
-    @Override
-    public boolean betterOnApplyPower(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
-        if (source instanceof AbstractPlayer && ((AbstractPlayer)source).hasRelic(makeID("Blahaj")))
-            addToBot(new GainEnergyAction(1));
-        return true;
-    }
 }

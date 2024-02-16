@@ -29,6 +29,7 @@ public class HungryCamera extends BaseRelic {
         if (triggered) {
             triggered = false;
             AbstractPlayer p = AbstractDungeon.player;
+            flash();
             addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, MAX_SATIETY_INCREASE)));
             addToBot(new ApplyPowerAction(p, p, new LoseMaxSatietyPower(p, MAX_SATIETY_INCREASE)));
         }

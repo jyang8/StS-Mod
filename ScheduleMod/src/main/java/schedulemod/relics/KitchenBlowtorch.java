@@ -1,6 +1,6 @@
 package schedulemod.relics;
 
-import com.evacipated.cardcrawl.mod.stslib.relics.OnReceivePowerRelic;
+import com.evacipated.cardcrawl.mod.stslib.relics.OnApplyPowerRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -14,7 +14,7 @@ import schedulemod.powers.SatietyPower;
 
 import static schedulemod.BasicMod.makeID;
 
-public class KitchenBlowtorch extends BaseRelic implements OnReceivePowerRelic {
+public class KitchenBlowtorch extends BaseRelic implements OnApplyPowerRelic {
     private static final String NAME = "KitchenBlowtorch";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.SHOP;
@@ -36,9 +36,10 @@ public class KitchenBlowtorch extends BaseRelic implements OnReceivePowerRelic {
     }
 
     @Override
-    public boolean onReceivePower(AbstractPower power, AbstractCreature source) {
+    public boolean onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof SatietyPower) {
             AbstractPlayer p = AbstractDungeon.player;
+            flash();
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(source, STRENGTH), STRENGTH));
             addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(source, STRENGTH), STRENGTH));
         }

@@ -18,14 +18,11 @@ public class CalendarTetris extends BaseCard {
             1
     );
 
-    private static final int NUM_CARDS_DRAW = 1;
-    private static final boolean INNATE = false;
-    private static final boolean UPGRADE_INNATE = true;
-
+    private static final int NUM_CARDS_DRAW = 3;
+    private static final int UPGRADE_NUM_CARDS_DRAW = 4;
     public CalendarTetris() {
         super(ID, info);
-        setMagic(NUM_CARDS_DRAW);
-        setInnate(INNATE, UPGRADE_INNATE);
+        setMagic(NUM_CARDS_DRAW, UPGRADE_NUM_CARDS_DRAW);
     }
 
     @Override

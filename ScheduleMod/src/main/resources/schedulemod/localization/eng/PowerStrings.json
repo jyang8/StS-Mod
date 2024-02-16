@@ -15,8 +15,8 @@
   "${modID}:Satiety": {
     "NAME": "Satiety",
     "DESCRIPTIONS": [
-      "Whenever you gain #b",
-      " #ySatiety in one turn, ends your turn."
+      "Whenever you reach #b",
+      " #ySatiety, end your turn."
     ]
   },
   "${modID}:Hunger": {
@@ -156,9 +156,8 @@
   "${modID}:CalendarTetris": {
     "NAME": "Calendar Tetris",
     "DESCRIPTIONS": [
-      "Whenever you schedule an effect, draw #b",
-      " card",
-      " cards."
+      "The first #b",
+      " times you Schedule this turn, draw a card."
     ]
   },
   "${modID}:DeepSleep": {

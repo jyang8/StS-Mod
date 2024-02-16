@@ -1,5 +1,6 @@
 package schedulemod.character;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import basemod.abstracts.CustomSavable;
@@ -68,6 +69,8 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
     private static final String CORPSE = characterPath("corpse.png"); // Corpse is when you die.
     private static final String ENERGY_ORB = characterPath("cardback/navy_energy_orb_p.png");
 
+    private static final String SATIETY_SAVABLE = "ScheduleMod:MaxSatiety";
+
     public static class Enums {
         // These are used to identify your character, as well as your character's card
         // color.
@@ -116,6 +119,8 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
         // characters, these values are fine.
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 220.0F * Settings.scale);
+
+        BaseMod.addSaveField(SATIETY_SAVABLE, this);
     }
 
     @Override

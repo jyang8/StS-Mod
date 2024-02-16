@@ -145,7 +145,7 @@
   },
   "${modID}:SpiritIsland": {
     "NAME": "Spirit Island",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If you've played a *Skill and *Power this turn, repeat this damage !M! times."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If you've played a *Skill and *Power this turn, repeat !M! times."
   },
   "${modID}:RonTheRockJobs": {
     "NAME": "Ron the Rock Jobs",
@@ -394,8 +394,7 @@
   },
   "${modID}:CalendarTetris": {
     "NAME": "Calendar Tetris",
-    "DESCRIPTION": "Whenever you *Schedule an Event, draw a card.",
-    "UPGRADE_DESCRIPTION": "Whenever you *Schedule an Event, draw a card. NL *Innate."
+    "DESCRIPTION": "The first !M! times you *Schedule each turn, draw a card."
   },
   "${modID}:DeepSleep": {
     "NAME": "Deep Sleep",
