@@ -22,14 +22,15 @@ public class DreadfulStrikes extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int AMP = 4;
+    private static final int AMP = 3;
+    private static final int UPGRADE_AMP = 1;
 
     public DreadfulStrikes() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         tags.add(Entropy.Enums.AMP_EVENT);
         setExhaust(true);
-        setMagic(AMP);
+        setMagic(AMP, UPGRADE_AMP);
     }
     
     @Override

@@ -14,8 +14,8 @@ import schedulemod.orbs.ScheduleOrb;
 
 public class DreadfulStrikesAction extends AbstractGameAction {
 
-    private static int INCREASE = 4;
-    private static int UPGRADE_INCREASE = 6;
+    private static int INCREASE = 3;
+    private static int UPGRADE_INCREASE = 4;
 
     public DreadfulStrikesAction() {
         this.duration = Settings.ACTION_DUR_FAST;

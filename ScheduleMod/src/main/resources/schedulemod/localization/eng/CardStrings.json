@@ -284,8 +284,8 @@
   },
   "${modID}:DreadfulStrikes": {
     "NAME": "Dreadful Strikes",
-    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 4 at the end of your turn.",
-    "UPGRADE_DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 6 at the end of your turn."
+    "DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 3 at the end of your turn.",
+    "UPGRADE_DESCRIPTION": "If triggered by an attack, NL it deals !M! additional damage. NL While scheduled, increase this amount by 4 at the end of your turn."
   },
   "${modID}:Lunch": {
     "NAME": "Lunch",

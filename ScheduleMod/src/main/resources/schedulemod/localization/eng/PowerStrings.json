@@ -193,7 +193,7 @@
     "NAME": "Logistic Science",
     "DESCRIPTIONS": [
       "Whenever you gain #yPunctual, gain #b",
-      " #yStrength, #yDexterity, and #Belly #Size this turn."
+      " #yStrength, #yDexterity, and #yBelly #ySize this turn."
     ]
   },
   "${modID}:SpaceScience": {

@@ -20,7 +20,7 @@ public class DND extends BaseCard {
             CardTarget.ENEMY,
             1);
 
-    private static final int DAMAGE = 9;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int SCHEDULE_SLOT = 7;
 
