@@ -31,7 +31,7 @@ public class SpiritIsland extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAllEnemiesAction(p, this.damage, this.damageTypeForTurn,
-                AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                AbstractGameAction.AttackEffect.FIRE));
         boolean skillPlayed = false;
         boolean powerPlayed = false;
         for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
@@ -44,7 +44,7 @@ public class SpiritIsland extends BaseCard {
         if (skillPlayed && powerPlayed) {
             for (int i = 0; i < magicNumber; i++) {
                 addToBot(new DamageAllEnemiesAction(p, this.damage, this.damageTypeForTurn,
-                        AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                        AbstractGameAction.AttackEffect.LIGHTNING));
             }
         }
     }

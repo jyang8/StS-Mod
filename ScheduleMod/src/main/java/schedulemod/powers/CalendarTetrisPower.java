@@ -40,7 +40,7 @@ public class CalendarTetrisPower extends BasePower implements CloneablePowerInte
     public void onEventScheduled(EventCard card, int slot) {
         if (cardsLeftThisTurn > 0) {
             flashWithoutSound();
-            addToBot(new DrawCardAction(this.amount));
+            addToBot(new DrawCardAction(1));
             cardsLeftThisTurn--;
         }
     }
