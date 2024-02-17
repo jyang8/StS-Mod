@@ -33,7 +33,7 @@ public class SleepDebtPower extends BasePower implements CloneablePowerInterface
                 String FATIGUE = makeID("Fatigue");
                 if (m.hasPower(FATIGUE)) {
                     flashWithoutSound();
-                    addToBot(new FatigueLoseHpAction(m, this.owner, m.getPower(FATIGUE).amount, AbstractGameAction.AttackEffect.POISON));
+                    addToBot(new FatigueLoseHpAction(m, this.owner, m.getPower(FATIGUE).amount * this.amount, AbstractGameAction.AttackEffect.POISON));
                 }
             }
         }

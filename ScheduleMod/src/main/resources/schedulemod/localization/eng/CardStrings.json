@@ -41,7 +41,7 @@
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
-    "DESCRIPTION": "Gain !B! Block. NL Add !M! *Bread into your hand."
+    "DESCRIPTION": "Add !M! *Bread into your hand."
   },
   "${modID}:Bread": {
     "NAME": "Bread",
