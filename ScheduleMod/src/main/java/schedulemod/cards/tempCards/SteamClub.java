@@ -20,22 +20,24 @@ public class SteamClub extends EventCard {
 
     private static final int BLOCK_MULTIPLIER = 2;
     private static final int UPGRADE_BLOCK_MULTIPLIER = 1;
+    private static final int BASE_BLOCK = 0;
 
     public SteamClub() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
+        setBlock(BASE_BLOCK);
         setMagic(BLOCK_MULTIPLIER, UPGRADE_BLOCK_MULTIPLIER);
     } 
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SteamClubAction(this.magicNumber));
+        addToBot(new SteamClubAction(this.block, this.magicNumber));
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SteamClubAction(this.magicNumber));
+        addToBot(new SteamClubAction(this.block, this.magicNumber));
     }
 
     @Override

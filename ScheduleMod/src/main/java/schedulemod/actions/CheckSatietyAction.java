@@ -2,6 +2,7 @@ package schedulemod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -35,7 +36,7 @@ public class CheckSatietyAction extends AbstractGameAction {
                     ((HungryCamera) p.getRelic(HungryCamera.ID)).triggered = true;
                 }
                 if (!AbstractDungeon.actionManager.turnHasEnded) {
-                    AbstractDungeon.actionManager.callEndTurnEarlySequence();
+                    addToBot(new PressEndTurnButtonAction());
                 }
             }
         }

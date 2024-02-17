@@ -54,7 +54,7 @@ public class ScheduleOrb extends AbstractOrb {
             ((BaseCard) this.eventCard).belongedOrb = this;
         BasicMod.logger.info("New Schedule Orb made:" + card);
         this.eventCard.beginGlowing();
-        this.name = orbString.NAME + this.eventCard.name;
+        this.name = orbString.NAME + ": " + this.eventCard.name;
         this.channelAnimTimer = 0.5F;
 
         // TODO

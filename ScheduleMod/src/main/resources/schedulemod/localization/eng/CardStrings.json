@@ -57,7 +57,7 @@
   },
   "${modID}:AgedProsciutto": {
     "NAME": "Aged Prosciutto",
-    "DESCRIPTION": "Gain 1 *Satiety. NL Deal !D! damage to a random enemy. NL Apply !M! Weak to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage. NL Gain 1 *Satiety. "
   },
   "${modID}:Hunger": {
     "NAME": "Hunger",
@@ -501,5 +501,9 @@
     "NAME": "Seventh Course",
     "DESCRIPTION": "Gain [E] [E] [E]. NL Gain 1 *Satiety.",
     "UPGRADE_DESCRIPTION": "Gain [E] [E] [E] [E]. NL Gain 1 *Satiety."
+  },
+  "${modID}:TidyUp": {
+    "NAME": "Tidy Up",
+    "DESCRIPTION": "End your turn. NL At the start of your next turn, gain !M! *Punctual that turn."
   }
 }

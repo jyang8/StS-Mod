@@ -1,6 +1,7 @@
 package schedulemod.cards.tempCards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class TastingMenu extends EventCard {
@@ -23,6 +25,7 @@ public class TastingMenu extends EventCard {
 
     private static final int DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 2;
+    private static final int SATIETY = 2;
 
     public TastingMenu() {
         super(ID, info);
@@ -50,6 +53,7 @@ public class TastingMenu extends EventCard {
             addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SMASH));
             addToBot(new WaitAction(0.2F));
         }
+        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
     }
 
     @Override

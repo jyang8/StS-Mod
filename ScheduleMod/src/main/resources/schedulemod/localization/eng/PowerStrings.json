@@ -232,5 +232,19 @@
       " cards and gain #b",
       " #ySatiety."
     ]
+  },
+  "${modID}:LosePunctual": {
+    "NAME": "Lose Punctual",
+    "DESCRIPTIONS": [
+      "At the end of your turn, lose #b",
+      " #yPunctual."
+    ]
+  },
+  "${modID}:TidyUp": {
+    "NAME": "Tidy Up",
+    "DESCRIPTIONS": [
+      "At the start of your next turn, gain #b",
+      " #yPunctual that turn."
+    ]
   }
 }

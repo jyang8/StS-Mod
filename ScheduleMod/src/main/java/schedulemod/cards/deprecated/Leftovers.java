@@ -1,9 +1,10 @@
-package schedulemod.cards.navy;
+package schedulemod.cards.deprecated;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.actions.LeftoversAction;
+import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
@@ -12,7 +13,7 @@ public class Leftovers extends BaseCard {
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.SKILL,
-            CardRarity.COMMON,
+            CardRarity.SPECIAL,
             CardTarget.SELF,
             1
     );

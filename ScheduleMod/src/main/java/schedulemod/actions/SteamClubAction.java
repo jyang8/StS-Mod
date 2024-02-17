@@ -10,10 +10,12 @@ import schedulemod.cards.tempCards.SteamClub;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 
 public class SteamClubAction extends AbstractGameAction {
+    private int baseBlock = 0;
     private int multiplier = 1;
     private float startingDuration = 0.2F;
 
-    public SteamClubAction(int multiplier) {
+    public SteamClubAction(int baseBlock, int multiplier) {
+        this.baseBlock = baseBlock;
         this.multiplier = multiplier;
         this.duration = startingDuration;
         this.actionType = ActionType.BLOCK;
@@ -39,7 +41,7 @@ public class SteamClubAction extends AbstractGameAction {
                 }
             }
             if (tmp > 0) {
-                addToBot(new GainBlockAction(AbstractDungeon.player, tmp));
+                addToBot(new GainBlockAction(AbstractDungeon.player, baseBlock + tmp));
             }
             tickDuration();
             this.isDone = true;

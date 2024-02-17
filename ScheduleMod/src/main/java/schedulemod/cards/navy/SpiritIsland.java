@@ -50,6 +50,24 @@ public class SpiritIsland extends BaseCard {
     }
 
     @Override
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        boolean skillPlayed = false;
+        boolean powerPlayed = false;
+        
+        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
+            if (c.type == CardType.SKILL) {
+                skillPlayed = true;
+            } else if (c.type == CardType.POWER) {
+                powerPlayed = true;
+            }
+        }
+        if (skillPlayed && powerPlayed) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        } 
+      }
+
+    @Override
     public AbstractCard makeCopy() {
         return new SpiritIsland();
     }

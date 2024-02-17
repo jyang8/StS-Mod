@@ -7,10 +7,12 @@ import schedulemod.orbs.ScheduleOrb;
 
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import static schedulemod.BasicMod.makeID;
 
@@ -37,16 +39,15 @@ public class MFUltimateInvisPower extends BasePower
     }
 
     @Override
-    public int onLoseHp(int damageAmount) {
-        if (amount > AbstractDungeon.player.currentBlock) {
+    public void wasHPLost(DamageInfo info, int damageAmount) {
+        if (damageAmount > 0 &&
+                (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT)
             for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
                 AbstractOrb o = AbstractDungeon.player.orbs.get(i);
                 if (o instanceof ScheduleOrb && ((ScheduleOrb) o).eventCard instanceof MFUltimate) {
                     addToBot(new RemoveFromScheduleAction(i));
                 }
             }
-        }
-        return damageAmount;
     }
 
     @Override

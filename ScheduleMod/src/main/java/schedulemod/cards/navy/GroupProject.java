@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
+import schedulemod.powers.SleepPower;
 import schedulemod.util.CardStats;
 
 public class GroupProject extends BaseCard {
@@ -38,7 +39,7 @@ public class GroupProject extends BaseCard {
         if (!canUse)
             return false;
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (!mo.isDeadOrEscaped() && mo.hasPower(makeID("Sleep")))
+            if (!mo.isDeadOrEscaped() && mo.hasPower(SleepPower.POWER_ID))
                 return true;
         }
         this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
