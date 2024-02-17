@@ -96,8 +96,7 @@
   },
   "${modID}:SupportRotation": {
     "NAME": "Support Rotation",
-    "DESCRIPTION": "Deal !D! damage 3 times. NL Apply !M! *Fatigue.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage 4 times. NL Apply !M! *Fatigue."
+    "DESCRIPTION": "Deal !D! damage 3 times. NL Apply !M! *Fatigue."
   },
   "${modID}:CodeReview": {
     "NAME": "Code Review",
