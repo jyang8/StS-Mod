@@ -19,7 +19,7 @@ public class PatricksParablock extends BaseCard {
             2
     );
 
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 9;
     private static final int UPGRADE_BLOCK = 4;
     private static final int WRINKLER = 2;
 

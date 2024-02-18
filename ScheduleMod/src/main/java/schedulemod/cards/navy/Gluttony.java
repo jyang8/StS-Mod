@@ -23,7 +23,7 @@ public class Gluttony extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 14;
+    private static final int ATTACK_DAMAGE = 10;
     private static final int UPGRADE_ATTACK_DAMAGE = 4;
     private static final int SATIETY_INCREASE = 1;
     private static final boolean EXHAUST = true;
