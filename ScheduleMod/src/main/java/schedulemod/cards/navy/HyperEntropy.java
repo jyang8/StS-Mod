@@ -5,6 +5,7 @@ package schedulemod.cards.navy;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
 import schedulemod.actions.HyperEntropyAction;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;

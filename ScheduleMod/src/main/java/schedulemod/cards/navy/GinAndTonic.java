@@ -23,12 +23,13 @@ public class GinAndTonic extends BaseCard {
     private static final int BLOCK = 5;
     private static final int UPGRADE_BLOCK = 3;
     private static final int SCHEDULE_SLOT = 4;
+    private static final int UPGRADE_SCHEDULE_SLOT = -1;
 
     public GinAndTonic() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
         setBlock(BLOCK, UPGRADE_BLOCK);
-        setMagic(SCHEDULE_SLOT);
+        setMagic(SCHEDULE_SLOT, UPGRADE_SCHEDULE_SLOT);
         this.cardsToPreview = new Drunkus();
     }
 

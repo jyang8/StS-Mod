@@ -14,11 +14,11 @@ public class PowerWordSleep extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            2
+            3
     );
 
     private static final boolean EXHAUST = true;
-    private static int UPGRADE_COST = 1;
+    private static int UPGRADE_COST = 2;
 
     public PowerWordSleep() {
         super(ID, info);

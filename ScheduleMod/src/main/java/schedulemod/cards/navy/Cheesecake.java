@@ -20,7 +20,6 @@ public class Cheesecake extends BaseCard {
             1
     );
 
-    private static final int SATIETY = 1;
     private static final int STRENGTH_GAIN = 2;
     private static final int UPGRADE_STRENGTH_GAIN = 1;
 
@@ -31,8 +30,9 @@ public class Cheesecake extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new CheesecakeAction(p, magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
+        int satiety = p.hasPower(SatietyPower.POWER_ID) ? p.getPower(SatietyPower.POWER_ID).amount : 0;
+        addToBot(new CheesecakeAction(p, satiety, magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, satiety)));
     }
 
     @Override

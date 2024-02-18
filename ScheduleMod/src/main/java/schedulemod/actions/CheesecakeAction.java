@@ -13,16 +13,18 @@ public class CheesecakeAction extends AbstractGameAction {
 
     private AbstractPlayer p;
     private int amount;
+    private int satiety;
 
-    public CheesecakeAction(AbstractPlayer p, int amount) {
+    public CheesecakeAction(AbstractPlayer p, int satiety, int amount) {
         this.p = p;
         this.amount = amount;
+        this.satiety = satiety;
     }
     public void update() {
         int bellySize = p.hasPower(MaxSatietyPower.POWER_ID) ? p.getPower(MaxSatietyPower.POWER_ID).amount : 0;
         int maxSatiety = (p instanceof Entropy) ? ((Entropy)p).maxSatiety : 1;
-        int satiety = p.hasPower(SatietyPower.POWER_ID) ? p.getPower(SatietyPower.POWER_ID).amount : 0;
-        if (satiety + 1 >= maxSatiety + bellySize) {
+        int currSatiety = p.hasPower(SatietyPower.POWER_ID) ? p.getPower(SatietyPower.POWER_ID).amount : 0;
+        if (currSatiety + this.satiety >= maxSatiety + bellySize) {
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, amount), amount));
         }
         this.isDone = true;

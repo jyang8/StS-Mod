@@ -195,7 +195,7 @@
   },
   "${modID}:Cheesecake": {
     "NAME": "Cheesecake",
-    "DESCRIPTION": "Gain 1 *Satiety. NL If this ends your turn, gain !M! Strength."
+    "DESCRIPTION": "Double your *Satiety. NL If this ends your turn, gain !M! Strength."
   },
   "${modID}:SweetDreams": {
     "NAME": "Sweet Dreams",
@@ -386,7 +386,8 @@
   },
   "${modID}:PATHTrain": {
     "NAME": "PATH Train",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 5: *Jersey."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 5: *Jersey.",    
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 5: *Jersey+."
   },
   "${modID}:Jersey": {
     "NAME": "Jersey",
