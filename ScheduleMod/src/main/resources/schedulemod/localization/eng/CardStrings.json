@@ -346,8 +346,7 @@
   },
   "${modID}:Kaboom": {
     "NAME": "Kaboom",
-    "DESCRIPTION": "Deal !D! damage. *Exhaust the schedule. *Schedule 1: Cleaning.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. *Exhaust the schedule. *Schedule 1: Cleaning+."
+    "DESCRIPTION": "Costs 1 less for each *Scheduled event. NL Deal !D! damage !M! times. NL *Exhaust the schedule."
   },
   "${modID}:Cleaning": {
     "NAME": "Cleaning",

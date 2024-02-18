@@ -27,6 +27,6 @@ public class RemoveFromScheduleAction extends AbstractGameAction {
         EmptyOrbSlot emptyOrb = new EmptyOrbSlot(o.cX, o.cY);
         AbstractDungeon.player.orbs.set(slot, emptyOrb);
         emptyOrb.setSlot(slot, AbstractDungeon.player.orbs.size());
-        this.isDone = false;
+        this.isDone = true;
     }
 }
