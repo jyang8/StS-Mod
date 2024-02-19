@@ -9,18 +9,19 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static schedulemod.BasicMod.makeID;
 
-public class LoseEnergyPower extends BasePower implements CloneablePowerInterface {
-    public static final String POWER_ID = makeID("LoseEnergy");
+public class VoidPower extends BasePower implements CloneablePowerInterface {
+    public static final String POWER_ID = makeID("Void");
     private static final AbstractPower.PowerType TYPE = PowerType.DEBUFF;
     private static final boolean TURN_BASED = true;
 
-    public LoseEnergyPower(AbstractCreature owner, int amount) {
+    public VoidPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
     }
 
     @Override
     public void atStartOfTurn() {
         addToBot(new LoseEnergyAction(amount));
+        addToBot(new RemoveSpecificPowerAction(owner, owner, POWER_ID));
     }
 
     public void stackPower(int stackAmount) {
@@ -48,5 +49,5 @@ public class LoseEnergyPower extends BasePower implements CloneablePowerInterfac
     }
 
     @Override
-    public AbstractPower makeCopy() { return new LoseEnergyPower(owner, amount); }
+    public AbstractPower makeCopy() { return new VoidPower(owner, amount); }
 }

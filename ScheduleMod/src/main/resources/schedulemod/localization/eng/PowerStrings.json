@@ -71,10 +71,10 @@
       " #yWrinkler."
     ]
   },
-  "${modID}:LoseEnergy": {
-    "NAME": "Lose Energy",
+  "${modID}:Void": {
+    "NAME": "Void",
     "DESCRIPTIONS": [
-      "At the start of your turn, lose ",
+      "At the start of your next turn, lose ",
       ""
     ]
   },
@@ -245,6 +245,13 @@
     "DESCRIPTIONS": [
       "At the start of your next turn, gain #b",
       " #yPunctual that turn."
+    ]
+  },
+  "${modID}:Bakery": {
+    "NAME": "Bakery",
+    "DESCRIPTIONS": [
+      "At the start of your turn, add #b",
+      " #yBread to your hand."
     ]
   }
 }

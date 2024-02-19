@@ -2,10 +2,7 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static schedulemod.BasicMod.makeID;
@@ -14,34 +11,18 @@ public class SnoozeAlarmPower extends BasePower implements CloneablePowerInterfa
     public static final String POWER_ID = makeID("SnoozeAlarm");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = true;
-    private boolean upgraded;
 
-    public SnoozeAlarmPower(AbstractCreature owner, AbstractCreature source, boolean upgraded) {
-        super(POWER_ID, TYPE, TURN_BASED, owner, source, -1);
-        this.upgraded = upgraded;
+    public SnoozeAlarmPower(AbstractCreature owner) {
+        super(POWER_ID, TYPE, TURN_BASED, owner, owner, -1);
         updateDescription();
-    }
-
-    public void stackPower(int stackAmount) {
-        this.fontScale = 8.0F;
-        this.amount += stackAmount;
     }
 
     public void updateDescription() {
         this.description = DESCRIPTIONS[0];
-        if (this.upgraded)
-            this.description += DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
-    }
-
-    @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (this.upgraded && power instanceof SleepPower && target instanceof AbstractMonster) {
-            addToBot(new ApplyPowerAction(target, source, new DrowsyPower(target, source, 1)));
-        }
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new SnoozeAlarmPower(owner, source, upgraded);
+        return new SnoozeAlarmPower(owner);
     }
 }
