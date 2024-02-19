@@ -5,6 +5,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
+
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
 import schedulemod.powers.PunctualPower;
@@ -50,16 +53,18 @@ public abstract class EventCard extends BaseCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
-        super.calculateCardDamage(m);
-        if (AbstractDungeon.player.hasPower(PunctualPower.POWER_ID)) {
-            int amount = AbstractDungeon.player.getPower(PunctualPower.POWER_ID).amount;
-            this.damage = this.baseDamage + amount;
-            this.isDamageModified = this.damage != this.baseDamage;
-            this.block = this.baseBlock + amount;
-            this.isBlockModified = this.block != this.baseBlock;
-            if (this.tags.contains(Entropy.Enums.FATIGUE_EVENT) || this.tags.contains(Entropy.Enums.AMP_EVENT)) {
-                this.magicNumber = this.baseMagicNumber + amount;
-                this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+        if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
+            super.calculateCardDamage(m);
+            if (AbstractDungeon.player.hasPower(PunctualPower.POWER_ID)) {
+                int amount = AbstractDungeon.player.getPower(PunctualPower.POWER_ID).amount;
+                this.damage = this.baseDamage + amount;
+                this.isDamageModified = this.damage != this.baseDamage;
+                this.block = this.baseBlock + amount;
+                this.isBlockModified = this.block != this.baseBlock;
+                if (this.tags.contains(Entropy.Enums.FATIGUE_EVENT) || this.tags.contains(Entropy.Enums.AMP_EVENT)) {
+                    this.magicNumber = this.baseMagicNumber + amount;
+                    this.isMagicNumberModified = this.magicNumber != this.baseMagicNumber;
+                }
             }
         }
     }

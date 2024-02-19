@@ -61,8 +61,8 @@
   },
   "${modID}:Hunger": {
     "NAME": "Hunger",
-    "DESCRIPTION": "Gain !B! Block. NL Lose !M! *Satiety. NL *Schedule 3: *Dinner *Round *2.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Lose ALL *Satiety. NL *Schedule 3: *Dinner *Round *2."
+    "DESCRIPTION": "Gain !B! Block. NL Lose !M! *Satiety. NL *Schedule 3: *Dinner *Round *II.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Lose ALL *Satiety. NL *Schedule 3: *Dinner *Round *II."
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
