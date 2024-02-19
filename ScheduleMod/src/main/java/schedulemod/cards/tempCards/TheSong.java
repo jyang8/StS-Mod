@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import schedulemod.BasicMod;
 import schedulemod.actions.BirthdayAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
@@ -27,8 +26,8 @@ public class TheSong extends EventCard {
             CardTarget.ENEMY,
             2);
 
-    private static final int DAMAGE = 10;
-    private static final int DAMAGE_INCREASE = 5;
+    private static final int DAMAGE = 12;
+    private static final int DAMAGE_INCREASE = 4;
     private static final int UPGRADE_DAMAGE_INCREASE = 2;
 
     public TheSong() {

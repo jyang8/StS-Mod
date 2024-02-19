@@ -39,10 +39,18 @@ public class DailyReminders extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
         ArrayList<EventCard> eventsPlayed = EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager);
+        ArrayList<EventCard> eventsToSchedule = new ArrayList<EventCard>();
         if (eventsPlayed.size() > 0) {
-            EventCard lastEvent = eventsPlayed.get(eventsPlayed.size() - 1);
-            if (lastEvent.triggeringCard == this) {
-              addToBot(new ScheduleEventCard(lastEvent.makeStatEquivalentCopy(), SCHEDULE_SLOT));                
+            for (EventCard event : eventsPlayed) {
+                if (event.triggeringCard == this) {
+                    eventsToSchedule.add(event);
+                }
+            }
+            
+            int offset = eventsToSchedule.size() - 1;
+            for (EventCard event : eventsToSchedule) {
+                addToBot(new ScheduleEventCard(event.makeStatEquivalentCopy(), SCHEDULE_SLOT - offset));    
+                offset--;
             }
         }
     }

@@ -237,7 +237,7 @@
   },
   "${modID}:DailyReminders": {
     "NAME": "Daily Reminders",
-    "DESCRIPTION": "Deal !D! damage. NL If this card triggers an event, NL *Schedule 7 a copy of it."
+    "DESCRIPTION": "Deal !D! damage. NL For each triggered an event, *Schedule a copy of in the last open slot."
   },
   "${modID}:HappyBirthday": {
     "NAME": "Happy Birthday",
@@ -456,8 +456,7 @@
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "La Cabra",
-    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turn. NL Gain 1 *Satiety.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional events this turn. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turns. NL Gain 1 *Satiety."
   },
   "${modID}:Pasta": {
     "NAME": "Pasta",
