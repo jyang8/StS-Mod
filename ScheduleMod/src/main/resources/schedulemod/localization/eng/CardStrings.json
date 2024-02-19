@@ -32,8 +32,8 @@
   },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb+."
+    "DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb.",
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb+."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
@@ -211,7 +211,7 @@
   },
   "${modID}:HyperEntropy": {
     "NAME": "HyperEntropy",
-    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL *Exhaust."
+    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL Lose !M! Max HP. NL *Exhaust."
   },
   "${modID}:HyperfloorMonster": {
     "NAME": "Elite",

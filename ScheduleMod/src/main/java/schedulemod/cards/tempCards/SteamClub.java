@@ -1,12 +1,17 @@
 package schedulemod.cards.tempCards;
 
+import java.util.ArrayList;
+
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.actions.SteamClubAction;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
+import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 import schedulemod.util.CardStats;
 
 public class SteamClub extends EventCard {
@@ -38,6 +43,28 @@ public class SteamClub extends EventCard {
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
         addToBot(new SteamClubAction(this.block, this.magicNumber));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        super.calculateCardDamage(m);
+        ArrayList<EventCard> eventsPlayed = EventsPlayedThisCombatField.eventsPlayedThisCombat
+                    .get(AbstractDungeon.actionManager);
+            int tmp = 0;
+            if (eventsPlayed.size() < 2) {
+                return;
+            }
+
+            for (int i = eventsPlayed.size() - 2; i >= 0; i--) {
+                if (eventsPlayed.get(i) instanceof SteamClub) {
+                    break;
+                } else {
+                    tmp += magicNumber;
+                }
+            }
+            if (tmp + block > 0) {
+                this.rawDescription = cardStrings.DESCRIPTION + "(" + (tmp + block) + ")";
+            }
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.actions.HyperEntropyAction;
+import schedulemod.actions.LoseMaxHpAction;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
@@ -20,18 +21,21 @@ public class HyperEntropy extends BaseCard {
             CardTarget.NONE,
             3
     );
-    private static final int UPGRADE_COST = 2;
     private static final boolean EXHAUST = true;
+
+    private static final int MAX_HP_LOSS = 2;
+    private static final int UPGRADE_MAX_HP_LOSS = -1;
 
     public HyperEntropy() {
         super(ID, info);
         setExhaust(EXHAUST);
-        setCostUpgrade(UPGRADE_COST);
+        setMagic(MAX_HP_LOSS, UPGRADE_MAX_HP_LOSS);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new HyperEntropyAction((Entropy)p));
+        addToBot(new LoseMaxHpAction(magicNumber));
     }
 
     @Override
