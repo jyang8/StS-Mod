@@ -119,9 +119,7 @@
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
     "DESCRIPTIONS": [
-      "Excess #yFatigue is not consumed. ",
-      "Whenever an enemy falls asleep, apply #b",
-      " #yDrowsy."
+      "Excess #yFatigue is not consumed."
     ]
   },
   "${modID}:Punctual": {

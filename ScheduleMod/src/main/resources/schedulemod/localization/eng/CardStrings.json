@@ -207,8 +207,7 @@
   },
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
-    "DESCRIPTION": "Excess *Fatigue is not consumed.",
-    "UPGRADE_DESCRIPTION": "Excess *Fatigue is not consumed. NL Whenever an enemy falls asleep, apply !M! *Drowsy."
+    "DESCRIPTION": "Excess *Fatigue is not consumed."
   },
   "${modID}:HyperEntropy": {
     "NAME": "HyperEntropy",
