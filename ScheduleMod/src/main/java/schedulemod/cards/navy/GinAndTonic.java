@@ -36,7 +36,7 @@ public class GinAndTonic extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, this.block));
-        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), magicNumber));
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, 1)));
     }
 

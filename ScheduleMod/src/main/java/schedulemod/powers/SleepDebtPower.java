@@ -16,8 +16,8 @@ public class SleepDebtPower extends BasePower implements CloneablePowerInterface
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = true;
 
-    public SleepDebtPower(AbstractCreature owner, int amount) {
-        super(POWER_ID, TYPE, TURN_BASED, owner, amount);
+    public SleepDebtPower(AbstractCreature owner) {
+        super(POWER_ID, TYPE, TURN_BASED, owner, -1);
         this.priority = 4;
     }
 
@@ -33,12 +33,12 @@ public class SleepDebtPower extends BasePower implements CloneablePowerInterface
                 String FATIGUE = makeID("Fatigue");
                 if (m.hasPower(FATIGUE)) {
                     flashWithoutSound();
-                    addToBot(new FatigueLoseHpAction(m, this.owner, m.getPower(FATIGUE).amount * this.amount, AbstractGameAction.AttackEffect.POISON));
+                    addToBot(new FatigueLoseHpAction(m, this.owner, m.getPower(FATIGUE).amount, AbstractGameAction.AttackEffect.POISON));
                 }
             }
         }
     }
 
     @Override
-    public AbstractPower makeCopy() { return new SleepDebtPower(owner, amount); }
+    public AbstractPower makeCopy() { return new SleepDebtPower(owner); }
 }

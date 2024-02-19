@@ -10,16 +10,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import schedulemod.powers.PunctualPower;
+import schedulemod.powers.MaxSatietyPower;
 
-public class CaffeinePotion extends BasePotion {
+public class BottomlessPotion extends BasePotion {
 
     private static final int POTENCY = 2;
 
-    public static final String POTION_ID = makeID("Caffeine");
+    public static final String POTION_ID = makeID("Bottomless");
 
-    public CaffeinePotion() {
-        super(POTION_ID, POTENCY, AbstractPotion.PotionRarity.COMMON, AbstractPotion.PotionSize.S, Color.BROWN, Color.BROWN, Color.TAN);
+    public BottomlessPotion() {
+        super(POTION_ID, POTENCY, AbstractPotion.PotionRarity.UNCOMMON, AbstractPotion.PotionSize.SPHERE, Color.PURPLE, Color.VIOLET, Color.CLEAR);
     }
 
     public int getPotency() {
@@ -29,7 +29,7 @@ public class CaffeinePotion extends BasePotion {
     public void use(AbstractCreature target) {
         AbstractPlayer p = AbstractDungeon.player;
         if ((AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) {
-            addToBot(new ApplyPowerAction(p, p, new PunctualPower(p, p, potency), potency));
+            addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, potency), potency));
         }
     }
 

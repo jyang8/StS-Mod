@@ -12,6 +12,7 @@ import com.evacipated.cardcrawl.modthespire.ModInfo;
 import com.evacipated.cardcrawl.modthespire.Patcher;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.*;
@@ -23,6 +24,9 @@ import org.scannotation.AnnotationDB;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
 import schedulemod.orbs.ScheduleOrb;
+import schedulemod.potions.BottomlessPotion;
+import schedulemod.potions.CaffeinePotion;
+import schedulemod.potions.MelatoninPotion;
 import schedulemod.relics.BaseRelic;
 import schedulemod.util.GeneralUtils;
 import schedulemod.util.KeywordInfo;
@@ -93,6 +97,11 @@ public class BasicMod implements
         //Set up the mod information displayed in the in-game mods menu.
         //The information used is taken from your pom.xml file.
         BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+
+        //Add potions
+        BaseMod.addPotion(CaffeinePotion.class, Color.BROWN, Color.BROWN, Color.TAN, CaffeinePotion.POTION_ID, Entropy.Enums.ENTROPY);
+        BaseMod.addPotion(MelatoninPotion.class, Color.GOLD, Color.YELLOW, null, MelatoninPotion.POTION_ID, Entropy.Enums.ENTROPY);
+        BaseMod.addPotion(BottomlessPotion.class, Color.PURPLE, Color.VIOLET, Color.CLEAR, BottomlessPotion.POTION_ID, Entropy.Enums.ENTROPY);
     }
 
     /*----------Localization----------*/

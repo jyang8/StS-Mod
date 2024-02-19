@@ -28,7 +28,7 @@ public class SleepDebt extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new SleepDebtPower(p, 1)));
+        addToBot(new ApplyPowerAction(p, p, new SleepDebtPower(p)));
     }
 
     @Override
