@@ -28,8 +28,8 @@ public class MFUltimate extends EventCard {
             CardTarget.ALL_ENEMY,
             2);
 
-    private static final int ATTACK_DAMAGE = 7;
-    private static final int ATTACK_COUNT = 3;
+    private static final int ATTACK_DAMAGE = 6;
+    private static final int ATTACK_COUNT = 4;
     private static final int UPGRADE_ATTACK_COUNT = 1;
 
     public MFUltimate() {

@@ -321,6 +321,12 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
     }
 
     @Override
+    public void applyStartOfCombatLogic() {
+        this.satietyGainedThisCombat = 0;
+        super.applyStartOfCombatLogic();
+    }
+
+    @Override
     public void evokeOrb() {
         if (!this.orbs.isEmpty()) {
             ((AbstractOrb) this.orbs.get(0)).onEvoke();

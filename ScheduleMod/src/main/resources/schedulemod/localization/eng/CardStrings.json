@@ -259,12 +259,12 @@
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold. NL Gain 2 *Satiety.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold. NL Gain 2 *Satiety."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold."
   },
   "${modID}:TastingMenu": {
     "NAME": "Tasting Menu",
-    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat. NL Gain 2 *Satiety."
   },
   "${modID}:GinAndTonic": {
     "NAME": "Gin and Tonic",

@@ -26,7 +26,6 @@ public class ChefsTable extends BaseCard {
     private static final int DAMAGE = 6;
     private static final int GOLD_LOSS = 30;
     private static final int UPGRADE_GOLD_LOSS = -10;
-    private static final int SATIETY = 2;
     private static final int SCHEDULE_SLOT = 6;
 
     public ChefsTable() {
@@ -41,7 +40,6 @@ public class ChefsTable extends BaseCard {
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
         addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
         addToBot(new LoseGoldAction(this.magicNumber));
-        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
     }
 
     @Override
