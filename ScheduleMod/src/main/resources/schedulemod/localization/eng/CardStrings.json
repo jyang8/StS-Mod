@@ -509,7 +509,7 @@
     "UPGRADE_DESCRIPTION": "Put the triggering card in your hand. NL Gain 1 *Satiety."
   },
   "${modID}:Bakery": {
-    "NAME": "Bakery",
+    "NAME": "Café d’Avignon",
     "DESCRIPTION": "At the start of your turn, add a *Bread to your hand.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, add a *Bread to your hand. NL *Innate."
   }

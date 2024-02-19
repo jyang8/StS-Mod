@@ -246,7 +246,7 @@
     ]
   },
   "${modID}:Bakery": {
-    "NAME": "Bakery",
+    "NAME": "Café d’Avignon",
     "DESCRIPTIONS": [
       "At the start of your turn, add #b",
       " #yBread to your hand."
