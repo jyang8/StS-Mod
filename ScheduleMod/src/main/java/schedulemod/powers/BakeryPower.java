@@ -29,7 +29,7 @@ public class BakeryPower extends BasePower implements CloneablePowerInterface {
         if ((AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT &&
                 !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
             flashWithoutSound();
-            addToBot(new MakeTempCardInHandAction(new Bread()));
+            addToBot(new MakeTempCardInHandAction(new Bread(), this.amount));
         }
     }
 
