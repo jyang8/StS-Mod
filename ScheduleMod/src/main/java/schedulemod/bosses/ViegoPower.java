@@ -27,9 +27,13 @@ public class ViegoPower extends BasePower {
     }
 
     @Override
+    public void updateDescription() {
+        this.description = DESCRIPTIONS[0];
+    }
+
+    @Override
     public void atEndOfRound() {
         if (!this.skipFirst) {
-            flash();
             AbstractPlayer player = AbstractDungeon.player;
             int amount;
             if (player instanceof Entropy) {
@@ -43,8 +47,11 @@ public class ViegoPower extends BasePower {
             } else {
                 amount = 1;
             }
-            addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, amount),
-                    amount));
+            if (amount > 0) {
+                flash();
+                addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, amount),
+                        amount));
+            }
         } else {
             this.skipFirst = false;
         }

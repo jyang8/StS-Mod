@@ -23,10 +23,6 @@ public class BossPatch {
             if (AbstractDungeon.player instanceof Entropy &&
                     (!UnlockTracker.isBossSeen(BossBen.ID))) {
                 TheBeyond.bossList.clear();
-                TheBeyond.bossList.add("Awakened One");
-                TheBeyond.bossList.add("Time Eater");
-                TheBeyond.bossList.add("Donu and Deca");
-                Collections.shuffle(TheBeyond.bossList, new java.util.Random(TheBeyond.monsterRng.randomLong()));
                 TheBeyond.bossList.add(BossBen.ID);
                 return SpireReturn.Return();
             } else {
