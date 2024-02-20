@@ -6,7 +6,7 @@
   "${modID}:ViegoPower": {
     "NAME": "Viego",
     "DESCRIPTIONS": [
-      "At the start of turn, Viego gains 1 #yStrength for each of your scheduled cards."
+      "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
     ]
   },
   "${modID}:PremiumToaster": {

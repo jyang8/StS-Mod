@@ -41,6 +41,21 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import basemod.abstracts.CustomMonster;
 
+/*
+ * TODO
+ * 
+ * - More forms
+ *   - Attacks
+ *   - Power
+ * - Form switching logic
+ * - Art for boss
+ * - Art for power icons
+ * - Animations for attacks
+ * - Playtest 
+ *   - Balance
+ *   - Bugs
+ *   - Funness
+ */
 public class BossBen extends CustomMonster {
 
     public static final String ID = makeID("TheBen");
