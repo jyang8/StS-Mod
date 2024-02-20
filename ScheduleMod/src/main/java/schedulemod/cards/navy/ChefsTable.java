@@ -1,6 +1,5 @@
 package schedulemod.cards.navy;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -10,7 +9,6 @@ import schedulemod.actions.LoseGoldAction;
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.TastingMenu;
 import schedulemod.character.Entropy;
-import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class ChefsTable extends BaseCard {
