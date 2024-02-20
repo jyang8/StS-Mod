@@ -2,6 +2,6 @@
   "${modID}:TheBen": {
     "NAME": "The Ben",
     "DIALOG": ["Welcome Entropy", "Farewell"],
-    "MOVES": []
+    "MOVES": ["Blade of the Ruined King", "Spectral Maw", "Harrowed Path"]
   }
 }

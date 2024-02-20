@@ -2,6 +2,7 @@ package schedulemod.bosses;
 
 import static schedulemod.BasicMod.makeID;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -19,28 +20,34 @@ public class ViegoPower extends BasePower {
     public static final String POWER_ID = makeID(ViegoPower.class.getSimpleName());
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = false;
+    private boolean skipFirst = true;
 
     public ViegoPower(AbstractCreature owner) {
-        super(POWER_ID, TYPE, TURN_BASED, owner, 0);
+        super(POWER_ID, TYPE, TURN_BASED, owner, -1);
     }
 
     @Override
-    public void atStartOfTurn() {
-        AbstractPlayer player = AbstractDungeon.player;
-        int amount;
-        if (player instanceof Entropy) {
-            amount = 0;
-            Entropy entropy = (Entropy) player;
-            for (AbstractOrb orb : entropy.orbs) {
-                if (!(orb instanceof EmptyOrbSlot)) {
-                    amount++;
+    public void atEndOfRound() {
+        if (!this.skipFirst) {
+            flash();
+            AbstractPlayer player = AbstractDungeon.player;
+            int amount;
+            if (player instanceof Entropy) {
+                amount = 0;
+                Entropy entropy = (Entropy) player;
+                for (AbstractOrb orb : entropy.orbs) {
+                    if (!(orb instanceof EmptyOrbSlot)) {
+                        amount++;
+                    }
                 }
+            } else {
+                amount = 1;
             }
+            addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, amount),
+                    amount));
         } else {
-            amount = 1;
+            this.skipFirst = false;
         }
-        addToBot(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, amount)));
-
     }
 
 }

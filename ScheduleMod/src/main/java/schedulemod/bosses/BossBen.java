@@ -97,14 +97,15 @@ public class BossBen extends CustomMonster {
         this.damage.add(new DamageInfo(this, this.spectralMawDamage, DamageInfo.DamageType.NORMAL));
     }
 
+    @Override
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_BEYOND");
         // UnlockTracker.markBossAsSeen(ID);
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-                this, this,
-                new ViegoPower(this)));
+        // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+        // this, this,
+        // new ViegoPower(this)));
     }
 
     @Override
@@ -113,17 +114,18 @@ public class BossBen extends CustomMonster {
             case VIEGO:
                 if (num < 40) {
                     if (!lastMove(BLADE_OF_THE_RUINED_KING)) {
-                        this.setMove(BLADE_OF_THE_RUINED_KING, Intent.ATTACK);
+                        this.setMove(MOVES[0], BLADE_OF_THE_RUINED_KING, Intent.ATTACK,
+                                this.damage.get(0).base, 2, true);
                         return;
                     }
                 } else if (num < 75) {
                     if (!lastMove(SPECTRAL_MAW)) {
-                        this.setMove(SPECTRAL_MAW, Intent.ATTACK_DEBUFF);
+                        this.setMove(MOVES[1], SPECTRAL_MAW, Intent.ATTACK_DEBUFF, this.damage.get(1).base);
                         return;
                     }
                 } else {
                     if (!lastMove(HARROWED_PATH)) {
-                        this.setMove(HARROWED_PATH, Intent.DEFEND_BUFF);
+                        this.setMove(MOVES[2], HARROWED_PATH, Intent.DEFEND_BUFF);
                         return;
                     }
                 }
@@ -136,29 +138,33 @@ public class BossBen extends CustomMonster {
 
     @Override
     public void takeTurn() {
-        int i;
         if (this.firstTurn) {
             AbstractDungeon.actionManager.addToBottom(
                     new TalkAction(this, DIALOG[0], 0.5F, 2.0F));
+            // TODO remove
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+                    this, this,
+                    new ViegoPower(this)));
             this.firstTurn = false;
         }
         switch (this.nextMove) {
             case BLADE_OF_THE_RUINED_KING:
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
-                for (i = 0; i < 3; i++) {
-                    AbstractDungeon.actionManager
-                            .addToBottom(
-                                    (AbstractGameAction) new VFXAction((AbstractCreature) this,
-                                            (AbstractGameEffect) new ShockWaveEffect(this.hb.cX, this.hb.cY,
-                                                    Settings.BLUE_TEXT_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC),
-                                            0.75F));
-                    AbstractDungeon.actionManager.addToBottom(
-                            (AbstractGameAction) new DamageAction((AbstractCreature) AbstractDungeon.player, this.damage
-                                    .get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-                }
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAction(AbstractDungeon.player, this.damage
+                                .get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAction(AbstractDungeon.player, this.damage
+                                .get(0), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
                 break;
             case SPECTRAL_MAW:
+                AbstractDungeon.actionManager.addToBottom(
+                        new VFXAction(this,
+                                new ShockWaveEffect(this.hb.cX, this.hb.cY,
+                                        Settings.BLUE_TEXT_COLOR, ShockWaveEffect.ShockWaveType.NORMAL),
+                                0.75F));
                 AbstractDungeon.actionManager.addToBottom(
                         new DamageAction(AbstractDungeon.player, this.damage
                                 .get(1), AbstractGameAction.AttackEffect.POISON));
