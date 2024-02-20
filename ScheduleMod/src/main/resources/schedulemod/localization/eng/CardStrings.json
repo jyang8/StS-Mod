@@ -32,8 +32,8 @@
   },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 4: NL *Jager *Bomb+."
+    "DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb.",
+    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb+."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
@@ -61,8 +61,8 @@
   },
   "${modID}:Hunger": {
     "NAME": "Hunger",
-    "DESCRIPTION": "Lose !M! *Satiety. NL Draw 3 cards.",
-    "UPGRADE_DESCRIPTION": "Lose !M! *Satiety. NL Draw 4 cards."
+    "DESCRIPTION": "Gain !B! Block. NL Lose !M! *Satiety. NL *Schedule 3: *Dinner *Round *II.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Lose ALL *Satiety. NL *Schedule 3: *Dinner *Round *II."
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
@@ -207,12 +207,11 @@
   },
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
-    "DESCRIPTION": "Excess *Fatigue is not consumed.",
-    "UPGRADE_DESCRIPTION": "Excess *Fatigue is not consumed. NL Whenever an enemy falls asleep, apply !M! *Drowsy."
+    "DESCRIPTION": "Excess *Fatigue is not consumed."
   },
   "${modID}:HyperEntropy": {
     "NAME": "HyperEntropy",
-    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL *Exhaust."
+    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL Lose !M! Max HP. NL *Exhaust."
   },
   "${modID}:HyperfloorMonster": {
     "NAME": "Elite",
@@ -237,7 +236,7 @@
   },
   "${modID}:DailyReminders": {
     "NAME": "Daily Reminders",
-    "DESCRIPTION": "Deal !D! damage. NL If this card triggers an event, NL *Schedule 7 a copy of it."
+    "DESCRIPTION": "Deal !D! damage. NL For each triggered an event, *Schedule a copy of in the last open slot."
   },
   "${modID}:HappyBirthday": {
     "NAME": "Happy Birthday",
@@ -260,12 +259,12 @@
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold. NL Gain 2 *Satiety.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold. NL Gain 2 *Satiety."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold."
   },
   "${modID}:TastingMenu": {
     "NAME": "Tasting Menu",
-    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy for each *Satiety gained this combat. NL Gain 2 *Satiety."
   },
   "${modID}:GinAndTonic": {
     "NAME": "Gin and Tonic",
@@ -315,7 +314,7 @@
   },
   "${modID}:OneMoreRun": {
     "NAME": "One More Run",
-    "DESCRIPTION": "Apply !M! *Fatigue for each Event triggered this turn."
+    "DESCRIPTION": "Apply !M! *Fatigue. NL At the start of your next turn, lose [E]."
   },
   "${modID}:Arcade": {
     "NAME": "Arcade",
@@ -456,8 +455,7 @@
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "La Cabra",
-    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turn. NL Gain 1 *Satiety.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional events this turn. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turns. NL Gain 1 *Satiety."
   },
   "${modID}:Pasta": {
     "NAME": "Pasta",
@@ -504,5 +502,16 @@
   "${modID}:TidyUp": {
     "NAME": "Tidy Up",
     "DESCRIPTION": "End your turn. NL At the start of your next turn, gain !M! *Punctual that turn."
+  },
+  "${modID}:DinnerRoundTwo": {
+    "NAME": "Dinner Round II",
+    "DESCRIPTION": "Put the triggering card on top of your draw pile. NL Gain 1 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Put the triggering card in your hand. NL Gain 1 *Satiety."
+  },
+  "${modID}:Bakery": {
+    "NAME": "Café d’Avignon",
+    "DESCRIPTION": "At the start of your turn, add a *Bread to your hand.",
+    "UPGRADE_DESCRIPTION": "At the start of your turn, add a *Bread to your hand. NL *Innate."
   }
+
 }

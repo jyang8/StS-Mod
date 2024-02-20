@@ -21,7 +21,7 @@ public class EmergencyRedBull extends BaseCard {
     );
 
     private static final int HP_LOSS = 3;
-    private static final int SCHEDULE_SLOT = 4;
+    private static final int SCHEDULE_SLOT = 3;
 
     public EmergencyRedBull() {
         super(ID, info);

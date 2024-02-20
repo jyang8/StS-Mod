@@ -40,7 +40,7 @@ public class SteamClubAction extends AbstractGameAction {
                     tmp += multiplier;
                 }
             }
-            if (tmp > 0) {
+            if (tmp + baseBlock > 0) {
                 addToBot(new GainBlockAction(AbstractDungeon.player, baseBlock + tmp));
             }
             tickDuration();

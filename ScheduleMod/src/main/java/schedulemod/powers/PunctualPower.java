@@ -66,10 +66,5 @@ public class PunctualPower extends BasePower implements CloneablePowerInterface,
     }
 
     public void modifyEvent(EventCard eventCard, AbstractCard triggeringCard) {
-        eventCard.damage += this.amount;
-        eventCard.block += this.amount;
-        if (eventCard.tags.contains(Entropy.Enums.FATIGUE_EVENT) || eventCard.tags.contains(Entropy.Enums.AMP_EVENT)) {
-            eventCard.magicNumber += this.amount;
-        }
     }
 }

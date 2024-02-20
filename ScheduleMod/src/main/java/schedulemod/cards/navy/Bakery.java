@@ -4,34 +4,38 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.cards.tempCards.Bread;
 import schedulemod.character.Entropy;
-import schedulemod.powers.MetabolizePower;
+import schedulemod.powers.BakeryPower;
 import schedulemod.util.CardStats;
 
-public class Metabolize extends BaseCard {
-    public static final String ID = makeID(Metabolize.class.getSimpleName());
+public class Bakery extends BaseCard {
+    public static final String ID = makeID(Bakery.class.getSimpleName());
     private static final CardStats info = new CardStats(
             Entropy.Enums.CARD_COLOR,
             CardType.POWER,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            2
+            1
     );
 
-    private int AMOUNT = 1;
-    private int UPGRADE_COST = 1;
+    private static final int NUM_BREAD = 1;
+    private static final boolean INNATE = false;
+    private static final boolean UPGRADE_INNATE = true;
 
-    public Metabolize() {
+    public Bakery() {
         super(ID, info);
-        setMagic(AMOUNT);
-        setCostUpgrade(UPGRADE_COST);
+        setMagic(NUM_BREAD);
+        setInnate(INNATE, UPGRADE_INNATE);
+        this.cardsToPreview = new Bread();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new MetabolizePower(p, p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new BakeryPower(p, this.magicNumber)));
     }
 
     @Override
-    public AbstractCard makeCopy() { return new Metabolize(); }
+    public AbstractCard makeCopy() { return new Bakery(); }
 }

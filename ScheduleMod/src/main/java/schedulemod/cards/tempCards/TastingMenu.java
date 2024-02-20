@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
@@ -54,6 +55,16 @@ public class TastingMenu extends EventCard {
             addToBot(new WaitAction(0.2F));
         }
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster m) {
+        super.calculateCardDamage(m);
+        Entropy e = (AbstractDungeon.player instanceof Entropy) ? (Entropy)AbstractDungeon.player : null;
+        if (e == null) {
+            return;
+        }
+        this.rawDescription = cardStrings.DESCRIPTION + "(" + e.getSatietyGainedThisCombat()+ ")";
     }
 
     @Override

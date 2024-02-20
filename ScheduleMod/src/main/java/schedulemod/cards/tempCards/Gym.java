@@ -16,7 +16,7 @@ public class Gym extends EventCard {
     public static final String ID = makeID(Gym.class.getSimpleName());
     private static final CardStats info = new CardStats(
             CardColor.COLORLESS,
-            CardType.POWER,
+            CardType.SKILL,
             CardRarity.SPECIAL,
             CardTarget.SELF,
             0

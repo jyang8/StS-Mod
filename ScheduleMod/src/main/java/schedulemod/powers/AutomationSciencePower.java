@@ -28,7 +28,7 @@ public class AutomationSciencePower extends BasePower implements CloneablePowerI
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
         if (damageAmount >= REQUIRED_DAMAGE) {
-                addToBot(new ApplyPowerAction(this.owner, this.owner, new PunctualPower(this.owner, this.owner, 1)));
+                addToBot(new ApplyPowerAction(this.owner, this.owner, new PunctualPower(this.owner, this.owner, this.amount)));
         }
     }
 

@@ -11,8 +11,6 @@ import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class SupportRotationAction extends AbstractGameAction {
     private DamageInfo info;
-    private static final float DURATION = 0.01F;
-    private static final float POST_ATTACK_WAIT_DUR = 0.1F;
 
     public SupportRotationAction(AbstractCreature target, DamageInfo info) {
         this.info = info;
