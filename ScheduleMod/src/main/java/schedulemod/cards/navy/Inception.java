@@ -22,8 +22,8 @@ public class Inception extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 9;
-    private static final int UPGRADE_ATTACK_DAMAGE = 4;
-    private static final int DEBUFF_AMOUNT = 3;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
+    private static final int DEBUFF_AMOUNT = 2;
     private static final int UPGRADE_DEBUFF_AMOUNT = 1;
 
     public Inception() {

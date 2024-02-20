@@ -19,8 +19,8 @@ public class LittleSpoon extends BaseCard {
             1
     );
 
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_BLOCK = 2;
     private static final int DROWSY = 2;
     private static final int UPGRADE_DROWSY = 1;
 

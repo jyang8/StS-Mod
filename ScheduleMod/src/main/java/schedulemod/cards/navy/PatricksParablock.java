@@ -19,14 +19,15 @@ public class PatricksParablock extends BaseCard {
             2
     );
 
-    private static final int BLOCK = 9;
-    private static final int UPGRADE_BLOCK = 4;
-    private static final int WRINKLER = 2;
+    private static final int BLOCK = 11;
+    private static final int UPGRADE_BLOCK = 3;
+    private static final int WRINKLER = 1;
+    private static final int UPGRADE_WRINKLER = 1;
 
     public PatricksParablock() {
         super(ID, info);
         setBlock(BLOCK, UPGRADE_BLOCK);
-        setMagic(WRINKLER);
+        setMagic(WRINKLER, UPGRADE_WRINKLER);
     }
 
     @Override

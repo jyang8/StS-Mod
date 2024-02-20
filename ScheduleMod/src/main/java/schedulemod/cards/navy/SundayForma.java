@@ -22,7 +22,7 @@ public class SundayForma extends BaseCard {
     );
 
     private static final int SCHEDULE_SLOT = 7;
-    private static final int FATIGUE = 5;
+    private static final int FATIGUE = 7;
     private static final int UPGRADE_FATIGUE = 2;
 
     public SundayForma() {

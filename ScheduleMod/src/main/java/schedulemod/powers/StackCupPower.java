@@ -17,7 +17,7 @@ public class StackCupPower extends BasePower implements CloneablePowerInterface 
     public static final String POWER_ID = makeID("StackCup");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = true;
-    private static final int SCHEDULE_SLOT = 1;
+    private static final int SCHEDULE_SLOT = 2;
 
     public StackCupPower(AbstractCreature owner, AbstractCreature source) {
         super(POWER_ID, TYPE, TURN_BASED, owner, source, -1);

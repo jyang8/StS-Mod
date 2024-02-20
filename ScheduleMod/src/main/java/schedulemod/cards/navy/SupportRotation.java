@@ -17,14 +17,14 @@ public class SupportRotation extends BaseCard {
             CardType.ATTACK,
             CardRarity.COMMON,
             CardTarget.ENEMY,
-            1
+            0
     );
 
     private static final int ATTACK_DAMAGE = 1;
     private static final int UPGRADE_ATTACK_DAMAGE = 1;
     private static final int TIMES_ATTACKING = 3;
-    private static final int FATIGUE = 4;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int FATIGUE = 3;
+    private static final int UPGRADE_FATIGUE = 1;
 
     public SupportRotation() {
         super(ID, info);

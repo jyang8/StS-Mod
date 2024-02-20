@@ -24,7 +24,7 @@ public class Karaoke extends BaseCard {
             CardTarget.ALL_ENEMY,
             0);
 
-    private static final int DAMAGE = 1;
+    private static final int DAMAGE = 2;
     private static final int SCHEDULE_SLOT = 6;
 
     public Karaoke() {

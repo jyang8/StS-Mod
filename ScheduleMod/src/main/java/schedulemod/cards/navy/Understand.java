@@ -21,15 +21,15 @@ public class Understand extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 7;
-    private static final int UPGRADE_ATTACK_DAMAGE = 3;
-    private static final int STRENGTH_LOSS = 1;
-    private static final int UPGRADE_STRENGTH_LOSS = 1;
+    private static final int ATTACK_DAMAGE = 11;
+    private static final int UPGRADE_ATTACK_DAMAGE = 4;
+    private static final int PROC_DAMAGE = 1;
+    private static final int UPGRADE_PROC_DAMAGE = 1;
 
     public Understand() {
         super(ID, info);
         setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(STRENGTH_LOSS, UPGRADE_STRENGTH_LOSS);
+        setMagic(PROC_DAMAGE, UPGRADE_PROC_DAMAGE);
         setExhaust(true);
     }
 

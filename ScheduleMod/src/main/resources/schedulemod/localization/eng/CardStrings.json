@@ -362,8 +362,8 @@
   },
   "${modID}:StackCup": {
     "NAME": "Stack Cup",
-    "DESCRIPTION": "Deal !D! damage. NL If no damage is taken before your next turn, *Schedule 1: Drink!.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! *Weak. NL If no damage is taken before your next turn, *Schedule 1: Drink!."
+    "DESCRIPTION": "Deal !D! damage. NL If no damage is taken before your next turn, *Schedule 2: Drink!.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Apply !M! *Weak. NL If no damage is taken before your next turn, *Schedule 2: Drink!."
   },
   "${modID}:WinterLoLChamp": {
     "NAME": "Winter LoL Champ",
