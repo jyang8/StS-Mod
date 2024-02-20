@@ -20,7 +20,7 @@ public class GinAndTonic extends BaseCard {
             CardTarget.SELF,
             1);
 
-    private static final int BLOCK = 5;
+    private static final int BLOCK = 7;
     private static final int UPGRADE_BLOCK = 3;
     private static final int SCHEDULE_SLOT = 4;
     private static final int UPGRADE_SCHEDULE_SLOT = -1;

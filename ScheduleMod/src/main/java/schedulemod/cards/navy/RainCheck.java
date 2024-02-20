@@ -19,7 +19,7 @@ public class RainCheck extends BaseCard {
             1);
 
     private static final int BLOCK = 11;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 4;
 
     public RainCheck() {
         super(ID, info);
