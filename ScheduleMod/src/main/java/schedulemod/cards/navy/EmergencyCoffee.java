@@ -21,13 +21,14 @@ public class EmergencyCoffee extends BaseCard {
     );
 
     private static final int BLOCK = 8;
-    private static final int EXTRA_EVENTS = 3;
+    private static final int UPGRADE_BLOCK = 3;
+    private static final int EXTRA_EVENTS = 2;
     private static final int UPGRADE_EXTRA_EVENTS = 1;
 
     public EmergencyCoffee() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setBlock(BLOCK);
+        setBlock(BLOCK, UPGRADE_BLOCK);
         setMagic(EXTRA_EVENTS, UPGRADE_EXTRA_EVENTS);
     }
 
