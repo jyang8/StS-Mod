@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.actions.ThinkingWithPortalsAction;
 import schedulemod.character.Entropy;
 import schedulemod.util.CardStats;
 
@@ -31,8 +33,7 @@ public class ThinkingWithPortals extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DiscardAction(p, p, NUM_CARDS_DISCARD, false));
-        addToBot(new BetterDiscardPileToHandAction(this.magicNumber));
+        addToBot(new ThinkingWithPortalsAction(p, magicNumber));
     }
 
     @Override
