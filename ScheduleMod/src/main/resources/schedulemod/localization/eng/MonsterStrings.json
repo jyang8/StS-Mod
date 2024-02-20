@@ -1,0 +1,7 @@
+{
+  "${modID}:TheBen": {
+    "NAME": "The Ben",
+    "DIALOG": ["Welcome Entropy", "Farewell"],
+    "MOVES": []
+  }
+}
