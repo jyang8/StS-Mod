@@ -21,7 +21,7 @@ public class QualityTime extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 7;
+    private static final int ATTACK_DAMAGE = 8;
     private static final int UPGRADE_ATTACK_DAMAGE = 3;
 
     public QualityTime() {

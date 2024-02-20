@@ -18,12 +18,12 @@ public class SweetDreams extends BaseCard {
             1
     );
 
-    private static final int NUM_CARDS_DRAW = 2;
-    private static final int UPGRADE_NUM_CARDS_DRAW = 1;
+    private static final int BLOCK = 5;
+    private static final int UPGRADE_BLOCK = 2;
 
     public SweetDreams() {
         super(ID, info);
-        setMagic(NUM_CARDS_DRAW, UPGRADE_NUM_CARDS_DRAW);
+        setMagic(BLOCK, UPGRADE_BLOCK);
     }
 
     @Override

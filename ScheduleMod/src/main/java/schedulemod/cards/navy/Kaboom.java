@@ -44,10 +44,10 @@ public class Kaboom extends BaseCard {
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         addToBot(new WaitAction(DELAY));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                AbstractGameAction.AttackEffect.BLUNT_LIGHT));
         addToBot(new WaitAction(DELAY));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                AbstractGameAction.AttackEffect.SLASH_HEAVY));
         addToBot(new WaitAction(DELAY));
         addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
                 AbstractGameAction.AttackEffect.FIRE));

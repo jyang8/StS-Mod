@@ -103,8 +103,8 @@
   "${modID}:SweetDreams": {
     "NAME": "Sweet Dreams",
     "DESCRIPTIONS": [
-      "Whenever an enemy falls asleep, draw #b",
-      " cards."
+      "Whenever an enemy falls asleep, gain #b",
+      " block at the start of your next turn."
     ]
   },
   "${modID}:Drowsy": {

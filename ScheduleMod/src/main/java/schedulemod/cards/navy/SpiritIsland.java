@@ -18,7 +18,7 @@ public class SpiritIsland extends BaseCard {
             CardTarget.ALL_ENEMY,
             1);
 
-    private static final int ATTACK_DAMAGE = 6;
+    private static final int ATTACK_DAMAGE = 7;
     private static final int UPGRADE_ATTACK_DAMAGE = 2;
     private static final int REPEATS = 2;
 

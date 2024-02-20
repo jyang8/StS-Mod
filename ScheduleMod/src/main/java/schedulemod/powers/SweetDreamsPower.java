@@ -2,11 +2,13 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static schedulemod.BasicMod.makeID;
 
@@ -37,7 +39,7 @@ public class SweetDreamsPower extends BasePower implements CloneablePowerInterfa
     @Override
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power instanceof SleepPower && target instanceof AbstractMonster) {
-            addToBot(new DrawCardAction(this.amount));
+            addToBot(new ApplyPowerAction(owner, owner, new NextTurnBlockPower(owner, amount), amount));
         }
     }
 

@@ -199,7 +199,7 @@
   },
   "${modID}:SweetDreams": {
     "NAME": "Sweet Dreams",
-    "DESCRIPTION": "Whenever an enemy falls asleep, draw !M! cards."
+    "DESCRIPTION": "Whenever an enemy falls asleep, gain !M! block at the start of your next turn."
   },
   "${modID}:LittleSpoon": {
     "NAME": "Little Spoon",
