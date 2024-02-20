@@ -20,7 +20,7 @@ public class EmergencyCoffee extends BaseCard {
             1
     );
 
-    private static final int BLOCK = 6;
+    private static final int BLOCK = 8;
     private static final int EXTRA_EVENTS = 2;
     private static final int UPGRADE_EXTRA_EVENTS = 1;
 
