@@ -211,7 +211,10 @@
   },
   "${modID}:HyperEntropy": {
     "NAME": "HyperEntropy",
-    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL Lose !M! Max HP. NL *Exhaust."
+    "DESCRIPTION": "Open a *Hyperfloor after this combat. NL Lose !M! Max HP. NL *Exhaust.",
+    "EXTENDED_DESCRIPTION": [
+      "Already on a *Hyperfloor."
+    ]
   },
   "${modID}:HyperfloorMonster": {
     "NAME": "Elite",

@@ -25,11 +25,13 @@ public class ChefsTable extends BaseCard {
     private static final int GOLD_LOSS = 30;
     private static final int UPGRADE_GOLD_LOSS = -10;
     private static final int SCHEDULE_SLOT = 6;
+    private static final int UPGRADE_COST = 2;
 
     public ChefsTable() {
         super(ID, info);
         setDamage(DAMAGE);
         setMagic(GOLD_LOSS, UPGRADE_GOLD_LOSS);
+        setCostUpgrade(UPGRADE_COST);
         this.cardsToPreview = new TastingMenu();
     }
 
@@ -42,9 +44,6 @@ public class ChefsTable extends BaseCard {
 
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            this.cardsToPreview.upgrade();
-        }
         super.upgrade();
     }
 
