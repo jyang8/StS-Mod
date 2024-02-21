@@ -23,7 +23,7 @@ public class Understand extends BaseCard {
 
     private static final int ATTACK_DAMAGE = 11;
     private static final int UPGRADE_ATTACK_DAMAGE = 4;
-    private static final int PROC_DAMAGE = 1;
+    private static final int PROC_DAMAGE = 2;
     private static final int UPGRADE_PROC_DAMAGE = 1;
 
     public Understand() {

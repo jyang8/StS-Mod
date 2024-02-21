@@ -165,8 +165,8 @@
   },
   "${modID}:Walkable": {
     "NAME": "Walkable",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: *Walk *Home.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule !M!: *Walk *Home+."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 5, 6: *Walk *Home.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 5, 6, 7: *Walk *Home."
   },
   "${modID}:WalkHome": {
     "NAME": "Walk Home",

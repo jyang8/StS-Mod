@@ -19,7 +19,7 @@ public class EnemyIsWeak extends BaseCard {
     );
 
     private static final int WEAK = 2;
-    private static final int UPGRADE_WEAK = 3;
+    private static final int UPGRADE_WEAK = 2;
     private static final boolean EXHAUST = true;
 
 

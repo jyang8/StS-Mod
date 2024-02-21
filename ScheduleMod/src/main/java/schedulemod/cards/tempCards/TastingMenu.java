@@ -64,7 +64,7 @@ public class TastingMenu extends EventCard {
         if (e == null) {
             return;
         }
-        this.rawDescription = cardStrings.DESCRIPTION + "(" + e.getSatietyGainedThisCombat()+ ")";
+        this.rawDescription = cardStrings.DESCRIPTION + " (" + e.getSatietyGainedThisCombat()+ ")";
     }
 
     @Override

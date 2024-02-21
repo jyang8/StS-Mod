@@ -1,16 +1,11 @@
 package schedulemod.cards.navy;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.actions.FoodComaAction;
 import schedulemod.character.Entropy;
-import schedulemod.powers.FatiguePower;
-import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class FoodComa extends BaseCard {
