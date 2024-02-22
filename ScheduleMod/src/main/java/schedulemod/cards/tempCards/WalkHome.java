@@ -21,8 +21,8 @@ public class WalkHome extends EventCard {
             CardTarget.ENEMY,
             1);
 
-    private static final int ATTACK_DAMAGE = 4;
-    private static final int UPGRADE_ATTACK_DAMAGE = 2;
+    private static final int ATTACK_DAMAGE = 5;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
 
     public WalkHome() {
         super(ID, info);

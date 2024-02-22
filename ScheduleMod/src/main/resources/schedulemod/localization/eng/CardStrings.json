@@ -239,7 +239,7 @@
   },
   "${modID}:DailyReminders": {
     "NAME": "Daily Reminders",
-    "DESCRIPTION": "Deal !D! damage. NL For each triggered an event, *Schedule a copy of in the last open slot."
+    "DESCRIPTION": "Deal !D! damage. NL For each triggered event, *Schedule a copy of it in the last open slot."
   },
   "${modID}:HappyBirthday": {
     "NAME": "Happy Birthday",
@@ -258,7 +258,7 @@
   "${modID}:Draft": {
     "NAME": "Draft",
     "DESCRIPTION": "Choose 1 of 3 random cards to add to your hand.",
-    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random cards to add to your hand. NL Scry !M!."
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random cards to add to your hand. NL It costs 1 less this turn."
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
@@ -508,8 +508,8 @@
   },
   "${modID}:DinnerRoundTwo": {
     "NAME": "Dinner Round II",
-    "DESCRIPTION": "Put the triggering card on top of your draw pile. NL Gain 1 *Satiety.",
-    "UPGRADE_DESCRIPTION": "Put the triggering card in your hand. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Put the triggering card in your hand.",
+    "UPGRADE_DESCRIPTION": "Put the triggering card in your hand. NL It costs 1 less this turn."
   },
   "${modID}:Bakery": {
     "NAME": "Café d’Avignon",

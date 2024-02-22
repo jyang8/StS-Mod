@@ -17,11 +17,10 @@ public class BounceModifier extends AbstractCardModifier {
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (card.type != AbstractCard.CardType.POWER) {
+            action.returnToHand = true;
+            card.returnToHand = true;
             if (upgraded) {
-                action.returnToHand = true;
-                card.returnToHand = true;
-            } else {
-                action.reboundCard = true;
+                card.setCostForTurn(card.costForTurn - 1);
             }
         }
     }
