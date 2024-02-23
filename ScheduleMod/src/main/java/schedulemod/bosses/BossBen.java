@@ -2,6 +2,11 @@ package schedulemod.bosses;
 
 import static schedulemod.BasicMod.makeID;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -28,6 +33,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.StrengthPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
@@ -71,7 +77,10 @@ public class BossBen extends CustomMonster {
 
     private enum Form {
         VIEGO, LILLIA, BRAND, NEEKO
+
     }
+
+    private static final byte CHANGE_FORM = 99;
 
     private static final byte BLADE_OF_THE_RUINED_KING = 2;
 
@@ -79,18 +88,33 @@ public class BossBen extends CustomMonster {
 
     private static final byte HARROWED_PATH = 4;
 
-    private Form currentForm = Form.VIEGO;
+    private ArrayList<Form> forms = new ArrayList<>();
+    private int currentFormIndex = -1;
+    private AbstractPower currentFormPower = null;
+    private AbstractPower formPhasePower = null;
 
     private int bladeOfTheRuinedKingDamage;
     private int spectralMawDamage;
 
+    public int formHealth() {
+        if (AbstractDungeon.ascensionLevel >= 9) {
+            return 233;
+        } else {
+            return 223;
+        }
+    }
+
     public BossBen() {
         super(NAME, ID, 223, -10.0F, -30.0F, 476.0F, 410.0F, null, -50.0F, 30.0F);
-        if (AbstractDungeon.ascensionLevel >= 9) {
-            setHp(233);
-        } else {
-            setHp(223);
-        }
+        // Shuffle forms
+        forms.clear();
+        forms.add(Form.LILLIA);
+        forms.add(Form.NEEKO);
+        forms.add(Form.BRAND);
+        Collections.shuffle(forms, new Random(AbstractDungeon.aiRng.randomLong()));
+        // Force Viego to be first form
+        forms.add(0, Form.VIEGO);
+        setHp(formHealth() * 4);
         loadAnimation("images/monsters/theForest/timeEater/skeleton.atlas",
                 "images/monsters/theForest/timeEater/skeleton.json", 1.0F);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
@@ -112,11 +136,51 @@ public class BossBen extends CustomMonster {
         this.damage.add(new DamageInfo(this, this.spectralMawDamage, DamageInfo.DamageType.NORMAL));
     }
 
+    public Form getCurrentForm() {
+        return forms.get(currentFormIndex);
+    }
+
+    public void switchForm() {
+        if (currentFormIndex == forms.size() - 1) {
+            return;
+        }
+        if (currentFormIndex >= 0) {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(
+                    this, this, currentFormPower));
+            currentFormIndex++;
+        } else {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+                    this, this,
+                    formPhasePower));
+        }
+        switch (getCurrentForm()) {
+            case VIEGO:
+                currentFormPower = new ViegoPower(this);
+                break;
+            case LILLIA:
+                // TODO
+                break;
+            case BRAND:
+                break;
+            case NEEKO:
+                break;
+            default:
+                currentFormPower = new ViegoPower(this);
+                break;
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+                this, this,
+                currentFormPower));
+        formPhasePower.amount = formHealth();
+        formPhasePower.updateDescription();
+    }
+
     @Override
     public void usePreBattleAction() {
         CardCrawlGame.music.unsilenceBGM();
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_BEYOND");
+        switchForm();
         // UnlockTracker.markBossAsSeen(ID);
         // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
         // this, this,
@@ -125,7 +189,11 @@ public class BossBen extends CustomMonster {
 
     @Override
     protected void getMove(int num) {
-        switch (currentForm) {
+        if (formPhasePower == null || formPhasePower.amount == 0) {
+            this.setMove(CHANGE_FORM, Intent.BUFF);
+            return;
+        }
+        switch (getCurrentForm()) {
             case VIEGO:
                 if (num < 40) {
                     if (!lastMove(BLADE_OF_THE_RUINED_KING)) {
@@ -156,13 +224,12 @@ public class BossBen extends CustomMonster {
         if (this.firstTurn) {
             AbstractDungeon.actionManager.addToBottom(
                     new TalkAction(this, DIALOG[0], 0.5F, 2.0F));
-            // TODO remove
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-                    this, this,
-                    new ViegoPower(this)));
             this.firstTurn = false;
         }
         switch (this.nextMove) {
+            case CHANGE_FORM:
+                switchForm();
+                break;
             case BLADE_OF_THE_RUINED_KING:
                 AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));

@@ -9,6 +9,14 @@
       "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
     ]
   },
+  "${modID}:FormPhasePower": {
+    "NAME": "FormPhasePower",
+    "DESCRIPTIONS": [
+      "Can only lose #b",
+      " more HP this turn.",
+      "Can no longer be harmed this turn."
+    ]
+  },
   "${modID}:PremiumToaster": {
     "NAME": "Premium Toaster",
     "DESCRIPTIONS": ["#yBread applies #b", " additional #yFatigue."]
