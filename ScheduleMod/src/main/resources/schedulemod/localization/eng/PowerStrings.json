@@ -9,7 +9,19 @@
       "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
     ]
   },
+  "${modID}:NeekoViegoDisguisePower": {
+    "NAME": "Viego",
+    "DESCRIPTIONS": [
+      "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
+    ]
+  },
   "${modID}:LilliaPower": {
+    "NAME": "Lillia",
+    "DESCRIPTIONS": [
+      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, she gains 3 #yStrength."
+    ]
+  },
+  "${modID}:NeekoLilliaDisguisePower": {
     "NAME": "Lillia",
     "DESCRIPTIONS": [
       "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, she gains 3 #yStrength."
@@ -19,6 +31,18 @@
     "NAME": "Brand",
     "DESCRIPTIONS": [
       "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. When you gain #ySatiety, brand gains 1 #yStrength."
+    ]
+  },
+  "${modID}:NeekoBrandDisguisePower": {
+    "NAME": "Brand",
+    "DESCRIPTIONS": [
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. When you gain #ySatiety, brand gains 1 #yStrength."
+    ]
+  },
+  "${modID}:NeekoPower": {
+    "NAME": "Neeko",
+    "DESCRIPTIONS": [
+      "Neeko appears in a different form and has a hidden intent. Neeko undisguises upon taking his first turn."
     ]
   },
   "${modID}:FormPhasePower": {

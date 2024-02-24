@@ -9,6 +9,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.BranchingUpgradesPatch.StupidFuckingUpdateBullshitImSoMadDontChangeThisClassNameKio;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.AnimateShakeAction;
 import com.megacrit.cardcrawl.actions.animations.ShoutAction;
@@ -32,6 +33,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.cards.status.Slimed;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -42,8 +44,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.potions.StrengthPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -57,10 +61,6 @@ import schedulemod.BasicMod;
 /*
  * TODO
  * 
- * - More forms
- *   - Attacks
- *   - Power
- * - Form switching logic
  * - Art for boss
  * - Art for power icons
  * - Animations for attacks
@@ -84,7 +84,6 @@ public class BossBen extends CustomMonster {
 
     private enum Form {
         VIEGO, LILLIA, BRAND, NEEKO
-
     }
 
     private static final byte CHANGE_FORM = 99;
@@ -101,7 +100,13 @@ public class BossBen extends CustomMonster {
     public static final byte PILLAR_OF_FLAME = 23;
     private static final byte CONFLAGRATION = 24;
 
+    private static final byte DISGUISE = 39;
+    private static final byte BLOOMING_BURST = 32;
+    private static final byte SHAPESPLITTER = 33;
+    private static final byte TANGLE_BARBS = 34;
+
     private ArrayList<Form> forms = new ArrayList<>();
+    private Form neekoForm;
     private int currentFormIndex = -1;
     private AbstractPower currentFormPower = null;
     private AbstractPower formPhasePower = null;
@@ -114,6 +119,8 @@ public class BossBen extends CustomMonster {
     private int searDamage;
     private int pillarOfFlameDamage;
     private int conflagrationDamage;
+    private int bloomingBurstDamage;
+    private int tangleBarbsDamage;
 
     public int formHealth() {
         if (AbstractDungeon.ascensionLevel >= 9) {
@@ -128,11 +135,31 @@ public class BossBen extends CustomMonster {
         // Shuffle forms
         forms.clear();
         forms.add(Form.LILLIA);
-        forms.add(Form.NEEKO);
         forms.add(Form.BRAND);
+        forms.add(Form.VIEGO);
         Collections.shuffle(forms, new Random(AbstractDungeon.aiRng.randomLong()));
+        // Generate and add neeko form
+        ArrayList<Form> neekoForms = new ArrayList<>();
+        int neekoIndex = AbstractDungeon.aiRng.random(2, forms.size());
+        for (int i = 0; i < forms.size(); i++) {
+            if (i != neekoIndex - 1) {
+                neekoForms.add(forms.get(i));
+            }
+        }
+        Collections.shuffle(neekoForms, new Random(AbstractDungeon.aiRng.randomLong()));
+        neekoForm = neekoForms.get(0);
+        forms.add(neekoIndex, Form.NEEKO);
+
+        // Make sure Neeko is not first or second
+        if (forms.get(0) == Form.NEEKO) {
+            forms.remove(0);
+            forms.add(2, Form.NEEKO);
+        }
+        if (forms.get(1) == Form.NEEKO) {
+            forms.remove(1);
+            forms.add(3, Form.NEEKO);
+        }
         // Force Viego to be first form
-        forms.add(0, Form.VIEGO);
         setHp(formHealth() * 4);
         loadAnimation("images/monsters/theForest/timeEater/skeleton.atlas",
                 "images/monsters/theForest/timeEater/skeleton.json", 1.0F);
@@ -152,6 +179,8 @@ public class BossBen extends CustomMonster {
             this.searDamage = 22;
             this.pillarOfFlameDamage = 25;
             this.conflagrationDamage = 12;
+            this.bloomingBurstDamage = 15;
+            this.tangleBarbsDamage = 31;
         } else {
             this.bladeOfTheRuinedKingDamage = 12;
             this.spectralMawDamage = 22;
@@ -161,6 +190,8 @@ public class BossBen extends CustomMonster {
             this.searDamage = 18;
             this.pillarOfFlameDamage = 21;
             this.conflagrationDamage = 9;
+            this.bloomingBurstDamage = 11;
+            this.tangleBarbsDamage = 25;
         }
         this.damage.add(
                 new DamageInfo(this, this.bladeOfTheRuinedKingDamage, DamageInfo.DamageType.NORMAL));
@@ -171,6 +202,8 @@ public class BossBen extends CustomMonster {
         this.damage.add(new DamageInfo(this, this.searDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.pillarOfFlameDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.conflagrationDamage, DamageInfo.DamageType.NORMAL));
+        this.damage.add(new DamageInfo(this, this.bloomingBurstDamage, DamageInfo.DamageType.NORMAL));
+        this.damage.add(new DamageInfo(this, this.tangleBarbsDamage, DamageInfo.DamageType.NORMAL));
     }
 
     public Form getCurrentForm() {
@@ -206,7 +239,20 @@ public class BossBen extends CustomMonster {
                 currentFormPower = new BrandPower(this);
                 break;
             case NEEKO:
-                // TODO
+                switch (neekoForm) {
+                    case VIEGO:
+                        currentFormPower = new NeekoViegoDisguisePower(this);
+                        break;
+                    case LILLIA:
+                        currentFormPower = new NeekoLilliaDisguisePower(this);
+                        break;
+                    case BRAND:
+                        currentFormPower = new NeekoBrandDisguisePower(this);
+                        break;
+                    default:
+                        currentFormPower = new NeekoBrandDisguisePower(this);
+                        break;
+                }
                 break;
             default:
                 currentFormPower = new ViegoPower(this);
@@ -244,6 +290,12 @@ public class BossBen extends CustomMonster {
             AbstractDungeon.actionManager.addToBottom(new SetMoveAction(this, "Change Form", CHANGE_FORM,
                     AbstractMonster.Intent.UNKNOWN));
         }
+    }
+
+    public boolean hasDisguise() {
+        return hasPower(NeekoViegoDisguisePower.POWER_ID) ||
+                hasPower(NeekoLilliaDisguisePower.POWER_ID) ||
+                hasPower(NeekoBrandDisguisePower.POWER_ID);
     }
 
     @Override
@@ -308,6 +360,28 @@ public class BossBen extends CustomMonster {
                     if (!lastMove(CONFLAGRATION)) {
                         this.setMove(MOVES[8], CONFLAGRATION, Intent.ATTACK, this.damage.get(7).base, 3, true);
                         return;
+                    }
+                }
+            case NEEKO:
+                if (hasDisguise()) {
+                    this.setMove(DISGUISE, Intent.UNKNOWN);
+                    return;
+                } else {
+                    if (num < 40) {
+                        if (!lastMove(BLOOMING_BURST)) {
+                            this.setMove(MOVES[9], BLOOMING_BURST, Intent.ATTACK, this.damage.get(8).base, 3, true);
+                            return;
+                        }
+                    } else if (num < 75) {
+                        if (!lastMove(SHAPESPLITTER)) {
+                            this.setMove(MOVES[10], SHAPESPLITTER, Intent.BUFF);
+                            return;
+                        }
+                    } else {
+                        if (!lastMove(TANGLE_BARBS)) {
+                            this.setMove(MOVES[11], TANGLE_BARBS, Intent.ATTACK_DEBUFF, this.damage.get(9).base);
+                            return;
+                        }
                     }
                 }
             default:
@@ -447,7 +521,7 @@ public class BossBen extends CustomMonster {
                     AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
                     AbstractDungeon.actionManager.addToBottom(
                             new DamageAction(AbstractDungeon.player, this.damage
-                                    .get(7), AbstractGameAction.AttackEffect.POISON));
+                                    .get(7), AbstractGameAction.AttackEffect.FIRE));
                 }
                 stacks = 1;
                 if (AbstractDungeon.ascensionLevel >= 19) {
@@ -464,27 +538,42 @@ public class BossBen extends CustomMonster {
                             this, AblazePower.POWER_ID));
                 }
                 break;
-            case 5:
-                // Storage
+            case BLOOMING_BURST:
+                for (int i = 0; i < 3; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new WaitAction(0.6F));
+                    AbstractDungeon.actionManager.addToBottom(
+                            new DamageAction(AbstractDungeon.player, this.damage
+                                    .get(8), AbstractGameAction.AttackEffect.POISON));
+                }
+                if (AbstractDungeon.ascensionLevel >= 19) {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+                            AbstractDungeon.player, this,
+                            new VulnerablePower(AbstractDungeon.player, 1, true)));
+                }
+                break;
+            case SHAPESPLITTER:
                 AbstractDungeon.actionManager.addToBottom(
-                        new ShoutAction(this, DIALOG[1], 0.5F, 2.0F));
-                AbstractDungeon.actionManager
-                        .addToBottom(new RemoveDebuffsAction(this));
-                AbstractDungeon.actionManager
-                        .addToBottom(new RemoveSpecificPowerAction(this,
-                                this, "Shackled"));
-                AbstractDungeon.actionManager.addToBottom(new HealAction(this,
-                        this, this.maxHealth / 2 - this.currentHealth));
+                        new RemoveDebuffsAction(this));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
+                        this, this,
+                        new IntangiblePower(this, 1)));
+                if (AbstractDungeon.ascensionLevel >= 19) {
+                    AbstractDungeon.actionManager.addToBottom(
+                            new MakeTempCardInDrawPileAction(new VoidCard(), 1, true, true));
+                }
+                break;
+            case TANGLE_BARBS:
+                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAction(AbstractDungeon.player, this.damage
+                                .get(9), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+                stacks = 5;
+                if (AbstractDungeon.ascensionLevel >= 19) {
+                    stacks = 10;
+                }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                         AbstractDungeon.player, this,
-                        new VulnerablePower(AbstractDungeon.player, 1, true), 1));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-                        AbstractDungeon.player, this,
-                        new WeakPower(AbstractDungeon.player, 1, true), 1));
-                if (AbstractDungeon.ascensionLevel >= 19)
-                    AbstractDungeon.actionManager
-                            .addToBottom(new GainBlockAction(this,
-                                    this, 0));
+                        new ConstrictedPower(AbstractDungeon.player, this, stacks)));
                 break;
         }
         BasicMod.logger.info("Add roll move action");
