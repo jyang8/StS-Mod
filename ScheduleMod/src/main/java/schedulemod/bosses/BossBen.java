@@ -171,27 +171,27 @@ public class BossBen extends CustomMonster {
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
         if (AbstractDungeon.ascensionLevel >= 4) {
-            this.bladeOfTheRuinedKingDamage = 15;
+            this.bladeOfTheRuinedKingDamage = 14;
             this.spectralMawDamage = 27;
             this.bloomingBlowsDamage = 5;
             this.watchOutEepDamage = 23;
             this.swirlseedDamage = 19;
             this.searDamage = 22;
             this.pillarOfFlameDamage = 31;
-            this.conflagrationDamage = 12;
-            this.bloomingBurstDamage = 15;
-            this.tangleBarbsDamage = 29;
+            this.conflagrationDamage = 10;
+            this.bloomingBurstDamage = 12;
+            this.tangleBarbsDamage = 25;
         } else {
-            this.bladeOfTheRuinedKingDamage = 12;
+            this.bladeOfTheRuinedKingDamage = 11;
             this.spectralMawDamage = 22;
             this.bloomingBlowsDamage = 4;
             this.watchOutEepDamage = 19;
             this.swirlseedDamage = 15;
             this.searDamage = 18;
             this.pillarOfFlameDamage = 25;
-            this.conflagrationDamage = 9;
-            this.bloomingBurstDamage = 11;
-            this.tangleBarbsDamage = 24;
+            this.conflagrationDamage = 7;
+            this.bloomingBurstDamage = 9;
+            this.tangleBarbsDamage = 21;
         }
         this.damage.add(
                 new DamageInfo(this, this.bladeOfTheRuinedKingDamage, DamageInfo.DamageType.NORMAL));
@@ -280,7 +280,7 @@ public class BossBen extends CustomMonster {
     @Override
     public void damage(DamageInfo info) {
         super.damage(info);
-        if (formPhasePower != null && formPhasePower.amount == 0) {
+        if (formPhasePower != null && formPhasePower.amount == 0 && this.nextMove != CHANGE_FORM) {
             setMove(CHANGE_FORM, Intent.UNKNOWN);
             createIntent();
             // TODO change text
@@ -397,7 +397,7 @@ public class BossBen extends CustomMonster {
         BasicMod.logger.info("Taking turn: " + this.nextMove);
         if (this.firstTurn) {
             AbstractDungeon.actionManager.addToBottom(
-                    new TalkAction(this, DIALOG[0], 0.5F, 2.0F));
+                    new TalkAction(this, DIALOG[0], 0.5F, 3.0F));
             this.firstTurn = false;
         }
         int stacks;
@@ -449,9 +449,9 @@ public class BossBen extends CustomMonster {
                             new DamageAction(AbstractDungeon.player, this.damage
                                     .get(2), AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
                 }
-                stacks = 4;
+                stacks = 3;
                 if (AbstractDungeon.ascensionLevel >= 19) {
-                    stacks = 5;
+                    stacks = 4;
                 }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                         this, this,
@@ -462,9 +462,9 @@ public class BossBen extends CustomMonster {
                 AbstractDungeon.actionManager.addToBottom(
                         new DamageAction(AbstractDungeon.player, this.damage
                                 .get(3), AbstractGameAction.AttackEffect.SMASH));
-                stacks = 2;
+                stacks = 1;
                 if (AbstractDungeon.ascensionLevel >= 19) {
-                    stacks = 3;
+                    stacks = 2;
                 }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                         AbstractDungeon.player, this,
@@ -475,9 +475,9 @@ public class BossBen extends CustomMonster {
                 AbstractDungeon.actionManager.addToBottom(
                         new DamageAction(AbstractDungeon.player, this.damage
                                 .get(4), AbstractGameAction.AttackEffect.LIGHTNING));
-                stacks = 4;
+                stacks = 3;
                 if (AbstractDungeon.ascensionLevel >= 19) {
-                    stacks = 5;
+                    stacks = 4;
                 }
                 // TODO possible visual bug
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(

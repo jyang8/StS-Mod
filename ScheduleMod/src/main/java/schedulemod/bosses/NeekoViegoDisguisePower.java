@@ -14,4 +14,8 @@ public class NeekoViegoDisguisePower extends AbstractNeekoDisguisePower {
         super(POWER_ID, TYPE, TURN_BASED, owner, -1);
     }
 
+    @Override
+    public String getDialog() {
+        return BossBen.DIALOG[1];
+    }
 }
