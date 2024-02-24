@@ -124,9 +124,9 @@ public class BossBen extends CustomMonster {
 
     public int formHealth() {
         if (AbstractDungeon.ascensionLevel >= 9) {
-            return 100;
+            return 125;
         } else {
-            return 10;
+            return 100;
         }
     }
 
@@ -177,10 +177,10 @@ public class BossBen extends CustomMonster {
             this.watchOutEepDamage = 23;
             this.swirlseedDamage = 19;
             this.searDamage = 22;
-            this.pillarOfFlameDamage = 25;
+            this.pillarOfFlameDamage = 31;
             this.conflagrationDamage = 12;
             this.bloomingBurstDamage = 15;
-            this.tangleBarbsDamage = 31;
+            this.tangleBarbsDamage = 29;
         } else {
             this.bladeOfTheRuinedKingDamage = 12;
             this.spectralMawDamage = 22;
@@ -188,10 +188,10 @@ public class BossBen extends CustomMonster {
             this.watchOutEepDamage = 19;
             this.swirlseedDamage = 15;
             this.searDamage = 18;
-            this.pillarOfFlameDamage = 21;
+            this.pillarOfFlameDamage = 25;
             this.conflagrationDamage = 9;
             this.bloomingBurstDamage = 11;
-            this.tangleBarbsDamage = 25;
+            this.tangleBarbsDamage = 24;
         }
         this.damage.add(
                 new DamageInfo(this, this.bladeOfTheRuinedKingDamage, DamageInfo.DamageType.NORMAL));
@@ -344,7 +344,7 @@ public class BossBen extends CustomMonster {
                         return;
                     }
                 }
-
+                break;
             case BRAND:
                 if (num < 40) {
                     if (!lastMove(SEAR)) {
@@ -362,6 +362,7 @@ public class BossBen extends CustomMonster {
                         return;
                     }
                 }
+                break;
             case NEEKO:
                 if (hasDisguise()) {
                     this.setMove(DISGUISE, Intent.UNKNOWN);
@@ -384,6 +385,7 @@ public class BossBen extends CustomMonster {
                         }
                     }
                 }
+                break;
             default:
                 return;
         }
