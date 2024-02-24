@@ -24,7 +24,7 @@ public class StackCup extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 7;
+    private static final int ATTACK_DAMAGE = 8;
     private static final int WEAK = 1;
 
     public StackCup() {

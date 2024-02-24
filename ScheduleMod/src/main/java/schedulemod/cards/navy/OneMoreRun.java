@@ -18,8 +18,8 @@ public class OneMoreRun extends BaseCard {
             CardTarget.ENEMY,
             1);
 
-    private static final int FATIGUE = 15;
-    private static final int UPGRADE_FATIGUE = 5;
+    private static final int FATIGUE = 18;
+    private static final int UPGRADE_FATIGUE = 7;
     private static final int ENERGY_LOSS = 1;
 
     public OneMoreRun() {

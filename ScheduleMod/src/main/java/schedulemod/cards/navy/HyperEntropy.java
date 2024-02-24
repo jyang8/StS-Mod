@@ -4,11 +4,13 @@ package schedulemod.cards.navy;
 
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.actions.HyperEntropyAction;
 import schedulemod.actions.LoseMaxHpAction;
 import schedulemod.character.Entropy;
+import schedulemod.patches.HyperfloorPatch.RewardItemClaimPatch.AbstractRoomIsHyperfloorField;
 import schedulemod.util.CardStats;
 
 public class HyperEntropy extends BaseCard {
@@ -30,6 +32,19 @@ public class HyperEntropy extends BaseCard {
         super(ID, info);
         setExhaust(EXHAUST);
         setMagic(MAX_HP_LOSS, UPGRADE_MAX_HP_LOSS);
+    }
+
+    @Override
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        boolean canUse = super.canUse(p, m);
+        if (!canUse) {
+            return canUse;
+        }
+        if (AbstractRoomIsHyperfloorField.isHyperfloor.get(AbstractDungeon.currMapNode.room)) {
+            this.cantUseMessage = cardStrings.EXTENDED_DESCRIPTION[0];
+            return false;
+        }
+        return true;
     }
 
     @Override

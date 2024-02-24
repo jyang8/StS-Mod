@@ -63,7 +63,7 @@ public class SteamClub extends EventCard {
                 }
             }
             if (tmp + block > 0) {
-                this.rawDescription = cardStrings.DESCRIPTION + "(" + (tmp + block) + ")";
+                this.rawDescription = cardStrings.DESCRIPTION + " (" + (tmp + block) + ")";
             }
     }
 

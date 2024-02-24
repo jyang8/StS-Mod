@@ -23,8 +23,8 @@ public class Hunger extends BaseCard {
 
     private static final int SATIETY_DECREASE = 1;
     private static final int SCHEDULE_SLOT = 3;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    private static final int BLOCK = 7;
+    private static final int UPGRADE_BLOCK = 2;
 
     public Hunger() {
         super(ID, info);

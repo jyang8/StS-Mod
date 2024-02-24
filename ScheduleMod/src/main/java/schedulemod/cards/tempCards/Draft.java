@@ -1,6 +1,5 @@
 package schedulemod.cards.tempCards;
 
-import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -18,29 +17,21 @@ public class Draft extends EventCard {
             CardTarget.NONE,
             1
     );
-    private static final int UPGRADE_SCRY = 2;
 
     public Draft() {
         super(ID, info);
         tags.add(Entropy.Enums.EVENT);
         setExhaust(true);
-        setMagic(0, UPGRADE_SCRY);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DraftAction());
-        if (upgraded) {
-            addToBot(new ScryAction(this.magicNumber));
-        }
+        addToBot(new DraftAction(upgraded));
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new DraftAction());
-        if (upgraded) {
-            addToBot(new ScryAction(this.magicNumber));
-        }
+        addToBot(new DraftAction(upgraded));
     }
 
     @Override

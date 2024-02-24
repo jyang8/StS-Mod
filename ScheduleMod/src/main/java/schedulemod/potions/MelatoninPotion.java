@@ -20,6 +20,8 @@ public class MelatoninPotion extends BasePotion {
 
     public MelatoninPotion() {
         super(POTION_ID, POTENCY, AbstractPotion.PotionRarity.RARE, AbstractPotion.PotionSize.MOON, Color.GOLD, Color.YELLOW, null);
+        this.isThrown = true;
+        this.targetRequired = true;
     }
 
     public int getPotency() {

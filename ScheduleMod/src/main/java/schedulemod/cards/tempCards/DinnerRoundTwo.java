@@ -1,6 +1,5 @@
 package schedulemod.cards.tempCards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -9,7 +8,6 @@ import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
 import schedulemod.modifiers.BounceModifier;
-import schedulemod.powers.SatietyPower;
 import schedulemod.util.CardStats;
 
 public class DinnerRoundTwo extends EventCard {
@@ -21,7 +19,6 @@ public class DinnerRoundTwo extends EventCard {
             CardTarget.SELF,
             1);
 
-    private static final int SATIETY = 1;
 
     public DinnerRoundTwo() {
         super(ID, info);
@@ -39,7 +36,6 @@ public class DinnerRoundTwo extends EventCard {
             return;
         }
         CardModifierManager.addModifier(triggeringCard, new BounceModifier(this.upgraded));
-        addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY), SATIETY));
     }
 
     @Override

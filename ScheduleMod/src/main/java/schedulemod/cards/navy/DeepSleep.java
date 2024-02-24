@@ -18,7 +18,7 @@ public class DeepSleep extends BaseCard {
             1
     );
 
-    private static final int WRINKLER = 1;
+    private static final int WRINKLER = 2;
     private static final int UPGRADE_WRINKLER = 1;
 
     public DeepSleep() {

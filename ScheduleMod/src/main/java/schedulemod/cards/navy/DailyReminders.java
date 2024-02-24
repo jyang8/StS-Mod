@@ -44,6 +44,7 @@ public class DailyReminders extends BaseCard {
             for (EventCard event : eventsPlayed) {
                 if (event.triggeringCard == this) {
                     eventsToSchedule.add(event);
+                    event.triggeringCard = null;
                 }
             }
             
