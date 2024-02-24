@@ -9,12 +9,28 @@
       "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
     ]
   },
+  "${modID}:LilliaPower": {
+    "NAME": "Lillia",
+    "DESCRIPTIONS": [
+      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, end your turn."
+    ]
+  },
   "${modID}:FormPhasePower": {
-    "NAME": "FormPhasePower",
+    "NAME": "Form Change",
     "DESCRIPTIONS": [
       "Can only lose #b",
       " more HP this turn.",
       "Can no longer be harmed this turn."
+    ]
+  },
+  "${modID}:SpeedPower": {
+    "NAME": "Speed",
+    "DESCRIPTIONS": [
+      "Attacks deal #b",
+      "% more damage, decaying for #b",
+      "% less damage, decaying for #b",
+      " turns.",
+      " turn."
     ]
   },
   "${modID}:PremiumToaster": {

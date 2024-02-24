@@ -2,6 +2,7 @@ package schedulemod;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.devcommands.ConsoleCommand;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -26,6 +27,7 @@ import org.scannotation.AnnotationDB;
 import schedulemod.bosses.BossBen;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
+import schedulemod.commands.BossPortalCommand;
 import schedulemod.orbs.ScheduleOrb;
 import schedulemod.potions.BottomlessPotion;
 import schedulemod.potions.CaffeinePotion;
@@ -115,6 +117,8 @@ public class BasicMod implements
         // Add booss
         BaseMod.addMonster(BossBen.ID, () -> new BossBen());
         BaseMod.addBoss(Exordium.ID, BossBen.ID, "images/ui/map/boss/heart.png", "images/ui/map/bossOutline/heart.png");
+
+        ConsoleCommand.addCommand("portal", BossPortalCommand.class);
     }
 
     /*----------Localization----------*/

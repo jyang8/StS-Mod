@@ -1,7 +1,14 @@
 {
   "${modID}:TheBen": {
     "NAME": "The Ben",
-    "DIALOG": ["Welcome Entropy", "Farewell"],
-    "MOVES": ["Blade of the Ruined King", "Spectral Maw", "Harrowed Path"]
+    "DIALOG": ["Happy Birthday Ben!"],
+    "MOVES": [
+      "Blade of the Ruined King",
+      "Spectral Maw",
+      "Harrowed Path",
+      "Blooming Blows",
+      "Watch out! Eep!",
+      "Swirlseed"
+    ]
   }
 }
