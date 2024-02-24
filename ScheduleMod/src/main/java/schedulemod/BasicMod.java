@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -116,7 +117,8 @@ public class BasicMod implements
 
         // Add booss
         BaseMod.addMonster(BossBen.ID, () -> new BossBen());
-        BaseMod.addBoss(Exordium.ID, BossBen.ID, "images/ui/map/boss/heart.png", "images/ui/map/bossOutline/heart.png");
+        BaseMod.addBoss(TheBeyond.ID, BossBen.ID, "images/ui/map/boss/heart.png",
+                "images/ui/map/bossOutline/heart.png");
 
         ConsoleCommand.addCommand("portal", BossPortalCommand.class);
     }
