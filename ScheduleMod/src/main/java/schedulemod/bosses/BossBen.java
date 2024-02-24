@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
@@ -29,6 +30,7 @@ import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -88,14 +90,16 @@ public class BossBen extends CustomMonster {
     private static final byte CHANGE_FORM = 99;
 
     private static final byte BLADE_OF_THE_RUINED_KING = 2;
-
     private static final byte SPECTRAL_MAW = 3;
-
     private static final byte HARROWED_PATH = 4;
 
     private static final byte BLOOMING_BLOWS = 12;
     private static final byte WATCH_OUT_EEP = 13;
     private static final byte SWIRLSEED = 14;
+
+    private static final byte SEAR = 22;
+    public static final byte PILLAR_OF_FLAME = 23;
+    private static final byte CONFLAGRATION = 24;
 
     private ArrayList<Form> forms = new ArrayList<>();
     private int currentFormIndex = -1;
@@ -107,6 +111,9 @@ public class BossBen extends CustomMonster {
     private int bloomingBlowsDamage;
     private int watchOutEepDamage;
     private int swirlseedDamage;
+    private int searDamage;
+    private int pillarOfFlameDamage;
+    private int conflagrationDamage;
 
     public int formHealth() {
         if (AbstractDungeon.ascensionLevel >= 9) {
@@ -140,14 +147,20 @@ public class BossBen extends CustomMonster {
             this.bladeOfTheRuinedKingDamage = 15;
             this.spectralMawDamage = 27;
             this.bloomingBlowsDamage = 5;
-            this.watchOutEepDamage = 22;
+            this.watchOutEepDamage = 23;
             this.swirlseedDamage = 19;
+            this.searDamage = 22;
+            this.pillarOfFlameDamage = 25;
+            this.conflagrationDamage = 12;
         } else {
             this.bladeOfTheRuinedKingDamage = 12;
             this.spectralMawDamage = 22;
             this.bloomingBlowsDamage = 4;
-            this.watchOutEepDamage = 18;
+            this.watchOutEepDamage = 19;
             this.swirlseedDamage = 15;
+            this.searDamage = 18;
+            this.pillarOfFlameDamage = 21;
+            this.conflagrationDamage = 9;
         }
         this.damage.add(
                 new DamageInfo(this, this.bladeOfTheRuinedKingDamage, DamageInfo.DamageType.NORMAL));
@@ -155,6 +168,9 @@ public class BossBen extends CustomMonster {
         this.damage.add(new DamageInfo(this, this.bloomingBlowsDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.watchOutEepDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.swirlseedDamage, DamageInfo.DamageType.NORMAL));
+        this.damage.add(new DamageInfo(this, this.searDamage, DamageInfo.DamageType.NORMAL));
+        this.damage.add(new DamageInfo(this, this.pillarOfFlameDamage, DamageInfo.DamageType.NORMAL));
+        this.damage.add(new DamageInfo(this, this.conflagrationDamage, DamageInfo.DamageType.NORMAL));
     }
 
     public Form getCurrentForm() {
@@ -187,7 +203,7 @@ public class BossBen extends CustomMonster {
                 currentFormPower = new LilliaPower(this);
                 break;
             case BRAND:
-                // TODO
+                currentFormPower = new BrandPower(this);
                 break;
             case NEEKO:
                 // TODO
@@ -273,6 +289,24 @@ public class BossBen extends CustomMonster {
                 } else {
                     if (!lastMove(SWIRLSEED)) {
                         this.setMove(MOVES[5], SWIRLSEED, Intent.ATTACK_DEBUFF, this.damage.get(4).base);
+                        return;
+                    }
+                }
+
+            case BRAND:
+                if (num < 40) {
+                    if (!lastMove(SEAR)) {
+                        this.setMove(MOVES[6], SEAR, Intent.ATTACK_DEBUFF, this.damage.get(5).base);
+                        return;
+                    }
+                } else if (num < 75) {
+                    if (!lastMove(PILLAR_OF_FLAME)) {
+                        this.setMove(MOVES[7], PILLAR_OF_FLAME, Intent.ATTACK, this.damage.get(6).base);
+                        return;
+                    }
+                } else {
+                    if (!lastMove(CONFLAGRATION)) {
+                        this.setMove(MOVES[8], CONFLAGRATION, Intent.ATTACK, this.damage.get(7).base, 3, true);
                         return;
                     }
                 }
@@ -369,9 +403,66 @@ public class BossBen extends CustomMonster {
                 if (AbstractDungeon.ascensionLevel >= 19) {
                     stacks = 5;
                 }
+                // TODO possible visual bug
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                         AbstractDungeon.player, this,
                         new SpeedPower(AbstractDungeon.player, this, -stacks)));
+                break;
+            case SEAR:
+                AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAction(AbstractDungeon.player, this.damage
+                                .get(5), AbstractGameAction.AttackEffect.FIRE));
+                stacks = 2;
+                if (AbstractDungeon.ascensionLevel >= 19) {
+                    stacks = 3;
+                }
+                addToBot(new ApplyPowerAction(AbstractDungeon.player, this,
+                        new WeakPower(AbstractDungeon.player, stacks, true)));
+                if (!AbstractDungeon.player.hasPower(AblazePower.POWER_ID)) {
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, this,
+                            new AblazePower(AbstractDungeon.player, this)));
+                } else {
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, this,
+                            new FrailPower(AbstractDungeon.player, stacks, true)));
+                    addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,
+                            this, AblazePower.POWER_ID));
+                }
+                break;
+            case PILLAR_OF_FLAME:
+                AbstractDungeon.actionManager.addToBottom(new WaitAction(1F));
+                AbstractDungeon.actionManager.addToBottom(
+                        new DamageAction(AbstractDungeon.player, this.damage
+                                .get(6), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+                if (!AbstractDungeon.player.hasPower(AblazePower.POWER_ID)) {
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, this,
+                            new AblazePower(AbstractDungeon.player, this)));
+                } else {
+                    addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,
+                            this, AblazePower.POWER_ID));
+                }
+                break;
+            case CONFLAGRATION:
+                for (int i = 0; i < 3; i++) {
+                    AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
+                    AbstractDungeon.actionManager.addToBottom(
+                            new DamageAction(AbstractDungeon.player, this.damage
+                                    .get(7), AbstractGameAction.AttackEffect.POISON));
+                }
+                stacks = 1;
+                if (AbstractDungeon.ascensionLevel >= 19) {
+                    stacks = 2;
+                }
+                if (!AbstractDungeon.player.hasPower(AblazePower.POWER_ID)) {
+                    addToBot(new ApplyPowerAction(AbstractDungeon.player, this,
+                            new AblazePower(AbstractDungeon.player, this)));
+                } else {
+                    Burn burn = new Burn();
+                    burn.upgrade();
+                    addToBot(new MakeTempCardInDrawPileAction(burn, stacks, true, true));
+                    addToBot(new RemoveSpecificPowerAction(AbstractDungeon.player,
+                            this, AblazePower.POWER_ID));
+                }
                 break;
             case 5:
                 // Storage
@@ -398,6 +489,10 @@ public class BossBen extends CustomMonster {
         }
         BasicMod.logger.info("Add roll move action");
         AbstractDungeon.actionManager.addToBottom(new RollMoveAction(this));
+    }
+
+    public boolean lastMove(byte move) {
+        return super.lastMove(move);
     }
 
 }

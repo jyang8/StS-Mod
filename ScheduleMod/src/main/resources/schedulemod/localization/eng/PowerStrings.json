@@ -12,7 +12,13 @@
   "${modID}:LilliaPower": {
     "NAME": "Lillia",
     "DESCRIPTIONS": [
-      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, end your turn."
+      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, she gains 3 #yStrength."
+    ]
+  },
+  "${modID}:BrandPower": {
+    "NAME": "Brand",
+    "DESCRIPTIONS": [
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. When you gain #ySatiety, brand gains 1 #yStrength."
     ]
   },
   "${modID}:FormPhasePower": {
@@ -32,6 +38,10 @@
       " turns.",
       " turn."
     ]
+  },
+  "${modID}:AblazePower": {
+    "NAME": "Ablaze",
+    "DESCRIPTIONS": ["Brand's attacks are empowered and consume Ablaze."]
   },
   "${modID}:PremiumToaster": {
     "NAME": "Premium Toaster",
