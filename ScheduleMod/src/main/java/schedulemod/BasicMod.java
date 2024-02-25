@@ -117,8 +117,8 @@ public class BasicMod implements
 
         // Add booss
         BaseMod.addMonster(BossBen.ID, () -> new BossBen());
-        BaseMod.addBoss(TheBeyond.ID, BossBen.ID, "images/ui/map/boss/heart.png",
-                "images/ui/map/bossOutline/heart.png");
+        BaseMod.addBoss(TheBeyond.ID, BossBen.ID, mapPath("bossben.png"),
+                mapPath("bossben.png"));
 
         ConsoleCommand.addCommand("portal", BossPortalCommand.class);
     }
@@ -232,6 +232,14 @@ public class BasicMod implements
 
     public static String relicPath(String file) {
         return resourcesFolder + "/images/relics/" + file;
+    }
+
+    public static String monsterPath(String file) {
+        return resourcesFolder + "/images/monsters/" + file;
+    }
+
+    public static String mapPath(String file) {
+        return resourcesFolder + "/images/map/" + file;
     }
 
     // This determines the mod's ID based on information stored by ModTheSpire.

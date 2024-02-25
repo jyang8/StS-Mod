@@ -1,6 +1,7 @@
 package schedulemod.bosses;
 
 import static schedulemod.BasicMod.makeID;
+import static schedulemod.BasicMod.monsterPath;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +40,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -130,8 +132,49 @@ public class BossBen extends CustomMonster {
         }
     }
 
+    public Form getCurrentForm() {
+        if (currentFormIndex < 0) {
+            return forms.get(0);
+        }
+        return forms.get(currentFormIndex);
+    }
+
+    public boolean hasDisguise() {
+        return hasPower(NeekoViegoDisguisePower.POWER_ID) ||
+                hasPower(NeekoLilliaDisguisePower.POWER_ID) ||
+                hasPower(NeekoBrandDisguisePower.POWER_ID);
+    }
+
+    public void loadFormImage() {
+        String imgUrl;
+        Form form = getCurrentForm();
+        if (hasDisguise()) {
+            form = neekoForm;
+        }
+        switch (form) {
+            case VIEGO:
+                imgUrl = monsterPath("bossben/viego.png");
+                break;
+            case LILLIA:
+                imgUrl = monsterPath("bossben/lillia.png");
+                break;
+            case BRAND:
+                imgUrl = monsterPath("bossben/brand.png");
+                break;
+            case NEEKO:
+                imgUrl = monsterPath("bossben/neeko.png");
+                break;
+            default:
+                imgUrl = monsterPath("bossben/neeko.png");
+                break;
+        }
+        if (imgUrl != null) {
+            this.img = ImageMaster.loadImage(imgUrl);
+        }
+    }
+
     public BossBen() {
-        super(NAME, ID, 223, -10.0F, -30.0F, 476.0F, 410.0F, null, -50.0F, 30.0F);
+        super(NAME, ID, 223, -10.0F, -30.0F, 476.0F, 440.0F, null, -50.0F, 30.0F);
         // Shuffle forms
         forms.clear();
         forms.add(Form.LILLIA);
@@ -159,14 +202,16 @@ public class BossBen extends CustomMonster {
             forms.remove(1);
             forms.add(3, Form.NEEKO);
         }
+        loadFormImage();
         // Force Viego to be first form
         setHp(formHealth() * 4);
-        loadAnimation("images/monsters/theForest/timeEater/skeleton.atlas",
-                "images/monsters/theForest/timeEater/skeleton.json", 1.0F);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        this.stateData.setMix("Hit", "Idle", 0.1F);
-        e.setTimeScale(0.8F);
+
+        // loadAnimation("images/monsters/theForest/timeEater/skeleton.atlas",
+        // "images/monsters/theForest/timeEater/skeleton.json", 1.0F);
+        // AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        // e.setTime(e.getEndTime() * MathUtils.random());
+        // this.stateData.setMix("Hit", "Idle", 0.1F);
+        // e.setTimeScale(0.8F);
         this.type = AbstractMonster.EnemyType.BOSS;
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
@@ -204,13 +249,6 @@ public class BossBen extends CustomMonster {
         this.damage.add(new DamageInfo(this, this.conflagrationDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.bloomingBurstDamage, DamageInfo.DamageType.NORMAL));
         this.damage.add(new DamageInfo(this, this.tangleBarbsDamage, DamageInfo.DamageType.NORMAL));
-    }
-
-    public Form getCurrentForm() {
-        if (currentFormIndex < 0) {
-            return forms.get(0);
-        }
-        return forms.get(currentFormIndex);
     }
 
     public void switchForm() {
@@ -261,6 +299,7 @@ public class BossBen extends CustomMonster {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                 this, this,
                 currentFormPower));
+        addToBot(new LoadFormImageAction(this));
         formPhasePower.amount = formHealth();
         formPhasePower.updateDescription();
     }
@@ -290,12 +329,6 @@ public class BossBen extends CustomMonster {
             AbstractDungeon.actionManager.addToBottom(new SetMoveAction(this, "Change Form", CHANGE_FORM,
                     AbstractMonster.Intent.UNKNOWN));
         }
-    }
-
-    public boolean hasDisguise() {
-        return hasPower(NeekoViegoDisguisePower.POWER_ID) ||
-                hasPower(NeekoLilliaDisguisePower.POWER_ID) ||
-                hasPower(NeekoBrandDisguisePower.POWER_ID);
     }
 
     @Override
@@ -406,7 +439,8 @@ public class BossBen extends CustomMonster {
                 switchForm();
                 break;
             case BLADE_OF_THE_RUINED_KING:
-                AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this, "ATTACK"));
+                // AbstractDungeon.actionManager.addToBottom(new ChangeStateAction(this,
+                // "ATTACK"));
                 AbstractDungeon.actionManager.addToBottom(new WaitAction(0.4F));
                 AbstractDungeon.actionManager.addToBottom(
                         new DamageAction(AbstractDungeon.player, this.damage

@@ -30,6 +30,9 @@ public abstract class AbstractNeekoDisguisePower extends BasePower {
         addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, NeekoBrandDisguisePower.POWER_ID));
 
         addToBot(new ApplyPowerAction(this.owner, this.owner, new NeekoPower(this.owner)));
+        if (this.owner instanceof BossBen) {
+            addToBot(new LoadFormImageAction((BossBen) this.owner));
+        }
         addToBot(new RollMoveAction((AbstractMonster) this.owner));
         addToBot(new CreateIntentAction((AbstractMonster) this.owner));
         addToBot(new TalkAction(this.owner, this.getDialog(), 0.5F, 3.0F));
