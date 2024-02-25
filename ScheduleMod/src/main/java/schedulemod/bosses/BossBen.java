@@ -171,27 +171,27 @@ public class BossBen extends CustomMonster {
         this.dialogX = -200.0F * Settings.scale;
         this.dialogY = 10.0F * Settings.scale;
         if (AbstractDungeon.ascensionLevel >= 4) {
-            this.bladeOfTheRuinedKingDamage = 14;
-            this.spectralMawDamage = 27;
+            this.bladeOfTheRuinedKingDamage = 13;
+            this.spectralMawDamage = 26;
             this.bloomingBlowsDamage = 5;
-            this.watchOutEepDamage = 23;
-            this.swirlseedDamage = 19;
-            this.searDamage = 22;
-            this.pillarOfFlameDamage = 31;
-            this.conflagrationDamage = 10;
-            this.bloomingBurstDamage = 12;
-            this.tangleBarbsDamage = 25;
+            this.watchOutEepDamage = 22;
+            this.swirlseedDamage = 18;
+            this.searDamage = 21;
+            this.pillarOfFlameDamage = 30;
+            this.conflagrationDamage = 9;
+            this.bloomingBurstDamage = 11;
+            this.tangleBarbsDamage = 24;
         } else {
-            this.bladeOfTheRuinedKingDamage = 11;
-            this.spectralMawDamage = 22;
+            this.bladeOfTheRuinedKingDamage = 10;
+            this.spectralMawDamage = 21;
             this.bloomingBlowsDamage = 4;
-            this.watchOutEepDamage = 19;
-            this.swirlseedDamage = 15;
-            this.searDamage = 18;
-            this.pillarOfFlameDamage = 25;
-            this.conflagrationDamage = 7;
-            this.bloomingBurstDamage = 9;
-            this.tangleBarbsDamage = 21;
+            this.watchOutEepDamage = 18;
+            this.swirlseedDamage = 14;
+            this.searDamage = 17;
+            this.pillarOfFlameDamage = 24;
+            this.conflagrationDamage = 6;
+            this.bloomingBurstDamage = 8;
+            this.tangleBarbsDamage = 20;
         }
         this.damage.add(
                 new DamageInfo(this, this.bladeOfTheRuinedKingDamage, DamageInfo.DamageType.NORMAL));
