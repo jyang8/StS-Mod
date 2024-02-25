@@ -20,7 +20,7 @@ public class Bread extends BaseCard {
             0
     );
     private static final int FATIGUE = 6;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int UPGRADE_FATIGUE = 3;
     private static final boolean EXHAUST = true;
     private static final boolean RETAIN = true;
 
