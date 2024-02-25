@@ -1,10 +1,12 @@
 package schedulemod.modifiers;
 
+import java.io.Serializable;
+
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import basemod.abstracts.AbstractCardModifier;
 
-public class MultiplyMagicModifier extends AbstractCardModifier{
+public class MultiplyMagicModifier extends AbstractCardModifier implements Serializable {
 
     public int multiplier = 1;
 
@@ -26,5 +28,5 @@ public class MultiplyMagicModifier extends AbstractCardModifier{
     public AbstractCardModifier makeCopy() {
         return new MultiplyMagicModifier(multiplier);
     }
-    
+
 }

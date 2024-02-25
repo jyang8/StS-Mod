@@ -2,6 +2,7 @@ package schedulemod;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.devcommands.ConsoleCommand;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,14 +16,19 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.characters.AbstractPlayer.PlayerClass;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.dungeons.Exordium;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.scannotation.AnnotationDB;
+
+import schedulemod.bosses.BossBen;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.character.Entropy;
+import schedulemod.commands.BossPortalCommand;
 import schedulemod.orbs.ScheduleOrb;
 import schedulemod.potions.BottomlessPotion;
 import schedulemod.potions.CaffeinePotion;
@@ -44,15 +50,15 @@ public class BasicMod implements
         EditKeywordsSubscriber,
         PostInitializeSubscriber {
     public static ModInfo info;
-    public static String modID; //Edit your pom.xml to change this
-    static { loadModInfo(); }
+    public static String modID; // Edit your pom.xml to change this
+    static {
+        loadModInfo();
+    }
 
     public static final Float scheduleCardRenderScale = Float.valueOf(0.2F);
     public static boolean scheduleDelay = false;
 
-
-
-    public static final Logger logger = LogManager.getLogger(modID); //Used to output to the console.
+    public static final Logger logger = LogManager.getLogger(modID); // Used to output to the console.
     private static final String resourcesFolder = "schedulemod";
 
     private static final String BG_ATTACK = characterPath("cardback/bg_attack.png");
@@ -69,13 +75,14 @@ public class BasicMod implements
     private static final String CHAR_SELECT_BUTTON = characterPath("select/Schedule_button.png");
     private static final String CHAR_SELECT_PORTRAIT = characterPath("select/Schedule_portrait.png");
 
-    //This is used to prefix the IDs of various objects like cards and relics,
-    //to avoid conflicts between different mods using the same name for things.
+    // This is used to prefix the IDs of various objects like cards and relics,
+    // to avoid conflicts between different mods using the same name for things.
     public static String makeID(String id) {
         return modID + ":" + id;
     }
 
-    //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
+    // This will be called by ModTheSpire because of the @SpireInitializer
+    // annotation at the top of the class.
     public static void initialize() {
         new BasicMod();
 
@@ -86,31 +93,44 @@ public class BasicMod implements
     }
 
     public BasicMod() {
-        BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
+        BaseMod.subscribe(this); // This will make BaseMod trigger all the subscribers at their appropriate
+                                 // times.
         logger.info(modID + " subscribed to BaseMod.");
     }
 
     @Override
     public void receivePostInitialize() {
-        //This loads the image used as an icon in the in-game mods menu.
+        // This loads the image used as an icon in the in-game mods menu.
         Texture badgeTexture = TextureLoader.getTexture(imagePath("badge.png"));
-        //Set up the mod information displayed in the in-game mods menu.
-        //The information used is taken from your pom.xml file.
-        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description, null);
+        // Set up the mod information displayed in the in-game mods menu.
+        // The information used is taken from your pom.xml file.
+        BaseMod.registerModBadge(badgeTexture, info.Name, GeneralUtils.arrToString(info.Authors), info.Description,
+                null);
 
-        //Add potions
-        BaseMod.addPotion(CaffeinePotion.class, Color.BROWN, Color.BROWN, Color.TAN, CaffeinePotion.POTION_ID, Entropy.Enums.ENTROPY);
-        BaseMod.addPotion(MelatoninPotion.class, Color.GOLD, Color.YELLOW, null, MelatoninPotion.POTION_ID, Entropy.Enums.ENTROPY);
-        BaseMod.addPotion(BottomlessPotion.class, Color.PURPLE, Color.VIOLET, Color.CLEAR, BottomlessPotion.POTION_ID, Entropy.Enums.ENTROPY);
+        // Add potions
+        BaseMod.addPotion(CaffeinePotion.class, Color.BROWN, Color.BROWN, Color.TAN, CaffeinePotion.POTION_ID,
+                Entropy.Enums.ENTROPY);
+        BaseMod.addPotion(MelatoninPotion.class, Color.GOLD, Color.YELLOW, null, MelatoninPotion.POTION_ID,
+                Entropy.Enums.ENTROPY);
+        BaseMod.addPotion(BottomlessPotion.class, Color.PURPLE, Color.VIOLET, Color.CLEAR, BottomlessPotion.POTION_ID,
+                Entropy.Enums.ENTROPY);
+
+        // Add Boss Ben
+        // Boss Ben is also added via a patch
+        BaseMod.addMonster(BossBen.ID, () -> new BossBen());
+        BaseMod.addBoss(TheBeyond.ID, BossBen.ID, mapPath("bossben.png"),
+                mapPath("bossben.png"));
+
+        ConsoleCommand.addCommand("portal", BossPortalCommand.class);
     }
 
     /*----------Localization----------*/
 
-    //This is used to load the appropriate localization files based on language.
-    private static String getLangString()
-    {
+    // This is used to load the appropriate localization files based on language.
+    private static String getLangString() {
         return Settings.language.name().toLowerCase();
     }
+
     private static final String defaultLanguage = "eng";
 
     public static final Map<String, KeywordInfo> keywords = new HashMap<>();
@@ -118,31 +138,36 @@ public class BasicMod implements
     @Override
     public void receiveEditStrings() {
         /*
-            First, load the default localization.
-            Then, if the current language is different, attempt to load localization for that language.
-            This results in the default localization being used for anything that might be missing.
-            The same process is used to load keywords slightly below.
-        */
-        loadLocalization(defaultLanguage); //no exception catching for default localization; you better have at least one that works.
+         * First, load the default localization.
+         * Then, if the current language is different, attempt to load localization for
+         * that language.
+         * This results in the default localization being used for anything that might
+         * be missing.
+         * The same process is used to load keywords slightly below.
+         */
+        loadLocalization(defaultLanguage); // no exception catching for default localization; you better have at least
+                                           // one that works.
         if (!defaultLanguage.equals(getLangString())) {
             try {
                 loadLocalization(getLangString());
-            }
-            catch (GdxRuntimeException e) {
+            } catch (GdxRuntimeException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void loadLocalization(String lang) {
-        //While this does load every type of localization, most of these files are just outlines so that you can see how they're formatted.
-        //Feel free to comment out/delete any that you don't end up using.
+        // While this does load every type of localization, most of these files are just
+        // outlines so that you can see how they're formatted.
+        // Feel free to comment out/delete any that you don't end up using.
         BaseMod.loadCustomStringsFile(CardStrings.class,
                 localizationPath(lang, "CardStrings.json"));
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
                 localizationPath(lang, "CharacterStrings.json"));
         BaseMod.loadCustomStringsFile(EventStrings.class,
                 localizationPath(lang, "EventStrings.json"));
+        BaseMod.loadCustomStringsFile(MonsterStrings.class,
+                localizationPath(lang, "MonsterStrings.json"));
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 localizationPath(lang, "OrbStrings.json"));
         BaseMod.loadCustomStringsFile(PotionStrings.class,
@@ -156,10 +181,10 @@ public class BasicMod implements
     }
 
     @Override
-    public void receiveEditKeywords()
-    {
+    public void receiveEditKeywords() {
         Gson gson = new Gson();
-        String json = Gdx.files.internal(localizationPath(defaultLanguage, "Keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal(localizationPath(defaultLanguage, "Keywords.json"))
+                .readString(String.valueOf(StandardCharsets.UTF_8));
         KeywordInfo[] keywords = gson.fromJson(json, KeywordInfo[].class);
         for (KeywordInfo keyword : keywords) {
             keyword.prep();
@@ -167,17 +192,15 @@ public class BasicMod implements
         }
 
         if (!defaultLanguage.equals(getLangString())) {
-            try
-            {
-                json = Gdx.files.internal(localizationPath(getLangString(), "Keywords.json")).readString(String.valueOf(StandardCharsets.UTF_8));
+            try {
+                json = Gdx.files.internal(localizationPath(getLangString(), "Keywords.json"))
+                        .readString(String.valueOf(StandardCharsets.UTF_8));
                 keywords = gson.fromJson(json, KeywordInfo[].class);
                 for (KeywordInfo keyword : keywords) {
                     keyword.prep();
                     registerKeyword(keyword);
                 }
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 logger.warn(modID + " does not support " + getLangString() + " keywords.");
             }
         }
@@ -185,13 +208,13 @@ public class BasicMod implements
 
     private void registerKeyword(KeywordInfo info) {
         BaseMod.addKeyword(modID.toLowerCase(), info.PROPER_NAME, info.NAMES, info.DESCRIPTION);
-        if (!info.ID.isEmpty())
-        {
+        if (!info.ID.isEmpty()) {
             keywords.put(info.ID, info);
         }
     }
 
-    //These methods are used to generate the correct filepaths to various parts of the resources folder.
+    // These methods are used to generate the correct filepaths to various parts of
+    // the resources folder.
     public static String localizationPath(String lang, String file) {
         return resourcesFolder + "/localization/" + lang + "/" + file;
     }
@@ -199,31 +222,41 @@ public class BasicMod implements
     public static String imagePath(String file) {
         return resourcesFolder + "/images/" + file;
     }
+
     public static String characterPath(String file) {
         return resourcesFolder + "/images/character/" + file;
     }
+
     public static String powerPath(String file) {
         return resourcesFolder + "/images/powers/" + file;
     }
+
     public static String relicPath(String file) {
         return resourcesFolder + "/images/relics/" + file;
     }
 
+    public static String monsterPath(String file) {
+        return resourcesFolder + "/images/monsters/" + file;
+    }
 
-    //This determines the mod's ID based on information stored by ModTheSpire.
+    public static String mapPath(String file) {
+        return resourcesFolder + "/images/map/" + file;
+    }
+
+    // This determines the mod's ID based on information stored by ModTheSpire.
     private static void loadModInfo() {
-        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo)->{
+        Optional<ModInfo> infos = Arrays.stream(Loader.MODINFOS).filter((modInfo) -> {
             AnnotationDB annotationDB = Patcher.annotationDBMap.get(modInfo.jarURL);
             if (annotationDB == null)
                 return false;
-            Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
+            Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(),
+                    Collections.emptySet());
             return initializers.contains(BasicMod.class.getName());
         }).findFirst();
         if (infos.isPresent()) {
             info = infos.get();
             modID = info.ID;
-        }
-        else {
+        } else {
             throw new RuntimeException("Failed to determine mod info/ID based on initializer.");
         }
     }
@@ -236,24 +269,27 @@ public class BasicMod implements
 
     @Override
     public void receiveEditCards() {
-        new AutoAdd(modID) //Loads files from this mod
-                .packageFilter(BaseCard.class) //In the same package as this class
-                .setDefaultSeen(true) //And marks them as seen in the compendium
-                .cards(); //Adds the cards
+        new AutoAdd(modID) // Loads files from this mod
+                .packageFilter(BaseCard.class) // In the same package as this class
+                .setDefaultSeen(true) // And marks them as seen in the compendium
+                .cards(); // Adds the cards
     }
 
     @Override
-    public void receiveEditRelics() { //somewhere in the class
-        new AutoAdd(modID) //Loads files from this mod
-                .packageFilter(BaseRelic.class) //In the same package as this class
-                .any(BaseRelic.class, (info, relic) -> { //Run this code for any classes that extend this class
+    public void receiveEditRelics() { // somewhere in the class
+        new AutoAdd(modID) // Loads files from this mod
+                .packageFilter(BaseRelic.class) // In the same package as this class
+                .any(BaseRelic.class, (info, relic) -> { // Run this code for any classes that extend this class
                     if (relic.pool != null)
-                        BaseMod.addRelicToCustomPool(relic, relic.pool); //Register a custom character specific relic
+                        BaseMod.addRelicToCustomPool(relic, relic.pool); // Register a custom character specific relic
                     else
-                        BaseMod.addRelic(relic, relic.relicType); //Register a shared or base game character specific relic
+                        BaseMod.addRelic(relic, relic.relicType); // Register a shared or base game character specific
+                                                                  // relic
 
-                    //If the class is annotated with @AutoAdd.Seen, it will be marked as seen, making it visible in the relic library.
-                    //If you want all your relics to be visible by default, just remove this if statement.
+                    // If the class is annotated with @AutoAdd.Seen, it will be marked as seen,
+                    // making it visible in the relic library.
+                    // If you want all your relics to be visible by default, just remove this if
+                    // statement.
                     if (info.seen)
                         UnlockTracker.markRelicAsSeen(relic.relicId);
                 });

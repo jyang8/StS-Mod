@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import basemod.abstracts.AbstractCardModifier;
 
-public class MultiplyDamageModifier extends AbstractCardModifier{
+public class MultiplyDamageModifier extends AbstractCardModifier {
 
     public int amount = 1;
     public int priority = 3;
@@ -29,5 +29,5 @@ public class MultiplyDamageModifier extends AbstractCardModifier{
     public AbstractCardModifier makeCopy() {
         return new MultiplyDamageModifier(amount);
     }
-    
+
 }

@@ -1,42 +1,91 @@
 {
   "${modID}:PowerID": {
     "NAME": "Ultimate Power",
+    "DESCRIPTIONS": ["You are Very Cool and Strong."]
+  },
+  "${modID}:ViegoPower": {
+    "NAME": "Viego",
     "DESCRIPTIONS": [
-      "You are Very Cool and Strong."
+      "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
     ]
+  },
+  "${modID}:NeekoViegoDisguisePower": {
+    "NAME": "Viego",
+    "DESCRIPTIONS": [
+      "At Viego's end of turn, he gains 1 #yStrength for each of your scheduled cards."
+    ]
+  },
+  "${modID}:LilliaPower": {
+    "NAME": "Lillia",
+    "DESCRIPTIONS": [
+      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, she gains 3 #yStrength."
+    ]
+  },
+  "${modID}:NeekoLilliaDisguisePower": {
+    "NAME": "Lillia",
+    "DESCRIPTIONS": [
+      "At Lillia's end of turn, add one #yDazed to your discard. When you put Lillia to sleep, she gains 3 #yStrength."
+    ]
+  },
+  "${modID}:BrandPower": {
+    "NAME": "Brand",
+    "DESCRIPTIONS": [
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. At Brand's end of turn, he gains 1 #yStrength for each of your Satiety."
+    ]
+  },
+  "${modID}:NeekoBrandDisguisePower": {
+    "NAME": "Brand",
+    "DESCRIPTIONS": [
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. At Brand's end of turn, he gains 1 #yStrength for each of your Satiety."
+    ]
+  },
+  "${modID}:NeekoPower": {
+    "NAME": "Neeko",
+    "DESCRIPTIONS": [
+      "Neeko appears in a different form and has a hidden intent. Neeko undisguises upon taking his first turn."
+    ]
+  },
+  "${modID}:FormPhasePower": {
+    "NAME": "Form Change",
+    "DESCRIPTIONS": [
+      "Can only lose #b",
+      " more HP this turn.",
+      "Can no longer be harmed this turn."
+    ]
+  },
+  "${modID}:SpeedPower": {
+    "NAME": "Speed",
+    "DESCRIPTIONS": [
+      "Attacks deal #b",
+      "% more damage, decaying for #b",
+      "% less damage, decaying for #b",
+      " turns.",
+      " turn."
+    ]
+  },
+  "${modID}:AblazePower": {
+    "NAME": "Ablaze",
+    "DESCRIPTIONS": ["Brand's attacks are empowered and consume Ablaze."]
   },
   "${modID}:PremiumToaster": {
     "NAME": "Premium Toaster",
-    "DESCRIPTIONS": [
-      "#yBread applies #b",
-      " additional #yFatigue."
-    ]
+    "DESCRIPTIONS": ["#yBread applies #b", " additional #yFatigue."]
   },
   "${modID}:Satiety": {
     "NAME": "Satiety",
-    "DESCRIPTIONS": [
-      "Whenever you reach #b",
-      " #ySatiety, end your turn."
-    ]
+    "DESCRIPTIONS": ["Whenever you reach #b", " #ySatiety, end your turn."]
   },
   "${modID}:Hunger": {
     "NAME": "Satiety Down",
-    "DESCRIPTIONS": [
-      "Lose #b",
-      " #ySatiety."
-    ]
+    "DESCRIPTIONS": ["Lose #b", " #ySatiety."]
   },
   "${modID}:FortyEightHourDay": {
     "NAME": "48 Hour Day",
-    "DESCRIPTIONS": [
-      "This turn, triggered #yEvents are doubled."
-    ]
+    "DESCRIPTIONS": ["This turn, triggered #yEvents are doubled."]
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
-    "DESCRIPTIONS": [
-      "This turn, #ySatiety will not trigger."
-    ]
+    "DESCRIPTIONS": ["This turn, #ySatiety will not trigger."]
   },
   "${modID}:Fatigue": {
     "NAME": "Fatigue",
@@ -46,9 +95,7 @@
   },
   "${modID}:Sleep": {
     "NAME": "Sleep",
-    "DESCRIPTIONS": [
-      "This turn, the enemy will skip its turn."
-    ]
+    "DESCRIPTIONS": ["This turn, the enemy will skip its turn."]
   },
   "${modID}:SleepDebt": {
     "NAME": "Sleep Debt",
@@ -58,25 +105,15 @@
   },
   "${modID}:Wrinkler": {
     "NAME": "Wrinkler",
-    "DESCRIPTIONS": [
-      "Negate #b",
-      " self debuff.",
-      " self debuffs."
-    ]
+    "DESCRIPTIONS": ["Negate #b", " self debuff.", " self debuffs."]
   },
   "${modID}:UtilityScience": {
     "NAME": "Utility Science",
-    "DESCRIPTIONS": [
-      "Whenever you create a card, gain #b",
-      " #yWrinkler."
-    ]
+    "DESCRIPTIONS": ["Whenever you create a card, gain #b", " #yWrinkler."]
   },
   "${modID}:Void": {
     "NAME": "Void",
-    "DESCRIPTIONS": [
-      "At the start of your next turn, lose ",
-      ""
-    ]
+    "DESCRIPTIONS": ["At the start of your next turn, lose ", ""]
   },
   "${modID}:Croissant": {
     "NAME": "L'Appartement 4F",
@@ -109,18 +146,11 @@
   },
   "${modID}:Drowsy": {
     "NAME": "Drowsy",
-    "DESCRIPTIONS": [
-      "Apply #b",
-      "% more #yFatigue for #b",
-      " turn.",
-      " turns."
-    ]
+    "DESCRIPTIONS": ["Apply #b", "% more #yFatigue for #b", " turn.", " turns."]
   },
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
-    "DESCRIPTIONS": [
-      "Excess #yFatigue is not consumed."
-    ]
+    "DESCRIPTIONS": ["Excess #yFatigue is not consumed."]
   },
   "${modID}:Punctual": {
     "NAME": "Punctual",
@@ -160,10 +190,7 @@
   },
   "${modID}:DeepSleep": {
     "NAME": "Deep Sleep",
-    "DESCRIPTIONS": [
-      "Whenever your turn ends early, gain #b",
-      " Wrinkler."
-    ]
+    "DESCRIPTIONS": ["Whenever your turn ends early, gain #b", " Wrinkler."]
   },
   "${modID}:MaxSatiety": {
     "NAME": "Belly Size",
@@ -175,10 +202,7 @@
   },
   "${modID}:LoseMaxSatiety": {
     "NAME": "Lose Belly Size",
-    "DESCRIPTIONS": [
-      "At the end of your turn, lose #b",
-      " #yBelly #ySize."
-    ]
+    "DESCRIPTIONS": ["At the end of your turn, lose #b", " #yBelly #ySize."]
   },
   "${modID}:RocketFactory": {
     "NAME": "Rocket Factory",
@@ -209,10 +233,7 @@
   },
   "${modID}:Amp": {
     "NAME": "Amp",
-    "DESCRIPTIONS": [
-      "Your next Attack deal #b",
-      " additional damage."
-    ]
+    "DESCRIPTIONS": ["Your next Attack deal #b", " additional damage."]
   },
   "${modID}:Coffee": {
     "NAME": "Coffee",
@@ -233,10 +254,7 @@
   },
   "${modID}:LosePunctual": {
     "NAME": "Lose Punctual",
-    "DESCRIPTIONS": [
-      "At the end of your turn, lose #b",
-      " #yPunctual."
-    ]
+    "DESCRIPTIONS": ["At the end of your turn, lose #b", " #yPunctual."]
   },
   "${modID}:TidyUp": {
     "NAME": "Tidy Up",

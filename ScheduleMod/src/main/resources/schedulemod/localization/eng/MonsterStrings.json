@@ -1,0 +1,25 @@
+{
+  "${modID}:TheBen": {
+    "NAME": "The Ben",
+    "DIALOG": [
+      "Happy Birthday Ben!",
+      "Oooh. Spoooky.",
+      "Ohh... Wish I could stay like this forever",
+      "Ahhh!! Neeko on fire! Just kidding."
+    ],
+    "MOVES": [
+      "Blade of the Ruined King",
+      "Spectral Maw",
+      "Harrowed Path",
+      "Blooming Blows",
+      "Watch out! Eep!",
+      "Swirlseed",
+      "Sear",
+      "Pillar of Flame",
+      "Conflagration",
+      "Blooming Burst",
+      "Shapesplitter",
+      "Tangle-Barbs"
+    ]
+  }
+}
