@@ -115,7 +115,8 @@ public class BasicMod implements
         BaseMod.addPotion(BottomlessPotion.class, Color.PURPLE, Color.VIOLET, Color.CLEAR, BottomlessPotion.POTION_ID,
                 Entropy.Enums.ENTROPY);
 
-        // Add booss
+        // Add Boss Ben
+        // Boss Ben is also added via a patch
         BaseMod.addMonster(BossBen.ID, () -> new BossBen());
         BaseMod.addBoss(TheBeyond.ID, BossBen.ID, mapPath("bossben.png"),
                 mapPath("bossben.png"));

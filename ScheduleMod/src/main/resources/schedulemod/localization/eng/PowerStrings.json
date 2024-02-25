@@ -30,13 +30,13 @@
   "${modID}:BrandPower": {
     "NAME": "Brand",
     "DESCRIPTIONS": [
-      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. When you gain #ySatiety, brand gains 1 #yStrength."
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. At Brand's end of turn, he gains 1 #yStrength for each of your Satiety."
     ]
   },
   "${modID}:NeekoBrandDisguisePower": {
     "NAME": "Brand",
     "DESCRIPTIONS": [
-      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. When you gain #ySatiety, brand gains 1 #yStrength."
+      "Brand's attacks apply #yAblaze if not present, and consume #yAblaze otherwise. At Brand's end of turn, he gains 1 #yStrength for each of your Satiety."
     ]
   },
   "${modID}:NeekoPower": {

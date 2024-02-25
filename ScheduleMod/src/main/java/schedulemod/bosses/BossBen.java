@@ -5,37 +5,26 @@ import static schedulemod.BasicMod.monsterPath;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
-import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.BranchingUpgradesPatch.StupidFuckingUpdateBullshitImSoMadDontChangeThisClassNameKio;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.AnimateShakeAction;
-import com.megacrit.cardcrawl.actions.animations.ShoutAction;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ChangeStateAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.common.RollMoveAction;
 import com.megacrit.cardcrawl.actions.common.SetMoveAction;
-import com.megacrit.cardcrawl.actions.unique.CannotLoseAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveDebuffsAction;
 import com.megacrit.cardcrawl.actions.utility.TextAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -43,8 +32,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.potions.AbstractPotion;
-import com.megacrit.cardcrawl.potions.StrengthPotion;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ConstrictedPower;
 import com.megacrit.cardcrawl.powers.DrawReductionPower;
@@ -54,23 +41,11 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import basemod.abstracts.CustomMonster;
 import schedulemod.BasicMod;
 
-/*
- * TODO
- * 
- * - Art for boss
- * - Art for power icons
- * - Animations for attacks
- * - Playtest 
- *   - Balance
- *   - Bugs
- *   - Funness
- */
 public class BossBen extends CustomMonster {
 
     public static final String ID = makeID("TheBen");
@@ -310,10 +285,7 @@ public class BossBen extends CustomMonster {
         AbstractDungeon.scene.fadeOutAmbiance();
         AbstractDungeon.getCurrRoom().playBgmInstantly("BOSS_BEYOND");
         switchForm();
-        // UnlockTracker.markBossAsSeen(ID);
-        // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
-        // this, this,
-        // new ViegoPower(this)));
+        UnlockTracker.markBossAsSeen(ID);
     }
 
     @Override
@@ -322,7 +294,6 @@ public class BossBen extends CustomMonster {
         if (formPhasePower != null && formPhasePower.amount == 0 && this.nextMove != CHANGE_FORM) {
             setMove(CHANGE_FORM, Intent.UNKNOWN);
             createIntent();
-            // TODO change text
             AbstractDungeon.actionManager
                     .addToBottom((AbstractGameAction) new TextAboveCreatureAction((AbstractCreature) this,
                             TextAboveCreatureAction.TextType.INTERRUPTED));
@@ -513,7 +484,6 @@ public class BossBen extends CustomMonster {
                 if (AbstractDungeon.ascensionLevel >= 19) {
                     stacks = 4;
                 }
-                // TODO possible visual bug
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(
                         AbstractDungeon.player, this,
                         new SpeedPower(AbstractDungeon.player, this, -stacks)));
