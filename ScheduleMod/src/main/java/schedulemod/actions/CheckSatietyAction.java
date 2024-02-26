@@ -35,7 +35,7 @@ public class CheckSatietyAction extends AbstractGameAction {
                 if (p.hasRelic(HungryCamera.ID)) {
                     ((HungryCamera) p.getRelic(HungryCamera.ID)).triggered = true;
                 }
-                if (!AbstractDungeon.actionManager.turnHasEnded) {
+                if (!AbstractDungeon.actionManager.turnHasEnded && !fromUni) {
                     addToBot(new PressEndTurnButtonAction());
                 }
             }
