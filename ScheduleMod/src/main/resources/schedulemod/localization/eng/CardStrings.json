@@ -127,8 +127,8 @@
   },
   "${modID}:ThinkingWithPortals": {
     "NAME": "Thinking With Portals",
-    "DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand. NL *Exhaust.",
-    "UPGRADE_DESCRIPTION": "Discard 2 cards. NL Return !M! cards from your discard pile to your hand."
+    "DESCRIPTION": "Discard 2 cards. NL Return !M! other cards from your discard pile to your hand. NL *Exhaust.",
+    "UPGRADE_DESCRIPTION": "Discard 2 cards. NL Return !M! other cards from your discard pile to your hand."
   },
   "${modID}:Understand": {
     "NAME": "Understand.",

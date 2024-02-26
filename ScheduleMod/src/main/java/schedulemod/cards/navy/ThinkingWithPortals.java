@@ -20,20 +20,22 @@ public class ThinkingWithPortals extends BaseCard {
             0
     );
 
-    private static final int NUM_CARDS_DISCARD = 2;
-    private static final int NUM_CARDS_DRAW = 2;
+    private static final int NUM_CARDS = 2;
     private static final boolean EXHAUST = true;
     private static final boolean UPGRADE_EXHAUST = false;
 
     public ThinkingWithPortals() {
         super(ID, info);
-        setMagic(NUM_CARDS_DRAW);
+        setMagic(NUM_CARDS);
         setExhaust(EXHAUST, UPGRADE_EXHAUST);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ThinkingWithPortalsAction(p, magicNumber));
+        int handSize = p.hand.size() - 1;
+        int tmp = this.magicNumber < handSize ? this.magicNumber : handSize;
+        addToBot(new DiscardAction(p, p, tmp, false));
+        addToBot(new ThinkingWithPortalsAction(this, tmp));
     }
 
     @Override
