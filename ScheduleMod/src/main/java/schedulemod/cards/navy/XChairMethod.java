@@ -32,6 +32,11 @@ public class XChairMethod extends BaseCard {
         int tmp = this.energyOnUse;
         if (this.upgraded)
             tmp++;
+
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            tmp += 2;
+            AbstractDungeon.player.getRelic("Chemical X").flash();
+        }
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
             addToBot(new ApplyPowerAction(mo, p, new FatiguePower(mo, p, this.magicNumber * tmp)));
         }

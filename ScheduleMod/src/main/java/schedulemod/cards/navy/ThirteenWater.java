@@ -34,7 +34,6 @@ public class ThirteenWater extends BaseCard {
     private float previewTimer = 1.5f;
     private int nextPreview = 0;
     private ArrayList<EventCard> courseCards;
-    private int nextMaybeOpenSlot = 0;
 
     public ThirteenWater() {
         super(ID, info);
@@ -51,18 +50,27 @@ public class ThirteenWater extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        int tmp = this.energyOnUse;
+        if (this.upgraded) {
+            tmp++;
+        }
+        if (AbstractDungeon.player.hasRelic("Chemical X")) {
+            tmp += 2;
+            AbstractDungeon.player.getRelic("Chemical X").flash();
+        }
         if (!this.freeToPlayOnce)
             p.energy.use(EnergyPanel.totalCount);
-        for (int i = 0; i < this.energyOnUse + (upgraded ? 1 : 0); i++) {
-            int slot = getNextScheduleSlot();
+
+        int nextMaybeOpenSlot = 0;
+        for (int i = 0; i < tmp; i++) {
+            int slot = getNextScheduleSlot(nextMaybeOpenSlot);
             if (slot != -1) {
                 addToBot(new ScheduleEventCard(courseCards.get(slot), slot + 1));
             }
         }
-        nextMaybeOpenSlot = 0;
     }
 
-    private int getNextScheduleSlot() {
+    private int getNextScheduleSlot(int nextMaybeOpenSlot) {
         int slot = -1;
         for (int i = nextMaybeOpenSlot; i < AbstractDungeon.player.orbs.size(); i++) {
             if (AbstractDungeon.player.orbs.get(i) instanceof EmptyOrbSlot) {
