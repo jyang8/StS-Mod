@@ -203,7 +203,7 @@
   },
   "${modID}:LittleSpoon": {
     "NAME": "Little Spoon",
-    "DESCRIPTION": "Gain !B! Block. Apply !M! *Drowsy."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! *Drowsy."
   },
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
@@ -515,6 +515,16 @@
     "NAME": "Café d’Avignon",
     "DESCRIPTION": "At the start of your turn, add a *Bread to your hand.",
     "UPGRADE_DESCRIPTION": "At the start of your turn, add a *Bread to your hand. NL *Innate."
+  },
+  "${modID}:SharedKitchen": {
+    "NAME": "Our Kitchen",
+    "DESCRIPTION": "Choose a card. NL *Schedule 7: *Reposses.",
+    "UPGRADE_DESCRIPTION": "Choose a card. NL *Schedule 7: *Reposses. NL Draw a card."
+  },
+  "${modID}:Repossess": {
+    "NAME": "Repossess",
+    "DESCRIPTION": "Add a copy of the chosen card to your hand.",
+    "UPGRADE_DESCRIPTION": "Add a copy of the chosen card to your hand and upgrade it."
   }
 
 }

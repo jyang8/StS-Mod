@@ -33,17 +33,10 @@ public class ThinkingWithPortalsAction extends BetterDiscardPileToHandAction {
 
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
-        boolean cardsChosen = false;
         if (duration == startDuration && toExclude != null) {
             p.discardPile.removeCard(toExclude);
         }
-        if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            cardsChosen = true;
-        }
         super.update();
-        if (toExclude != null && cardsChosen && !toExclude.exhaust) {
-            //p.discardPile.addToTop(toExclude);
-        }
     }
 
 }

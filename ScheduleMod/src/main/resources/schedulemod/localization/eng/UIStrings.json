@@ -17,5 +17,10 @@
     "TEXT": [
       "put on top of your draw pile and upgrade"
     ]
+  },
+  "${modID}:PutInScheduleAction": {
+    "TEXT": [
+      "Repossess"
+    ]
   }
 }
