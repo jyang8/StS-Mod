@@ -35,7 +35,7 @@ public class ThinkingWithPortals extends BaseCard {
         int handSize = p.hand.size() - 1;
         int tmp = this.magicNumber < handSize ? this.magicNumber : handSize;
         addToBot(new DiscardAction(p, p, tmp, this.isInAutoplay));
-        addToBot(new ThinkingWithPortalsAction(this, tmp, this.isInAutoplay));
+        addToBot(new ThinkingWithPortalsAction(this, tmp));
     }
 
     @Override

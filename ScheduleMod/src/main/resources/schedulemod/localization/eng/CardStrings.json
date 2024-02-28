@@ -518,8 +518,8 @@
   },
   "${modID}:SharedKitchen": {
     "NAME": "Our Kitchen",
-    "DESCRIPTION": "Choose a card. NL *Schedule 7: *Reposses.",
-    "UPGRADE_DESCRIPTION": "Choose a card. NL *Schedule 7: *Reposses. NL Draw a card."
+    "DESCRIPTION": "Choose a card. NL *Schedule 5: *Reposses.",
+    "UPGRADE_DESCRIPTION": "Choose a card. NL *Schedule 5: *Reposses. NL Draw a card."
   },
   "${modID}:Repossess": {
     "NAME": "Repossess",

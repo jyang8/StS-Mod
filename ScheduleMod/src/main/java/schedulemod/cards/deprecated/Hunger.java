@@ -1,4 +1,4 @@
-package schedulemod.cards.navy;
+package schedulemod.cards.deprecated;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import schedulemod.actions.ScheduleEventCard;
+import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.tempCards.DinnerRoundTwo;
 import schedulemod.character.Entropy;
 import schedulemod.powers.SatietyPower;

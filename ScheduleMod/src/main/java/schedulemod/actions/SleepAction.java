@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import schedulemod.BasicMod;
 import schedulemod.powers.SleepPower;
 
 public class SleepAction extends AbstractGameAction {
@@ -27,7 +26,10 @@ public class SleepAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == Settings.ACTION_DUR_FAST) {
-            BasicMod.logger.info("APPLYING SLEEP ACTION");
+            if (this.target.hasPower(SleepPower.POWER_ID)) {
+                this.isDone = true;
+                return;
+            }
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.target, this.source,
                     new SleepPower((AbstractMonster) this.target, (AbstractCreature) this.source, this.amount),
                     this.amount, true));
