@@ -18,10 +18,12 @@ public class RemoveFromScheduleAction extends AbstractGameAction {
 
     public void update() {
         if (!AbstractDungeon.player.hasOrb()) {
+            this.isDone = true;
             return;
         }
         AbstractOrb o = AbstractDungeon.player.orbs.get(slot);
         if (o == null || !(o instanceof ScheduleOrb)) {
+            this.isDone = true;
             return;
         }
         EmptyOrbSlot emptyOrb = new EmptyOrbSlot(o.cX, o.cY);
