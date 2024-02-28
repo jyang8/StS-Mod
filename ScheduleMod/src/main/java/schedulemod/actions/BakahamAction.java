@@ -32,8 +32,6 @@ public class BakahamAction extends AbstractGameAction {
             f.setAccessible(true);
             if (((EnemyMoveInfo) f.get(m)).baseDamage == -1) {
                 addToTop(new DrawCardAction(this.amount));
-                this.isDone = true;
-                return;
             }
         } catch (NoSuchFieldException | IllegalAccessException var3) {
             var3.printStackTrace();
