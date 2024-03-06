@@ -62,11 +62,16 @@ public class ThirteenWater extends BaseCard {
             p.energy.use(EnergyPanel.totalCount);
 
         int nextMaybeOpenSlot = 0;
-        for (int i = 0; i < tmp; i++) {
+        int scheduled = 0;
+        for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
+            if (scheduled >= tmp) {
+                break;
+            }
             int slot = getNextScheduleSlot(nextMaybeOpenSlot);
             if (slot != -1) {
                 addToBot(new ScheduleEventCard(courseCards.get(slot), slot + 1));
-                nextMaybeOpenSlot++;
+                nextMaybeOpenSlot = slot + 1;
+                scheduled++;
             }
         }
     }

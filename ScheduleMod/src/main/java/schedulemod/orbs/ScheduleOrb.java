@@ -16,9 +16,11 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import schedulemod.BasicMod;
+import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.BaseCard;
 import schedulemod.cards.navy.InScheduleCard;
+import schedulemod.cards.navy.Understand;
 import schedulemod.character.Entropy;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisCombatField;
 import schedulemod.patches.EventsPlayedPatch.EventsPlayedThisTurnField;
@@ -32,6 +34,7 @@ public class ScheduleOrb extends AbstractOrb {
 
     private static final OrbStrings orbString;
     public static final String ORB_ID = makeID(ScheduleOrb.class.getSimpleName());
+    private static final int RESCHEDULE_SLOT = 7;
     public EventCard eventCard;
     private AbstractGameEffect scheduleStartEffect;
     public int slot;
@@ -129,19 +132,27 @@ public class ScheduleOrb extends AbstractOrb {
                 ((EventPowerInterface) power).modifyEvent(eventCard, triggeringCard);
             }
         }
+
         this.eventCard.calculateCardDamage(m);
         this.eventCard.useEvent(p, m, triggeringCard);
 
-        if (p.hasPower(FortyEightHourDayPower.POWER_ID)) {
-            EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
-            EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager).add(this.eventCard);
-            if (m.isDeadOrEscaped()) {
-                m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
-                        AbstractDungeon.cardRandomRng);
+        if (this.triggeringCard instanceof Understand) {
+            for (int i = 0; i < triggeringCard.magicNumber; i++) {
+                if (m.isDeadOrEscaped()) {
+                    m = (AbstractDungeon.getCurrRoom()).monsters.getRandomMonster(null, true,
+                            AbstractDungeon.cardRandomRng);
+                }
+                EventsPlayedThisTurnField.eventsPlayedThisTurn.get(AbstractDungeon.actionManager).add(this.eventCard);
+                EventsPlayedThisCombatField.eventsPlayedThisCombat.get(AbstractDungeon.actionManager)
+                        .add(this.eventCard);
+                for (AbstractPower power : p.powers) {
+                    if (power instanceof EventPowerInterface) {
+                        ((EventPowerInterface) power).modifyEvent(eventCard, triggeringCard);
+                    }
+                }
+                this.eventCard.calculateCardDamage(m);
+                this.eventCard.useEvent(p, m, triggeringCard);
             }
-
-            this.eventCard.calculateCardDamage(m);
-            this.eventCard.useEvent(p, m, triggeringCard);
         }
     }
 

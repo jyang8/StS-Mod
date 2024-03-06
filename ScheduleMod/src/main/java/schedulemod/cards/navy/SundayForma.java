@@ -33,10 +33,10 @@ public class SundayForma extends BaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
-        if (!this.upgraded) {
+        if (!upgraded) {
             this.cardsToPreview.upgrade();
         }
+        super.upgrade();
     }
 
     @Override

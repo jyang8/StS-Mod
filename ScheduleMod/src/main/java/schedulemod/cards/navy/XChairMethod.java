@@ -38,7 +38,9 @@ public class XChairMethod extends BaseCard {
             AbstractDungeon.player.getRelic("Chemical X").flash();
         }
         for (AbstractMonster mo : (AbstractDungeon.getCurrRoom()).monsters.monsters) {
-            addToBot(new ApplyPowerAction(mo, p, new FatiguePower(mo, p, this.magicNumber * tmp)));
+            if (!mo.isDeadOrEscaped()) {
+                addToBot(new ApplyPowerAction(mo, p, new FatiguePower(mo, p, this.magicNumber * tmp)));
+            }
         }
         if (!this.freeToPlayOnce)
             p.energy.use(EnergyPanel.totalCount);

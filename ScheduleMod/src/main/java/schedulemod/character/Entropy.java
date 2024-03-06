@@ -200,7 +200,9 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
         }
         ScheduleOrb schedule = (ScheduleOrb) orbToSet;
         int index = schedule.slot;
+        AbstractOrb replacedOrb;
         if (index < this.maxOrbs) {
+            replacedOrb = this.orbs.get(index);
             schedule.cX = (this.orbs.get(index)).cX;
             schedule.cY = (this.orbs.get(index)).cY;
             this.orbs.set(index, schedule);
@@ -208,7 +210,7 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
             schedule.playChannelSFX();
             for (AbstractPower p : this.powers)
                 p.onChannel(schedule);
-            schedule.eventCard.onSchedule();
+            schedule.eventCard.onSchedule(replacedOrb);
             AbstractDungeon.actionManager.orbsChanneledThisCombat.add(schedule);
             AbstractDungeon.actionManager.orbsChanneledThisTurn.add(schedule);
         } else {

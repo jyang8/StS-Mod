@@ -18,7 +18,7 @@ public class PowerNap extends BaseCard {
             CardTarget.SELF,
             1);
 
-    private static final int BLOCK = 3;
+    private static final int BLOCK = 4;
     private static final int SCHEDULE_SLOT = 3;
     private static final int UPGRADE_SCHEDULE_SLOT = 5;
 

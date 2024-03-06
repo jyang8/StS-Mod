@@ -15,16 +15,17 @@ public class MondayArcade extends BaseCard {
             CardType.SKILL,
             CardRarity.UNCOMMON,
             CardTarget.SELF,
-            0);
+            2);
 
     private static final int SCHEDULE_SLOT = 1;
     private static final boolean EXHAUST = true;
-    private static final boolean UPGRADE_EXHAUST = false;
+    private static final int UPGRADE_COST = 1;
 
     public MondayArcade() {
         super(ID, info);
         setMagic(SCHEDULE_SLOT);
-        setExhaust(EXHAUST, UPGRADE_EXHAUST);
+        setExhaust(EXHAUST);
+        setCostUpgrade(UPGRADE_COST);
         this.cardsToPreview = new Arcade();
     }
 

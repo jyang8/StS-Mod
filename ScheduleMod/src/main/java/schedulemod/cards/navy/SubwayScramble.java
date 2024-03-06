@@ -19,7 +19,7 @@ public class SubwayScramble extends BaseCard {
     );
 
     private static final int PUNCTUAL = 3;
-    private static final int UPGRADE_PUNCTUAL = 1;
+    private static final int UPGRADE_PUNCTUAL = 2;
 
     public SubwayScramble() {
         super(ID, info);

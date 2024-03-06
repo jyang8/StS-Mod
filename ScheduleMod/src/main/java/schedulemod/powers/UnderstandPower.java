@@ -1,11 +1,14 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
+
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.SlowPower;
+
 import static schedulemod.BasicMod.makeID;
 
 public class UnderstandPower extends BasePower implements CloneablePowerInterface {
@@ -21,7 +24,7 @@ public class UnderstandPower extends BasePower implements CloneablePowerInterfac
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (card.cost == 0) {
             flash();
-            addToBot(new LoseHPAction(this.owner, null, this.amount));
+            addToBot(new ApplyPowerAction(this.owner, this.source, new SlowPower(this.owner, this.amount), this.amount));
         }
     }
 

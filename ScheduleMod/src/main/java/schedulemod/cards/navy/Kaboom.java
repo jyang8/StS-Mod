@@ -22,7 +22,7 @@ public class Kaboom extends BaseCard {
             CardType.ATTACK,
             CardRarity.RARE,
             CardTarget.ENEMY,
-            7);
+            6);
 
     private static final int ATTACK_DAMAGE = 4;
     private static final int UPGRADE_ATTACK_DAMAGE = 1;
@@ -88,6 +88,12 @@ public class Kaboom extends BaseCard {
         }
         setCostForTurn(costForTurn - (eventCount - currentCostReduction));
         currentCostReduction = eventCount;
+    }
+
+    @Override
+    public void resetAttributes() {
+        super.resetAttributes();
+        this.currentCostReduction = 0;
     }
 
     @Override

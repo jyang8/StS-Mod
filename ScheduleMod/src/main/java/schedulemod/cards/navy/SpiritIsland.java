@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import schedulemod.character.Entropy;
+import schedulemod.patches.OnTurnEndedEarlyPatch.PrevTurnEndedEarlyField;
 import schedulemod.util.CardStats;
 
 public class SpiritIsland extends BaseCard {
@@ -32,16 +33,7 @@ public class SpiritIsland extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAllEnemiesAction(p, this.damage, this.damageTypeForTurn,
                 AbstractGameAction.AttackEffect.FIRE));
-        boolean skillPlayed = false;
-        boolean powerPlayed = false;
-        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            if (c.type == CardType.SKILL) {
-                skillPlayed = true;
-            } else if (c.type == CardType.POWER) {
-                powerPlayed = true;
-            }
-        }
-        if (skillPlayed && powerPlayed) {
+        if (PrevTurnEndedEarlyField.endedEarly.get(AbstractDungeon.actionManager)) {
             for (int i = 0; i < magicNumber; i++) {
                 addToBot(new DamageAllEnemiesAction(p, this.damage, this.damageTypeForTurn,
                         AbstractGameAction.AttackEffect.LIGHTNING));
@@ -52,17 +44,7 @@ public class SpiritIsland extends BaseCard {
     @Override
     public void triggerOnGlowCheck() {
         this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        boolean skillPlayed = false;
-        boolean powerPlayed = false;
-        
-        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            if (c.type == CardType.SKILL) {
-                skillPlayed = true;
-            } else if (c.type == CardType.POWER) {
-                powerPlayed = true;
-            }
-        }
-        if (skillPlayed && powerPlayed) {
+        if (PrevTurnEndedEarlyField.endedEarly.get(AbstractDungeon.actionManager)) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         } 
       }

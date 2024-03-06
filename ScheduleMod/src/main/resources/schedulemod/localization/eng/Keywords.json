@@ -76,5 +76,12 @@
       "Schedule"
     ],
     "DESCRIPTION": "Schedule the Event in the given slot. When a card is played, the Schedule is advanced and the Event in slot 1 triggers on that card."
+  },
+  {
+    "PROPER_NAME": "Belly Size",
+    "NAMES": [
+      "Belly Size"
+    ],
+    "DESCRIPTION": "Increases the #ySatiety needed to end your turn."
   }
 ]

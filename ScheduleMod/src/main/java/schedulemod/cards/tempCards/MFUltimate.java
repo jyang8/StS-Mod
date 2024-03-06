@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.DaggerSprayEffect;
 
@@ -43,7 +44,7 @@ public class MFUltimate extends EventCard {
     }
 
     @Override
-    public void onSchedule() {
+    public void onSchedule(AbstractOrb replaced) {
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new ApplyPowerAction(p, p, new MFUltimateInvisPower(p)));
     }
@@ -54,10 +55,12 @@ public class MFUltimate extends EventCard {
             addToBot((AbstractGameAction) new VFXAction(
                     (AbstractGameEffect) new DaggerSprayEffect(dontTriggerOnUseCard)));
             for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-                addToBot(new DamageAction(mo, new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.NONE));
+                if (!mo.isDeadOrEscaped()) {
+                    addToBot(new DamageAction(mo, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                            AbstractGameAction.AttackEffect.NONE));
+                }
+                addToBot(new WaitAction(0.1F));
             }
-            addToBot((AbstractGameAction) new WaitAction(0.1F));
         }
     }
 

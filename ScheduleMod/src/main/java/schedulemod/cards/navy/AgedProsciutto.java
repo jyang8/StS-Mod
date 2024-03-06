@@ -21,7 +21,7 @@ public class AgedProsciutto extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 11;
+    private static final int ATTACK_DAMAGE = 12;
     private static final int UPGRADE_ATTACK_DAMAGE = 4;
 
     public AgedProsciutto() {

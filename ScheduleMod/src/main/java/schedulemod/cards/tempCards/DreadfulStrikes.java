@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import basemod.helpers.CardModifierManager;
 import schedulemod.cards.EventCard;
@@ -34,7 +35,7 @@ public class DreadfulStrikes extends EventCard {
     }
     
     @Override
-    public void onSchedule() {
+    public void onSchedule(AbstractOrb replaced) {
         AbstractPlayer p = AbstractDungeon.player;
         addToBot(new ApplyPowerAction(p, p, new DreadfulStrikesInvisPower(p)));
     }

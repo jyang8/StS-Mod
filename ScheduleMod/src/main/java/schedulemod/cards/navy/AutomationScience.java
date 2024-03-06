@@ -19,7 +19,7 @@ public class AutomationScience extends BaseCard {
             1
     );
 
-    private static final int PUNCTUAL = 1;
+    private static final int PUNCTUAL = 2;
     private static final int UPGRADE_PUNCTUAL = 1;
 
     public AutomationScience() {

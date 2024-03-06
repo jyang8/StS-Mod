@@ -19,8 +19,8 @@ public class Oversleep extends EventCard {
             1
     );
 
-    private final static int PUNCTUAL= -8;
-    private final static int UPGRADE_PUNCTUAL = 2;
+    private final static int PUNCTUAL= -12;
+    private final static int UPGRADE_PUNCTUAL = 3;
 
     public Oversleep() {
         super(ID, info);

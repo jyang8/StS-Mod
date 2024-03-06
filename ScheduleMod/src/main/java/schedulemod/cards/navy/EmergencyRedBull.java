@@ -1,9 +1,12 @@
 package schedulemod.cards.navy;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.SlowPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import schedulemod.actions.ScheduleEventCard;
 import schedulemod.cards.tempCards.JagerBomb;
@@ -20,18 +23,19 @@ public class EmergencyRedBull extends BaseCard {
             0
     );
 
-    private static final int HP_LOSS = 3;
+    private static final int VULNERABLE = 1;
     private static final int SCHEDULE_SLOT = 3;
 
     public EmergencyRedBull() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
+        setMagic(VULNERABLE);
         this.cardsToPreview = new JagerBomb();
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new LoseHPAction(p, p, HP_LOSS));
+        addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, this.magicNumber, false), this.magicNumber));
         addToBot(new ScheduleEventCard(cardsToPreview, SCHEDULE_SLOT));
     }
 

@@ -28,10 +28,10 @@ public class TableAtMission extends BaseCard {
 
     @Override
     public void upgrade() {
-        super.upgrade();
         if (!upgraded) {
             this.cardsToPreview.upgrade();
         }
+        super.upgrade();
     }
 
     @Override

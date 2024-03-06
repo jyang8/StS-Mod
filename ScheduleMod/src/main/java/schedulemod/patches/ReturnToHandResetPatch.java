@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
-import com.megacrit.cardcrawl.actions.utility.HandCheckAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
-import schedulemod.BasicMod;
 
 public class ReturnToHandResetPatch {
 
@@ -26,7 +24,6 @@ public class ReturnToHandResetPatch {
     @SpireInsertPatch(locator = Locator.class)
     public static void Insert(UseCardAction __instance, float ___duration, AbstractCard ___targetCard) {
       ___targetCard.returnToHand = false;
-      BasicMod.logger.info("RESETTING CARD: " + ___targetCard.name);
     }
   }
 }

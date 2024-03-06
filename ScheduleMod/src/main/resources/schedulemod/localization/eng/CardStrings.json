@@ -32,12 +32,12 @@
   },
   "${modID}:EmergencyRedBull": {
     "NAME": "Emergency Red Bull",
-    "DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb.",
-    "UPGRADE_DESCRIPTION": "Lose 3 HP. NL *Schedule 3: NL *Jager *Bomb+."
+    "DESCRIPTION": "Gain !M! *Vulnerable. NL *Schedule 3: NL *Jager *Bomb.",
+    "UPGRADE_DESCRIPTION": "Gain !M! *Vulnerable. NL *Schedule 3: NL *Jager *Bomb+."
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
-    "DESCRIPTION": "Deal !D! damage. NL Gain [E]. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! Block. NL Gain [E]. NL Gain 1 *Satiety."
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
@@ -113,7 +113,7 @@
   },
   "${modID}:SubwayNap": {
     "NAME": "Subway Nap",
-    "DESCRIPTION": "Apply !M! *Fatigue. NL Draw 1 more card next turn."
+    "DESCRIPTION": "Apply !M! *Fatigue. NL If this puts the target to *Sleep Draw 2 more cards next turn."
   },
   "${modID}:UtilityScience": {
     "NAME": "Utility Science",
@@ -132,7 +132,7 @@
   },
   "${modID}:Understand": {
     "NAME": "Understand.",
-    "DESCRIPTION": "Deal !D! damage. NL Whenever you play a 0 cost card, this enemy takes !M! damage. NL *Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Events triggered by this card are triggered !M! additional times."
   },
   "${modID}:Leipaa": {
     "NAME": "Leipää",
@@ -144,7 +144,7 @@
   },
   "${modID}:SpiritIsland": {
     "NAME": "Spirit Island",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If you've played a *Skill and *Power this turn, repeat !M! times."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If the last turn ended early, repeat !M! times."
   },
   "${modID}:RonTheRockJobs": {
     "NAME": "Ron the Rock Jobs",
@@ -161,7 +161,7 @@
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
-    "DESCRIPTION": "Gain 2 Strength. NL Gain 2 Dexterity. NL Lose !M! max *Satiety."
+    "DESCRIPTION": "Gain 2 Strength. NL Gain 2 Dexterity. NL Lose !M! *Belly *Size."
   },
   "${modID}:Walkable": {
     "NAME": "Walkable",
@@ -295,8 +295,8 @@
   },
   "${modID}:FortyEightHourDay": {
     "NAME": "48 Hour Day",
-    "DESCRIPTION": "Double events triggered this turn. NL *Exhaust.",
-    "UPGRADE_DESCRIPTION": "Double events triggered this turn."
+    "DESCRIPTION": "Events triggered this turn are rescheduled in the last open slot. NL *Exhaust.",
+    "UPGRADE_DESCRIPTION": "Events triggered this turn are rescheduled in the last open slot."
   },
   "${modID}:SubwayScramble": {
     "NAME": "Subway Scramble",
@@ -322,7 +322,8 @@
   },
   "${modID}:Arcade": {
     "NAME": "Arcade",
-    "DESCRIPTION": "Gain !M! *Dexterity for each *Satiety. At the end of this turn, lose that much *Dexterity."
+    "DESCRIPTION": "Gain !B! Block. NL *Schedule 7: *Arcade.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL *Schedule 7: *Arcade+."
   },
   "${modID}:Gym": {
     "NAME": "Gym",
@@ -330,8 +331,7 @@
   },
   "${modID}:MondayArcade": {
     "NAME": "Monday Arcade",
-    "DESCRIPTION": "*Schedule 1: *Arcade. NL *Exhaust.",
-    "UPGRADE_DESCRIPTION": "*Schedule 1: *Arcade."
+    "DESCRIPTION": "*Schedule 1: *Arcade. NL *Exhaust."
   },
   "${modID}:MorningGym": {
     "NAME": "Morning Gym",
@@ -362,7 +362,7 @@
   },
   "${modID}:Drink": {
     "NAME": "Drink!",
-    "DESCRIPTION": "If triggered by an attack, it deals !M! additional damage."
+    "DESCRIPTION": "If triggered by an attack, it deals !M! additional damage. NL Stacks if *Scheduled on another *Drink!."
   },
   "${modID}:StackCup": {
     "NAME": "Stack Cup",
@@ -488,15 +488,16 @@
   },
   "${modID}:FourthCourse": {
     "NAME": "Fourth Course",
-    "DESCRIPTION": "Apply !M! *Drowsy. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Apply !M! *Fatigue to all enemies 2 times. NL Gain 1 *Satiety.",
+    "UPGRADE_DESCRIPTION": "Apply !M! *Fatigue to all enemies 3 times. NL Gain 1 *Satiety."
   },
   "${modID}:FifthCourse": {
     "NAME": "Fifth Course",
-    "DESCRIPTION": "Gain !M! *Dexterity. NL Gain 1 *Satiety."
+    "DESCRIPTION": "If triggered by an attack, it deals !M! additional damage. NL Gain 1 *Satiety."
   },
   "${modID}:SixthCourse": {
     "NAME": "Sixth Course",
-    "DESCRIPTION": "Gain !M! *Strength. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !M! *Punctual. NL Gain 1 *Satiety."
   },
   "${modID}:SeventhCourse": {
     "NAME": "Seventh Course",

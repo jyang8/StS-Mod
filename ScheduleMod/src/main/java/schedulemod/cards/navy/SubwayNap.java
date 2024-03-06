@@ -4,9 +4,11 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+
+import schedulemod.actions.SubwayNapAction;
 import schedulemod.character.Entropy;
 import schedulemod.powers.FatiguePower;
+import schedulemod.powers.SleepPower;
 import schedulemod.util.CardStats;
 
 public class SubwayNap extends BaseCard {
@@ -16,12 +18,11 @@ public class SubwayNap extends BaseCard {
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.ENEMY,
-            0
-    );
+            0);
 
     private static final int FATIGUE = 5;
     private static final int UPGRADE_FATIGUE = 3;
-    private static final int NUM_CARDS_DRAW = 1;
+    private static final int NUM_CARDS_DRAW = 2;
 
     public SubwayNap() {
         super(ID, info);
@@ -30,10 +31,16 @@ public class SubwayNap extends BaseCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
-        addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, NUM_CARDS_DRAW), NUM_CARDS_DRAW));
+        if (!m.hasPower(SleepPower.POWER_ID)) {
+            addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
+            addToBot(new SubwayNapAction(m, NUM_CARDS_DRAW));
+        } else {
+            addToBot(new ApplyPowerAction(m, p, new FatiguePower(m, p, this.magicNumber)));
+        }
     }
 
     @Override
-    public AbstractCard makeCopy() { return new SubwayNap(); }
+    public AbstractCard makeCopy() {
+        return new SubwayNap();
+    }
 }

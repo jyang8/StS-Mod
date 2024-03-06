@@ -29,6 +29,9 @@ public class Repossess extends EventCard {
     public Repossess(AbstractCard target) {
         this();
         this.cardsToPreview = target;
+        if (this.cardsToPreview != null) {
+            this.rawDescription = cardStrings.DESCRIPTION + " (" + this.cardsToPreview.name + ")";
+        }
     }
 
     @Override

@@ -3,11 +3,14 @@ package schedulemod.actions;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import schedulemod.character.Entropy;
+import schedulemod.powers.HokkaidoUniBuffetPower;
 import schedulemod.powers.MaxSatietyPower;
 import schedulemod.powers.SatietyPower;
+import schedulemod.powers.WrinklerPower;
 
 public class CheesecakeAction extends AbstractGameAction {
 
@@ -20,11 +23,13 @@ public class CheesecakeAction extends AbstractGameAction {
         this.amount = amount;
         this.satiety = satiety;
     }
+
     public void update() {
         int bellySize = p.hasPower(MaxSatietyPower.POWER_ID) ? p.getPower(MaxSatietyPower.POWER_ID).amount : 0;
-        int maxSatiety = (p instanceof Entropy) ? ((Entropy)p).maxSatiety : 1;
+        int maxSatiety = (p instanceof Entropy) ? ((Entropy) p).maxSatiety : 1;
         int currSatiety = p.hasPower(SatietyPower.POWER_ID) ? p.getPower(SatietyPower.POWER_ID).amount : 0;
-        if (currSatiety + this.satiety >= maxSatiety + bellySize) {
+        if (currSatiety + this.satiety >= maxSatiety + bellySize && !p.hasPower(HokkaidoUniBuffetPower.POWER_ID)
+                && !p.hasPower(ArtifactPower.POWER_ID) && !p.hasPower(WrinklerPower.POWER_ID)) {
             addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, amount), amount));
         }
         this.isDone = true;

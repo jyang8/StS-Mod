@@ -15,7 +15,7 @@ public class SpaceScience extends BaseCard {
             CardType.POWER,
             CardRarity.RARE,
             CardTarget.SELF,
-            1
+            0
     );
 
     private static final int ADDITIONAL_WRINKLER = 1;
