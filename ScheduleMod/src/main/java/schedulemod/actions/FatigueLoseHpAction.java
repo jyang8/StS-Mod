@@ -30,7 +30,7 @@ public class FatigueLoseHpAction extends AbstractGameAction {
             if (this.target.currentHealth > 0) {
                 this.target.tint.color = Color.CHARTREUSE.cpy();
                 this.target.tint.changeColor(Color.WHITE.cpy());
-                this.target.damage(new DamageInfo(this.source, this.amount, DamageInfo.DamageType.THORNS));
+                this.target.damage(new DamageInfo(this.source, this.amount, DamageInfo.DamageType.HP_LOSS));
             }
             if ((AbstractDungeon.getCurrRoom()).monsters.areMonstersBasicallyDead())
                 AbstractDungeon.actionManager.clearPostCombatActions();

@@ -1,6 +1,7 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import schedulemod.BasicMod;
 import schedulemod.actions.RemoveFromScheduleAction;
 import schedulemod.cards.tempCards.MFUltimate;
 import schedulemod.orbs.ScheduleOrb;
@@ -39,15 +40,17 @@ public class MFUltimateInvisPower extends BasePower
     }
 
     @Override
-    public void wasHPLost(DamageInfo info, int damageAmount) {
+    public int onLoseHp(int damageAmount) {
         if (damageAmount > 0 &&
-                (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT)
+                (AbstractDungeon.getCurrRoom()).phase == AbstractRoom.RoomPhase.COMBAT) {
             for (int i = 0; i < AbstractDungeon.player.orbs.size(); i++) {
                 AbstractOrb o = AbstractDungeon.player.orbs.get(i);
                 if (o instanceof ScheduleOrb && ((ScheduleOrb) o).eventCard instanceof MFUltimate) {
                     addToBot(new RemoveFromScheduleAction(i));
                 }
             }
+        }
+        return damageAmount;
     }
 
     @Override

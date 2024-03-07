@@ -15,7 +15,7 @@ public class SplitKeyboard extends BaseRelic {
     private static final LandingSound SOUND = LandingSound.CLINK;
 
     private static final int PUNCTUAL = 1;
-    private static final int THRESHOLD = 7;
+    private static final int THRESHOLD = 3;
 
     public SplitKeyboard() {
         super(ID, NAME, Entropy.Enums.CARD_COLOR, RARITY, SOUND);
@@ -33,7 +33,7 @@ public class SplitKeyboard extends BaseRelic {
 
     @Override
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
-        if (this.counter != -1) {
+        if (this.counter != -1 && targetCard.cost == 0) {
             this.counter++;
             if (this.counter >= THRESHOLD) {
                 this.counter = -1;

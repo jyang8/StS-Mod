@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
+import schedulemod.BasicMod;
 import schedulemod.cards.EventCard;
 import schedulemod.cards.tempCards.DreadfulStrikes;
 import schedulemod.orbs.ScheduleOrb;
@@ -30,9 +31,11 @@ public class DreadfulStrikesAction extends AbstractGameAction {
             }
             EventCard eventCard = ((ScheduleOrb) orb).eventCard;
             if (eventCard instanceof DreadfulStrikes) {
+                BasicMod.logger.info("ATTEMPTING TO INCREASE DREADFUL STRIKES");
                 eventCard.baseMagicNumber += eventCard.upgraded ? UPGRADE_INCREASE : INCREASE;
-                eventCard.isMagicNumberModified = eventCard.magicNumber != eventCard.baseMagicNumber;
                 eventCard.initializeDescription();
+                eventCard.calculateCardDamage(null);
+                BasicMod.logger.info("MAGIC NUMBER IS: " + eventCard.magicNumber);
             }
         }
         this.isDone = true;

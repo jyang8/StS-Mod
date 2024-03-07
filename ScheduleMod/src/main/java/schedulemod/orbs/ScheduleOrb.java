@@ -34,7 +34,6 @@ public class ScheduleOrb extends AbstractOrb {
 
     private static final OrbStrings orbString;
     public static final String ORB_ID = makeID(ScheduleOrb.class.getSimpleName());
-    private static final int RESCHEDULE_SLOT = 7;
     public EventCard eventCard;
     private AbstractGameEffect scheduleStartEffect;
     public int slot;

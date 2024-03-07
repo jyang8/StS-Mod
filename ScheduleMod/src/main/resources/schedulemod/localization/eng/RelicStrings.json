@@ -38,7 +38,7 @@
     "NAME": "Split Keyboard",
     "FLAVOR": "Ergonomic!",
     "DESCRIPTIONS": [
-      "Whenever you play #b%d cards in a turn, gain #b%d #yPunctual."
+      "Whenever you play #b%d 0 cost cards in a turn, gain #b%d #yPunctual."
     ]
   },
   "${modID}:KaraokeKables": {
@@ -73,7 +73,7 @@
     "NAME": "Steam Deck",
     "FLAVOR": "Do not disturb, homework in progress.",
     "DESCRIPTIONS": [
-      "Whenever you shuffle your draw pile, #ySchedule 7: Steam Club."
+      "Whenever an event is overridden, add a #ySteam #yClub to hand."
     ]
   },
   "${modID}:KitchenBlowtorch": {

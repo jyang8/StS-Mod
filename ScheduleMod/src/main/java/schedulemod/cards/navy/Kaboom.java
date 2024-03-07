@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
+import schedulemod.BasicMod;
 import schedulemod.actions.RemoveFromScheduleAction;
 import schedulemod.character.Entropy;
 import schedulemod.orbs.ScheduleOrb;

@@ -20,9 +20,10 @@ public class SteamClubAction extends AbstractGameAction {
         this.duration = startingDuration;
         this.actionType = ActionType.BLOCK;
     }
-
     @Override
     public void update() {
+        /* 
+        DEPRECATED
         if (duration == 0.2F) {
             ArrayList<EventCard> eventsPlayed = EventsPlayedThisCombatField.eventsPlayedThisCombat
                     .get(AbstractDungeon.actionManager);
@@ -45,6 +46,8 @@ public class SteamClubAction extends AbstractGameAction {
             }
             tickDuration();
             this.isDone = true;
+    
         }
+        */
     }
 }

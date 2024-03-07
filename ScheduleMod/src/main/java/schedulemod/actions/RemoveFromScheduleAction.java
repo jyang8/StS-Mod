@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
+import schedulemod.BasicMod;
 import schedulemod.orbs.ScheduleOrb;
 
 public class RemoveFromScheduleAction extends AbstractGameAction {
@@ -17,7 +18,7 @@ public class RemoveFromScheduleAction extends AbstractGameAction {
     }
 
     public void update() {
-        if (!AbstractDungeon.player.hasOrb()) {
+        if (AbstractDungeon.player.orbs.isEmpty()) {
             this.isDone = true;
             return;
         }

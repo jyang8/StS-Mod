@@ -21,6 +21,7 @@ import java.util.Iterator;
 public class PutInScheduleAction extends AbstractGameAction {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
+    private static final int NUM_CARDS = 1;
     private AbstractPlayer p;
     private boolean isRandom;
     public static int numPlaced;
@@ -39,13 +40,13 @@ public class PutInScheduleAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == 0.5F) {
-            if (this.p.hand.size() < 1) {
+            if (this.p.discardPile.size() < 1) {
                 this.isDone = true;
                 return;
             }
             if (this.isRandom) {
-                card = this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng);
-                this.p.hand.removeCard(card);
+                card = this.p.discardPile.getRandomCard(AbstractDungeon.cardRandomRng);
+                this.p.discardPile.removeCard(card);
                 addToBot(new ScheduleEventCard(new Repossess(card.makeStatEquivalentCopy()), this.slot));
                 card.setAngle(0.0F);
                 card.targetDrawScale = 0.75F;
@@ -58,15 +59,15 @@ public class PutInScheduleAction extends AbstractGameAction {
                 card.stopGlowing();
 
             } else {
-                if (this.p.hand.group.size() > this.amount) {
+                if (this.p.discardPile.group.size() > NUM_CARDS) {
                     numPlaced = this.amount;
-                    AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false);
+                    AbstractDungeon.gridSelectScreen.open(AbstractDungeon.player.discardPile, NUM_CARDS, TEXT[0], false);
                     this.tickDuration();
                     return;
                 }
 
-                card = this.p.hand.getRandomCard(AbstractDungeon.cardRandomRng);
-                this.p.hand.removeCard(card);
+                card = this.p.discardPile.getRandomCard(AbstractDungeon.cardRandomRng);
+                this.p.discardPile.removeCard(card);
                 addToBot(new ScheduleEventCard(new Repossess(card.makeStatEquivalentCopy()), this.slot));
                 card.setAngle(0.0F);
                 card.targetDrawScale = 0.75F;
@@ -81,12 +82,12 @@ public class PutInScheduleAction extends AbstractGameAction {
             }
         }
 
-        if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            Iterator var3 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
+        if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
+            Iterator var3 = AbstractDungeon.gridSelectScreen.selectedCards.iterator();
 
             while (var3.hasNext()) {
                 card = (AbstractCard) var3.next();
-                this.p.hand.removeCard(card);
+                this.p.discardPile.removeCard(card);
                 addToBot(new ScheduleEventCard(new Repossess(card.makeStatEquivalentCopy()), this.slot));
                 card.setAngle(0.0F);
                 card.targetDrawScale = 0.75F;
@@ -99,8 +100,7 @@ public class PutInScheduleAction extends AbstractGameAction {
                 card.stopGlowing();
             }
 
-            AbstractDungeon.player.hand.refreshHandLayout();
-            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            AbstractDungeon.gridSelectScreen.selectedCards.clear();
         }
 
         this.tickDuration();

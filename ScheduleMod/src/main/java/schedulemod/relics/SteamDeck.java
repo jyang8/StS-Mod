@@ -1,26 +1,33 @@
 package schedulemod.relics;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import schedulemod.actions.ScheduleEventCard;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+
+import schedulemod.cards.EventCard;
 import schedulemod.cards.tempCards.SteamClub;
 import schedulemod.character.Entropy;
+import schedulemod.interfaces.OnEventScheduledRelic;
+
 import static schedulemod.BasicMod.makeID;
 
-public class SteamDeck extends BaseRelic {
+public class SteamDeck extends BaseRelic implements OnEventScheduledRelic {
     private static final String NAME = "SteamDeck";
     public static final String ID = makeID(NAME);
     private static final RelicTier RARITY = RelicTier.BOSS;
     private static final LandingSound SOUND = LandingSound.FLAT;
-    private static final int SCHEDULE_SLOT = 7;
+    private static final int AMOUNT = 1;
 
 
     public SteamDeck() {
         super(ID, NAME, Entropy.Enums.CARD_COLOR, RARITY, SOUND);
     }
 
-    public void onShuffle() {
+    public void onEventScheduled(EventCard c, int slot, AbstractOrb replaced) {
         flash();
-        addToBot((AbstractGameAction)new ScheduleEventCard(new SteamClub(), SCHEDULE_SLOT));
+        if (replaced != null) {
+            addToBot((AbstractGameAction)new MakeTempCardInHandAction(new SteamClub(), AMOUNT));
+        }
     }
 
     @Override

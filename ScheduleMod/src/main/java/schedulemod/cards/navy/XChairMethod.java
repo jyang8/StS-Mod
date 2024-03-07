@@ -20,7 +20,7 @@ public class XChairMethod extends BaseCard {
             CardTarget.ALL_ENEMY,
             -1);
 
-    private static final int FATIGUE = 6;
+    private static final int FATIGUE = 7;
 
     public XChairMethod() {
         super(ID, info);

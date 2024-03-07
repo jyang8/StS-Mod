@@ -27,13 +27,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.vfx.TextAboveCreatureEffect;
 import schedulemod.BasicMod;
+import schedulemod.cards.EventCard;
 import schedulemod.cards.navy.Bakaham;
 import schedulemod.cards.navy.Defend_Navy;
 import schedulemod.cards.navy.PowerNap;
 import schedulemod.cards.navy.Strike_Navy;
+import schedulemod.interfaces.OnEventScheduledRelic;
 import schedulemod.orbs.ScheduleOrb;
 import schedulemod.powers.CoffeePower;
 import schedulemod.relics.SoothrRes;
@@ -208,8 +211,15 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
             this.orbs.set(index, schedule);
             (this.orbs.get(index)).setSlot(index, this.maxOrbs);
             schedule.playChannelSFX();
-            for (AbstractPower p : this.powers)
+            for (AbstractPower p : this.powers) {
                 p.onChannel(schedule);
+            }
+
+            for (AbstractRelic r : AbstractDungeon.player.relics) {
+                if (r instanceof OnEventScheduledRelic) {
+                    ((OnEventScheduledRelic) r).onEventScheduled(schedule.eventCard, index, replacedOrb);
+                }
+            }
             schedule.eventCard.onSchedule(replacedOrb);
             AbstractDungeon.actionManager.orbsChanneledThisCombat.add(schedule);
             AbstractDungeon.actionManager.orbsChanneledThisTurn.add(schedule);

@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.unique.DiscoveryAction;
 import com.megacrit.cardcrawl.actions.utility.ChooseOneColorless;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -89,8 +90,8 @@ public class OnCardCreatedPatch {
     public static class OnCardCreatedDiscoveryPatch {
 
       @SpirePrefixPatch
-      public static void Prefix(DiscoveryAction __instance, boolean ___retrieveCard) {
-        if (___retrieveCard) {
+      public static void Prefix(DiscoveryAction __instance, float ___duration) {
+        if (___duration == Settings.ACTION_DUR_FAST) {
           triggerPowers();
         }
       }

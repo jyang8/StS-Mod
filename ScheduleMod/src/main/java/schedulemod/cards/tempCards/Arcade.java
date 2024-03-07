@@ -19,7 +19,7 @@ public class Arcade extends EventCard {
             1
     );
 
-    private final static int BLOCK = 7;
+    private final static int BLOCK = 6;
     private final static int UPGRADE_BLOCK = 3;
     private final static int SCHEDULE_SLOT = 7;
 
