@@ -40,11 +40,6 @@ public class ScheduleEventCard extends AbstractGameAction {
     }
 
     public void update() {
-        for (AbstractPower pow : AbstractDungeon.player.powers) {
-            if (pow instanceof OnEventScheduledPower) {
-                ((OnEventScheduledPower)pow).onEventScheduled((EventCard)card, slot);
-            }
-        }
 
         if (!AbstractDungeon.player.hasEmptyOrb())
             for (AbstractOrb o : AbstractDungeon.player.orbs) {
@@ -55,8 +50,10 @@ public class ScheduleEventCard extends AbstractGameAction {
                     break;
                 }
             }
+
         if (!this.skipWait && !Settings.FAST_MODE)
             addToTop(new WaitAction(0.1F));
+            
         addToTop(new ChannelAction(new ScheduleOrb(this.card, this.slot, this.source)));
 
         this.isDone = true;

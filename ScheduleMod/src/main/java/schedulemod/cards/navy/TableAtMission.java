@@ -20,23 +20,17 @@ public class TableAtMission extends BaseCard {
     );
 
     private static final int SCHEDULE_SLOT = 5;
+    private static final int UPGRADE_SCHEDULE_SLOT = -3;
 
     public TableAtMission() {
         super(ID, info);
         this.cardsToPreview = new AbsurdNap();
-    }
-
-    @Override
-    public void upgrade() {
-        if (!upgraded) {
-            this.cardsToPreview.upgrade();
-        }
-        super.upgrade();
+        setMagic(SCHEDULE_SLOT, UPGRADE_SCHEDULE_SLOT);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), SCHEDULE_SLOT));
+        addToBot(new ScheduleEventCard(this.cardsToPreview.makeStatEquivalentCopy(), this.magicNumber));
     }
 
     @Override

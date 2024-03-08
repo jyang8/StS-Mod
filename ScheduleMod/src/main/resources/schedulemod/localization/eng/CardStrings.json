@@ -122,8 +122,7 @@
   },
   "${modID}:Croissant": {
     "NAME": "L'Appartement 4F",
-    "DESCRIPTION": "Whenever you play a *Bread this turn, NL gain !M! *Belly *Size. NL *Exhaust.",
-    "UPGRADE_DESCRIPTION": "*Retain. NL Whenever you play a *Bread this turn, NL gain !M! *Belly *Size. NL *Exhaust."
+    "DESCRIPTION": "*Retain. NL Whenever you play a *Bread this turn, NL gain !M! *Belly *Size. NL *Exhaust."
   },
   "${modID}:ThinkingWithPortals": {
     "NAME": "Thinking With Portals",
@@ -157,7 +156,7 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal 18 or more damage in a single hit, gain !M! *Punctual."
+    "DESCRIPTION": "Whenever you deal 18 or more damage, NL *Schedule 2: *Optimize for !M! *Punctual."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
@@ -263,8 +262,7 @@
   },
   "${modID}:ChefsTable": {
     "NAME": "Chef's Table",
-    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu+. NL Lose !M! Gold."
+    "DESCRIPTION": "Deal !D! damage. NL *Schedule 6: *Tasting *Menu. NL Lose !M! Gold."
   },
   "${modID}:TastingMenu": {
     "NAME": "Tasting Menu",
@@ -322,8 +320,7 @@
   },
   "${modID}:Arcade": {
     "NAME": "Arcade",
-    "DESCRIPTION": "Gain !B! *Block. NL *Schedule 7: *Arcade.",
-    "UPGRADE_DESCRIPTION": "Gain !B! *Block. NL *Schedule 7: *Arcade+."
+    "DESCRIPTION": "Gain !B! *Block. NL *Schedule 7: *Arcade."
   },
   "${modID}:Gym": {
     "NAME": "Gym",
@@ -405,7 +402,7 @@
   },
   "${modID}:LogisticScience": {
     "NAME": "Logistic Science",
-    "DESCRIPTION": "Whenever you gain *Punctual, gain !M! *Strength, *Dexterity, and *Belly *Size this turn."
+    "DESCRIPTION": "Whenever you replace an event, gain !M! *Strength, *Dexterity, and *Belly *Size this turn."
   },
   "${modID}:SpaceScience": {
     "NAME": "Space Science",
@@ -432,8 +429,7 @@
   },
   "${modID}:TableAtMission": {
     "NAME": "Table At Mission",
-    "DESCRIPTION": "*Schedule 5: NL *Absurd *Nap.",
-    "UPGRADE_DESCRIPTION": "*Schedule 5: NL *Absurd *Nap+."
+    "DESCRIPTION": "*Schedule !M!: NL *Absurd *Nap."
   },
   "${modID}:AbsurdNap": {
     "NAME": "Absurd Nap",
@@ -442,7 +438,7 @@
   },
   "${modID}:SteamClub": {
     "NAME": "Steam Club",
-    "DESCRIPTION": "Gain !M! *Block for each event triggered since the last *Steam *Club."
+    "DESCRIPTION": "*Retain. NL Draw !M! cards. NL *Exhaust."
   },
   "${modID}:PowerWordSleep": {
     "NAME": "Power Word: Sleep",
@@ -454,8 +450,7 @@
   },
   "${modID}:SundayForma": {
     "NAME": "Sunday Forma",
-    "DESCRIPTION": "*Schedule 7: *Pasta. NL Apply !M! *Fatigue. ",
-    "UPGRADE_DESCRIPTION": "*Schedule 7: *Pasta+. NL Apply !M! *Fatigue. "
+    "DESCRIPTION": "*Schedule 7: *Pasta. NL Apply !M! *Fatigue. "
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "La Cabra",
@@ -527,6 +522,11 @@
     "NAME": "Repossess",
     "DESCRIPTION": "Add a copy of the chosen card to your hand.",
     "UPGRADE_DESCRIPTION": "Add a copy of the chosen card to your hand and upgrade it."
+  },
+  "${modID}:Optimize": {
+    "NAME": "Optimize",
+    "DESCRIPTION": "Gain !M! *Punctual. NL Increases with stacks of *Automation *Science."
   }
+
 
 }

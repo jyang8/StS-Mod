@@ -8,9 +8,10 @@ import schedulemod.cards.EventCard;
 import schedulemod.cards.tempCards.SteamClub;
 import schedulemod.character.Entropy;
 import schedulemod.interfaces.OnEventScheduledRelic;
+import schedulemod.orbs.ScheduleOrb;
 
 import static schedulemod.BasicMod.makeID;
-
+ 
 public class SteamDeck extends BaseRelic implements OnEventScheduledRelic {
     private static final String NAME = "SteamDeck";
     public static final String ID = makeID(NAME);
@@ -24,8 +25,8 @@ public class SteamDeck extends BaseRelic implements OnEventScheduledRelic {
     }
 
     public void onEventScheduled(EventCard c, int slot, AbstractOrb replaced) {
-        flash();
-        if (replaced != null) {
+        if (replaced instanceof ScheduleOrb) {
+            flash();
             addToBot((AbstractGameAction)new MakeTempCardInHandAction(new SteamClub(), AMOUNT));
         }
     }

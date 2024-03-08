@@ -133,7 +133,7 @@
     "NAME": "Automation Science",
     "DESCRIPTIONS": [
       "Whenever you deal #b",
-      " or more damage in a single hit, gain #b",
+      " or more damage, #ySchedule 2: #yOptimize for #b",
       " #yPunctual."
     ]
   },
@@ -201,7 +201,7 @@
     ]
   },
   "${modID}:LoseMaxSatiety": {
-    "NAME": "Lose Belly Size",
+    "NAME": "Belly Size Down",
     "DESCRIPTIONS": ["At the end of your turn, lose #b", " #yBelly #ySize."]
   },
   "${modID}:RocketFactory": {
@@ -214,7 +214,7 @@
   "${modID}:LogisticScience": {
     "NAME": "Logistic Science",
     "DESCRIPTIONS": [
-      "Whenever you gain #yPunctual, gain #b",
+      "Whenever you replace an event, gain #b",
       " #yStrength, #yDexterity, and #yBelly #ySize this turn."
     ]
   },

@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.BasicMod;
 import schedulemod.cards.EventCard;
 import schedulemod.character.Entropy;
 import schedulemod.powers.SatietyPower;
@@ -39,19 +41,15 @@ public class TastingMenu extends EventCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        Entropy e = (Entropy) p;
-        setMagic(e.getSatietyGainedThisCombat());
-        for (int i = 0; i < this.magicNumber; i++) {
-            addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SMASH));
-        }
+        useEvent(p, m);
     }
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
         Entropy e = (Entropy) p;
-        setMagic(e.getSatietyGainedThisCombat());
-        for (int i = 0; i < this.magicNumber; i++) {
-            addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SMASH));
+        int tmp = e.getSatietyGainedThisCombat();
+        for (int i = 0; i < tmp; i++) {
+            addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HEAVY));
             addToBot(new WaitAction(0.2F));
         }
         addToBot(new ApplyPowerAction(p, p, new SatietyPower(p, SATIETY)));
@@ -59,12 +57,14 @@ public class TastingMenu extends EventCard {
 
     @Override
     public void calculateCardDamage(AbstractMonster m) {
-        super.calculateCardDamage(m);
+        BasicMod.logger.info("SETTING TASTING MENU DESCRIPTION");
         Entropy e = (AbstractDungeon.player instanceof Entropy) ? (Entropy)AbstractDungeon.player : null;
         if (e == null) {
+            BasicMod.logger.info("NOT ENTROPY");
             return;
         }
         this.rawDescription = cardStrings.DESCRIPTION + " (" + e.getSatietyGainedThisCombat()+ ")";
+        super.calculateCardDamage(m);
     }
 
     @Override

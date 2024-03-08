@@ -2,13 +2,16 @@ package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import schedulemod.actions.LogisticScienceAction;
+import schedulemod.cards.EventCard;
+import schedulemod.interfaces.OnEventScheduledPower;
+import schedulemod.orbs.ScheduleOrb;
 
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import static schedulemod.BasicMod.makeID;
 
-public class LogisticSciencePower extends BasePower implements CloneablePowerInterface {
+public class LogisticSciencePower extends BasePower implements CloneablePowerInterface, OnEventScheduledPower {
     public static final String POWER_ID = makeID("LogisticScience");
     private static final AbstractPower.PowerType TYPE = PowerType.BUFF;
     private static final boolean TURN_BASED = false;
@@ -26,8 +29,9 @@ public class LogisticSciencePower extends BasePower implements CloneablePowerInt
     }
 
     @Override
-    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-        if (target instanceof AbstractPlayer && power instanceof PunctualPower && power.amount > 0) {
+    public void onEventScheduled(EventCard card, int slot, AbstractOrb replaced) {
+        if (replaced instanceof ScheduleOrb) {
+            flashWithoutSound();
             addToBot(new LogisticScienceAction(this.amount));
         }
     }

@@ -1,6 +1,8 @@
 package schedulemod.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
+import schedulemod.relics.CatTheoryTextbook;
+
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -48,7 +50,8 @@ public class WrinklerPower extends BasePower implements CloneablePowerInterface,
             return false;
         }
         AbstractPlayer p = (AbstractPlayer) this.owner;
-        if (p.hasRelic(makeID("CatTheoryTextbook")) && power.type == PowerType.DEBUFF) {
+        if (p.hasRelic(CatTheoryTextbook.ID) && power.type == PowerType.DEBUFF) {
+            p.getRelic(CatTheoryTextbook.ID).flash();
             onSpecificTrigger();
             return false;
         }

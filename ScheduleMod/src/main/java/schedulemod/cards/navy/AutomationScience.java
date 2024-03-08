@@ -5,6 +5,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import schedulemod.cards.tempCards.Optimize;
 import schedulemod.character.Entropy;
 import schedulemod.powers.AutomationSciencePower;
 import schedulemod.util.CardStats;
@@ -25,6 +27,7 @@ public class AutomationScience extends BaseCard {
     public AutomationScience() {
         super(ID, info);
         setMagic(PUNCTUAL, UPGRADE_PUNCTUAL);
+        this.cardsToPreview = new Optimize();
     }
 
     @Override

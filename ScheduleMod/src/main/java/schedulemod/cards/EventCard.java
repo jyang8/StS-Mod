@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
 
@@ -57,6 +58,11 @@ public abstract class EventCard extends BaseCard {
         if (AbstractDungeon.isPlayerInDungeon() && AbstractDungeon.currMapNode != null
                 && AbstractDungeon.getCurrRoom().phase == RoomPhase.COMBAT) {
             super.calculateCardDamage(m);
+            if (AbstractDungeon.player.hasPower(DexterityPower.POWER_ID)) {
+                int amount = AbstractDungeon.player.getPower(DexterityPower.POWER_ID).amount;
+                this.block = this.baseBlock - amount;
+                this.isBlockModified = this.block != this.baseBlock;
+            }
             if (AbstractDungeon.player.hasPower(PunctualPower.POWER_ID)) {
                 int amount = AbstractDungeon.player.getPower(PunctualPower.POWER_ID).amount;
                 this.damage = this.baseDamage + amount;

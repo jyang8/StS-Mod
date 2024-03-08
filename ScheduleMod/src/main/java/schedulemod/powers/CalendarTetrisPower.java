@@ -6,6 +6,7 @@ import schedulemod.interfaces.OnEventScheduledPower;
 
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import static schedulemod.BasicMod.makeID;
@@ -37,7 +38,7 @@ public class CalendarTetrisPower extends BasePower implements CloneablePowerInte
     }
 
     @Override
-    public void onEventScheduled(EventCard card, int slot) {
+    public void onEventScheduled(EventCard card, int slot, AbstractOrb replaced) {
         if (cardsLeftThisTurn > 0) {
             flashWithoutSound();
             addToBot(new DrawCardAction(1));

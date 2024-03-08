@@ -24,12 +24,12 @@ public class LogisticScienceAction extends AbstractGameAction {
 
     public void update() {
         AbstractPlayer p = AbstractDungeon.player;
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, amount), amount));
-        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, amount), amount));
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, amount), amount));
-        addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, amount), amount));
-        addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, amount), amount));
-        addToBot(new ApplyPowerAction(p, p, new LoseMaxSatietyPower(p, amount), amount));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, amount), amount, true));
+        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, amount), amount, true));
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, amount), amount, true));
+        addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, amount), amount, true));
+        addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, amount), amount, true));
+        addToBot(new ApplyPowerAction(p, p, new LoseMaxSatietyPower(p, amount), amount, true));
         this.isDone = true;
     }
 }

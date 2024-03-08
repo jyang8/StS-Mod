@@ -36,6 +36,7 @@ import schedulemod.cards.navy.Bakaham;
 import schedulemod.cards.navy.Defend_Navy;
 import schedulemod.cards.navy.PowerNap;
 import schedulemod.cards.navy.Strike_Navy;
+import schedulemod.interfaces.OnEventScheduledPower;
 import schedulemod.interfaces.OnEventScheduledRelic;
 import schedulemod.orbs.ScheduleOrb;
 import schedulemod.powers.CoffeePower;
@@ -213,6 +214,12 @@ public class Entropy extends CustomPlayer implements CustomSavable<Integer> {
             schedule.playChannelSFX();
             for (AbstractPower p : this.powers) {
                 p.onChannel(schedule);
+            }
+
+            for (AbstractPower pow : AbstractDungeon.player.powers) {
+                if (pow instanceof OnEventScheduledPower) {
+                    ((OnEventScheduledPower) pow).onEventScheduled(schedule.eventCard, index, replacedOrb);
+                }
             }
 
             for (AbstractRelic r : AbstractDungeon.player.relics) {

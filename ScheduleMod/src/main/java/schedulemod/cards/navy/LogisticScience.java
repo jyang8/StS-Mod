@@ -18,7 +18,7 @@ public class LogisticScience extends BaseCard {
             1
     );
 
-    private static final int TEMP_STATS = 2;
+    private static final int TEMP_STATS = 1;
     private static final int UPGRADE_TEMP_STATS = 1;
 
     public LogisticScience() {

@@ -27,7 +27,7 @@ public class AllformCouch extends BaseRelic implements OnApplyPowerRelic {
 
     @Override
     public boolean onApplyPower(AbstractPower power, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (power instanceof FatiguePower) {
+        if (power instanceof FatiguePower && power.amount > 0) {
             flash();
             power.amount++;
         }
