@@ -22,8 +22,8 @@ public class RonTheRockJobs extends BaseCard {
     );
 
     private static final int ATTACK_DAMAGE = 10;
-    private static final int UPGRADE_ATTACK_DAMAGE = 4; 
-    private static final int WRINKLER = 1;
+    private static final int UPGRADE_ATTACK_DAMAGE = 4;
+    private static final int WRINKLER = 2;
     private static final int UPGRADE_WRINKLER = 1;
 
     public RonTheRockJobs() {

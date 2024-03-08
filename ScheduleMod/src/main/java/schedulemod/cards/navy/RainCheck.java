@@ -18,7 +18,7 @@ public class RainCheck extends BaseCard {
             CardTarget.SELF,
             1);
 
-    private static final int BLOCK = 11;
+    private static final int BLOCK = 12;
     private static final int UPGRADE_BLOCK = 4;
 
     public RainCheck() {

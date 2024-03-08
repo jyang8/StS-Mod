@@ -20,21 +20,20 @@ public class Connoisseur extends BaseCard {
             2
     );
 
-    private static final int STRENGTH_GAIN = 2;
-    private static final int DEXTERITY_GAIN = 2;
+    private static final int STAT_GAIN = 2;
+    private static final int UPGRADE_STAT_GAIN = 1;
     private static final int MAX_SATIETY_LOSS = 2;
-    private static final int UPGRADE_MAX_SATIETY_LOSS = -1;
 
     public Connoisseur() {
         super(ID, info);
-        setMagic(MAX_SATIETY_LOSS, UPGRADE_MAX_SATIETY_LOSS);
+        setMagic(STAT_GAIN, UPGRADE_STAT_GAIN);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, STRENGTH_GAIN)));
-        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, DEXTERITY_GAIN)));
-        addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, -this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new MaxSatietyPower(p, -MAX_SATIETY_LOSS)));
     }
 
     @Override

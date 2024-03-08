@@ -20,15 +20,15 @@ public class Croissant extends BaseCard {
     );
 
     private static final int BELLY_SIZE = 1;
+    private static final int UPGRADE_BELLY_SIZE = 1;
     private static final boolean EXHAUST = true;
-    private static final boolean RETAIN = false;
-    private static final boolean UPGRADE_RETAIN = true;
+    private static final boolean RETAIN = true;
 
     public Croissant() {
         super(ID, info);
         tags.add(Entropy.Enums.FOOD);
-        setMagic(BELLY_SIZE);
-        setSelfRetain(RETAIN, UPGRADE_RETAIN);
+        setMagic(BELLY_SIZE, UPGRADE_BELLY_SIZE);
+        setSelfRetain(RETAIN);
         setExhaust(EXHAUST);
         this.cardsToPreview = new Bread();
     }

@@ -23,7 +23,7 @@ public class HappyBirthday extends BaseCard {
     );
 
     private static final int SCHEDULE_SLOT = 6;
-    private static final int ATTACK_DAMAGE = 4;
+    private static final int ATTACK_DAMAGE = 10;
 
     public HappyBirthday() {
         super(ID, info);

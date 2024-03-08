@@ -20,7 +20,7 @@ public class SubwayNap extends BaseCard {
             CardTarget.ENEMY,
             0);
 
-    private static final int FATIGUE = 5;
+    private static final int FATIGUE = 6;
     private static final int UPGRADE_FATIGUE = 3;
     private static final int NUM_CARDS_DRAW = 2;
 

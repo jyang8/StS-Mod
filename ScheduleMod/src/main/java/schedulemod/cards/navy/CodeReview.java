@@ -20,8 +20,8 @@ public class CodeReview extends BaseCard {
             1
     );
 
-    private static final int FATIGUE = 11;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int FATIGUE = 13;
+    private static final int UPGRADE_FATIGUE = 4;
 
     public CodeReview() {
         super(ID, info);

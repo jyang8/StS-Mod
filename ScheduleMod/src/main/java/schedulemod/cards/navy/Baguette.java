@@ -21,7 +21,7 @@ public class Baguette extends BaseCard {
             1
     );
 
-    private static final int ATTACK_DAMAGE = 6;
+    private static final int ATTACK_DAMAGE = 7;
 
     public Baguette() {
         super(ID, info);

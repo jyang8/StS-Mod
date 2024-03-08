@@ -20,8 +20,8 @@ public class GroupProject extends BaseCard {
             0
     );
 
-    private static final int ATTACK_DAMAGE = 11;
-    private static final int UPGRADE_ATTACK_DAMAGE = 3;
+    private static final int ATTACK_DAMAGE = 12;
+    private static final int UPGRADE_ATTACK_DAMAGE = 4;
 
     public GroupProject() {
         super(ID, info);

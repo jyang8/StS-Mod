@@ -22,8 +22,8 @@ public class SundayForma extends BaseCard {
     );
 
     private static final int SCHEDULE_SLOT = 7;
-    private static final int FATIGUE = 7;
-    private static final int UPGRADE_FATIGUE = 2;
+    private static final int FATIGUE = 9;
+    private static final int UPGRADE_FATIGUE = 4;
 
     public SundayForma() {
         super(ID, info);
@@ -33,9 +33,6 @@ public class SundayForma extends BaseCard {
 
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            this.cardsToPreview.upgrade();
-        }
         super.upgrade();
     }
 

@@ -18,7 +18,7 @@ public class HokkaidoUniBuffet extends BaseCard {
             CardType.SKILL,
             CardRarity.RARE,
             CardTarget.SELF,
-            1
+            0
     );
     private static final int NUM_CARDS_DRAW = 2;
     private static final int UPGRADE_NUM_CARDS_DRAW = 1;

@@ -19,7 +19,7 @@ public class Cardigarkus extends BaseCard {
             1
     );
 
-    private static final int BLOCK = 14;
+    private static final int BLOCK = 15;
     private static final int UPGRADE_BLOCK = 5;
     private static final int DEXTERITY_LOSS = 1;
 

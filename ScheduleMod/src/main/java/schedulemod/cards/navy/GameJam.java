@@ -22,8 +22,8 @@ public class GameJam extends BaseCard {
             0
     );
 
-    private static final int ATTACK_DAMAGE = 5;
-    private static final int UPGRADE_ATTACK_DAMAGE = 2;
+    private static final int ATTACK_DAMAGE = 7;
+    private static final int UPGRADE_ATTACK_DAMAGE = 3;
     private static final int SCHEDULE_SLOT = 2;
     private static final int UPGRADE_SCHEDULE_SLOT = 1;
     private static final int ENERGY_GAIN = 1;

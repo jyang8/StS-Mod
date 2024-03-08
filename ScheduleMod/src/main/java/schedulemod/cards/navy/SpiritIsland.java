@@ -20,13 +20,13 @@ public class SpiritIsland extends BaseCard {
             1);
 
     private static final int ATTACK_DAMAGE = 7;
-    private static final int UPGRADE_ATTACK_DAMAGE = 2;
     private static final int REPEATS = 2;
+    private static final int UPGRADE_REPEATS = 1;
 
     public SpiritIsland() {
         super(ID, info);
-        setDamage(ATTACK_DAMAGE, UPGRADE_ATTACK_DAMAGE);
-        setMagic(REPEATS);
+        setDamage(ATTACK_DAMAGE);
+        setMagic(REPEATS, UPGRADE_REPEATS);
     }
 
     @Override

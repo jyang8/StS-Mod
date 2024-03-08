@@ -15,7 +15,7 @@
   },
   "${modID}:Defend_Navy": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! *Block."
   },
   "${modID}:Bakaham": {
     "NAME": "Bakaham",
@@ -23,8 +23,8 @@
   },
   "${modID}:PowerNap": {
     "NAME": "Power Nap",
-    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Nap.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL *Schedule !M!, 5: *Nap."
+    "DESCRIPTION": "Gain !B! *Block. NL *Schedule !M!: *Nap.",
+    "UPGRADE_DESCRIPTION": "Gain !B! *Block. NL *Schedule !M!, 5: *Nap."
   },
   "${modID}:Nap": {
     "NAME": "Nap",
@@ -37,7 +37,7 @@
   },
   "${modID}:JagerBomb": {
     "NAME": "Jager Bomb",
-    "DESCRIPTION": "Gain !B! Block. NL Gain [E]. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! *Block. NL Gain [E]. NL Gain 1 *Satiety."
   },
   "${modID}:SourdoughBread": {
     "NAME": "Sourdough Bread",
@@ -61,8 +61,8 @@
   },
   "${modID}:Hunger": {
     "NAME": "Hunger",
-    "DESCRIPTION": "Gain !B! Block. NL Lose !M! *Satiety. NL *Schedule 3: *Dinner *Round *II.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Lose ALL *Satiety. NL *Schedule 3: *Dinner *Round *II."
+    "DESCRIPTION": "Gain !B! *Block. NL Lose !M! *Satiety. NL *Schedule 3: *Dinner *Round *II.",
+    "UPGRADE_DESCRIPTION": "Gain !B! *Block. NL Lose ALL *Satiety. NL *Schedule 3: *Dinner *Round *II."
   },
   "${modID}:HokkaidoUniBuffet": {
     "NAME": "Hokkaido Uni Buffet",
@@ -161,7 +161,7 @@
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
-    "DESCRIPTION": "Gain 2 Strength. NL Gain 2 Dexterity. NL Lose !M! *Belly *Size."
+    "DESCRIPTION": "Gain !M! Strength. NL Gain !M! *Dexterity. NL Lose 2 *Belly *Size."
   },
   "${modID}:Walkable": {
     "NAME": "Walkable",
@@ -174,11 +174,11 @@
   },
   "${modID}:PatricksParablock": {
     "NAME": "Patrick's Parablock",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! *Wrinkler."
+    "DESCRIPTION": "Gain !B! *Block. NL Gain !M! *Wrinkler."
   },
   "${modID}:Cardigarkus": {
     "NAME": "Cardigarkus",
-    "DESCRIPTION": "Gain !B! Block. NL Lose !M! Dexterity."
+    "DESCRIPTION": "Gain !B! *Block. NL Lose !M! *Dexterity."
   },
   "${modID}:XChairMethod": {
     "NAME": "X-Chair Method",
@@ -187,7 +187,7 @@
   },
   "${modID}:Inception": {
     "NAME": "Inception",
-    "DESCRIPTION": "Deal !D! damage. NL If the enemy is asleep, apply !M! Vulnerable and !M! Weak."
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy is asleep, apply !M! *Vulnerable and !M! *Weak."
   },
   "${modID}:FoodComa": {
     "NAME": "Food Coma",
@@ -199,11 +199,11 @@
   },
   "${modID}:SweetDreams": {
     "NAME": "Sweet Dreams",
-    "DESCRIPTION": "Whenever an enemy falls asleep, gain !M! Block at the start of your next turn."
+    "DESCRIPTION": "Whenever an enemy falls asleep, gain !M! *Block at the start of your next turn."
   },
   "${modID}:LittleSpoon": {
     "NAME": "Little Spoon",
-    "DESCRIPTION": "Gain !B! Block. NL Apply !M! *Drowsy."
+    "DESCRIPTION": "Gain !B! *Block. NL Apply !M! *Drowsy."
   },
   "${modID}:SnoozeAlarm": {
     "NAME": "Snooze Alarm",
@@ -272,7 +272,7 @@
   },
   "${modID}:GinAndTonic": {
     "NAME": "Gin and Tonic",
-    "DESCRIPTION": "Gain !B! Block. NL *Schedule !M!: *Drunkus. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! *Block. NL *Schedule !M!: *Drunkus. NL Gain 1 *Satiety."
   },
   "${modID}:Drunkus": {
     "NAME": "Drunkus",
@@ -322,8 +322,8 @@
   },
   "${modID}:Arcade": {
     "NAME": "Arcade",
-    "DESCRIPTION": "Gain !B! Block. NL *Schedule 7: *Arcade.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL *Schedule 7: *Arcade+."
+    "DESCRIPTION": "Gain !B! *Block. NL *Schedule 7: *Arcade.",
+    "UPGRADE_DESCRIPTION": "Gain !B! *Block. NL *Schedule 7: *Arcade+."
   },
   "${modID}:Gym": {
     "NAME": "Gym",
@@ -442,7 +442,7 @@
   },
   "${modID}:SteamClub": {
     "NAME": "Steam Club",
-    "DESCRIPTION": "Gain !M! Block for each event triggered since the last *Steam *Club."
+    "DESCRIPTION": "Gain !M! *Block for each event triggered since the last *Steam *Club."
   },
   "${modID}:PowerWordSleep": {
     "NAME": "Power Word: Sleep",
@@ -450,7 +450,7 @@
   },
   "${modID}:RainCheck": {
     "NAME": "Rain Check",
-    "DESCRIPTION": "Gain !B! Block. NL Push back the *Schedule as far as possible."
+    "DESCRIPTION": "Gain !B! *Block. NL Push back the *Schedule as far as possible."
   },
   "${modID}:SundayForma": {
     "NAME": "Sunday Forma",
@@ -459,11 +459,11 @@
   },
   "${modID}:EmergencyCoffee": {
     "NAME": "La Cabra",
-    "DESCRIPTION": "Gain !B! Block. NL Your cards trigger !M! additional event this turns. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! *Block. NL Your cards trigger !M! additional event this turns. NL Gain 1 *Satiety."
   },
   "${modID}:Pasta": {
     "NAME": "Pasta",
-    "DESCRIPTION": "Gain !B! Block. NL Increase Block by !M! each time an enemy falls asleep. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! *Block. NL Increase *Block by !M! each time an enemy falls asleep. NL Gain 1 *Satiety."
   },
   "${modID}:Metabolize": {
     "NAME": "Metabolize",
@@ -480,7 +480,7 @@
   },
   "${modID}:SecondCourse": {
     "NAME": "Second Course",
-    "DESCRIPTION": "Gain !B! Block. NL Gain 1 *Satiety."
+    "DESCRIPTION": "Gain !B! *Block. NL Gain 1 *Satiety."
   },
   "${modID}:ThirdCourse": {
     "NAME": "Third Course",
