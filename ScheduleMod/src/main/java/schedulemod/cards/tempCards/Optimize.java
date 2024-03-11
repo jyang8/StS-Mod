@@ -19,7 +19,7 @@ public class Optimize extends EventCard {
             1
     );
 
-    private final static int PUNCTUAL = 2;
+    private final static int PUNCTUAL = 1;
     private final static int UPGRADE_PUNCTUAL = 1;
 
     public Optimize() {

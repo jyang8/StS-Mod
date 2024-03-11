@@ -133,8 +133,7 @@
     "NAME": "Automation Science",
     "DESCRIPTIONS": [
       "Whenever you deal #b",
-      " or more damage, #ySchedule 2: #yOptimize for #b",
-      " #yPunctual."
+      " or more damage, #ySchedule 1, 2: #yOptimize."
     ]
   },
   "${modID}:SweetDreams": {

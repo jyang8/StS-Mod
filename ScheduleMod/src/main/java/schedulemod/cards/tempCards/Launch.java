@@ -44,6 +44,7 @@ public class Launch extends EventCard {
 
     @Override
     public void useEvent(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new MakeTempCardInDrawPileAction(new Burn(), 1, true, true));
         for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
             if (!mo.isDeadOrEscaped()) {
                 addToBot(new DamageAction(mo, new DamageInfo(p, this.damage, this.damageTypeForTurn),
@@ -51,7 +52,6 @@ public class Launch extends EventCard {
                 addToBot(new WaitAction(0.1F));
             }
         }
-        addToBot(new MakeTempCardInDrawPileAction(new Burn(), 1, true, true));
     }
 
     @Override

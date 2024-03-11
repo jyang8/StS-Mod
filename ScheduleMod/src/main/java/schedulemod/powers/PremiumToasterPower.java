@@ -33,37 +33,37 @@ public class PremiumToasterPower extends BasePower implements CloneablePowerInte
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c instanceof Bread) {
                 if (!c.upgraded) {
-                    c.baseMagicNumber = 6 + this.amount;
+                    c.baseMagicNumber = c.magicNumber = 6 + this.amount;
                     continue;
                 }
-                c.baseMagicNumber = 10 + this.amount;
+                c.baseMagicNumber = c.magicNumber = 10 + this.amount;
             }
         }
         for (AbstractCard c : AbstractDungeon.player.drawPile.group) {
             if (c instanceof Bread) {
                 if (!c.upgraded) {
-                    c.baseMagicNumber = 6 + this.amount;
+                    c.baseMagicNumber = c.magicNumber = 6 + this.amount;
                     continue;
                 }
-                c.baseMagicNumber = 10 + this.amount;
+                c.baseMagicNumber = c.magicNumber = 10 + this.amount;
             }
         }
         for (AbstractCard c : AbstractDungeon.player.discardPile.group) {
             if (c instanceof Bread) {
                 if (!c.upgraded) {
-                    c.baseMagicNumber = 6 + this.amount;
+                    c.baseMagicNumber = c.magicNumber = 6 + this.amount;
                     continue;
                 }
-                c.baseMagicNumber = 10 + this.amount;
+                c.baseMagicNumber = c.magicNumber = 10 + this.amount;
             }
         }
         for (AbstractCard c : AbstractDungeon.player.exhaustPile.group) {
             if (c instanceof Bread) {
                 if (!c.upgraded) {
-                    c.baseMagicNumber = 6 + this.amount;
+                    c.baseMagicNumber = c.magicNumber = 6 + this.amount;
                     continue;
                 }
-                c.baseMagicNumber = 10 + this.amount;
+                c.baseMagicNumber = c.magicNumber = 10 + this.amount;
             }
         }
     }
@@ -72,10 +72,10 @@ public class PremiumToasterPower extends BasePower implements CloneablePowerInte
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c instanceof Bread) {
                 if (!c.upgraded) {
-                    c.baseMagicNumber = 6 + this.amount;
+                    c.baseMagicNumber = c.magicNumber = 6 + this.amount;
                     continue;
                 }
-                c.baseMagicNumber = 10 + this.amount;
+                c.baseMagicNumber = c.magicNumber = 10 + this.amount;
             }
         }
     }

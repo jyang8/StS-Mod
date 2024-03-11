@@ -21,12 +21,12 @@ public class AutomationScience extends BaseCard {
             1
     );
 
-    private static final int PUNCTUAL = 2;
-    private static final int UPGRADE_PUNCTUAL = 1;
+    private static final int THRESHOLD = 2;
+    private static final int UPGRADE_THRESHOLD = 2;
 
     public AutomationScience() {
         super(ID, info);
-        setMagic(PUNCTUAL, UPGRADE_PUNCTUAL);
+        setMagic(THRESHOLD, UPGRADE_THRESHOLD);
         this.cardsToPreview = new Optimize();
     }
 

@@ -20,7 +20,7 @@
     "NAME": "Bottomless Potion",
     "DESCRIPTIONS": [
       "Gain #b",
-      " #yBellySize."
+      " #yBelly #ySize."
     ]
   },
   "${modID}:Melatonin": {

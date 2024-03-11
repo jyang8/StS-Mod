@@ -156,7 +156,8 @@
   },
   "${modID}:AutomationScience": {
     "NAME": "Automation Science",
-    "DESCRIPTION": "Whenever you deal 18 or more damage, NL *Schedule 2: *Optimize for !M! *Punctual."
+    "DESCRIPTION": "Whenever you deal 18 or more damage, NL *Schedule 1, 2: *Optimize.",
+    "UPGRADE_DESCRIPTION": "Whenever you deal 16 or more damage, NL *Schedule 1, 2: *Optimize."
   },
   "${modID}:Connoisseur": {
     "NAME": "Connoisseur",
@@ -525,7 +526,7 @@
   },
   "${modID}:Optimize": {
     "NAME": "Optimize",
-    "DESCRIPTION": "Gain !M! *Punctual. NL Increases with stacks of *Automation *Science."
+    "DESCRIPTION": "Gain !M! *Punctual."
   }
 
 
